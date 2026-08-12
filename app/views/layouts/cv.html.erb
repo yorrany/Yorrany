@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Curriculum Vitae - Yorrany Braga</title>
+  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <style>
+    /* Permitir margens nativas para Header/Footer do Puppeteer */
+    @page {
+      size: A4;
+      margin: 15mm 15mm 20mm 15mm !important;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    
+    .page-break {
+      page-break-before: always;
+      clear: both;
+    }
+    
+    /* Avoid breaking inside sections */
+    .avoid-break {
+      page-break-inside: avoid;
+    }
+
+    /* Refined fonts for pills */
+    .cert-pill {
+      font-size: 9px !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .cert-title {
+      font-size: 10px !important;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+<body class="bg-white text-neutral-900 font-sans">
+  <%= yield %>
+</body>
+</html>

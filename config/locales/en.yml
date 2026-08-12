@@ -1,0 +1,26 @@
+en:
+  hero:
+    h1: "Design, behaviour and code. What actually makes a product work."
+    sub: "Twenty years in, I've learned one thing: a beautiful interface won't save a confusing product. I design experiences shaped around the human mind and built with the technical rigour your engineering team expects."
+    cta_primary: "View portfolio"
+    cta_secondary: "Discuss a role in Europe"
+  pillars:
+    title: "WHAT I BRING TO THE TABLE"
+    pillar1_title: "Design that scales (without turning into bureaucracy)"
+    pillar1_desc: "I don't just draw screens; I build systems. I lead the creation and maintenance of design systems that developers actually want to use. From discovery to delivery, my focus is aligning what the business needs with what users can understand, keeping visual consistency and team velocity intact."
+    pillar2_title: "Less friction, more clarity (Psychology & HCI)"
+    pillar2_desc: "As a psychologist, I look beyond the clicks. I ask: what's the cognitive load on this screen? Why did the user drop off here? I use behavioural science and heuristic evaluations to design paths that make sense to the human brain, raising conversion ethically and predictably."
+    pillar3_title: "Closing the gap between design and engineering"
+    pillar3_desc: "Design doesn't end in Figma. With my background in front-end and security (JS/Python), I speak the developers' language. I understand technical constraints, prevent security flaws at the interface level, and make sure what gets designed is actually buildable, accessible and safe to ship."
+  about:
+    h2: "20 years learning how people read, click and trust."
+    p1: "I started my career in print design, obsessed with Swiss typography and millimetre-perfect grids. But when the screen became our main medium, I realised aesthetics alone weren't enough. I went on to study Psychology to understand the why behind people's choices."
+    p2: "Today I work as Principal Product Designer & Front-End Architect. Which means I don't just hand over a prototype: I hand over the strategy behind it, a grasp of user behaviour, and the technical feasibility to build it."
+    p3: "I've shipped high-conversion e-commerce and complex digital health platforms (zero to one). What drives me is solving complex problems with simple interfaces."
+    credentials: "Credentials: B.Sc. in Psychology (human behaviour) · Front-End Architecture, Python & JS Security (The Linux Foundation) · Focus: digital health, e-commerce, design systems."
+  europe:
+    h2: "Next step: Europe 🇪🇺"
+    desc: "I'm at a point in my career where I want to pair new technical challenges with quality of life. My current focus is relocating to Portugal 🇵🇹 or Spain 🇪🇸, or working remotely with teams on European time zones (CET/WET). Fully set up for remote work, looking for a team that values the maturity of a well-built product."
+    status: "EU status: Eligible / Open to sponsorship · Model: 100% remote, hybrid or relocation · Timezone: CET/WET aligned"
+    cta_primary: "Download full CV"
+    cta_secondary: "Connect on LinkedIn"

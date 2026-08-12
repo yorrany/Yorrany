@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Google Sans", "Inter", "Geist", "Söhne", sans-serif;
+  --font-serif: "Fraunces", "Tiempos Headline", "PP Editorial New", serif;
+
+  --color-brand-fundo: #F7F8FC;
+  --color-brand-surface: #FFFFFF;
+  --color-brand-tinta: #1A1E28;
+  --color-brand-titulos: #003CA5;
+  --color-brand-primaria: #3D33FF;
+  --color-brand-acento: #00A5FF;
+  --color-brand-tint: #EAEDF8;
+
+  --color-brand-dark-fundo: #0A0E19;
+  --color-brand-dark-surface: #131828;
+  --color-brand-dark-tinta: #E9ECF8;
+  --color-brand-dark-primaria: #5A52FF;
+  --color-brand-dark-acento: #00A5FF;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-brand-fundo);
+    color: var(--color-brand-tinta);
+    @apply antialiased selection:bg-brand-acento selection:text-white;
+  }
+
+  .dark body {
+    background-color: var(--color-brand-dark-fundo);
+    color: var(--color-brand-dark-tinta);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: var(--color-brand-titulos);
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: var(--color-brand-dark-tinta); /* ou primária dark, mantendo legível */
+  }
+}
+
+@layer utilities {
+  .bg-grid-suico {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(0, 60, 165, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 60, 165, 0.05) 1px, transparent 1px);
+  }
+
+  .dark .bg-grid-suico {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+
+  .marker-highlight {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .marker-highlight::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: -2px;
+    right: -2px;
+    height: 30%;
+    background-color: var(--color-brand-acento);
+    opacity: 0.25;
+    z-index: -1;
+    transform: skewX(-10deg);
+  }
+
+  .card-bento {
+    @apply bg-brand-surface rounded-xl border border-[#E3E7F4] p-8 transition-all duration-300;
+  }
+  
+  .dark .card-bento {
+    @apply bg-brand-dark-surface border-white/10;
+  }
+
+  .card-bento:hover {
+    @apply border-brand-primaria shadow-xl shadow-brand-primaria/10;
+  }
+  
+  .dark .card-bento:hover {
+    @apply border-brand-dark-primaria shadow-brand-dark-primaria/20;
+  }
+
+  /* Triangle motif on hover */
+  .card-bento-hover-motif {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card-bento-hover-motif::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 40px 40px 0;
+    border-color: transparent var(--color-brand-primaria) transparent transparent;
+    opacity: 0;
+    transform: translate(20px, -20px);
+    transition: all 0.3s ease;
+  }
+
+  .card-bento-hover-motif:hover::before {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  
+  .dark .card-bento-hover-motif::before {
+    border-color: transparent var(--color-brand-dark-primaria) transparent transparent;
+  }
+}

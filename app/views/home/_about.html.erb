@@ -1,0 +1,77 @@
+<!-- About Section (Editorial Layout) -->
+<section id="about" class="py-24 md:py-32 bg-brand-surface dark:bg-brand-dark-surface relative w-full">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-stretch">
+      
+      <!-- B&W Photo Column -->
+      <div class="relative w-full aspect-[3/4] md:aspect-auto md:h-full bg-neutral-200 dark:bg-neutral-800 rounded-xl overflow-hidden shadow-2xl">
+        <%= image_tag 'yorrany.png', alt: 'Yorrany Braga', class: 'object-cover absolute inset-0 w-full h-full grayscale' %>
+      </div>
+
+      <!-- Editorial Text Column -->
+      <div class="space-y-6 flex flex-col justify-center py-4">
+        <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-brand-titulos dark:text-brand-dark-tinta leading-[1.15] mb-8 font-serif">
+          <%= t('about.h2') %>
+        </h2>
+        
+        <p class="text-brand-tinta/80 dark:text-brand-dark-tinta/80 text-lg leading-relaxed">
+          <%= t('about.p1') %>
+        </p>
+        
+        <p class="text-brand-tinta/80 dark:text-brand-dark-tinta/80 text-lg leading-relaxed">
+          <%= t('about.p2') %>
+        </p>
+        
+        <p class="text-brand-tinta/80 dark:text-brand-dark-tinta/80 text-lg leading-relaxed">
+          <%= t('about.p3') %>
+        </p>
+
+        <div class="mt-8 pt-8 border-t border-brand-tinta/10 dark:border-white/10">
+          <p class="text-xs sm:text-sm font-mono text-brand-tinta/60 dark:text-brand-dark-tinta/60 leading-relaxed uppercase tracking-widest">
+            <%= t('about.credentials') %>
+          </p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Europe Block (Fechamento) -->
+<section id="europe" class="py-24 bg-brand-titulos text-white relative w-full overflow-hidden">
+  <div class="absolute right-0 bottom-0 opacity-10 pointer-events-none transform translate-x-1/4 translate-y-1/4">
+    <svg width="400" height="400" viewBox="0 0 24 24" fill="var(--color-brand-acento)" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 22H22L12 2Z"/></svg>
+  </div>
+  
+  <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center relative z-10">
+    <!-- Relógio ao vivo (simulated here for structure) -->
+    <div class="inline-flex flex-col items-center gap-1 mb-8">
+      <span class="text-brand-acento font-mono text-sm tracking-widest uppercase">Lisboa / Madrid</span>
+      <span class="text-xl font-mono opacity-80" data-controller="clock">--:--:--</span>
+    </div>
+
+    <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-6 font-serif">
+      <%= t('europe.h2') %>
+    </h2>
+    
+    <p class="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-10">
+      <%= t('europe.desc') %>
+    </p>
+
+    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 mb-12 max-w-2xl mx-auto border border-brand-acento/30">
+      <p class="font-mono text-sm sm:text-base text-brand-acento">
+        <%= t('europe.status') %>
+      </p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+      <a href="/cv/yorrany_cv_<%= I18n.locale.to_s.split('-').first %>" target="_blank" data-turbo="false" class="px-8 py-4 bg-brand-acento hover:bg-brand-acento/80 text-brand-titulos font-bold text-lg rounded-full transition-colors shadow-lg shadow-brand-acento/20 text-center">
+        <%= t('europe.cta_primary') %>
+      </a>
+      
+      <a href="https://linkedin.com/in/yorrany" target="_blank" class="px-8 py-4 bg-transparent border-2 border-white/20 hover:border-brand-acento text-white font-medium text-lg rounded-full transition-colors">
+        <%= t('europe.cta_secondary') %>
+      </a>
+    </div>
+  </div>
+</section>

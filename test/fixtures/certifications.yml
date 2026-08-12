@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: MyString
+  badge_code: MyString
+  credential_url: MyString
+
+two:
+  year: MyString
+  badge_code: MyString
+  credential_url: MyString

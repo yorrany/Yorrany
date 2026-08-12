@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LinkedIn Authentication</title>
+  <script nonce="<%= content_security_policy_nonce %>">
+    if (window.opener) {
+      window.opener.postMessage({
+        type: 'LINKEDIN_AUTH_SUCCESS',
+        name: '<%= j @name %>',
+        email: '<%= j @email %>'
+      }, '*');
+      window.close();
+    } else {
+      document.write('Authentication successful! You can close this tab.');
+    }
+  </script>
+</head>
+<body>
+  <p>Authenticating...</p>
+</body>
+</html>

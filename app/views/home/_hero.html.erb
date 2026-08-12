@@ -1,0 +1,30 @@
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-brand-fundo dark:bg-brand-dark-fundo w-full bg-grid-suico">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+    
+    <!-- Language Switcher could be in navbar, but we ensure it's available -->
+    
+    <!-- Main Headline -->
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-brand-titulos dark:text-brand-dark-tinta leading-[1.1] max-w-4xl mb-8">
+      <%= t('hero.h1') %>
+    </h1>
+
+    <!-- Subheadline -->
+    <p class="text-xl sm:text-2xl text-brand-tinta/80 dark:text-brand-dark-tinta/80 max-w-3xl font-normal leading-relaxed mb-12">
+      <%= raw t('hero.sub').gsub(/mente humana/, '<span class="marker-highlight">mente humana</span>').gsub(/human mind/, '<span class="marker-highlight">human mind</span>').gsub(/mente humana/, '<span class="marker-highlight">mente humana</span>') %>
+    </p>
+
+    <!-- Primary Action Bar -->
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-6">
+      <a href="#work" class="flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-brand-primaria dark:bg-brand-dark-primaria text-white font-medium text-lg transition-transform hover:-translate-y-1 hover:shadow-2xl shadow-brand-primaria/30">
+        <span><%= t('hero.cta_primary', default: 'View My Work') %></span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </a>
+
+      <a href="#europe" class="flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-transparent text-brand-tinta dark:text-brand-dark-tinta border-2 border-brand-tinta/10 dark:border-brand-dark-tinta/20 hover:border-brand-primaria dark:hover:border-brand-dark-primaria font-medium text-lg transition-colors">
+        <span><%= t('hero.cta_secondary') %></span>
+      </a>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,53 @@
+<div class="min-h-screen flex items-center justify-center bg-[#0B0D10] text-[#F3F4F6] py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8 bg-[#13171F] p-10 rounded-2xl border border-white/10 shadow-2xl">
+    <div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-white font-sans tracking-tight">
+        Acesso Restrito
+      </h2>
+      <p class="mt-2 text-center text-sm text-neutral-400 font-mono">
+        Área administrativa
+      </p>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "mt-8 space-y-6", id: "cf-form" }) do |f| %>
+      <div class="space-y-4">
+        <div>
+          <%= f.label :email, class: "sr-only" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "appearance-none relative block w-full px-3 py-3 border border-white/10 bg-[#0B0D10] placeholder-neutral-500 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-[#003CA5] focus:border-transparent sm:text-sm transition-all", placeholder: "E-mail de acesso" %>
+        </div>
+        <div>
+          <%= f.label :password, class: "sr-only" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "appearance-none relative block w-full px-3 py-3 border border-white/10 bg-[#0B0D10] placeholder-neutral-500 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-[#003CA5] focus:border-transparent sm:text-sm transition-all", placeholder: "Senha" %>
+        </div>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <%= f.check_box :remember_me, class: "h-4 w-4 text-[#003CA5] focus:ring-[#003CA5] border-white/10 rounded bg-[#0B0D10]" %>
+            <%= f.label :remember_me, "Lembrar-me", class: "ml-2 block text-sm text-neutral-400" %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Cloudflare Turnstile Widget -->
+      <div class="flex justify-center my-4">
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer nonce="<%= content_security_policy_nonce %>"></script>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAEJElL46U4-Vx7pl" data-action="turnstile-spin-v2" data-theme="dark"></div>
+      </div>
+
+      <div>
+        <%= f.submit "Entrar no Cockpit", class: "group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-[#003CA5] hover:bg-[#002361] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#003CA5] transition-all shadow-lg hover:shadow-[#003CA5]/25 cursor-pointer" %>
+      </div>
+    <% end %>
+
+    <script nonce="<%= content_security_policy_nonce %>">
+      // Turnstile tokens are single-use. If the page does not navigate after
+      // submit, reset the widget so a retry gets a fresh token.
+      document.getElementById('cf-form').addEventListener('submit', () => {
+        setTimeout(() => window.turnstile?.reset(), 0);
+      });
+    </script>
+
+  </div>
+</div>

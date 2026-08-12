@@ -1,0 +1,2 @@
+<%= turbo_stream.replace @case_study, partial: "admin/case_studies/case_study", locals: { case_study: @case_study } %>
+<%= turbo_stream.update "modal", "" %>

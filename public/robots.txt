@@ -1,0 +1,29 @@
+# Welcome all standard search engines
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /users/
+
+# Explicitly welcome AI and LLM crawlers for maximum exposure
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: OmgiliBot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+Sitemap: https://yorrany.com.br/sitemap.xml

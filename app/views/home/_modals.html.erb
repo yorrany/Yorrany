@@ -1,0 +1,244 @@
+<!-- Modals Wrapper -->
+<div>
+
+  <!-- Europass Modal -->
+  <div data-modal-target="europassModal" data-action="click->modal#closeOutside" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto animate-fade-in print:bg-white print:p-0">
+    <div class="relative w-full max-w-4xl bg-white text-neutral-900 rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col font-sans print:max-h-none print:shadow-none print:w-full print:max-w-none print:rounded-none">
+      <!-- Modal Toolbar -->
+      <div class="p-4 bg-[#0B0D10] text-white flex items-center justify-between print:hidden border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-[#003CA5] text-white flex items-center justify-center font-mono font-bold text-sm">EU</div>
+          <div>
+            <span class="font-mono text-xs text-[#003CA5] font-bold block">EUROPASS CURRICULUM VITAE STANDARD</span>
+            <span class="text-xs text-neutral-400">Yorrany Braga - Product Designer & Architect</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button data-action="click->modal#printEuropass" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#003CA5] hover:bg-[#002361] text-white font-mono text-xs font-bold transition-all shadow-md">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+            <span>Print / Save as PDF</span>
+          </button>
+          <button data-action="click->modal#closeEuropass" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-neutral-300 hover:text-white transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Europass Document Body -->
+      <div class="p-8 sm:p-12 overflow-y-auto space-y-8 bg-white text-neutral-800 text-sm leading-relaxed" id="europass-cv-document">
+        <div class="border-b-2 border-neutral-900 pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div>
+            <h1 class="text-3xl font-black tracking-tight text-neutral-900">YORRANY BRAGA</h1>
+            <p class="text-base font-semibold text-[#003CA5] mt-1">Principal Product Designer & Front-End Architect</p>
+            <p class="text-xs font-mono text-neutral-500 mt-0.5">20 Years Experience • Product Design, Behavioral Psychology & Web Infrastructure</p>
+          </div>
+          <div class="text-xs font-mono text-neutral-600 space-y-1 sm:text-right border-l-2 sm:border-l-0 sm:border-r-2 border-[#003CA5] pl-3 sm:pl-0 sm:pr-3">
+            <div>Domain: yorrany.com.br</div>
+            <div>Email: yorranymb@gmail.com</div>
+            <div>Tel / WA: +55 92 98414-3818</div>
+            <div>Location: Open to Relocation (Spain 🇪🇸 / Portugal 🇵🇹)</div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-2 border-b border-neutral-200 pb-1">Personal Statement & Professional Profile</h2>
+          <p class="text-xs text-neutral-700 leading-relaxed">Product designer with 20 years of experience (2006–2026), bridging visual precision, cognitive psychology, brand strategy, and software engineering. B.Sc. in Psychology (Faculdade Santa Teresa) with published research on human behavior. Certified in Python (Instituto Superior Técnico) and JavaScript Security (The Linux Foundation). Specialized in building 0-to-1 digital health platforms, design systems, and high-conversion e-commerce infrastructures. Fully prepared for EU relocation or remote roles.</p>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1">Work Experience (2006 - 2026)</h2>
+          <div class="space-y-6">
+            <% @experiences.each do |exp| %>
+              <div class="border-l-2 border-neutral-200 pl-4 py-0.5">
+                <div class="flex justify-between items-start text-xs font-mono mb-1">
+                  <span class="font-bold text-neutral-900"><%= exp.role %></span>
+                  <span class="text-[#003CA5] font-bold"><%= exp.period %></span>
+                </div>
+                <div class="text-xs font-semibold text-neutral-600 mb-2"><%= exp.company %> - <%= exp.location %></div>
+                <p class="text-xs text-neutral-700 mb-2"><%= exp.summary %></p>
+                <ul class="list-disc list-inside text-[11px] text-neutral-600 space-y-0.5">
+                  <% (exp.highlights || "").split('||').each do |h| %>
+                    <li><%= h.strip %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-3 border-b border-neutral-200 pb-1">Education & Academic Degree</h2>
+          <% if @academic_bg %>
+            <div class="border-l-2 border-neutral-200 pl-4">
+              <div class="font-bold text-xs text-neutral-900"><%= @academic_bg.degree %></div>
+              <div class="text-xs text-neutral-600"><%= @academic_bg.institution %></div>
+              <div class="text-[11px] text-neutral-500 mt-1">Thesis: "<%= @academic_bg.thesis %>"</div>
+            </div>
+          <% end %>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-3 border-b border-neutral-200 pb-1">Certifications & Technical Credentials</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+            <% @certifications.each do |c| %>
+              <div class="p-2.5 bg-neutral-50 rounded border border-neutral-200">
+                <div class="font-bold text-neutral-900"><%= c.title %></div>
+                <div class="text-[11px] text-neutral-600"><%= c.issuer %> (<%= c.year %>)</div>
+                <div class="text-[10px] text-[#003CA5] mt-1"><%= c.badge_code %></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-3 border-b border-neutral-200 pb-1">Language & Digital Competences</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
+            <div class="p-2.5 bg-neutral-50 rounded border border-neutral-200">
+              <div class="font-bold text-neutral-900">Portuguese</div>
+              <div class="text-neutral-600">Mother tongue (C2)</div>
+            </div>
+            <div class="p-2.5 bg-neutral-50 rounded border border-neutral-200">
+              <div class="font-bold text-neutral-900">Spanish</div>
+              <div class="text-neutral-600">Working Comprehension (A1)</div>
+            </div>
+            <div class="p-2.5 bg-neutral-50 rounded border border-neutral-200">
+              <div class="font-bold text-neutral-900">English</div>
+              <div class="text-neutral-600">Technical / Professional (A1)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center pt-6 border-t border-neutral-200 text-[10px] font-mono text-neutral-400">
+          Official Europass Format - Yorrany Braga (yorrany.com.br)
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Case Study Modal Wrapper -->
+  <div data-modal-target="caseStudyModal" data-action="click->modal#closeOutside" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/80 backdrop-blur-md overflow-y-auto animate-fade-in print:hidden">
+    <div class="relative w-full max-w-4xl bg-[#13171F] border border-white/10 rounded-3xl shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col">
+      <% @case_studies.each do |case_study| %>
+        <div class="case-study-content hidden h-full flex flex-col" data-id="<%= case_study.id %>" data-controller="tabs">
+          <!-- Modal Header -->
+          <div class="p-6 sm:p-8 bg-[#0B0D10] border-b border-white/10 flex items-start justify-between gap-4 sticky top-0 z-20">
+            <div>
+              <div class="flex items-center gap-2 text-xs font-mono text-[#003CA5] mb-2">
+                <span><%= case_study.period %></span>
+                <span>•</span>
+                <span><%= case_study.client %></span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight"><%= case_study.title %></h2>
+              <p class="text-xs sm:text-sm text-neutral-400 font-mono mt-1"><%= case_study.role %></p>
+            </div>
+            <button data-action="click->modal#closeCase" class="p-2.5 rounded-full bg-[#13171F] hover:bg-white/10 border border-white/10 text-neutral-400 hover:text-white transition-all shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+
+          <!-- Modal Tabs -->
+          <div class="flex items-center gap-2 px-6 sm:px-8 py-3 bg-[#0B0D10]/50 border-b border-white/5 overflow-x-auto text-xs font-mono">
+            <button data-tabs-target="tab" data-action="click->tabs#switch" class="px-4 py-2 rounded-xl transition-all whitespace-nowrap font-semibold bg-[#003CA5] text-white shadow-md">1. Overview</button>
+            <button data-tabs-target="tab" data-action="click->tabs#switch" class="px-4 py-2 rounded-xl transition-all whitespace-nowrap font-semibold text-neutral-400 hover:text-white hover:bg-white/5">2. Strategy</button>
+            <% if case_study.design_system_highlights.present? %>
+              <button data-tabs-target="tab" data-action="click->tabs#switch" class="px-4 py-2 rounded-xl transition-all whitespace-nowrap font-semibold text-neutral-400 hover:text-white hover:bg-white/5">3. Design Tokens</button>
+            <% end %>
+            <button data-tabs-target="tab" data-action="click->tabs#switch" class="px-4 py-2 rounded-xl transition-all whitespace-nowrap font-semibold text-neutral-400 hover:text-white hover:bg-white/5">4. Metrics</button>
+          </div>
+
+          <div class="p-6 sm:p-8 overflow-y-auto space-y-8 flex-1">
+            <!-- Overview -->
+            <div data-tabs-target="panel" class="space-y-6">
+              <div class="relative rounded-2xl overflow-hidden border border-white/10 h-48 sm:h-64">
+                <img src="<%= case_study.image %>" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#13171F] via-[#13171F]/40 to-transparent"></div>
+              </div>
+              <div class="bg-[#0B0D10] p-6 rounded-2xl border border-white/5">
+                <h3 class="text-sm font-mono text-[#003CA5] uppercase font-bold mb-3">Executive Narrative</h3>
+                <p class="text-sm text-neutral-300 leading-relaxed"><%= case_study.full_description %></p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-[#0B0D10] p-6 rounded-2xl border border-white/5">
+                  <h3 class="text-sm font-mono text-red-400 uppercase font-bold mb-3">The Challenge</h3>
+                  <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed"><%= case_study.challenge %></p>
+                </div>
+                <div class="bg-[#0B0D10] p-6 rounded-2xl border border-white/5">
+                  <h3 class="text-sm font-mono text-emerald-400 uppercase font-bold mb-3">The Solution</h3>
+                  <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed"><%= case_study.solution %></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Strategy -->
+            <div data-tabs-target="panel" class="hidden space-y-6">
+              <div class="bg-[#0B0D10] p-6 rounded-2xl border border-purple-500/20">
+                <div class="flex items-center gap-3 mb-4">
+                  <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                  <h3 class="text-base font-bold text-white">Cognitive Psychology & Behavioral Architecture</h3>
+                </div>
+                <p class="text-sm text-neutral-300 leading-relaxed mb-6"><%= case_study.behavioral_insight %></p>
+              </div>
+            </div>
+
+            <!-- Design Tokens -->
+            <% if case_study.design_system_highlights.present? %>
+              <div data-tabs-target="panel" class="hidden space-y-6">
+                <div class="bg-[#0B0D10] p-6 rounded-2xl border border-white/5">
+                  <div class="flex items-center gap-3 mb-4">
+                    <svg class="w-5 h-5 text-[#003CA5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z"></path></svg>
+                    <h3 class="text-base font-bold text-white">Design Tokens & System Architecture</h3>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <% case_study.design_system_highlights.split('||').each do |item| %>
+                      <div class="p-4 bg-[#13171F] rounded-xl border border-white/5 flex items-center gap-3">
+                        <span class="text-xs font-mono text-neutral-200"><%= item.strip %></span>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+            <!-- Metrics -->
+            <div data-tabs-target="panel" class="hidden space-y-6">
+              <div class="bg-[#0B0D10] p-6 rounded-2xl border border-white/5">
+                <p class="text-xs text-neutral-400">Metrics available soon or integrated in overview.</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Cert Modal Wrapper -->
+  <div data-modal-target="certModal" data-action="click->modal#closeOutside" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/80 backdrop-blur-md overflow-y-auto animate-fade-in print:hidden">
+    <div class="relative w-full lg:w-auto lg:min-w-[50vw] max-w-6xl bg-[#13171F] border border-white/10 rounded-3xl shadow-2xl overflow-hidden my-auto flex flex-col">
+      <div class="p-6 sm:p-8 bg-[#0B0D10] border-b border-white/10 flex items-center justify-between gap-4 sticky top-0 z-20">
+        <h2 id="cert-modal-title" class="text-xl sm:text-2xl font-extrabold text-white tracking-tight truncate flex-1">Documento</h2>
+        
+        <div id="cert-modal-credential-container" class="hidden items-center gap-3 md:gap-4 shrink-0">
+          <div id="cert-modal-code-wrapper" class="flex items-center gap-2 bg-[#1A1F2B] border border-white/10 rounded-lg p-1 pr-3">
+            <button data-action="click->modal#copyCredential" id="cert-modal-copy-btn" class="p-1.5 rounded-md hover:bg-white/10 text-neutral-400 hover:text-white transition-colors" title="Copiar código">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            </button>
+            <span id="cert-modal-credential-code" class="text-[10px] sm:text-xs font-mono text-emerald-400"></span>
+          </div>
+          <a id="cert-modal-credential-url" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-[10px] sm:text-xs font-bold text-white bg-[#003CA5] hover:bg-[#003CA5]/90 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-colors shadow-lg shadow-[#003CA5]/20 items-center gap-2">
+            Verificar <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        </div>
+        <button data-action="click->modal#closeCert" class="p-2.5 rounded-full bg-[#13171F] hover:bg-white/10 border border-white/10 text-neutral-400 hover:text-white transition-all shrink-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div class="p-4 sm:p-6 overflow-y-auto bg-[#13171F] flex items-center justify-center">
+        <div id="cert-modal-content" class="w-full flex items-center justify-center"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

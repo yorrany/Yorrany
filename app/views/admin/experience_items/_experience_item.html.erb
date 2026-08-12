@@ -1,0 +1,21 @@
+<%= turbo_frame_tag experience_item do %>
+  <div class="flex gap-4">
+    <div class="w-16 h-16 bg-[#1A1F2B] rounded-lg border border-white/5 flex-shrink-0 flex justify-center items-center overflow-hidden">
+      <% if experience_item.image.attached? %>
+        <%= image_tag experience_item.image, class: "w-full h-full object-cover" %>
+      <% else %>
+        <span class="text-neutral-500 text-xs">Sem Logo</span>
+      <% end %>
+    </div>
+    <div class="flex-1">
+      <div class="flex justify-between">
+        <h3 class="text-white font-semibold"><%= experience_item.role %></h3>
+        <div class="flex gap-2">
+          <%= link_to "Editar", edit_admin_experience_item_path(experience_item), data: { turbo_frame: "modal" }, class: "text-xs text-neutral-400 hover:text-white" %>
+          <%= button_to "Excluir", admin_experience_item_path(experience_item), method: :delete, data: { turbo_confirm: "Tem certeza?" }, class: "text-xs text-red-500 hover:text-red-400" %>
+        </div>
+      </div>
+      <p class="text-sm text-neutral-400"><%= experience_item.company %> • <%= experience_item.type_name %></p>
+    </div>
+  </div>
+<% end %>

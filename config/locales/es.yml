@@ -1,0 +1,26 @@
+es:
+  hero:
+    h1: "Diseño, comportamiento y código. Lo que de verdad hace que un producto funcione."
+    sub: "Después de 20 años en esto, he aprendido que una interfaz bonita no salva un producto confuso. Creo experiencias pensadas para la mente humana y construidas con la solidez técnica que tu equipo de ingeniería exige."
+    cta_primary: "Ver portafolio"
+    cta_secondary: "Hablemos de un puesto en Europa"
+  pillars:
+    title: "LO QUE TRAIGO A LA MESA"
+    pillar1_title: "Diseño que escala (sin volverse burocracia)"
+    pillar1_desc: "No solo dibujo pantallas; construyo sistemas. Lidero la creación y el mantenimiento de design systems que el equipo de desarrollo realmente quiere usar. Del discovery al delivery, mi foco está en alinear lo que el negocio necesita con lo que el usuario consigue entender: consistencia visual y velocidad para el equipo."
+    pillar2_title: "Menos fricción, más claridad (Psicología e IHC)"
+    pillar2_desc: "Como psicólogo, miro más allá de los clics. Me pregunto: ¿qué carga cognitiva tiene esta pantalla? ¿Por qué el usuario abandonó aquí? Uso ciencia del comportamiento y evaluaciones heurísticas para diseñar caminos que tienen sentido para el cerebro humano, aumentando la conversión de forma ética y predecible."
+    pillar3_title: "El fin del abismo entre diseño e ingeniería"
+    pillar3_desc: "El diseño no termina en Figma. Con mi bagaje en front-end y seguridad (JS/Python), hablo el idioma de los desarrolladores. Entiendo las limitaciones técnicas, prevengo fallos de seguridad en la interfaz y me aseguro de que lo diseñado sea viable, accesible y seguro para salir a producción."
+  about:
+    h2: "20 años aprendiendo cómo la gente lee, hace clic y confía."
+    p1: "Empecé mi carrera en el diseño impreso, obsesionado con la tipografía suiza y las retículas milimétricas. Pero cuando la pantalla se convirtió en nuestro medio principal, entendí que la estética sola no bastaba. Estudié Psicología para comprender el porqué de las decisiones de las personas."
+    p2: "Hoy trabajo como Principal Product Designer & Front-End Architect. Eso significa que no entrego solo un prototipo: entrego la estrategia que hay detrás, la comprensión del comportamiento del usuario y la viabilidad técnica para construirlo."
+    p3: "He pasado por e-commerces de alta conversión y plataformas complejas de salud digital (de cero a uno). Lo que me mueve es resolver problemas complejos con interfaces simples."
+    credentials: "Credenciales: Grado en Psicología (comportamiento humano) · Front-End Architecture, Python y JS Security (The Linux Foundation) · Foco: salud digital, e-commerce, design systems."
+  europe:
+    h2: "Próximo paso: Europa 🇪🇺"
+    desc: "Estoy en un momento de mi carrera en el que busco unir nuevos retos técnicos con calidad de vida. Mi foco actual es la reubicación a Portugal 🇵🇹 o España 🇪🇸, o trabajar en remoto con equipos que operen en los husos europeos (CET/WET). Cuento con autonomía total para teletrabajo, setup propio, y busco un equipo que valore la madurez de un producto bien construido."
+    status: "Status UE: Elegible / Abierto a sponsorship · Modelo: 100% remoto, híbrido o reubicación · Huso: CET/WET"
+    cta_primary: "Descargar CV completo"
+    cta_secondary: "Contactar por LinkedIn"

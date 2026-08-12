@@ -1,0 +1,65 @@
+<%
+  nav_links = [
+    { href: '#work', label: t('nav.work', default: 'Work') },
+    { href: '#pillars', label: t('nav.bento', default: 'Expertise') },
+    { href: '#about', label: t('nav.about', default: 'About') }
+  ]
+%>
+
+<!-- Desktop Header Top Bar -->
+<header id="desktop-navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 hidden md:block bg-brand-fundo/80 dark:bg-brand-dark-fundo/80 backdrop-blur-md py-4 border-b border-brand-tinta/5 dark:border-white/5">
+  <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+    <!-- Logo & Domain -->
+    <a href="/" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brand-primaria rounded-lg p-1">
+      <div class="transition-all group-hover:scale-105">
+        <%= render 'shared/logo', custom_class: 'h-6 w-auto text-brand-tinta dark:text-brand-dark-tinta' %>
+      </div>
+    </a>
+
+    <!-- Desktop Links -->
+    <nav class="flex items-center gap-6">
+      <% nav_links.each do |link| %>
+        <a href="<%= link[:href] %>" class="text-sm font-medium text-brand-tinta/70 dark:text-brand-dark-tinta/70 hover:text-brand-primaria dark:hover:text-brand-dark-primaria transition-colors">
+          <%= link[:label] %>
+        </a>
+      <% end %>
+    </nav>
+
+    <!-- Right Actions: Lang Selector & Europass Modal -->
+    <div class="flex items-center gap-4">
+      <!-- Theme Switcher -->
+      <div data-controller="theme" class="flex items-center bg-brand-surface dark:bg-brand-dark-surface p-1 rounded-full border border-brand-tinta/10 dark:border-white/10 text-xs font-mono shadow-sm">
+        <button data-action="click->theme#setLight" data-theme-target="light" class="px-2 py-1.5 rounded-full transition-all font-semibold text-brand-tinta/60 dark:text-brand-dark-tinta/60 hover:text-brand-tinta dark:hover:text-brand-dark-tinta" title="Light Theme">
+          <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+        </button>
+        <button data-action="click->theme#setAuto" data-theme-target="auto" class="px-2 py-1.5 rounded-full transition-all font-semibold text-brand-tinta/60 dark:text-brand-dark-tinta/60 hover:text-brand-tinta dark:hover:text-brand-dark-tinta" title="System Auto">
+          <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+        </button>
+        <button data-action="click->theme#setDark" data-theme-target="dark" class="px-2 py-1.5 rounded-full transition-all font-semibold text-brand-tinta/60 dark:text-brand-dark-tinta/60 hover:text-brand-tinta dark:hover:text-brand-dark-tinta" title="Dark Theme">
+          <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <!-- Dummy classes for Tailwind compilation -->
+        <div class="hidden bg-brand-tinta dark:bg-brand-dark-tinta text-brand-surface dark:text-brand-dark-fundo text-brand-tinta/60 dark:text-brand-dark-tinta/60 hover:text-brand-tinta dark:hover:text-brand-dark-tinta"></div>
+      </div>
+
+      <!-- Language Switcher -->
+      <div class="flex items-center bg-brand-surface dark:bg-brand-dark-surface p-1 rounded-full border border-brand-tinta/10 dark:border-white/10 text-xs font-mono shadow-sm">
+        <a href="?locale=en" data-turbo="false" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full uppercase transition-all font-semibold <%= I18n.locale == :en || I18n.locale.nil? ? 'bg-brand-tinta dark:bg-brand-dark-tinta text-brand-surface dark:text-brand-dark-fundo' : 'text-brand-tinta/60 dark:text-brand-dark-tinta/60 hover:text-brand-tinta dark:hover:text-brand-dark-tinta' %>" title="English">
+          <span>🇬🇧</span> EN
+        </a>
+        <a href="?locale=es" data-turbo="false" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full uppercase transition-all font-semibold <%= I18n.locale == :es ? 'bg-brand-tinta dark:bg-brand-dark-tinta text-brand-surface dark:text-brand-dark-fundo' : 'text-brand-tinta/60 dark:text-brand-dark-tinta/60 hover:text-brand-tinta dark:hover:text-brand-dark-tinta' %>" title="Español">
+          <span>🇪🇸</span> ES
+        </a>
+        <a href="?locale=pt-BR" data-turbo="false" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full uppercase transition-all font-semibold <%= I18n.locale == :'pt-BR' || I18n.locale == :'pt-PT' ? 'bg-brand-tinta dark:bg-brand-dark-tinta text-brand-surface dark:text-brand-dark-fundo' : 'text-brand-tinta/60 dark:text-brand-dark-tinta/60 hover:text-brand-tinta dark:hover:text-brand-dark-tinta' %>" title="Português">
+          <span>🇵🇹</span> PT
+        </a>
+      </div>
+
+      <!-- CV Button -->
+      <a href="/cv/yorrany_cv_<%= I18n.locale.to_s.split('-').first %>" target="_blank" data-turbo="false" class="group flex items-center gap-2 px-5 py-2 rounded-full text-xs font-mono font-bold bg-gradient-to-r from-[#003CA5] to-brand-primaria text-white shadow-lg shadow-brand-primaria/20 hover:shadow-brand-primaria/40 hover:-translate-y-0.5 transition-all border border-white/10">
+        <span><%= I18n.locale.to_s.start_with?('pt') ? 'Baixar CV' : (I18n.locale.to_s.start_with?('es') ? 'Descargar CV' : 'Download CV') %></span>
+        <svg class="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+      </a>
+    </div>
+  </div>
+</header>

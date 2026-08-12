@@ -1,0 +1,141 @@
+<%
+  t_headers = {
+    'en' => {
+      profile: "Personal Statement & Professional Profile",
+      exp: "Work Experience (2006 - 2026)",
+      edu: "Education & Academic Degree",
+      cert: "Certifications & Technical Credentials",
+      lang: "Language & Digital Competences",
+      thesis: "Thesis/Research:",
+      loc_val: "Spain 🇪🇸 / Portugal 🇵🇹",
+      pt_level: "Mother tongue (C2)",
+      es_level: "Working Comprehension (A1)",
+      en_level: "Technical / Prof. (A1)",
+      footer: "Official Europass Format - Generated dynamically via Rails Admin"
+    },
+    'es' => {
+      profile: "Declaración Personal y Perfil Profesional",
+      exp: "Experiencia Profesional (2006 - 2026)",
+      edu: "Educación y Grado Académico",
+      cert: "Certificaciones y Credenciales Técnicas",
+      lang: "Competencias Lingüísticas y Digitales",
+      thesis: "Tesis/Investigación:",
+      loc_val: "España 🇪🇸 / Portugal 🇵🇹",
+      pt_level: "Lengua materna (C2)",
+      es_level: "Comprensión funcional (A1)",
+      en_level: "Técnico / Prof. (A1)",
+      footer: "Formato Oficial Europass - Generado dinámicamente vía Rails Admin"
+    },
+    'pt-BR' => {
+      profile: "Resumo Profissional e Declaração Pessoal",
+      exp: "Experiência Profissional (2006 - 2026)",
+      edu: "Educação e Formação Acadêmica",
+      cert: "Certificações e Credenciais Técnicas",
+      lang: "Competências Linguísticas e Digitais",
+      thesis: "Tese/Pesquisa:",
+      loc_val: "Espanha 🇪🇸 / Portugal 🇵🇹",
+      pt_level: "Língua materna (C2)",
+      es_level: "Compreensão funcional (A1)",
+      en_level: "Técnico / Prof. (A1)",
+      footer: "Formato Oficial Europass - Gerado dinamicamente via Rails Admin"
+    }
+  }
+  
+  lang_key = I18n.locale.to_s
+  lang_key = 'en' unless t_headers.key?(lang_key)
+  tl = t_headers[lang_key]
+%>
+<div class="space-y-6 text-sm leading-relaxed text-neutral-800">
+
+  <!-- PAGE 1 HEADER -->
+  <div class="border-b-2 border-neutral-900 pb-6 flex justify-between items-end gap-6 avoid-break">
+    <div class="flex-1">
+      <h1 class="text-4xl font-black tracking-tight text-neutral-900">YORRANY BRAGA</h1>
+      <p class="text-lg font-semibold text-[#003CA5] mt-1">Principal Product Designer & Front-End Architect</p>
+      <p class="text-[11px] font-mono text-neutral-500 mt-1">20 Years Experience • Product Design, Behavioral Psychology & Web Infrastructure</p>
+    </div>
+    <div class="text-[11px] font-mono text-neutral-600 space-y-1 text-right border-l-2 border-[#003CA5] pl-4 flex-shrink-0">
+      <div>Domain: <a href="https://yorrany.com.br" target="_blank" style="text-decoration: none; color: inherit;" class="font-semibold text-neutral-800 hover:text-[#003CA5]">yorrany.com.br</a></div>
+      <div>Email: <a href="mailto:yorranymb@gmail.com" style="text-decoration: none; color: inherit;" class="font-semibold text-neutral-800 hover:text-[#003CA5]">yorranymb@gmail.com</a></div>
+      <div>Tel / WA: <span class="font-semibold text-neutral-800">+55 92 98414-3818</span></div>
+      <div>Location: <span class="font-semibold text-neutral-800"><%= tl[:loc_val] %></span></div>
+    </div>
+  </div>
+
+  <!-- Content Sections -->
+  <div class="space-y-8 mt-4">
+    
+    <div class="avoid-break">
+      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-2 border-b border-neutral-200 pb-1"><%= tl[:profile] %></h2>
+      <p class="text-sm text-neutral-700 leading-relaxed text-justify">
+        <%= I18n.t('about.p2', default: 'Product designer with 20 years of experience, bridging visual precision, cognitive psychology, brand strategy, and software engineering. Specialized in building 0-to-1 digital health platforms, design systems, and high-conversion e-commerce infrastructures.') %> <%= I18n.t('about.p3', default: '') %>
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1 mt-6"><%= tl[:exp] %></h2>
+      <div class="space-y-6">
+        <% @experiences.each do |exp| %>
+          <div class="border-l-2 border-[#003CA5]/20 pl-4 py-1 avoid-break">
+            <div class="flex justify-between items-start text-xs font-mono mb-1">
+              <span class="font-bold text-neutral-900 text-sm"><%= exp.role %></span>
+              <span class="text-[#003CA5] font-bold"><%= exp.period %></span>
+            </div>
+            <div class="text-[11px] font-semibold text-neutral-600 mb-2"><%= exp.company %> <span class="mx-1">•</span> <%= exp.location %></div>
+            <p class="text-xs text-neutral-700 mb-2 leading-relaxed"><%= exp.summary %></p>
+            <ul class="list-disc list-inside text-[11px] text-neutral-600 space-y-1 ml-1">
+              <% (exp.highlights || "").split('||').each do |h| %>
+                <li><%= h.strip %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="avoid-break mt-6">
+      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1"><%= tl[:edu] %></h2>
+      <% if @academic_bg %>
+        <div class="border-l-2 border-[#003CA5]/20 pl-4 avoid-break">
+          <div class="font-bold text-sm text-neutral-900"><%= @academic_bg.degree %></div>
+          <div class="text-xs text-neutral-600 font-semibold mb-1"><%= @academic_bg.institution %></div>
+          <div class="text-[11px] text-neutral-700 leading-relaxed"><%= tl[:thesis] %> "<%= @academic_bg.thesis %>"</div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="avoid-break mt-6">
+      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1"><%= tl[:cert] %></h2>
+      <div class="grid grid-cols-2 gap-3">
+        <% @certifications.each do |c| %>
+          <a href="https://yorrany.com.br/?cert=<%= c.id %>" target="_blank" style="text-decoration: none; color: inherit; display: block;" class="avoid-break">
+            <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 flex flex-col justify-center h-full">
+              <div class="cert-title font-bold text-neutral-900 mb-1 leading-tight"><%= c.title %></div>
+              <div class="cert-pill text-neutral-600 mb-0.5"><%= c.issuer %> <%= c.year.present? ? "(#{c.year})" : "" %></div>
+              <div class="cert-pill text-[#003CA5] font-mono"><%= c.badge_code %></div>
+            </div>
+          </a>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="avoid-break mt-6">
+      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1"><%= tl[:lang] %></h2>
+      <div class="grid grid-cols-3 gap-3 text-[11px] font-mono">
+        <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
+          <div class="font-bold text-neutral-900 text-xs"><%= lang_key == 'pt-BR' ? 'Português' : (lang_key == 'es' ? 'Portugués' : 'Portuguese') %></div>
+          <div class="text-neutral-600 mt-1"><%= tl[:pt_level] %></div>
+        </div>
+        <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
+          <div class="font-bold text-neutral-900 text-xs"><%= lang_key == 'pt-BR' ? 'Espanhol' : (lang_key == 'es' ? 'Español' : 'Spanish') %></div>
+          <div class="text-neutral-600 mt-1"><%= tl[:es_level] %></div>
+        </div>
+        <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
+          <div class="font-bold text-neutral-900 text-xs"><%= lang_key == 'pt-BR' ? 'Inglês' : (lang_key == 'es' ? 'Inglés' : 'English') %></div>
+          <div class="text-neutral-600 mt-1"><%= tl[:en_level] %></div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

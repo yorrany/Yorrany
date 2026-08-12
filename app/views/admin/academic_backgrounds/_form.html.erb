@@ -1,0 +1,47 @@
+<%= form_with(model: [:admin, academic_background], class: "space-y-4", multipart: true) do |f| %>
+  <% if academic_background.errors.any? %>
+    <div class="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg text-sm">
+      <ul>
+        <% academic_background.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :degree, "Grau/Formação", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+    <%= f.text_field :degree, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4">
+    <div>
+      <%= f.label :institution, "Instituição", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.text_field :institution, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+    </div>
+    <div>
+      <%= f.label :period, "Período", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.text_field :period, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :field_of_study, "Área de Estudo", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+    <%= f.text_field :field_of_study, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+  </div>
+
+  <div>
+    <%= f.label :image, "Imagem/Logo", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+    <%= f.file_field :image, class: "w-full text-sm text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white/5 file:text-white hover:file:bg-white/10" %>
+  </div>
+
+  <div>
+    <%= f.label :certificate, "Certificado de Conclusão (PDF)", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+    <%= f.file_field :certificate, class: "w-full text-sm text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white/5 file:text-white hover:file:bg-white/10" %>
+  </div>
+
+  <div class="pt-4 border-t border-white/10 flex justify-end gap-2">
+    <%= link_to "Cancelar", admin_path, data: { turbo_frame: "_top" }, class: "px-4 py-2 rounded-lg text-sm font-medium text-neutral-400 hover:text-white hover:bg-white/5" %>
+    <%= f.submit "Salvar", class: "px-4 py-2 rounded-lg text-sm font-medium bg-[#003CA5] text-white hover:bg-[#3d6cff] cursor-pointer" %>
+  </div>
+<% end %>

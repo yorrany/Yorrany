@@ -1,0 +1,48 @@
+pt-BR:
+  hero:
+    h1: "Design, comportamento e código. O que realmente faz um produto funcionar."
+    sub: "Há 20 anos no mercado, aprendi uma verdade simples: uma interface bonita não salva um produto confuso. Eu projeto experiências moldadas para a mente humana e construídas com o rigor técnico que a sua equipe de engenharia exige."
+    cta_primary: "Ver portfólio"
+    cta_secondary: "Falar sobre oportunidades na Europa"
+  pillars:
+    title: "O Que Eu Trago para a Mesa"
+    pillar1_title: "Design que escala (sem virar burocracia)"
+    pillar1_desc: "Eu não desenho apenas telas; eu construo sistemas. Lidero a criação e manutenção de Design Systems que desenvolvedores realmente gostam de usar. Da descoberta à entrega (Discovery to Delivery), meu foco é alinhar as necessidades do negócio ao entendimento do usuário, garantindo consistência visual e velocidade de desenvolvimento."
+    pillar2_title: "Menos fricção, mais clareza (Psicologia & HCI)"
+    pillar2_desc: "Como psicólogo, olho além dos cliques. Minha pergunta é: qual é a carga cognitiva dessa tela? Por que o usuário abandonou o fluxo aqui? Utilizo ciência comportamental e avaliações heurísticas para desenhar jornadas que fazem sentido para o cérebro humano, aumentando a conversão de forma ética e previsível."
+    pillar3_title: "Reduzindo a distância entre Design e Engenharia"
+    pillar3_desc: "O design não termina no Figma. Com background em front-end e segurança em aplicações (JS/Python), falo a língua dos desenvolvedores. Compreendo limitações técnicas, previno falhas de segurança no nível da interface e garanto que tudo o que for desenhado seja viável, acessível e seguro para ir à produção."
+  work:
+    eyebrow: "Estudos de Caso"
+    title: "Seleção de Portfólio"
+    subtitle: "Uma seleção de produtos onde a estratégia de design e os insights comportamentais geraram impacto mensurável para o negócio."
+  cv:
+    eyebrow: "Experiência & Formação"
+    title: "Currículo & Credenciais"
+    subtitle: "Uma linha do tempo da minha trajetória profissional, pesquisas acadêmicas e certificações técnicas."
+  about:
+    h2: "20 anos aprendendo como as pessoas leem, clicam e confiam."
+    p1: "Comecei minha carreira no design impresso, obcecado pela tipografia suíça e grids perfeitos ao milímetro. Mas quando as telas se tornaram nosso principal meio de interação, percebi que a estética sozinha não bastava. Decidi cursar Psicologia para entender o \"porquê\" por trás das escolhas das pessoas."
+    p2: "Hoje atuo como Principal Product Designer & Front-End Architect. Isso significa que não entrego apenas um protótipo: entrego a estratégia, o entendimento do comportamento do usuário e a viabilidade técnica para tirar a ideia do papel."
+    p3: "Já liderei o lançamento (zero to one) de e-commerces de alta conversão e plataformas complexas na área de saúde digital (Digital Health). O que me move é resolver problemas complexos com interfaces simples."
+    credentials: "Credenciais: Bacharel em Psicologia (Comportamento Humano e HCI) · Arquitetura Front-End, Segurança em Python & JavaScript (The Linux Foundation) · Foco: Saúde Digital, E-commerce e Design Systems."
+  europe:
+    h2: "Próximo Passo: Europa 🇪🇺"
+    desc: "Estou em um momento da carreira focado em unir novos desafios técnicos a uma maior qualidade de vida. Meu objetivo atual é a realocação para Portugal 🇵🇹 ou Espanha 🇪🇸, ou a atuação remota com equipes alinhadas aos fusos horários europeus (CET/WET). Estrutura completa para trabalho remoto, em busca de times que valorizem a maturidade de um produto bem construído."
+    status: "Status EU: Elegível / Aberto a patrocínio de visto (sponsorship) · Modelo: 100% Remoto, Híbrido ou Relocação · Fuso Horário: Alinhado a CET/WET"
+    cta_primary: "Baixar Currículo Completo"
+    cta_secondary: "Conectar no LinkedIn"
+  contact:
+    eyebrow: "Contato Direto"
+    title: "Vamos conversar sobre oportunidades"
+    subtitle: "Disponível para papéis estratégicos, liderança de Design Systems ou consultoria em arquitetura de produto na Europa ou remotamente."
+    formName: "Nome Completo"
+    formEmail: "E-mail Profissional"
+    formMessage: "Resumo / Mensagem"
+    sendBtn: "Enviar Mensagem"
+    emailLabel: "E-mail Principal"
+    whatsappLabel: "Contato Direto"
+    sentSuccess: "Retornarei o contato em até 24 horas."
+    sentTitle: "Mensagem Enviada!"
+    sendInquiry: "Formulário de Contato Direto"
+    profilesLabel: "Perfis Profissionais"

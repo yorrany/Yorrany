@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <title><%= content_for(:title) || "Yorrany Braga | Principal Product Designer & Front-End Architect" %></title>
+    <meta name="description" content="<%= t('hero.sub') %>">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <!-- Hreflang Tags for SEO -->
+    <link rel="alternate" hreflang="en" href="https://yorrany.com.br/?locale=en" />
+    <link rel="alternate" hreflang="es-ES" href="https://yorrany.com.br/?locale=es" />
+    <link rel="alternate" hreflang="pt-BR" href="https://yorrany.com.br/?locale=pt-BR" />
+    <link rel="alternate" hreflang="pt-PT" href="https://yorrany.com.br/?locale=pt-PT" />
+    <link rel="alternate" hreflang="x-default" href="https://yorrany.com.br/" />
+
+    <!-- OpenGraph / Social Media -->
+    <meta property="og:title" content="Yorrany Braga | Principal Product Designer">
+    <meta property="og:description" content="<%= t('hero.sub') %>">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://yorrany.com.br/?locale=<%= I18n.locale %>">
+    <meta property="og:image" content="<%= asset_url('yorrany-horizontal.svg') %>">
+    
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!-- Theme Mode FOUC Prevention -->
+    <script nonce="<%= content_security_policy_nonce %>">
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    </script>
+    <%= yield :head %>
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <!-- Styles -->
+    <%= stylesheet_link_tag "tailwind", "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    
+    <!-- External fonts for the design system -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Google+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="min-h-screen bg-brand-fundo text-brand-tinta dark:bg-brand-dark-fundo dark:text-brand-dark-tinta font-sans overflow-x-hidden selection:bg-brand-acento selection:text-white">
+    <%= yield %>
+    <%= render 'shared/scroll_to_top' %>
+  </body>
+</html>
