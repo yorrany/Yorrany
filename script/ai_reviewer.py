@@ -3,7 +3,11 @@ import sys
 import subprocess
 
 def main():
-    diff_path = "tmp/deploy_diff.txt"
+    if len(sys.argv) < 2:
+        print("APROVADO")
+        return
+        
+    diff_path = sys.argv[1]
     if not os.path.exists(diff_path):
         print("APROVADO")
         return
@@ -15,7 +19,7 @@ def main():
         print("APROVADO")
         return
 
-    prompt = f"Você é um revisor de código estrito. Analise este diff e verifique se as alterações estão seguras para irem para produção. Responda APENAS com a palavra APROVADO (em maiúsculas) se estiver tudo ok, ou REJEITADO seguido do motivo se houver algo crítico ou que quebre o sistema.\n\nDiff:\n{diff_content}"
+    prompt = f"Você é um revisor de código estrito. Analise este diff e verifique se as alterações estão seguras para irem para produção. Responda ESTRITAMENTE com a palavra APROVADO (sem nenhum outro texto ou pontuação) se estiver tudo ok, ou REJEITADO seguido do motivo se houver algo crítico ou que quebre o sistema.\n\nDiff:\n{diff_content}"
 
     try:
         result = subprocess.run(
@@ -24,7 +28,14 @@ def main():
             text=True,
             check=True
         )
-        print(result.stdout.strip())
+        out = result.stdout.strip()
+        if "REJEITADO" in out.upper():
+            print(out)
+        elif "APROVADO" in out.upper():
+            print("APROVADO")
+        else:
+            print("REJEITADO - IA falhou em responder adequadamente.")
+            
     except subprocess.CalledProcessError as e:
         print(f"REJEITADO Erro ao executar a IA: {e.stderr}")
 

@@ -29,12 +29,17 @@ fi
 
 # ETAPA 0: Git & AI Review
 print_header "0" "Revisão Automática com IA e Merge no GitHub"
+if [[ -z "$GITHUB_TOKEN" ]]; then
+    echo -e "${RED}Erro: GITHUB_TOKEN não está definido. Por favor, adicione ao .env.${NC}"
+    exit 1
+fi
+
 if [[ -n $(git status --porcelain) ]]; then
     echo -e "${YELLOW}Mudanças locais detectadas. Iniciando processo de PR e Revisão de IA...${NC}"
     BRANCH="deploy-$(date +%s)"
     
-    mkdir -p tmp
-    git diff > tmp/deploy_diff.txt
+    DIFF_FILE="/tmp/deploy_diff_$(date +%s).txt"
+    git diff > "$DIFF_FILE"
     
     git checkout -b $BRANCH
     git add .
@@ -57,9 +62,9 @@ if [[ -n $(git status --porcelain) ]]; then
     fi
     echo -e "${CYAN}PR #$PR_NUMBER criado. Solicitando avaliação da IA...${NC}"
     
-    AI_REVIEW=$(python3 script/ai_reviewer.py)
+    AI_REVIEW=$(python3 script/ai_reviewer.py "$DIFF_FILE")
     
-    if [[ "$AI_REVIEW" == *"APROVADO"* ]]; then
+    if [[ "$AI_REVIEW" == "APROVADO" ]]; then
         echo -e "${GREEN}IA APROVOU o PR! Resultado: $AI_REVIEW${NC}"
         echo -e "${YELLOW}Realizando merge automático...${NC}"
         curl -s -X PUT -H "Authorization: token $GITHUB_TOKEN" \
