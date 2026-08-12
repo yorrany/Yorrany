@@ -1,6 +1,6 @@
-require 'net/http'
-require 'uri'
-require 'json'
+require "net/http"
+require "uri"
+require "json"
 
 class AutoTranslateJob < ApplicationJob
   queue_as :default
@@ -22,13 +22,13 @@ class AutoTranslateJob < ApplicationJob
         val = record.public_send(attr)
         to_translate[attr] = val if val.present?
       end
-      
+
       return if to_translate.empty?
 
       # Translate to English
       en_payload = build_payload(to_translate, "Translate the following JSON values from Portuguese to English. Return ONLY valid JSON with the exact same keys. Do not return anything else.")
       en_res = fetch_translation(url, en_payload)
-      
+
       # Translate to Spanish
       es_payload = build_payload(to_translate, "Translate the following JSON values from Portuguese to Spanish. Return ONLY valid JSON with the exact same keys. Do not return anything else.")
       es_res = fetch_translation(url, es_payload)
@@ -38,7 +38,7 @@ class AutoTranslateJob < ApplicationJob
       Mobility.with_locale(:en) do
         en_res.each { |k, v| record.public_send("#{k}=", v) } if en_res
       end
-      
+
       Mobility.with_locale(:es) do
         es_res.each { |k, v| record.public_send("#{k}=", v) } if es_res
       end
@@ -68,24 +68,24 @@ class AutoTranslateJob < ApplicationJob
 
   def fetch_translation(url, body)
     req = Net::HTTP::Post.new(url)
-    req['Content-Type'] = 'application/json'
+    req["Content-Type"] = "application/json"
     req.body = body
 
     res = Net::HTTP.start(url.hostname, url.port, use_ssl: true) do |http|
       http.request(req)
     end
-    
+
     return nil unless res.is_a?(Net::HTTPSuccess)
-    
+
     parsed = JSON.parse(res.body)
     text = parsed.dig("candidates", 0, "content", "parts", 0, "text") || ""
-    
+
     # Extract JSON object from potential markdown
     match = text.match(/\{.*\}/m)
     return nil unless match
-    
+
     text = match[0]
-    
+
     JSON.parse(text)
   rescue StandardError => e
     Rails.logger.error "Translation failed: #{e.message}"

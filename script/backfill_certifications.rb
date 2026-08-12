@@ -35,7 +35,7 @@ Certification.all.each do |c|
   pt_category = c.category(locale: :'pt-BR') || c.category
   pt_description = c.description(locale: :'pt-BR') || c.description
   pt_issuer = c.issuer(locale: :'pt-BR') || c.issuer
-  
+
   Mobility.with_locale(:'pt-BR') do
     c.title = pt_title
     c.category = pt_category
@@ -49,7 +49,7 @@ Certification.all.each do |c|
     c.description = pt_description
     c.issuer = pt_issuer
   end
-  
+
   if trans = translations_en[c.id]
     Mobility.with_locale(:en) do
       c.title = trans[:title]
@@ -58,7 +58,7 @@ Certification.all.each do |c|
       c.issuer = pt_issuer
     end
   end
-  
+
   if trans = translations_es[c.id]
     Mobility.with_locale(:es) do
       c.title = trans[:title]
@@ -67,6 +67,6 @@ Certification.all.each do |c|
       c.issuer = pt_issuer
     end
   end
-  
+
   c.save!
 end

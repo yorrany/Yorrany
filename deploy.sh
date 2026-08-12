@@ -3,7 +3,7 @@ set -e
 
 # --- Configurações ---
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TOTAL_STEPS=5
+TOTAL_STEPS=6
 
 # --- Cores ---
 CYAN='\033[0;36m'
@@ -27,8 +27,23 @@ if [ -f ".env" ]; then
     export $(grep -v '^#' .env | xargs)
 fi
 
-# ETAPA 0: Git & AI Review
-print_header "0" "Revisão Automática com IA e Merge no GitHub"
+# ETAPA 0: Qualidade e Segurança
+print_header "0" "Validações Locais (Testes, Lint e Segurança)"
+
+echo -e "${YELLOW}🔒 Verificando vulnerabilidades nas dependências (bundle-audit)...${NC}"
+bundle exec bundle-audit check --update || { echo -e "${RED}Falha de segurança nas dependências! Abortando.${NC}"; exit 1; }
+
+echo -e "${YELLOW}🕵️‍♂️ Executando análise estática de segurança (Brakeman)...${NC}"
+bundle exec brakeman -q -w3 --no-pager || { echo -e "${RED}Falha na análise de segurança do código! Abortando.${NC}"; exit 1; }
+
+echo -e "${YELLOW}🧹 Verificando padronização e Lint (Rubocop)...${NC}"
+bundle exec rubocop -A || { echo -e "${RED}Falha no Lint! Corrija os erros antes do deploy.${NC}"; exit 1; }
+
+echo -e "${YELLOW}✅ Executando testes (Rails test)...${NC}"
+RAILS_ENV=test bundle exec rails test || { echo -e "${RED}Testes unitários/integração falharam! Abortando.${NC}"; exit 1; }
+
+# ETAPA 1: Git & AI Review
+print_header "1" "Revisão Automática com IA e Merge no GitHub"
 if [[ -z "$GITHUB_TOKEN" ]]; then
     echo -e "${RED}Erro: GITHUB_TOKEN não está definido. Por favor, adicione ao .env.${NC}"
     exit 1
@@ -109,8 +124,8 @@ else
     echo -e "${GREEN}Nenhuma alteração local não-comitada detectada.${NC}"
 fi
 
-# ETAPA 1: Dependências, Assets e Banco
-print_header "1" "Atualização de Dependências, Assets e Banco de Dados"
+# ETAPA 2: Dependências, Assets e Banco
+print_header "2" "Atualização de Dependências, Assets e Banco de Dados"
 
 echo -e "${YELLOW}📦 Instalando dependências (Gems)...${NC}"
 bundle config set --local without 'development test'
@@ -122,20 +137,20 @@ RAILS_ENV=production bundle exec rails assets:precompile
 echo -e "${YELLOW}🗄️ Executando Migrations de Banco de Dados...${NC}"
 RAILS_ENV=production bundle exec rails db:migrate
 
-# ETAPA 2: Limpeza
-print_header "2" "Limpeza de Cache"
+# ETAPA 3: Limpeza
+print_header "3" "Limpeza de Cache"
 
 echo -e "${YELLOW}🧹 Limpando cache do Rails...${NC}"
 RAILS_ENV=production bundle exec rails tmp:cache:clear 2>/dev/null || true
 
-# ETAPA 3: Reinício
-print_header "3" "Reinício do Servidor Puma"
+# ETAPA 4: Reinício
+print_header "4" "Reinício do Servidor Puma"
 
 echo -e "${CYAN}🔄 Reiniciando serviço puma-yorrany.service...${NC}"
 sudo systemctl restart puma-yorrany.service
 
-# ETAPA 4: Cloudflare
-print_header "4" "Limpeza de Cache Cloudflare"
+# ETAPA 5: Cloudflare
+print_header "5" "Limpeza de Cache Cloudflare"
 
 if [ -n "$CLOUDFLARE_ZONE_ID" ] && [ -n "$CLOUDFLARE_API_TOKEN" ]; then
     echo -e "${YELLOW}☁️ Limpando cache do Cloudflare...${NC}"

@@ -3,7 +3,7 @@ module AutoTranslatable
 
   included do
     attr_accessor :skip_auto_translate
-    after_commit :enqueue_auto_translate_job, on: [:create, :update], unless: :skip_auto_translate
+    after_commit :enqueue_auto_translate_job, on: [ :create, :update ], unless: :skip_auto_translate
   end
 
   private

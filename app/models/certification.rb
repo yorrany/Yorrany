@@ -18,4 +18,3 @@ class Certification < ApplicationRecord
     self.position ||= (Certification.maximum(:position) || 0) + 1
   end
 end
-
