@@ -3,7 +3,7 @@ set -e
 
 # --- Configurações ---
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TOTAL_STEPS=4
+TOTAL_STEPS=5
 
 # --- Cores ---
 CYAN='\033[0;36m'
@@ -25,6 +25,61 @@ cd "$PROJECT_DIR"
 
 if [ -f ".env" ]; then
     export $(grep -v '^#' .env | xargs)
+fi
+
+# ETAPA 0: Git & AI Review
+print_header "0" "Revisão Automática com IA e Merge no GitHub"
+if [[ -n $(git status --porcelain) ]]; then
+    echo -e "${YELLOW}Mudanças locais detectadas. Iniciando processo de PR e Revisão de IA...${NC}"
+    BRANCH="deploy-$(date +%s)"
+    
+    mkdir -p tmp
+    git diff > tmp/deploy_diff.txt
+    
+    git checkout -b $BRANCH
+    git add .
+    git commit -m "Auto deploy changes"
+    git push -u origin $BRANCH
+    
+    echo -e "${YELLOW}Criando Pull Request...${NC}"
+    PR_RESPONSE=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" \
+      -H "Accept: application/vnd.github.v3+json" \
+      https://api.github.com/repos/yorrany/yorrany/pulls \
+      -d "{\"title\":\"Auto Deploy PR\",\"head\":\"$BRANCH\",\"base\":\"main\"}")
+      
+    PR_NUMBER=$(python3 -c "import sys, json; print(json.load(sys.stdin).get('number', ''))" <<< "$PR_RESPONSE")
+    
+    if [ -z "$PR_NUMBER" ]; then
+        echo -e "${RED}Erro ao criar PR. Abortando.${NC}"
+        echo "$PR_RESPONSE"
+        git checkout main
+        exit 1
+    fi
+    echo -e "${CYAN}PR #$PR_NUMBER criado. Solicitando avaliação da IA...${NC}"
+    
+    AI_REVIEW=$(python3 script/ai_reviewer.py)
+    
+    if [[ "$AI_REVIEW" == *"APROVADO"* ]]; then
+        echo -e "${GREEN}IA APROVOU o PR! Resultado: $AI_REVIEW${NC}"
+        echo -e "${YELLOW}Realizando merge automático...${NC}"
+        curl -s -X PUT -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/yorrany/yorrany/pulls/$PR_NUMBER/merge \
+          -d "{\"commit_title\":\"Auto merge by AI\",\"merge_method\":\"squash\"}"
+          
+        git checkout main
+        git pull origin main
+        git branch -D $BRANCH
+        echo -e "${GREEN}Merge concluído com sucesso!${NC}"
+    else
+        echo -e "${RED}IA REJEITOU o PR! Motivo:${NC}"
+        echo "$AI_REVIEW"
+        echo -e "${YELLOW}Abortando deploy. O PR #$PR_NUMBER ficará aberto para revisão manual.${NC}"
+        git checkout main
+        exit 1
+    fi
+else
+    echo -e "${GREEN}Nenhuma alteração não comitada detectada para revisão.${NC}"
 fi
 
 # ETAPA 1: Dependências, Assets e Banco
