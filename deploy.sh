@@ -35,11 +35,8 @@ if [[ -z "$GITHUB_TOKEN" ]]; then
 fi
 
 if [[ -n $(git status --porcelain) ]]; then
-    echo -e "${YELLOW}Mudanças locais detectadas. Iniciando processo de PR e Revisão de IA...${NC}"
+    echo -e "${YELLOW}Mudanças locais detectadas. Iniciando processo de PR...${NC}"
     BRANCH="deploy-$(date +%s)"
-    
-    DIFF_FILE="/tmp/deploy_diff_$(date +%s).txt"
-    git diff > "$DIFF_FILE"
     
     git checkout -b $BRANCH
     git add .
@@ -49,7 +46,7 @@ if [[ -n $(git status --porcelain) ]]; then
     echo -e "${YELLOW}Criando Pull Request...${NC}"
     PR_RESPONSE=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" \
       -H "Accept: application/vnd.github.v3+json" \
-      https://api.github.com/repos/yorrany/yorrany/pulls \
+      https://api.github.com/repos/yorrany/Yorrany/pulls \
       -d "{\"title\":\"Auto Deploy PR\",\"head\":\"$BRANCH\",\"base\":\"main\"}")
       
     PR_NUMBER=$(python3 -c "import sys, json; print(json.load(sys.stdin).get('number', ''))" <<< "$PR_RESPONSE")
@@ -60,31 +57,56 @@ if [[ -n $(git status --porcelain) ]]; then
         git checkout main
         exit 1
     fi
-    echo -e "${CYAN}PR #$PR_NUMBER criado. Solicitando avaliação da IA...${NC}"
+    echo -e "${CYAN}PR #$PR_NUMBER criado.${NC}"
     
-    AI_REVIEW=$(python3 script/ai_reviewer.py "$DIFF_FILE")
-    
-    if [[ "$AI_REVIEW" == "APROVADO" ]]; then
-        echo -e "${GREEN}IA APROVOU o PR! Resultado: $AI_REVIEW${NC}"
-        echo -e "${YELLOW}Realizando merge automático...${NC}"
-        curl -s -X PUT -H "Authorization: token $GITHUB_TOKEN" \
-          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/yorrany/yorrany/pulls/$PR_NUMBER/merge \
-          -d "{\"commit_title\":\"Auto merge by AI\",\"merge_method\":\"squash\"}"
-          
-        git checkout main
-        git pull origin main
-        git branch -D $BRANCH
-        echo -e "${GREEN}Merge concluído com sucesso!${NC}"
-    else
-        echo -e "${RED}IA REJEITOU o PR! Motivo:${NC}"
-        echo "$AI_REVIEW"
-        echo -e "${YELLOW}Abortando deploy. O PR #$PR_NUMBER ficará aberto para revisão manual.${NC}"
+    MAX_RETRIES=3
+    RETRY_COUNT=0
+    APPROVED=false
+
+    while [ $RETRY_COUNT -lt $MAX_RETRIES ] && [ "$APPROVED" = false ]; do
+        echo -e "${CYAN}Solicitando avaliação da IA (Tentativa $(($RETRY_COUNT + 1)))...${NC}"
+        DIFF_FILE="/tmp/deploy_diff_$(date +%s).txt"
+        git diff main..$BRANCH > "$DIFF_FILE"
+        
+        AI_REVIEW=$(python3 script/ai_reviewer.py "$DIFF_FILE")
+        
+        if [[ "$AI_REVIEW" == "APROVADO" ]]; then
+            echo -e "${GREEN}IA APROVOU o PR! Resultado: $AI_REVIEW${NC}"
+            echo -e "${YELLOW}Realizando merge automático...${NC}"
+            curl -s -X PUT -H "Authorization: token $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/yorrany/Yorrany/pulls/$PR_NUMBER/merge \
+              -d "{\"commit_title\":\"Auto merge by AI\",\"merge_method\":\"squash\"}"
+              
+            git checkout main
+            git pull origin main
+            git branch -D $BRANCH
+            echo -e "${GREEN}Merge concluído com sucesso!${NC}"
+            APPROVED=true
+        else
+            echo -e "${RED}IA REJEITOU o PR! Motivo:${NC}"
+            echo "$AI_REVIEW"
+            echo -e "${YELLOW}Acionando IA para correção automática...${NC}"
+            
+            FIX_PROMPT="O deploy foi rejeitado pela pipeline de qualidade. Feedback do revisor: '$AI_REVIEW'. Edite os arquivos necessários para corrigir este problema. Use a tool de edição apropriada. Faça a correção, conclua o que precisa e pare a execução sem pedir aprovação humana."
+            agy --dangerously-skip-permissions --mode accept-edits --print "$FIX_PROMPT"
+            
+            git add .
+            git commit -m "Auto-heal fix" || true
+            git push origin $BRANCH
+            
+            RETRY_COUNT=$(($RETRY_COUNT + 1))
+            echo -e "${CYAN}Correção da IA enviada pro GitHub. Reiniciando a validação do PR...${NC}"
+        fi
+    done
+
+    if [ "$APPROVED" = false ]; then
+        echo -e "${RED}Falha após $MAX_RETRIES tentativas de correção pela IA. Abortando deploy.${NC}"
         git checkout main
         exit 1
     fi
 else
-    echo -e "${GREEN}Nenhuma alteração não comitada detectada para revisão.${NC}"
+    echo -e "${GREEN}Nenhuma alteração local não-comitada detectada.${NC}"
 fi
 
 # ETAPA 1: Dependências, Assets e Banco
