@@ -13,7 +13,7 @@ class AutoTranslateJob < ApplicationJob
     translated_attrs = record.class.mobility_attributes
     return if translated_attrs.empty?
 
-    api_key = "AQ.Ab8RN6K1QtXoiJmTxbmlyHGfX2zBhjzm4I7Az2_b88fsmm6fbA"
+    api_key = ENV.fetch("GEMINI_API_KEY", "")
     url = URI("https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=#{api_key}")
 
     Mobility.with_locale(:'pt-BR') do
