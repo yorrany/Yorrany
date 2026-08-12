@@ -21,4 +21,6 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+## Licença e Proteção Intelectual
+
+Este projeto está sob a [Licença MIT](LICENSE). O uso é permitido, desde que os devidos créditos sejam mantidos e a nota de Copyright seja preservada, protegendo os direitos intelectuais dos autores originais.
