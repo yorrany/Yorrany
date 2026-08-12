@@ -78,3 +78,5 @@ gem "rack-attack", "~> 6.8"
 
 gem "omniauth-linkedin-oauth2", "~> 1.0"
 gem "omniauth-rails_csrf_protection", "~> 2.0"
+
+gem "aws-sdk-s3", "~> 1.229"
