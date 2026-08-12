@@ -1,26 +1,17 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
+  static targets = ["iconLight", "iconDark"]
+
   connect() {
     this.theme = localStorage.getItem("theme") || "auto"
     this.applyTheme()
   }
 
-  setLight(e) {
+  toggle(e) {
     if (e) e.preventDefault()
-    this.theme = "light"
-    this.applyTheme()
-  }
-
-  setDark(e) {
-    if (e) e.preventDefault()
-    this.theme = "dark"
-    this.applyTheme()
-  }
-
-  setAuto(e) {
-    if (e) e.preventDefault()
-    this.theme = "auto"
+    const isDark = document.documentElement.classList.contains("dark")
+    this.theme = isDark ? "light" : "dark"
     this.applyTheme()
   }
 
@@ -43,23 +34,24 @@ export default class extends Controller {
   }
 
   updateActiveButton() {
-    const buttons = this.element.querySelectorAll("button[data-action^='click->theme#set']")
-    const inactiveClasses = ["text-brand-tinta/60", "dark:text-brand-dark-tinta/60", "hover:text-brand-tinta", "dark:hover:text-brand-dark-tinta"]
-    const activeClasses = ["bg-brand-tinta", "dark:bg-brand-dark-tinta", "text-brand-surface", "dark:text-brand-dark-fundo"]
-
-    buttons.forEach(btn => {
-      btn.classList.remove(...activeClasses)
-      btn.classList.add(...inactiveClasses)
-      
-      const action = btn.getAttribute("data-action")
-      if (
-        (this.theme === "light" && action.includes("setLight")) ||
-        (this.theme === "dark" && action.includes("setDark")) ||
-        (this.theme === "auto" && action.includes("setAuto"))
-      ) {
-        btn.classList.remove(...inactiveClasses)
-        btn.classList.add(...activeClasses)
+    const isDark = document.documentElement.classList.contains("dark")
+    
+    // If current mode is dark, show the Light icon (to switch to light mode)
+    if (isDark) {
+      if (this.hasIconLightTarget) {
+        this.iconLightTarget.classList.remove("hidden")
       }
-    })
+      if (this.hasIconDarkTarget) {
+        this.iconDarkTarget.classList.add("hidden")
+      }
+    } else {
+      // If current mode is light, show the Dark icon (to switch to dark mode)
+      if (this.hasIconLightTarget) {
+        this.iconLightTarget.classList.add("hidden")
+      }
+      if (this.hasIconDarkTarget) {
+        this.iconDarkTarget.classList.remove("hidden")
+      }
+    }
   }
 }
