@@ -59,7 +59,7 @@ module Admin
 
     def certification_params
       params.require(:certification).permit(
-        :title, :issuer, :category, :description, :image, 
+        :title, :issuer, :category, :description, :image,
         :skills, :credential_code, :credential_url, :document_title, :document_caption
       )
     end

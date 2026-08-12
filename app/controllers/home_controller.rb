@@ -12,8 +12,8 @@ class HomeController < ApplicationController
     @experiences = ExperienceItem.order(created_at: :desc)
     @certifications = Certification.order(year: :desc)
     @academic_bgs = AcademicBackground.order(created_at: :desc)
-    
-    render 'llms', layout: false, content_type: 'text/plain'
+
+    render "llms", layout: false, content_type: "text/plain"
   end
 
   def privacy

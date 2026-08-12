@@ -1,10 +1,10 @@
-require 'net/http'
-require 'uri'
-require 'json'
+require "net/http"
+require "uri"
+require "json"
 
 class GithubContributionsService
-  TOKEN = ENV.fetch('GITHUB_TOKEN', '')
-  
+  TOKEN = ENV.fetch("GITHUB_TOKEN", "")
+
   def self.fetch_calendar
     Rails.cache.fetch("github_contributions_yorrany", expires_in: 6.hours) do
       uri = URI("https://api.github.com/graphql")

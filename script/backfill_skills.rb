@@ -3,10 +3,10 @@ require_relative '../config/environment'
 Certification.all.each do |c|
   pt_skills = c.attributes['skills']
   next unless pt_skills
-  
+
   Mobility.with_locale(:'pt-BR') { c.skills = pt_skills }
   Mobility.with_locale(:'pt-PT') { c.skills = pt_skills }
-  
+
   # very basic translations for the known skills just to fix the immediate issue
   en_skills = pt_skills.gsub('Programação lógica', 'Logic Programming')
                        .gsub('Lógica de Programação', 'Programming Logic')
@@ -45,9 +45,9 @@ Certification.all.each do |c|
                        .gsub('Pesquisa com Usuários', 'User Research')
                        .gsub('Arquitetura de Informação', 'Information Architecture')
                        .gsub('Prototipagem', 'Prototyping')
-                       
+
   Mobility.with_locale(:en) { c.skills = en_skills }
-  
+
   es_skills = pt_skills.gsub('Programação lógica', 'Programación Lógica')
                        .gsub('Lógica de Programação', 'Lógica de Programación')
                        .gsub('Estrutura de Dados', 'Estructuras de Datos')
@@ -85,8 +85,8 @@ Certification.all.each do |c|
                        .gsub('Pesquisa com Usuários', 'Investigación con Usuarios')
                        .gsub('Arquitetura de Informação', 'Arquitectura de Información')
                        .gsub('Prototipagem', 'Prototipado')
-                       
+
   Mobility.with_locale(:es) { c.skills = es_skills }
-  
+
   c.save!
 end

@@ -1,12 +1,12 @@
 class Users::SessionsController < Devise::SessionsController
-  prepend_before_action :verify_turnstile, only: [:create]
+  prepend_before_action :verify_turnstile, only: [ :create ]
 
   private
 
   def verify_turnstile
-    require 'net/http'
-    require 'uri'
-    require 'json'
+    require "net/http"
+    require "uri"
+    require "json"
 
     token = params["cf-turnstile-response"]
     client_ip = request.remote_ip
