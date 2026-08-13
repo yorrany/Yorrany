@@ -1,27 +1,27 @@
 <!-- Floating Contact Widget -->
-<div class="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 z-50 animate-[fade-in-up_1s_ease-out_1.5s_both]">
-  <div class="bg-brand-surface dark:bg-[#13171F]/95 backdrop-blur-md rounded-2xl border border-[#003CA5]/20 shadow-2xl p-3.5 flex flex-col gap-2.5 max-w-[220px] group transition-all duration-300 hover:border-[#003CA5]/40 hover:shadow-[#003CA5]/20 hover:-translate-y-1">
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-[fade-in-up_1s_ease-out_1.5s_both] w-full max-w-[calc(100%-3rem)] sm:max-w-fit flex justify-center pointer-events-none">
+  <div class="pointer-events-auto bg-brand-surface dark:bg-[#13171F]/95 backdrop-blur-md rounded-full border border-[#003CA5]/20 shadow-2xl p-2 sm:p-2.5 flex items-center gap-3 sm:gap-5 transition-all duration-300 hover:border-[#003CA5]/40 hover:shadow-[#003CA5]/20 hover:-translate-y-1">
     
-    <!-- Preview Info -->
-    <div class="flex items-center gap-2.5">
-      <div class="w-11 h-11 rounded-full overflow-hidden shrink-0 border border-brand-tinta/5 dark:border-white/10 shadow-sm bg-neutral-100 dark:bg-neutral-800">
+    <!-- Profile & Text -->
+    <div class="flex items-center gap-3 pl-1 sm:pl-2">
+      <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 border border-brand-tinta/5 dark:border-white/10 shadow-sm bg-neutral-100 dark:bg-neutral-800">
         <%= image_tag "yorrany.png", class: "w-full h-full object-cover object-[center_top]", alt: "Yorrany Braga" %>
       </div>
-      <div class="flex flex-col">
+      <div class="flex flex-col hidden sm:flex">
         <span class="text-[13px] font-bold text-brand-tinta dark:text-white leading-tight">Yorrany Braga</span>
-        <span class="text-[10px] font-medium text-[#003CA5] dark:text-[#00A5FF] leading-tight mt-0.5">Product Designer</span>
+        <span class="text-[11px] font-medium text-neutral-500 dark:text-neutral-400 leading-tight">Salvar vCard (.vcf) na agenda</span>
+      </div>
+      <div class="flex flex-col sm:hidden">
+        <span class="text-[13px] font-bold text-brand-tinta dark:text-white leading-tight">Yorrany Braga</span>
       </div>
     </div>
     
-    <p class="text-[11px] text-neutral-500 dark:text-neutral-400 leading-relaxed">
-      Salve meu <strong>vCard (.vcf)</strong> com 1 clique.
-    </p>
-
     <!-- Action Button -->
-    <a href="/vcard" data-turbo="false" class="relative flex items-center justify-center gap-1.5 px-3 py-1.5 bg-[#003CA5] text-white rounded-lg transition-colors text-[13px] font-medium w-full overflow-hidden hover:shadow-lg hover:shadow-[#003CA5]/30">
+    <a href="/vcard" data-turbo="false" class="relative flex items-center justify-center gap-1.5 px-4 py-2 sm:px-5 sm:py-2 bg-[#003CA5] text-white rounded-full transition-colors text-[13px] font-medium shrink-0 overflow-hidden hover:shadow-lg hover:shadow-[#003CA5]/30">
       <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:animate-[shine_1s_ease-out]"></div>
-      <svg class="w-3.5 h-3.5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-      <span class="relative z-10">Salvar</span>
+      <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+      <span class="relative z-10 hidden sm:inline">Salvar Contato</span>
+      <span class="relative z-10 sm:hidden">Salvar</span>
     </a>
   </div>
 </div>
