@@ -72,12 +72,30 @@
     position: absolute;
     bottom: 2px;
     left: -2px;
-    right: -2px;
     height: 30%;
     background-color: var(--color-brand-acento);
     opacity: 0.25;
     z-index: -1;
     transform: skewX(-10deg);
+    animation: highlight-draw 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1s forwards;
+    width: 0%;
+  }
+
+  @keyframes highlight-draw {
+    from { width: 0%; }
+    to { width: calc(100% + 4px); }
+  }
+
+  @keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+
+  @keyframes scroll-down {
+    0% { transform: translateY(-100%); opacity: 0; }
+    30% { opacity: 1; }
+    70% { transform: translateY(150%); opacity: 0; }
+    100% { opacity: 0; }
   }
 
   .card-bento {

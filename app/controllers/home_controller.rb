@@ -5,6 +5,9 @@ class HomeController < ApplicationController
     @certifications = Certification.all
     @academic_bgs = AcademicBackground.order(created_at: :desc)
     @github_calendar = GithubContributionsService.fetch_calendar
+    @posts = Post.where("published_at <= ?", Time.current).order(published_at: :desc).limit(2)
+    @skills = SoftwareSkill.all
+    @pillars = ExpertisePillar.all
   end
 
   def llms
