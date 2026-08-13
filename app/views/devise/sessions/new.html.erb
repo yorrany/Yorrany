@@ -46,7 +46,7 @@
       </div>
       
       <!-- Script loaded once. -->
-      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer nonce="<%= content_security_policy_nonce %>"></script>
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onloadTurnstileCallback" async defer nonce="<%= content_security_policy_nonce %>"></script>
 
       <div>
         <%= f.submit "Entrar no Cockpit", class: "group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-[#003CA5] hover:bg-[#002361] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#003CA5] transition-all shadow-lg hover:shadow-[#003CA5]/25 cursor-pointer" %>
