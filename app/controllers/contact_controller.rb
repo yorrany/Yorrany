@@ -12,7 +12,7 @@ class ContactController < ApplicationController
       "REV:#{Time.current.utc.strftime('%Y%m%dT%H%M%SZ')}",
       "UID:urn:uuid:#{SecureRandom.uuid}",
       "END:VCARD"
-    ].join("\r\n")
+    ].join("\r\n") + "\r\n"
 
     send_data vcard_content, filename: "yorrany_braga.vcf", type: "text/vcard", disposition: "attachment"
   end
