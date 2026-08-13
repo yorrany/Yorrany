@@ -18,8 +18,8 @@
 
       <!-- Filter Chips (Mock for now or Stimulus controlled) -->
       <div class="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 font-mono text-xs scrollbar-none">
-        <% ['All', 'Product Design', 'UX/UI', 'Brand Strategy', 'E-Commerce'].each do |filter| %>
-          <button class="px-3.5 py-1.5 rounded-full whitespace-nowrap transition-all border <%= filter == 'All' ? 'bg-[#003CA5] text-white border-[#003CA5] font-semibold shadow-md' : 'bg-brand-surface dark:bg-[#13171F] text-brand-tinta/70 dark:text-neutral-400 border-brand-tinta/10 dark:border-white/10 hover:bg-brand-tinta hover:text-brand-surface dark:hover:bg-white/10 dark:hover:text-white' %>">
+        <% [t('work.filters.all', default: 'Todos'), t('work.filters.pd', default: 'Product Design'), 'UX/UI', t('work.filters.brand', default: 'Estratégia de Marca'), 'E-Commerce'].each do |filter| %>
+          <button class="px-3.5 py-1.5 rounded-full whitespace-nowrap transition-all border <%= filter == t('work.filters.all', default: 'Todos') ? 'bg-[#003CA5] text-white border-[#003CA5] font-semibold shadow-md' : 'bg-brand-surface dark:bg-[#13171F] text-brand-tinta/70 dark:text-neutral-400 border-brand-tinta/10 dark:border-white/10 hover:bg-brand-tinta hover:text-brand-surface dark:hover:bg-white/10 dark:hover:text-white' %>">
             <%= filter %>
           </button>
         <% end %>
@@ -78,29 +78,10 @@
             </div>
 
             <!-- Right Image / Mockup Column -->
-            <div class="lg:col-span-5 relative bg-brand-fundo dark:bg-[#0B0D10] border-t lg:border-t-0 lg:border-l border-brand-tinta/5 dark:border-white/5 min-h-[320px] lg:min-h-full flex flex-col justify-between p-6 sm:p-8 overflow-hidden">
+            <div class="lg:col-span-5 relative bg-brand-fundo dark:bg-[#0B0D10] border-t lg:border-t-0 lg:border-l border-brand-tinta/5 dark:border-white/5 min-h-[320px] lg:min-h-full overflow-hidden">
               <% if spotlight_project.image.attached? %>
-                <%= image_tag spotlight_project.image, class: "absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 pointer-events-none" %>
+                <%= image_tag spotlight_project.image, class: "absolute inset-0 w-full h-full object-cover opacity-100 group-hover:scale-105 transition-transform duration-700 pointer-events-none" %>
               <% end %>
-              <div class="absolute inset-0 bg-gradient-to-t from-brand-surface dark:from-[#0B0D10] via-brand-surface/40 dark:via-[#0B0D10]/40 to-transparent pointer-events-none"></div>
-
-              <!-- Top Badge Overlay -->
-              <div class="relative z-10 flex justify-end">
-                <span class="px-3 py-1 rounded-full bg-brand-surface dark:bg-[#13171F]/90 backdrop-blur-md border border-brand-tinta/10 dark:border-white/10 text-[11px] font-mono text-neutral-700 dark:text-neutral-300 shadow-sm">
-                  Role: <%= spotlight_project.role %>
-                </span>
-              </div>
-
-              <!-- Bottom Behavioral Highlights Card -->
-              <div class="relative z-10 bg-brand-surface dark:bg-[#13171F]/95 backdrop-blur-md p-5 rounded-2xl border border-brand-tinta/10 dark:border-white/10 shadow-xl mt-auto">
-                <div class="flex items-center gap-2 text-xs font-mono text-purple-600 dark:text-purple-400 font-bold mb-2">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                  <span><%= t('work.behavioralEdge', default: 'Behavioral Edge') %></span>
-                </div>
-                <p class="text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                  "<%= spotlight_project.behavioral_insight %>"
-                </p>
-              </div>
             </div>
           </div>
         </div>

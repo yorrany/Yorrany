@@ -12,6 +12,17 @@ en:
     pillar2_desc: "As a psychologist, I look beyond the clicks. I ask: what's the cognitive load on this screen? Why did the user drop off here? I use behavioural science and heuristic evaluations to design paths that make sense to the human brain, raising conversion ethically and predictably."
     pillar3_title: "Closing the gap between design and engineering"
     pillar3_desc: "Design doesn't end in Figma. With my background in front-end and security (JS/Python), I speak the developers' language. I understand technical constraints, prevent security flaws at the interface level, and make sure what gets designed is actually buildable, accessible and safe to ship."
+  work:
+    eyebrow: "Case Studies"
+    title: "Selected Portfolio"
+    subtitle: "A selection of products where design strategy and behavioral insights drove measurable business impact."
+    spotlightBadge: "Featured Spotlight"
+    viewCase: "Read Case Study"
+    behavioralEdge: "Behavioral Edge"
+    filters:
+      all: "All"
+      pd: "Product Design"
+      brand: "Brand Strategy"
   about:
     h2: "20 years learning how people read, click and trust."
     p1: "I started my career in print design, obsessed with Swiss typography and millimetre-perfect grids. But when the screen became our main medium, I realised aesthetics alone weren't enough. I went on to study Psychology to understand the why behind people's choices."

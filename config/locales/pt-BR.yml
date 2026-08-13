@@ -16,6 +16,13 @@ pt-BR:
     eyebrow: "Estudos de Caso"
     title: "Seleção de Portfólio"
     subtitle: "Uma seleção de produtos onde a estratégia de design e os insights comportamentais geraram impacto mensurável para o negócio."
+    spotlightBadge: "Projeto em Destaque"
+    viewCase: "Ver Estudo de Caso"
+    behavioralEdge: "Diferencial Comportamental"
+    filters:
+      all: "Todos"
+      pd: "Product Design"
+      brand: "Estratégia de Marca"
   cv:
     eyebrow: "Experiência & Formação"
     title: "Currículo & Credenciais"
