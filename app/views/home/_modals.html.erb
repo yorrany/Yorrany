@@ -79,14 +79,16 @@
         <div>
           <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-3 border-b border-neutral-200 pb-1">Education & Academic Degree</h2>
           <div class="space-y-4">
-            <% @academic_bgs.each do |bg| %>
-              <div class="border-l-2 border-neutral-200 pl-4">
-                <div class="font-bold text-xs text-neutral-900"><%= bg.degree %></div>
-                <div class="text-xs text-neutral-600"><%= bg.institution %></div>
-                <% if bg.thesis.present? %>
-                  <div class="text-[11px] text-neutral-500 mt-1">Thesis: "<%= bg.thesis %>"</div>
-                <% end %>
-              </div>
+            <% if @academic_bgs.present? %>
+              <% @academic_bgs.each do |bg| %>
+                <div class="border-l-2 border-neutral-200 pl-4">
+                  <div class="font-bold text-xs text-neutral-900"><%= bg.degree %></div>
+                  <div class="text-xs text-neutral-600"><%= bg.institution %></div>
+                  <% if bg.thesis.present? %>
+                    <div class="text-[11px] text-neutral-500 mt-1">Thesis: "<%= bg.thesis %>"</div>
+                  <% end %>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>
