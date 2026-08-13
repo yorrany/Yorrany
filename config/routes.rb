@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get "/llms.txt", to: "home#llms"
   get "/cv/:filename", to: "cv#show"
   get "/vcard", to: "contact#vcard"
-  
-  resources :blog, only: [:index, :show]
+
+  resources :blog, only: [ :index, :show ]
   get "/auth/:provider/callback", to: "linkedin_auth#callback"
   get "/auth/failure", to: "linkedin_auth#failure"
 

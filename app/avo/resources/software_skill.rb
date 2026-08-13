@@ -1,11 +1,6 @@
 class Avo::Resources::SoftwareSkill < Avo::BaseResource
   self.title = :name
   self.includes = []
-  self.routing_extension = -> {
-    collection do
-      patch :reorder
-    end
-  }
 
   def fields
     field :id, as: :id

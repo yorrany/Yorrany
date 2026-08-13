@@ -1,6 +1,6 @@
 class BlogController < ApplicationController
   def index
-    @posts = Post.where('published_at <= ?', Time.current).order(published_at: :desc)
+    @posts = Post.where("published_at <= ?", Time.current).order(published_at: :desc)
   end
 
   def show
