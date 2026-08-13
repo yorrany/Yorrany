@@ -1,0 +1,220 @@
+<!-- BEGIN app/views/layouts/cv.html.erb
+--><!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Curriculum Vitae - Yorrany Braga</title>
+  <link rel="stylesheet" href="/assets/tailwind-91962fcc.css" data-turbo-track="reload" />
+  <link rel="stylesheet" href="/assets/application-8b441ae0.css" data-turbo-track="reload" />
+  <style>
+    /* Permitir margens nativas para Header/Footer do Puppeteer */
+    @page {
+      size: A4;
+      margin: 15mm 15mm 20mm 15mm !important;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    
+    .page-break {
+      page-break-before: always;
+      clear: both;
+    }
+    
+    /* Avoid breaking inside sections */
+    .avoid-break {
+      page-break-inside: avoid;
+    }
+
+    /* Refined fonts for pills */
+    .cert-pill {
+      font-size: 9px !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .cert-title {
+      font-size: 10px !important;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+<body class="bg-white text-neutral-900 font-sans">
+  <!-- BEGIN app/views/cv/show.html.erb
+--><div class="space-y-6 text-sm leading-relaxed text-neutral-800">
+
+  <!-- PAGE 1 HEADER -->
+  <div class="border-b-2 border-neutral-900 pb-5 avoid-break">
+    <div class="flex justify-between items-start gap-6">
+      <div class="flex-1 min-w-0">
+        <h1 class="text-4xl font-black tracking-tight text-neutral-900 truncate">YORRANY BRAGA</h1>
+        <p class="text-lg font-semibold text-[#003CA5] mt-1 truncate">Principal Product Designer & Front-End Architect</p>
+      </div>
+      <div class="text-[11px] font-mono text-neutral-600 space-y-1 text-right border-l-2 border-[#003CA5] pl-4 flex-shrink-0">
+        <div class="whitespace-nowrap">Email: <a href="mailto:yorranymb@gmail.com" style="text-decoration: none; color: inherit;" class="font-semibold text-neutral-800 hover:text-[#003CA5]">yorranymb@gmail.com</a></div>
+        <div class="whitespace-nowrap">Tel / WA: <span class="font-semibold text-neutral-800">+55 92 98414-3818</span></div>
+        <div class="whitespace-nowrap">Location: <span class="font-semibold text-neutral-800">Spain 🇪🇸 / Portugal 🇵🇹</span></div>
+      </div>
+    </div>
+    <div class="mt-4 pt-3 border-t border-neutral-200">
+      <div class="flex justify-between items-center w-full text-[9px] sm:text-[10px] font-semibold text-neutral-600 whitespace-nowrap tracking-tight">
+        <span><span class="text-[#003CA5] uppercase tracking-normal">Credentials:</span> B.Sc. in Psychology <span class="text-neutral-400 font-normal">(human behaviour)</span></span>
+        <span class="text-neutral-300 mx-1">•</span>
+        <span>Front-End Architecture, Python &amp; JS Security <span class="text-neutral-400 font-normal">(The Linux Foundation)</span></span>
+        <span class="text-neutral-300 mx-1">•</span>
+        <span><span class="text-[#003CA5] uppercase tracking-normal">Focus:</span> digital health, e-commerce, design systems</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Sections -->
+  <div class="space-y-8 mt-4">
+    
+    <div class="avoid-break">
+      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-2 border-b border-neutral-200 pb-1">Personal Statement &amp; Professional Profile</h2>
+      <p class="text-sm text-neutral-700 leading-relaxed text-justify">
+        Today I work as Principal Product Designer &amp; Front-End Architect. Which means I don&#39;t just hand over a prototype: I hand over the strategy behind it, a grasp of user behaviour, and the technical feasibility to build it. I&#39;ve shipped high-conversion e-commerce and complex digital health platforms (zero to one). What drives me is solving complex problems with simple interfaces.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1 mt-6">Work Experience (2006 - 2026)</h2>
+      <div class="space-y-6">
+          <div class="border-l-2 border-[#003CA5]/20 pl-4 py-1 avoid-break">
+            <div class="flex justify-between items-start text-xs font-mono mb-1">
+              <span class="font-bold text-neutral-900 text-sm">Senior Product Designer</span>
+              <span class="text-[#003CA5] font-bold">Dez 2024 - Atual</span>
+            </div>
+            <div class="text-[11px] font-semibold text-neutral-600 mb-2">Matterna <span class="mx-1">•</span> Manaus, Brasil</div>
+            <p class="text-xs text-neutral-700 mb-2 leading-relaxed">Conception, product design, and visual strategy for a maternity-focused platform. Role: Complete leadership of the design cycle (Discovery, Design System, UX/UI, information architecture, and brand strategy).
+
+Delivery: Construction of visual identity, high-fidelity prototyping, and structuring of an e-commerce and digital ecosystem focused on high conversion and user experience.</p>
+            <ul class="list-disc list-inside text-[11px] text-neutral-600 space-y-1 ml-1">
+                <li>Authorial project focused on product innovation and validation of end-to-end design processes.</li>
+            </ul>
+          </div>
+          <div class="border-l-2 border-[#003CA5]/20 pl-4 py-1 avoid-break">
+            <div class="flex justify-between items-start text-xs font-mono mb-1">
+              <span class="font-bold text-neutral-900 text-sm">Art Director</span>
+              <span class="text-[#003CA5] font-bold">Fev 2022 - Out 2023</span>
+            </div>
+            <div class="text-[11px] font-semibold text-neutral-600 mb-2">Agência Taió <span class="mx-1">•</span> São José dos Campos, Brasil</div>
+            <p class="text-xs text-neutral-700 mb-2 leading-relaxed">Development of visual communication projects, graphic design, and branding for nationally renowned clients.
+Creation of pieces focused on increasing conversion rates and strengthening brand recognition.</p>
+            <ul class="list-disc list-inside text-[11px] text-neutral-600 space-y-1 ml-1">
+                <li>Brand repositioning campaigns.</li>
+            </ul>
+          </div>
+          <div class="border-l-2 border-[#003CA5]/20 pl-4 py-1 avoid-break">
+            <div class="flex justify-between items-start text-xs font-mono mb-1">
+              <span class="font-bold text-neutral-900 text-sm">Art Director</span>
+              <span class="text-[#003CA5] font-bold">Dez 2021 - Abr 2022</span>
+            </div>
+            <div class="text-[11px] font-semibold text-neutral-600 mb-2">BZ Propaganda &amp; Marketing <span class="mx-1">•</span> São José dos Campos, Brasil</div>
+            <p class="text-xs text-neutral-700 mb-2 leading-relaxed">Creation and execution of online and offline advertising campaigns for large clients, such as Grupo Saboroso.
+Art direction and design strategies focused on market positioning.</p>
+            <ul class="list-disc list-inside text-[11px] text-neutral-600 space-y-1 ml-1">
+                <li>High-impact advertising campaigns.</li>
+            </ul>
+          </div>
+          <div class="border-l-2 border-[#003CA5]/20 pl-4 py-1 avoid-break">
+            <div class="flex justify-between items-start text-xs font-mono mb-1">
+              <span class="font-bold text-neutral-900 text-sm">Academic Researcher</span>
+              <span class="text-[#003CA5] font-bold">Mai 2021 - Out 2021</span>
+            </div>
+            <div class="text-[11px] font-semibold text-neutral-600 mb-2">ULBRA - Universidade Luterana do Brasil <span class="mx-1">•</span> Manaus, Brasil</div>
+            <p class="text-xs text-neutral-700 mb-2 leading-relaxed">Scientific research and writing of Chapter V (pp. 53-66) of the book &#39;Educação em Saúde: gravidez na adolescência, bullying, prevenção de acidentes, envelhecimento e bem-estar na Amazônia&#39;.
+Psychosocial analysis and preparation of diagnoses on the impacts of early pregnancy.</p>
+            <ul class="list-disc list-inside text-[11px] text-neutral-600 space-y-1 ml-1">
+                <li>Published book chapter.</li>
+            </ul>
+          </div>
+          <div class="border-l-2 border-[#003CA5]/20 pl-4 py-1 avoid-break">
+            <div class="flex justify-between items-start text-xs font-mono mb-1">
+              <span class="font-bold text-neutral-900 text-sm">Intern University Assistant</span>
+              <span class="text-[#003CA5] font-bold">Dez 2020 - Jun 2021</span>
+            </div>
+            <div class="text-[11px] font-semibold text-neutral-600 mb-2">ULBRA - Universidade Luterana do Brasil <span class="mx-1">•</span> Manaus, Brasil</div>
+            <p class="text-xs text-neutral-700 mb-2 leading-relaxed">Observational practice and preparation of diagnoses in psychopathology and community psychology (Workload: 76h).</p>
+            <ul class="list-disc list-inside text-[11px] text-neutral-600 space-y-1 ml-1">
+                <li>Community psychology practice.</li>
+            </ul>
+          </div>
+          <div class="border-l-2 border-[#003CA5]/20 pl-4 py-1 avoid-break">
+            <div class="flex justify-between items-start text-xs font-mono mb-1">
+              <span class="font-bold text-neutral-900 text-sm">Art Director</span>
+              <span class="text-[#003CA5] font-bold">Mai 2016 - Jun 2017</span>
+            </div>
+            <div class="text-[11px] font-semibold text-neutral-600 mb-2">All Night Pub <span class="mx-1">•</span> Manaus, Brasil</div>
+            <p class="text-xs text-neutral-700 mb-2 leading-relaxed">Management of the brand&#39;s visual identity, creation of institutional materials, menus, and promotional pieces.
+Social media management and visual planning of campaigns.</p>
+            <ul class="list-disc list-inside text-[11px] text-neutral-600 space-y-1 ml-1">
+                <li>Event branding and social media management.</li>
+            </ul>
+          </div>
+          <div class="border-l-2 border-[#003CA5]/20 pl-4 py-1 avoid-break">
+            <div class="flex justify-between items-start text-xs font-mono mb-1">
+              <span class="font-bold text-neutral-900 text-sm">Art Director</span>
+              <span class="text-[#003CA5] font-bold">Dez 2010 - Jan 2013</span>
+            </div>
+            <div class="text-[11px] font-semibold text-neutral-600 mb-2">Magic Publicidade <span class="mx-1">•</span> Manaus, Brasil</div>
+            <p class="text-xs text-neutral-700 mb-2 leading-relaxed">Production of materials for on/offline campaigns, management of deadlines and creative team workflow.</p>
+            <ul class="list-disc list-inside text-[11px] text-neutral-600 space-y-1 ml-1">
+                <li>Creative team coordination.</li>
+            </ul>
+          </div>
+      </div>
+    </div>
+
+    <div class="avoid-break mt-6">
+      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1">Education &amp; Academic Degree</h2>
+      <div class="space-y-4">
+          <div class="border-l-2 border-[#003CA5]/20 pl-4 avoid-break">
+            <div class="font-bold text-sm text-neutral-900">Bachelor in Psychology</div>
+            <div class="text-xs text-neutral-600 font-semibold mb-1">Faculdade Santa Teresa</div>
+              <div class="text-[11px] text-neutral-700 leading-relaxed">Thesis/Research: "Unraveling the harms of early pregnancy for pre-adolescents and adolescents (Published as a book chapter - ULBRA)."</div>
+          </div>
+          <div class="border-l-2 border-[#003CA5]/20 pl-4 avoid-break">
+            <div class="font-bold text-sm text-neutral-900">High School Education</div>
+            <div class="text-xs text-neutral-600 font-semibold mb-1">Colégio Estadual Professor José Carlos de Almeida</div>
+          </div>
+      </div>
+    </div>
+
+    <div class="avoid-break mt-6">
+      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1">Certifications &amp; Technical Credentials</h2>
+      <div class="grid grid-cols-2 gap-3">
+      </div>
+    </div>
+
+    <div class="avoid-break mt-6">
+      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1">Language &amp; Digital Competences</h2>
+      <div class="grid grid-cols-3 gap-3 text-[11px] font-mono">
+        <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
+          <div class="font-bold text-neutral-900 text-xs">Portuguese</div>
+          <div class="text-neutral-600 mt-1">Mother tongue (C2)</div>
+        </div>
+        <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
+          <div class="font-bold text-neutral-900 text-xs">Spanish</div>
+          <div class="text-neutral-600 mt-1">Working Comprehension (A1)</div>
+        </div>
+        <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
+          <div class="font-bold text-neutral-900 text-xs">English</div>
+          <div class="text-neutral-600 mt-1">Technical / Prof. (A1)</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<!-- END app/views/cv/show.html.erb -->
+</body>
+</html>
+<!-- END app/views/layouts/cv.html.erb -->

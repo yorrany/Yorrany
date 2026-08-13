@@ -4,6 +4,9 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def verify_turnstile
+    # Ignora o Turnstile em ambiente de desenvolvimento completamente para testes locais
+    return if Rails.env.development?
+
     require "net/http"
     require "uri"
     require "json"
@@ -28,7 +31,7 @@ class Users::SessionsController < Devise::SessionsController
 
     unless result["success"]
       flash[:alert] = "Falha na verificação de segurança: #{result['error-codes']&.join(', ')}. Por favor, tente novamente."
-      redirect_to new_user_session_path
+      redirect_to new_user_session_path, status: :see_other
     end
   end
 end

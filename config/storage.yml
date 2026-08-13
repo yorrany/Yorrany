@@ -22,6 +22,7 @@ cloudflare:
   bucket: <%= ENV.fetch('CLOUDFLARE_R2_BUCKET', 'yorrany') %>
   endpoint: <%= ENV.fetch('CLOUDFLARE_R2_ENDPOINT', 'https://f747a8ca9b2f2cf928e6d232790c66c4.r2.cloudflarestorage.com') %>
   force_path_style: true
+  request_checksum_calculation: "when_required"
 
 
 # Remember not to checkin your GCS keyfile to a repository

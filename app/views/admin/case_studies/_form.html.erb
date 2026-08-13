@@ -30,9 +30,77 @@
     </div>
   </div>
 
+  <div class="grid grid-cols-2 gap-4">
+    <div>
+      <%= f.label :role, "Seu Papel", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.text_field :role, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+    </div>
+    <div>
+      <%= f.label :tags, "Tags (separadas por vírgula)", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.text_field :tags, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+    </div>
+  </div>
+
   <div>
-    <%= f.label :image, "Imagem de Capa", class: "block text-sm font-medium text-neutral-300 mb-1" %>
-    <%= f.file_field :image, class: "w-full text-sm text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white/5 file:text-white hover:file:bg-white/10" %>
+    <%= f.label :summary, "Resumo", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+    <%= f.text_area :summary, rows: 3, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+  </div>
+
+  <div>
+    <%= f.label :full_description, "Descrição Completa", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+    <%= f.text_area :full_description, rows: 5, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <%= f.label :challenge, "O Desafio", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.text_area :challenge, rows: 4, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+    </div>
+    <div>
+      <%= f.label :solution, "A Solução", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.text_area :solution, rows: 4, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :behavioral_insight, "Behavioral Insight", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+    <%= f.text_area :behavioral_insight, rows: 3, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div data-controller="image-preview">
+      <%= f.label :image, "Imagem de Capa (Principal)", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.file_field :image, data: { action: "change->image-preview#preview", image_preview_target: "input" }, class: "w-full text-sm text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white/5 file:text-white hover:file:bg-white/10 mb-2" %>
+      
+      <div data-image-preview-target="container" class="<%= case_study.image.attached? ? '' : 'hidden' %> mt-2">
+        <p class="text-xs text-neutral-500 mb-2">Preview (Nova seleção substitui a atual):</p>
+        <div data-image-preview-target="preview" class="grid grid-cols-2 gap-2">
+          <% if case_study.image.attached? %>
+            <div class="relative group rounded-lg overflow-hidden border border-white/10">
+              <%= image_tag case_study.image, class: "w-full h-32 object-cover" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div data-controller="image-preview">
+      <%= f.label :gallery_images, "Imagens do Projeto (Múltiplas)", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.file_field :gallery_images, multiple: true, data: { action: "change->image-preview#preview", image_preview_target: "input" }, class: "w-full text-sm text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white/5 file:text-white hover:file:bg-white/10 mb-2" %>
+      
+      <div data-image-preview-target="container" class="<%= case_study.gallery_images.attached? ? '' : 'hidden' %> mt-2">
+        <p class="text-xs text-neutral-500 mb-2">Preview (Novas seleções substituem as atuais):</p>
+        <div data-image-preview-target="preview" class="grid grid-cols-3 gap-2 max-h-48 overflow-y-auto pr-1 custom-scrollbar">
+          <% if case_study.gallery_images.attached? %>
+            <% case_study.gallery_images.each do |img| %>
+              <div class="relative group rounded-lg overflow-hidden border border-white/10">
+                <%= image_tag img, class: "w-full h-24 object-cover" %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="pt-4 border-t border-white/10 flex justify-end gap-2">
