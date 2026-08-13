@@ -45,11 +45,25 @@
   lang_key = 'en' unless t_headers.key?(lang_key)
   tl = t_headers[lang_key]
 %>
-<div class="space-y-6 text-sm leading-relaxed text-neutral-800">
+<div class="fixed top-0 left-0 right-0 h-[40px] z-[10] border-b border-neutral-200 flex justify-between items-end pb-2 bg-white">
+  <span class="font-black text-xs text-neutral-900 tracking-tight">YORRANY BRAGA</span>
+  <span class="font-bold text-[10px] text-[#003CA5]">Principal Product Designer</span>
+</div>
 
-  <!-- PAGE 1 HEADER -->
-  <div class="border-b-2 border-neutral-900 pb-5 avoid-break">
-    <div class="flex justify-between items-start gap-6">
+<table style="width: 100%; border-collapse: collapse; border-spacing: 0;">
+  <thead style="display: table-header-group;">
+    <tr>
+      <td style="height: 50px; padding: 0; border: none;"></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 0; border: none;">
+        <div class="space-y-6 text-sm leading-relaxed text-neutral-800">
+
+          <!-- PAGE 1 HEADER -->
+          <div class="border-b-2 border-neutral-900 pb-5 avoid-break relative z-[30] bg-white" style="margin-top: -50px; padding-top: 50px;">
+            <div class="flex justify-between items-start gap-6">
       <div class="flex-1 min-w-0">
         <h1 class="text-4xl font-black tracking-tight text-neutral-900 truncate">YORRANY BRAGA</h1>
         <p class="text-lg font-semibold text-[#003CA5] mt-1 truncate">Principal Product Designer & Front-End Architect</p>
@@ -151,6 +165,9 @@
         </div>
       </div>
     </div>
-    
   </div>
-</div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

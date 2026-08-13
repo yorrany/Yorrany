@@ -34,7 +34,7 @@ class CvController < ApplicationController
 
     grover = Grover.new(html,
       format: "A4",
-      margin: { top: "15mm", bottom: "20mm", left: "15mm", right: "15mm" },
+      margin: { top: "15mm", bottom: "12mm", left: "15mm", right: "15mm" },
       print_background: true,
       display_header_footer: true,
       header_template: "<div></div>",
