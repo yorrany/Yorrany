@@ -48,3 +48,26 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 html.dark {
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
