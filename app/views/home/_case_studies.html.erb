@@ -79,7 +79,7 @@
 
             <!-- Right Image / Mockup Column -->
             <div class="lg:col-span-5 relative bg-brand-fundo dark:bg-[#0B0D10] border-t lg:border-t-0 lg:border-l border-brand-tinta/5 dark:border-white/5 min-h-[320px] lg:min-h-full flex flex-col justify-between p-6 sm:p-8 overflow-hidden">
-              <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-700 pointer-events-none" style="background-image: url('<%= spotlight_project.image %>')"></div>
+              <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-700 pointer-events-none" style="background-image: url('<%= url_for(spotlight_project.image) if spotlight_project.image.attached? %>')"></div>
               <div class="absolute inset-0 bg-gradient-to-t from-[#0B0D10] via-[#0B0D10]/70 to-transparent pointer-events-none"></div>
 
               <!-- Top Badge Overlay -->

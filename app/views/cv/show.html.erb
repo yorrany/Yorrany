@@ -104,13 +104,17 @@
 
     <div class="avoid-break mt-6">
       <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1"><%= tl[:edu] %></h2>
-      <% if @academic_bg %>
-        <div class="border-l-2 border-[#003CA5]/20 pl-4 avoid-break">
-          <div class="font-bold text-sm text-neutral-900"><%= @academic_bg.degree %></div>
-          <div class="text-xs text-neutral-600 font-semibold mb-1"><%= @academic_bg.institution %></div>
-          <div class="text-[11px] text-neutral-700 leading-relaxed"><%= tl[:thesis] %> "<%= @academic_bg.thesis %>"</div>
-        </div>
-      <% end %>
+      <div class="space-y-4">
+        <% @academic_bgs.each do |bg| %>
+          <div class="border-l-2 border-[#003CA5]/20 pl-4 avoid-break">
+            <div class="font-bold text-sm text-neutral-900"><%= bg.degree %></div>
+            <div class="text-xs text-neutral-600 font-semibold mb-1"><%= bg.institution %></div>
+            <% if bg.thesis.present? %>
+              <div class="text-[11px] text-neutral-700 leading-relaxed"><%= tl[:thesis] %> "<%= bg.thesis %>"</div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <div class="avoid-break mt-6">
