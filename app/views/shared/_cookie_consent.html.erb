@@ -1,5 +1,5 @@
 <!-- Cookie Consent (GDPR) -->
-<div id="cookie-consent" class="fixed bottom-6 right-6 z-[60] w-[calc(100%-3rem)] sm:max-w-[360px] bg-brand-surface dark:bg-[#13171F] border border-[#003CA5]/10 dark:border-white/10 rounded-2xl shadow-2xl p-5 hidden animate-[fade-in-up_1s_ease-out_0.5s_both] pointer-events-auto">
+<div id="cookie-consent" data-controller="cookie-consent" class="fixed bottom-6 right-6 z-[60] w-[calc(100%-3rem)] sm:max-w-[360px] bg-brand-surface dark:bg-[#13171F] border border-[#003CA5]/10 dark:border-white/10 rounded-2xl shadow-2xl p-5 hidden animate-[fade-in-up_1s_ease-out_0.5s_both] pointer-events-auto">
   <div class="flex flex-col gap-3.5">
     <div class="flex items-start justify-between">
       <div class="flex items-center gap-2">
@@ -13,42 +13,17 @@
     </p>
     
     <div class="flex flex-col gap-2 mt-1">
-      <button id="accept-cookies" class="w-full py-2 bg-[#003CA5] hover:bg-[#002361] text-white text-[12px] font-semibold rounded-lg transition-colors">
+      <button data-action="click->cookie-consent#acceptAll" class="w-full py-2 bg-[#003CA5] hover:bg-[#002361] text-white text-[12px] font-semibold rounded-lg transition-colors">
         Aceitar Todos
       </button>
       <div class="flex gap-2">
-        <button id="reject-cookies" class="w-1/2 py-2 bg-neutral-100 hover:bg-neutral-200 dark:bg-[#1C212B] dark:hover:bg-[#252B36] text-brand-tinta dark:text-white text-[12px] font-semibold rounded-lg transition-colors border border-transparent dark:border-white/5">
+        <button data-action="click->cookie-consent#rejectAll" class="w-1/2 py-2 bg-neutral-100 hover:bg-neutral-200 dark:bg-[#1C212B] dark:hover:bg-[#252B36] text-brand-tinta dark:text-white text-[12px] font-semibold rounded-lg transition-colors border border-transparent dark:border-white/5">
           Apenas Essenciais
         </button>
-        <button id="manage-cookies" class="w-1/2 py-2 bg-transparent hover:bg-neutral-50 dark:hover:bg-[#1C212B] border border-brand-tinta/10 dark:border-white/10 text-brand-tinta dark:text-white text-[12px] font-semibold rounded-lg transition-colors">
+        <button data-action="click->cookie-consent#manage" class="w-1/2 py-2 bg-transparent hover:bg-neutral-50 dark:hover:bg-[#1C212B] border border-brand-tinta/10 dark:border-white/10 text-brand-tinta dark:text-white text-[12px] font-semibold rounded-lg transition-colors">
           Preferências
         </button>
       </div>
     </div>
   </div>
 </div>
-
-<script>
-  (() => {
-    const banner = document.getElementById("cookie-consent");
-    if (!banner) return;
-    
-    // Check localStorage
-    if (!localStorage.getItem("cookie_consent")) {
-      banner.classList.remove("hidden");
-    }
-
-    const setConsent = (level) => {
-      localStorage.setItem("cookie_consent", level);
-      banner.classList.add("hidden");
-      // Could dispatch event or load scripts based on consent here
-    };
-
-    document.getElementById("accept-cookies")?.addEventListener("click", () => setConsent("all"));
-    document.getElementById("reject-cookies")?.addEventListener("click", () => setConsent("essential"));
-    document.getElementById("manage-cookies")?.addEventListener("click", () => {
-      setConsent("essential");
-      alert("Suas preferências foram salvas: Apenas Cookies Essenciais foram mantidos para proteger sua privacidade.");
-    });
-  })();
-</script>
