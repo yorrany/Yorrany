@@ -1,30 +1,45 @@
 <!-- Hero Section -->
-<section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-brand-fundo dark:bg-brand-dark-fundo w-full bg-grid-suico">
-  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+<section class="relative min-h-[90vh] flex flex-col justify-center pt-32 pb-20 overflow-hidden bg-brand-fundo dark:bg-brand-dark-fundo w-full bg-grid-suico">
+  <!-- Ambient Animated Glow -->
+  <div class="absolute top-0 right-1/4 w-96 h-96 bg-[#003CA5]/10 rounded-full blur-[120px] animate-[float_8s_ease-in-out_infinite] pointer-events-none"></div>
+  <div class="absolute bottom-0 left-10 w-72 h-72 bg-[#00A5FF]/5 rounded-full blur-[100px] animate-[float_10s_ease-in-out_infinite_reverse] pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 relative z-10 w-full">
     
     <!-- Language Switcher could be in navbar, but we ensure it's available -->
     
     <!-- Main Headline -->
-    <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-brand-titulos dark:text-brand-dark-tinta leading-[1.1] max-w-4xl mb-8">
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-brand-titulos dark:text-brand-dark-tinta leading-[1.1] max-w-4xl mb-8 animate-[fade-in-up_0.8s_ease-out_both]">
       <%= t('hero.h1') %>
     </h1>
 
     <!-- Subheadline -->
-    <p class="text-xl sm:text-2xl text-brand-tinta/80 dark:text-brand-dark-tinta/80 max-w-3xl font-normal leading-relaxed mb-12">
-      <%= raw t('hero.sub').gsub(/mente humana/, '<span class="marker-highlight">mente humana</span>').gsub(/human mind/, '<span class="marker-highlight">human mind</span>').gsub(/mente humana/, '<span class="marker-highlight">mente humana</span>') %>
+    <p class="text-xl sm:text-2xl text-brand-tinta/80 dark:text-brand-dark-tinta/80 max-w-3xl font-normal leading-relaxed mb-12 animate-[fade-in-up_0.8s_ease-out_0.2s_both]">
+      <%= raw t('hero.sub').gsub(/mente humana/, '<span class="marker-highlight font-medium">mente humana</span>').gsub(/human mind/, '<span class="marker-highlight font-medium">human mind</span>') %>
     </p>
 
     <!-- Primary Action Bar -->
-    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-6">
-      <a href="#work" class="flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-brand-primaria dark:bg-brand-dark-primaria text-white font-medium text-lg transition-transform hover:-translate-y-1 hover:shadow-2xl shadow-brand-primaria/30">
-        <span><%= t('hero.cta_primary', default: 'View My Work') %></span>
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-6 animate-[fade-in-up_0.8s_ease-out_0.4s_both]">
+      <a href="#work" class="group relative flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#003CA5] overflow-hidden hover:-translate-y-1 hover:shadow-xl hover:shadow-[#003CA5]/30 transition-all duration-300">
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shine_1.5s_ease-out]"></div>
+        <span class="text-white font-medium text-lg relative z-10"><%= t('hero.cta_primary', default: 'View My Work') %></span>
+        <svg class="w-5 h-5 text-white relative z-10 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
       </a>
 
-      <a href="#europe" class="group relative flex items-center justify-center gap-3 px-8 py-4 rounded-full overflow-hidden bg-brand-surface dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 hover:shadow-lg hover:shadow-[#003CA5]/10 text-brand-tinta dark:text-white font-medium text-lg transition-all duration-500 hover:-translate-y-1 animate-[fade-in-up_1s_ease-out_0.5s_both]">
+      <a href="#europe" class="group relative flex items-center justify-center gap-3 px-8 py-4 rounded-full overflow-hidden bg-brand-surface dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 hover:shadow-lg hover:shadow-[#003CA5]/10 text-brand-tinta dark:text-white font-medium text-lg transition-all duration-500 hover:-translate-y-1">
         <div class="absolute inset-0 bg-gradient-to-r from-[#003CA5]/0 via-[#003CA5]/5 to-[#003CA5]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
         <span class="text-xl leading-none relative z-10 origin-bottom-right transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-12 group-hover:animate-[wave_1.5s_ease-in-out_infinite]">🇪🇺</span>
         <span class="relative z-10"><%= t('hero.cta_secondary') %></span>
+      </a>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="mt-20 animate-[fade-in-up_0.8s_ease-out_0.8s_both]">
+      <a href="#work" class="inline-flex flex-col items-center gap-2 text-neutral-400 hover:text-[#003CA5] transition-colors group" aria-label="Scroll to work">
+        <span class="text-xs font-mono uppercase tracking-widest font-semibold">Scroll</span>
+        <div class="w-px h-12 bg-neutral-200 dark:bg-neutral-800 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-1/2 bg-[#003CA5] animate-[scroll-down_2s_ease-in-out_infinite]"></div>
+        </div>
       </a>
     </div>
 

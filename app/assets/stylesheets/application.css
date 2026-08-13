@@ -71,3 +71,24 @@ html.dark {
     transform: rotate(10deg);
   }
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+}
+
+@keyframes highlight-draw {
+  from { background-size: 0% 100%; }
+  to { background-size: 100% 100%; }
+}
+
+.animate-highlight {
+  background-image: linear-gradient(120deg, rgba(255, 230, 0, 0.4) 0%, rgba(255, 230, 0, 0.4) 100%);
+  background-repeat: no-repeat;
+  background-position: 0 90%;
+  animation: highlight-draw 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1s forwards;
+  background-size: 0% 100%;
+}
+.dark .animate-highlight {
+  background-image: linear-gradient(120deg, rgba(255, 230, 0, 0.3) 0%, rgba(255, 230, 0, 0.3) 100%);
+}
