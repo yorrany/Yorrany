@@ -1,16 +1,27 @@
 <!-- Floating Contact Widget -->
-<div class="fixed bottom-6 right-6 z-50 animate-[fade-in-up_1s_ease-out_1.5s_both]">
-  <!-- Glow Effect Background -->
-  <div class="absolute inset-0 bg-[#003CA5] rounded-full blur-md opacity-30 animate-pulse"></div>
-  
-  <a href="/vcard" data-turbo="false" title="Save Contact" class="relative flex items-center justify-center gap-2 px-5 py-3.5 bg-brand-surface dark:bg-[#13171F]/90 backdrop-blur-md rounded-full border border-[#003CA5]/30 shadow-2xl hover:shadow-[#003CA5]/40 hover:-translate-y-1 hover:border-[#003CA5] transition-all duration-300 group">
+<div class="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 z-50 animate-[fade-in-up_1s_ease-out_1.5s_both]">
+  <div class="bg-brand-surface dark:bg-[#13171F]/95 backdrop-blur-md rounded-2xl border border-[#003CA5]/20 shadow-2xl p-4 flex flex-col gap-3 max-w-[260px] group transition-all duration-300 hover:border-[#003CA5]/40 hover:shadow-[#003CA5]/20 hover:-translate-y-1">
     
-    <!-- Icon -->
-    <div class="bg-[#003CA5]/10 p-1.5 rounded-full text-[#003CA5] group-hover:bg-[#003CA5] group-hover:text-white transition-colors">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+    <!-- Preview Info -->
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-[#003CA5]/10 flex items-center justify-center shrink-0">
+        <svg class="w-5 h-5 text-[#003CA5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-sm font-bold text-brand-tinta dark:text-white leading-tight">Yorrany Braga</span>
+        <span class="text-[11px] font-medium text-[#003CA5] dark:text-[#00A5FF] leading-tight">Product Designer</span>
+      </div>
     </div>
     
-    <!-- Text -->
-    <span class="text-sm font-bold text-brand-tinta dark:text-white group-hover:text-[#003CA5] dark:group-hover:text-white font-mono transition-colors">Save Contact</span>
-  </a>
+    <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+      Salve meu <strong>vCard (.vcf)</strong> para me adicionar com 1 clique no contato do seu celular ou email.
+    </p>
+
+    <!-- Action Button -->
+    <a href="/vcard" data-turbo="false" class="relative mt-1 flex items-center justify-center gap-2 px-4 py-2 bg-[#003CA5] text-white rounded-lg transition-colors text-sm font-medium w-full overflow-hidden hover:shadow-lg hover:shadow-[#003CA5]/30">
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:animate-[shine_1s_ease-out]"></div>
+      <svg class="w-4 h-4 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+      <span class="relative z-10">Salvar Contato</span>
+    </a>
+  </div>
 </div>
