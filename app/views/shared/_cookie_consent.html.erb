@@ -29,7 +29,7 @@
 </div>
 
 <script>
-  document.addEventListener("turbo:load", () => {
+  (() => {
     const banner = document.getElementById("cookie-consent");
     if (!banner) return;
     
@@ -50,5 +50,5 @@
       setConsent("essential");
       alert("Suas preferências foram salvas: Apenas Cookies Essenciais foram mantidos para proteger sua privacidade.");
     });
-  });
+  })();
 </script>
