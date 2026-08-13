@@ -46,6 +46,7 @@
 
   <body class="min-h-screen bg-brand-fundo text-brand-tinta dark:bg-brand-dark-fundo dark:text-brand-dark-tinta font-sans overflow-x-hidden selection:bg-brand-acento selection:text-white">
     <%= yield %>
+    <%= render 'shared/cookie_consent' %>
     <%= render 'shared/scroll_to_top' %>
   </body>
 </html>
