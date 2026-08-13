@@ -1,29 +1,38 @@
 <!-- Cookie Consent (GDPR) -->
-<div id="cookie-consent" data-controller="cookie-consent" class="fixed bottom-6 right-6 z-[60] w-[calc(100%-3rem)] sm:max-w-[360px] bg-brand-surface dark:bg-[#13171F] border border-[#003CA5]/10 dark:border-white/10 rounded-2xl shadow-2xl p-5 hidden animate-[fade-in-up_1s_ease-out_0.5s_both] pointer-events-auto">
-  <div class="flex flex-col gap-3.5">
-    <div class="flex items-start justify-between">
-      <div class="flex items-center gap-2">
-        <svg class="w-5 h-5 text-[#003CA5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-        <h3 class="text-[13px] font-bold text-brand-tinta dark:text-white leading-none">Privacidade & Cookies</h3>
+<div id="cookie-consent" data-controller="cookie-consent" class="pointer-events-auto">
+  
+  <!-- Backdrop & Modal Inicial (Centro) -->
+  <div data-cookie-consent-target="backdrop" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 hidden opacity-0">
+    <div data-cookie-consent-target="modal" class="bg-brand-surface dark:bg-[#13171F] w-full max-w-lg rounded-3xl p-6 md:p-8 shadow-2xl border border-[#003CA5]/10 dark:border-white/10 animate-[fade-in-up_0.5s_ease-out_both] scale-95 transform transition-transform duration-300">
+      
+      <!-- Cabeçalho -->
+      <div class="flex items-center gap-3 mb-4">
+        <div class="p-2.5 bg-[#003CA5]/10 rounded-xl">
+          <svg class="w-6 h-6 text-[#003CA5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        </div>
+        <h2 class="text-xl md:text-2xl font-bold text-brand-tinta dark:text-white tracking-tight">Privacidade & Cookies</h2>
       </div>
-    </div>
-    
-    <p class="text-[11px] text-neutral-600 dark:text-neutral-400 leading-relaxed">
-      No espírito de máxima transparência (GDPR): usamos apenas cookies essenciais e analíticos anônimos para entregar e otimizar esta experiência.
-    </p>
-    
-    <div class="flex flex-col gap-2 mt-1">
-      <button data-action="click->cookie-consent#acceptAll" class="w-full py-2 bg-[#003CA5] hover:bg-[#002361] text-white text-[12px] font-semibold rounded-lg transition-colors">
-        Aceitar Todos
-      </button>
-      <div class="flex gap-2">
-        <button data-action="click->cookie-consent#rejectAll" class="w-1/2 py-2 bg-neutral-100 hover:bg-neutral-200 dark:bg-[#1C212B] dark:hover:bg-[#252B36] text-brand-tinta dark:text-white text-[12px] font-semibold rounded-lg transition-colors border border-transparent dark:border-white/5">
+
+      <p class="text-[13px] md:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-8">
+        No espírito de máxima transparência exigido pela GDPR: este portfólio utiliza cookies estritamente essenciais para o funcionamento, e cookies analíticos totalmente anonimizados para aprimorar o conteúdo.<br><br>Você no controle: a sua navegação não será rastreada caso não concorde.
+      </p>
+      
+      <!-- Ações -->
+      <div class="flex flex-col sm:flex-row justify-end gap-3">
+        <button data-action="click->cookie-consent#rejectAll" class="px-6 py-3 text-sm font-semibold rounded-xl bg-neutral-100 hover:bg-neutral-200 dark:bg-[#1C212B] dark:hover:bg-[#252B36] text-brand-tinta dark:text-white transition-colors border border-transparent dark:border-white/5 order-2 sm:order-1">
           Apenas Essenciais
         </button>
-        <button data-action="click->cookie-consent#manage" class="w-1/2 py-2 bg-transparent hover:bg-neutral-50 dark:hover:bg-[#1C212B] border border-brand-tinta/10 dark:border-white/10 text-brand-tinta dark:text-white text-[12px] font-semibold rounded-lg transition-colors">
-          Preferências
+        <button data-action="click->cookie-consent#acceptAll" class="px-6 py-3 text-sm font-semibold rounded-xl bg-[#003CA5] text-white hover:bg-[#002B7A] shadow-lg hover:shadow-[#003CA5]/30 transition-all transform hover:-translate-y-0.5 order-1 sm:order-2">
+          Aceitar Todos
         </button>
       </div>
     </div>
+  </div>
+
+  <!-- Estado Minimizado (Canto Inferior Esquerdo) -->
+  <div data-cookie-consent-target="minimized" class="fixed bottom-6 left-6 z-[90] hidden opacity-0 transition-opacity duration-300">
+    <button data-action="click->cookie-consent#revoke" class="p-3 bg-brand-surface dark:bg-[#13171F]/90 backdrop-blur-md rounded-full shadow-lg border border-[#003CA5]/20 hover:border-[#003CA5]/50 hover:shadow-[#003CA5]/20 transition-all hover:-translate-y-1 group flex items-center justify-center w-12 h-12" aria-label="Preferências de Privacidade">
+      <svg class="w-5 h-5 text-[#003CA5] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+    </button>
   </div>
 </div>
