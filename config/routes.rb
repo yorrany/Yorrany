@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get "/privacy", to: "home#privacy"
   get "/llms.txt", to: "home#llms"
   get "/cv/:filename", to: "cv#show"
+  get "/vcard", to: "contact#vcard"
 
+  resources :blog, controller: "blog", only: [ :index, :show ]
   get "/auth/:provider/callback", to: "linkedin_auth#callback"
   get "/auth/failure", to: "linkedin_auth#failure"
 

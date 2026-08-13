@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_07_120649) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_13_140214) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -75,6 +75,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_07_120649) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "expertise_pillars", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "position"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "mobility_string_translations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "key", null: false
@@ -98,6 +104,21 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_07_120649) do
     t.text "value"
     t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_text_translations_on_translatable_attribute"
     t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "published_at"
+    t.string "slug"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "software_skills", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "experience_years"
+    t.string "name"
+    t.integer "position"
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

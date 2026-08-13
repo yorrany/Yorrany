@@ -11,43 +11,43 @@
 
     <!-- 3-Column Bento Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      
-      <!-- Card 1 -->
-      <div class="card-bento card-bento-hover-motif flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-bold text-brand-tinta dark:text-brand-dark-tinta mb-4 font-serif">
-            <%= t('pillars.pillar1_title') %>
-          </h3>
-          <p class="text-brand-tinta/70 dark:text-brand-dark-tinta/70 text-base leading-relaxed">
-            <%= t('pillars.pillar1_desc') %>
-          </p>
+      <% if @pillars.any? %>
+        <% @pillars.each do |pillar| %>
+          <div class="card-bento card-bento-hover-motif flex flex-col justify-between group overflow-hidden relative">
+            <div class="relative z-10">
+              <h3 class="text-xl font-bold text-brand-tinta dark:text-brand-dark-tinta mb-4 font-serif">
+                <%= pillar.title %>
+              </h3>
+              <p class="text-brand-tinta/70 dark:text-brand-dark-tinta/70 text-base leading-relaxed">
+                <%= pillar.description %>
+              </p>
+            </div>
+            <% if pillar.image.attached? %>
+              <div class="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-20 transition-all duration-700 pointer-events-none" style="background-image: url('<%= url_for(pillar.image) %>')"></div>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <!-- Default Fallback Cards if DB is empty -->
+        <div class="card-bento card-bento-hover-motif flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-brand-tinta dark:text-brand-dark-tinta mb-4 font-serif"><%= t('pillars.pillar1_title') %></h3>
+            <p class="text-brand-tinta/70 dark:text-brand-dark-tinta/70 text-base leading-relaxed"><%= t('pillars.pillar1_desc') %></p>
+          </div>
         </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="card-bento card-bento-hover-motif flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-bold text-brand-tinta dark:text-brand-dark-tinta mb-4 font-serif">
-            <%= t('pillars.pillar2_title') %>
-          </h3>
-          <p class="text-brand-tinta/70 dark:text-brand-dark-tinta/70 text-base leading-relaxed">
-            <%= t('pillars.pillar2_desc') %>
-          </p>
+        <div class="card-bento card-bento-hover-motif flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-brand-tinta dark:text-brand-dark-tinta mb-4 font-serif"><%= t('pillars.pillar2_title') %></h3>
+            <p class="text-brand-tinta/70 dark:text-brand-dark-tinta/70 text-base leading-relaxed"><%= t('pillars.pillar2_desc') %></p>
+          </div>
         </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="card-bento card-bento-hover-motif flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-bold text-brand-tinta dark:text-brand-dark-tinta mb-4 font-serif">
-            <%= t('pillars.pillar3_title') %>
-          </h3>
-          <p class="text-brand-tinta/70 dark:text-brand-dark-tinta/70 text-base leading-relaxed">
-            <%= t('pillars.pillar3_desc') %>
-          </p>
+        <div class="card-bento card-bento-hover-motif flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-brand-tinta dark:text-brand-dark-tinta mb-4 font-serif"><%= t('pillars.pillar3_title') %></h3>
+            <p class="text-brand-tinta/70 dark:text-brand-dark-tinta/70 text-base leading-relaxed"><%= t('pillars.pillar3_desc') %></p>
+          </div>
         </div>
-      </div>
-
+      <% end %>
     </div>
   </div>
 </section>

@@ -1,5 +1,6 @@
 class CaseStudy < ApplicationRecord
   has_one_attached :image
+  has_many_attached :gallery_images
   extend Mobility
   include AutoTranslatable
   translates :title, type: :string
