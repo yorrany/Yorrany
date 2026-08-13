@@ -79,19 +79,19 @@
 
             <!-- Right Image / Mockup Column -->
             <div class="lg:col-span-5 relative bg-brand-fundo dark:bg-[#0B0D10] border-t lg:border-t-0 lg:border-l border-brand-tinta/5 dark:border-white/5 min-h-[320px] lg:min-h-full flex flex-col justify-between p-6 sm:p-8 overflow-hidden">
-              <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:scale-105 group-hover:opacity-60 transition-all duration-700 pointer-events-none" style="background-image: url('<%= url_for(spotlight_project.image) if spotlight_project.image.attached? %>')"></div>
-              <div class="absolute inset-0 bg-gradient-to-t from-brand-surface dark:from-[#0B0D10] via-brand-surface/60 dark:via-[#0B0D10]/60 to-transparent pointer-events-none"></div>
+              <div class="absolute inset-0 bg-cover bg-center opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 pointer-events-none" style="background-image: url('<%= url_for(spotlight_project.image) if spotlight_project.image.attached? %>')"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-surface dark:from-[#0B0D10] via-brand-surface/40 dark:via-[#0B0D10]/40 to-transparent pointer-events-none"></div>
 
               <!-- Top Badge Overlay -->
               <div class="relative z-10 flex justify-end">
-                <span class="px-3 py-1 rounded-full bg-brand-surface dark:bg-[#13171F]/90 backdrop-blur-md border border-brand-tinta/10 dark:border-white/10 text-[11px] font-mono text-neutral-700 dark:text-neutral-300">
+                <span class="px-3 py-1 rounded-full bg-brand-surface dark:bg-[#13171F]/90 backdrop-blur-md border border-brand-tinta/10 dark:border-white/10 text-[11px] font-mono text-neutral-700 dark:text-neutral-300 shadow-sm">
                   Role: <%= spotlight_project.role %>
                 </span>
               </div>
 
               <!-- Bottom Behavioral Highlights Card -->
-              <div class="relative z-10 bg-brand-surface dark:bg-[#13171F]/90 backdrop-blur-md p-5 rounded-2xl border border-brand-tinta/10 dark:border-white/10 shadow-xl">
-                <div class="flex items-center gap-2 text-xs font-mono text-purple-400 font-bold mb-2">
+              <div class="relative z-10 bg-brand-surface dark:bg-[#13171F]/95 backdrop-blur-md p-5 rounded-2xl border border-brand-tinta/10 dark:border-white/10 shadow-xl mt-auto">
+                <div class="flex items-center gap-2 text-xs font-mono text-purple-600 dark:text-purple-400 font-bold mb-2">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                   <span><%= t('work.behavioralEdge', default: 'Behavioral Edge') %></span>
                 </div>
@@ -107,9 +107,9 @@
       <!-- 2. SECONDARY PROJECTS GRID -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <% @case_studies.reject { |cs| cs.id == spotlight_project.id }.each do |project| %>
-          <div class="bg-brand-surface dark:bg-[#13171F] p-7 rounded-2xl border border-brand-tinta/5 dark:border-white/5 hover:border-brand-tinta/15 dark:border-white/15 transition-all cursor-pointer flex flex-col justify-between group relative overflow-hidden card-border-glow hover:shadow-xl">
-            <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700 pointer-events-none" style="background-image: url('<%= url_for(project.image) if project.image.attached? %>')"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-brand-surface dark:from-[#13171F] via-brand-surface/80 dark:via-[#13171F]/80 to-transparent pointer-events-none"></div>
+          <div class="bg-brand-surface dark:bg-[#13171F] p-7 rounded-2xl border border-brand-tinta/5 dark:border-white/5 hover:border-brand-tinta/15 dark:border-white/15 transition-all cursor-pointer flex flex-col justify-between group relative overflow-hidden card-border-glow hover:shadow-xl min-h-[350px]">
+            <div class="absolute inset-0 bg-cover bg-center opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 pointer-events-none" style="background-image: url('<%= url_for(project.image) if project.image.attached? %>')"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-surface dark:from-[#13171F] via-brand-surface/70 dark:via-[#13171F]/70 to-transparent pointer-events-none"></div>
             <div class="relative z-10">
               <div class="flex items-center justify-between mb-4">
                 <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400">
