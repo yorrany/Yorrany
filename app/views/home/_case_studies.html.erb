@@ -79,8 +79,8 @@
 
             <!-- Right Image / Mockup Column -->
             <div class="lg:col-span-5 relative bg-brand-fundo dark:bg-[#0B0D10] border-t lg:border-t-0 lg:border-l border-brand-tinta/5 dark:border-white/5 min-h-[320px] lg:min-h-full flex flex-col justify-between p-6 sm:p-8 overflow-hidden">
-              <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-700 pointer-events-none" style="background-image: url('<%= url_for(spotlight_project.image) if spotlight_project.image.attached? %>')"></div>
-              <div class="absolute inset-0 bg-gradient-to-t from-[#0B0D10] via-[#0B0D10]/70 to-transparent pointer-events-none"></div>
+              <div class="absolute inset-0 bg-cover bg-center opacity-40 group-hover:scale-105 group-hover:opacity-60 transition-all duration-700 pointer-events-none" style="background-image: url('<%= url_for(spotlight_project.image) if spotlight_project.image.attached? %>')"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-surface dark:from-[#0B0D10] via-brand-surface/60 dark:via-[#0B0D10]/60 to-transparent pointer-events-none"></div>
 
               <!-- Top Badge Overlay -->
               <div class="relative z-10 flex justify-end">
@@ -108,8 +108,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <% @case_studies.reject { |cs| cs.id == spotlight_project.id }.each do |project| %>
           <div class="bg-brand-surface dark:bg-[#13171F] p-7 rounded-2xl border border-brand-tinta/5 dark:border-white/5 hover:border-brand-tinta/15 dark:border-white/15 transition-all cursor-pointer flex flex-col justify-between group relative overflow-hidden card-border-glow hover:shadow-xl">
-            <div class="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-20 transition-all duration-700 pointer-events-none" style="background-image: url('<%= url_for(project.image) if project.image.attached? %>')"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-brand-surface dark:from-[#13171F] to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700 pointer-events-none" style="background-image: url('<%= url_for(project.image) if project.image.attached? %>')"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-surface dark:from-[#13171F] via-brand-surface/80 dark:via-[#13171F]/80 to-transparent pointer-events-none"></div>
             <div class="relative z-10">
               <div class="flex items-center justify-between mb-4">
                 <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400">
