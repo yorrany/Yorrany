@@ -1,0 +1,32 @@
+<% if @skills.any? %>
+<section class="py-20 bg-brand-surface dark:bg-[#13171F] w-full border-y border-[#003CA5]/10">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+    <div class="mb-12">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-tinta dark:text-white tracking-tight mb-2">Software Stack</h2>
+      <p class="text-neutral-600 dark:text-neutral-400">Tools of the trade and years of hands-on experience.</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <% @skills.each do |skill| %>
+        <div class="flex items-center gap-4 bg-brand-fundo dark:bg-[#0B0D10] p-4 rounded-2xl border border-brand-tinta/5 dark:border-white/5 shadow-sm hover:border-[#003CA5]/30 hover:shadow-md hover:-translate-y-0.5 transition-all">
+          <% if skill.icon.attached? %>
+            <div class="w-10 h-10 flex-shrink-0 bg-white dark:bg-[#13171F] p-1.5 rounded-lg border border-brand-tinta/10 dark:border-white/10 flex items-center justify-center">
+              <%= image_tag skill.icon, class: "max-w-full max-h-full object-contain" %>
+            </div>
+          <% else %>
+            <div class="w-10 h-10 flex-shrink-0 bg-[#003CA5]/10 text-[#003CA5] rounded-lg flex items-center justify-center font-bold text-lg">
+              <%= skill.name.first.upcase %>
+            </div>
+          <% end %>
+          <div>
+            <h3 class="font-bold text-brand-tinta dark:text-white text-sm"><%= skill.name %></h3>
+            <p class="text-[11px] font-mono text-neutral-500 dark:text-neutral-400 mt-0.5">
+              <%= skill.experience_years %> <%= I18n.locale.to_s.start_with?('pt') ? 'anos exp.' : 'yrs exp.' %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<% end %>
