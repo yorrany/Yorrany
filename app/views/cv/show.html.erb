@@ -45,15 +45,15 @@
   lang_key = 'en' unless t_headers.key?(lang_key)
   tl = t_headers[lang_key]
 %>
-<div class="fixed top-0 left-0 right-0 h-[36px] z-[10] border-b border-neutral-200 flex justify-between items-end pb-2 bg-white">
-  <span class="font-black text-xs text-neutral-900 tracking-tight">YORRANY BRAGA</span>
-  <span class="font-bold text-[10px] text-[#003CA5]">Principal Product Designer</span>
+<div style="position: fixed; top: 0; left: 0; right: 0; height: 30px; border-bottom: 1px solid #e5e5e5; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 4px; background-color: #ffffff; z-index: 1;">
+  <span style="font-weight: 900; font-size: 11px; color: #171717; letter-spacing: -0.02em;">YORRANY BRAGA</span>
+  <span style="font-weight: 700; font-size: 10px; color: #003CA5;">Principal Product Designer</span>
 </div>
 
 <table style="width: 100%; border-collapse: collapse; border-spacing: 0;">
   <thead style="display: table-header-group;">
     <tr>
-      <td style="height: 65px; padding: 0; border: none;"></td>
+      <td style="height: 38px; padding: 0; border: none;"></td>
     </tr>
   </thead>
   <tbody>
@@ -61,8 +61,8 @@
       <td style="padding: 0; border: none;">
         <div class="space-y-6 text-sm leading-relaxed text-neutral-800">
 
-          <!-- PAGE 1 HEADER -->
-          <div class="border-b-2 border-neutral-900 pb-5 avoid-break relative z-[30] bg-white" style="margin-top: -65px; padding-top: 65px;">
+          <!-- PAGE 1 HEADER (Cobre o header fixo na primeira página) -->
+          <div class="border-b-2 border-neutral-900 pb-5 avoid-break" style="position: relative; z-index: 10; background-color: #ffffff; margin-top: -38px; padding-top: 38px;">
             <div class="flex justify-between items-start gap-6">
       <div class="flex-1 min-w-0">
         <h1 class="text-4xl font-black tracking-tight text-neutral-900 truncate">YORRANY BRAGA</h1>
