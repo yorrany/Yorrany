@@ -46,7 +46,7 @@
         <% is_even = index.even? %>
         <% is_last = (index == @experiences.size - 1) %>
         
-        <div class="relative w-full mb-16 flex flex-col md:flex-row md:justify-between items-start md:items-center group">
+        <div class="relative w-full mb-12 md:mb-6 flex flex-col md:flex-row md:justify-between items-start md:items-center group">
           
           <!-- Date Marker (Mobile: Top/Left, Desktop: Center) -->
           <div class="absolute left-[20px] md:left-1/2 transform -translate-x-1/2 mt-6 md:mt-0 flex items-center justify-center z-10">
@@ -63,9 +63,9 @@
           <!-- Connecting Lines -->
           <% unless is_last %>
             <!-- Mobile: Continuous line from dot to next dot -->
-            <div class="md:hidden absolute left-[20px] transform -translate-x-1/2 w-[2px] bg-brand-tinta/10 dark:bg-white/10 top-[24px] h-[calc(100%+64px)] z-0"></div>
+            <div class="md:hidden absolute left-[20px] transform -translate-x-1/2 w-[2px] bg-brand-tinta/10 dark:bg-white/10 top-[24px] h-[calc(100%+48px)] z-0"></div>
             <!-- Desktop: Bottom half line (from center of this card to top of next card) -->
-            <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-[2px] bg-brand-tinta/10 dark:bg-white/10 top-[50%] h-[calc(50%+64px)] z-0"></div>
+            <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-[2px] bg-brand-tinta/10 dark:bg-white/10 top-[50%] h-[calc(50%+24px)] z-0"></div>
           <% end %>
           
           <% unless index == 0 %>
@@ -75,9 +75,9 @@
 
           <!-- Card Container -->
           <div class="w-full md:w-[45%] pl-12 md:pl-0 <%= is_even ? 'md:pr-8 md:text-right' : 'md:ml-auto md:pl-8' %>">
-            <div class="bg-brand-surface dark:bg-[#13171F] p-6 sm:p-8 rounded-2xl border border-brand-tinta/5 dark:border-white/5 hover:border-brand-tinta/15 dark:border-white/15 transition-all card-border-glow">
+            <div class="bg-brand-surface dark:bg-[#13171F] p-6 rounded-2xl border border-brand-tinta/5 dark:border-white/5 hover:border-brand-tinta/15 dark:border-white/15 transition-all card-border-glow">
               
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 <%= is_even ? 'md:flex-row-reverse' : '' %>">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2 <%= is_even ? 'md:flex-row-reverse' : '' %>">
                 <span class="md:hidden text-xs font-mono font-bold text-[#003CA5] mb-2 sm:mb-0">
                   <%= exp.period %>
                 </span>
@@ -86,20 +86,20 @@
                 </span>
               </div>
 
-              <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-1">
+              <h3 class="text-lg sm:text-xl font-bold text-brand-tinta dark:text-white mb-0.5">
                 <%= exp.role %>
               </h3>
 
-              <div class="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-4">
+              <div class="text-xs sm:text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3">
                 <%= exp.company %>
               </div>
 
-              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6">
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
                 <%= exp.summary %>
               </p>
 
               <% if exp.highlights.present? %>
-                <div class="space-y-2 mb-6 font-mono text-xs">
+                <div class="space-y-1.5 mb-4 font-mono text-xs">
                   <% exp.highlights.split('||').each do |h| %>
                     <div class="flex items-start gap-2 text-neutral-700 dark:text-neutral-300 <%= is_even ? 'md:flex-row-reverse' : '' %>">
                       <svg class="w-3.5 h-3.5 text-[#003CA5] shrink-0 mt-0.5 <%= is_even ? 'md:rotate-180' : '' %>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -110,7 +110,7 @@
               <% end %>
 
               <% if exp.skills.present? %>
-                <div class="flex flex-wrap gap-1.5 pt-4 border-t border-brand-tinta/5 dark:border-white/5 <%= is_even ? 'md:justify-end' : '' %>">
+                <div class="flex flex-wrap gap-1.5 pt-3 border-t border-brand-tinta/5 dark:border-white/5 <%= is_even ? 'md:justify-end' : '' %>">
                   <% exp.skills.split(',').each do |skill| %>
                     <span class="px-2.5 py-1 rounded-md bg-brand-fundo dark:bg-[#0B0D10] text-[10px] font-mono text-neutral-700 dark:text-neutral-300 border border-brand-tinta/5 dark:border-white/5">
                       <%= skill.strip %>
