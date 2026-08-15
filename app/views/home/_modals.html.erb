@@ -2,7 +2,7 @@
 <div>
 
   <!-- Europass Modal -->
-  <div data-modal-target="europassModal" data-action="click->modal#closeOutside" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md overflow-y-auto animate-fade-in print:bg-white print:p-0">
+  <div data-modal-target="europassModal" data-action="click->modal#closeOutside" class="hidden fixed inset-0 z-[9999] flex items-center justify-center p-0 sm:p-4 md:p-6 bg-black/90 backdrop-blur-md overflow-y-auto animate-fade-in print:bg-white print:p-0">
     <div class="relative w-full max-w-4xl bg-white text-neutral-900 rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col font-sans print:max-h-none print:shadow-none print:w-full print:max-w-none print:rounded-none">
       <!-- Modal Toolbar -->
       <div class="p-4 bg-[#0B0D10] text-white flex items-center justify-between print:hidden border-b border-white/10">
@@ -133,8 +133,8 @@
 
 
   <!-- Case Study Modal Wrapper -->
-  <div data-modal-target="caseStudyModal" data-action="click->modal#closeOutside" class="hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8 bg-black/85 backdrop-blur-md overflow-y-auto animate-fade-in print:hidden">
-    <div class="relative w-full max-w-5xl bg-white dark:bg-[#13171F] text-brand-tinta dark:text-white border border-neutral-200 dark:border-white/10 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden my-auto max-h-[94vh] flex flex-col transition-colors duration-300">
+  <div data-modal-target="caseStudyModal" data-action="click->modal#closeOutside" class="hidden fixed inset-0 z-[9999] flex items-center justify-center p-0 sm:p-4 md:p-6 lg:p-8 bg-black/90 backdrop-blur-md overflow-y-auto animate-fade-in print:hidden">
+    <div class="relative w-full h-full sm:h-auto max-w-5xl bg-white dark:bg-[#13171F] text-brand-tinta dark:text-white border-0 sm:border border-neutral-200 dark:border-white/10 rounded-none sm:rounded-3xl shadow-2xl overflow-hidden my-auto max-h-screen sm:max-h-[94vh] flex flex-col transition-colors duration-300">
       <% @case_studies.each do |case_study| %>
         <div class="case-study-content hidden h-full flex flex-col overflow-hidden" data-id="<%= case_study.id %>">
           
@@ -284,7 +284,7 @@
   </div>
 
   <!-- Cert Modal Wrapper -->
-  <div data-modal-target="certModal" data-action="click->modal#closeOutside" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/80 backdrop-blur-md overflow-y-auto animate-fade-in print:hidden">
+  <div data-modal-target="certModal" data-action="click->modal#closeOutside" class="hidden fixed inset-0 z-[9999] flex items-center justify-center p-0 sm:p-4 md:p-6 lg:p-10 bg-black/90 backdrop-blur-md overflow-y-auto animate-fade-in print:hidden">
     <div class="relative w-full lg:w-auto lg:min-w-[50vw] max-w-6xl bg-[#13171F] border border-white/10 rounded-3xl shadow-2xl overflow-hidden my-auto flex flex-col">
       <div class="p-6 sm:p-8 bg-[#0B0D10] border-b border-white/10 flex items-center justify-between gap-4 sticky top-0 z-20">
         <h2 id="cert-modal-title" class="text-xl sm:text-2xl font-extrabold text-white tracking-tight truncate flex-1">Documento</h2>
