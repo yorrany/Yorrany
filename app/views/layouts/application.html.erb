@@ -24,11 +24,17 @@
 
     <!-- Theme Mode FOUC Prevention -->
     <script nonce="<%= content_security_policy_nonce %>">
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
+      (function() {
+        try {
+          var t = localStorage.getItem('theme');
+          var isDark = t === 'dark' || ((!t || t === 'auto' || t === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
     </script>
     <%= yield :head %>
 
