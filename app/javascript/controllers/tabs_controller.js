@@ -37,11 +37,11 @@ export default class extends Controller {
 
     tabs.forEach((tab, i) => {
       if (i === index) {
-        tab.classList.add("bg-[#003CA5]", "hover:bg-[#002361]", "text-white", "shadow-lg")
-        tab.classList.remove("text-neutral-600", "dark:text-neutral-400", "hover:text-brand-tinta", "dark:hover:text-white", "hover:bg-brand-tinta/5", "dark:hover:bg-white/10")
+        tab.classList.add("bg-[#003CA5]", "hover:bg-[#002361]", "text-white", "shadow-lg", "border-[#003CA5]")
+        tab.classList.remove("text-neutral-600", "dark:text-neutral-400", "hover:text-brand-tinta", "dark:hover:text-white", "hover:bg-brand-tinta/5", "dark:hover:bg-white/10", "border-brand-tinta/10", "dark:border-white/10", "bg-brand-surface", "dark:bg-[#13171F]")
       } else {
-        tab.classList.remove("bg-[#003CA5]", "hover:bg-[#002361]", "text-white", "shadow-lg")
-        tab.classList.add("text-neutral-600", "dark:text-neutral-400", "hover:text-brand-tinta", "dark:hover:text-white", "hover:bg-brand-tinta/5", "dark:hover:bg-white/10")
+        tab.classList.remove("bg-[#003CA5]", "hover:bg-[#002361]", "text-white", "shadow-lg", "border-[#003CA5]")
+        tab.classList.add("text-neutral-600", "dark:text-neutral-400", "hover:text-brand-tinta", "dark:hover:text-white", "hover:bg-brand-tinta/5", "dark:hover:bg-white/10", "border-brand-tinta/10", "dark:border-white/10", "bg-brand-surface", "dark:bg-[#13171F]")
       }
     })
   }
