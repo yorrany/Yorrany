@@ -5,8 +5,8 @@ class CvController < ApplicationController
     locale_param = params[:filename].to_s.split("_").last.to_s.gsub(".pdf", "")
 
     case locale_param
-    when "pt"
-      I18n.locale = :pt
+    when "pt", "pt-PT", "pt-BR"
+      I18n.locale = :'pt-PT'
     when "es"
       I18n.locale = :es
     else
