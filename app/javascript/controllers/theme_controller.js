@@ -12,7 +12,7 @@ export default class extends Controller {
     window.addEventListener("storage", this.boundSync)
     this.mediaQuery.addEventListener("change", this.boundMediaChange)
 
-    this.syncState()
+    this.applyTheme(false)
   }
 
   disconnect() {
@@ -25,7 +25,7 @@ export default class extends Controller {
 
   handleMediaChange() {
     const savedTheme = localStorage.getItem("theme")
-    if (!savedTheme || savedTheme === "auto") {
+    if (!savedTheme || savedTheme === "auto" || savedTheme === "system") {
       this.applyTheme(true)
     }
   }
@@ -40,7 +40,7 @@ export default class extends Controller {
 
   applyTheme(dispatch = true) {
     const savedTheme = localStorage.getItem("theme")
-    const isDark = savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    const isDark = savedTheme === "dark" || ((!savedTheme || savedTheme === "auto" || savedTheme === "system") && window.matchMedia("(prefers-color-scheme: dark)").matches)
     
     if (isDark) {
       document.documentElement.classList.add("dark")
