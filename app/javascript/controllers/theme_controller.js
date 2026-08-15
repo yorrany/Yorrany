@@ -5,17 +5,12 @@ export default class extends Controller {
 
   connect() {
     this.boundSync = this.syncState.bind(this)
+    this.boundMediaChange = this.handleMediaChange.bind(this)
+    this.mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+
     window.addEventListener("theme-changed", this.boundSync)
     window.addEventListener("storage", this.boundSync)
-    
-    if (!window.__themeMediaListenerAttached) {
-      window.__themeMediaListenerAttached = true
-      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
-        if (!localStorage.getItem("theme") || localStorage.getItem("theme") === "auto") {
-          this.applyTheme(false)
-        }
-      })
-    }
+    this.mediaQuery.addEventListener("change", this.boundMediaChange)
 
     this.syncState()
   }
@@ -23,6 +18,16 @@ export default class extends Controller {
   disconnect() {
     window.removeEventListener("theme-changed", this.boundSync)
     window.removeEventListener("storage", this.boundSync)
+    if (this.mediaQuery && this.boundMediaChange) {
+      this.mediaQuery.removeEventListener("change", this.boundMediaChange)
+    }
+  }
+
+  handleMediaChange() {
+    const savedTheme = localStorage.getItem("theme")
+    if (!savedTheme || savedTheme === "auto") {
+      this.applyTheme(true)
+    }
   }
 
   toggle(e) {
