@@ -80,9 +80,9 @@
             </div>
 
             <!-- Right Image / Mockup Column -->
-            <div class="lg:col-span-5 relative bg-brand-fundo dark:bg-[#0B0D10] border-t lg:border-t-0 lg:border-l border-brand-tinta/5 dark:border-white/5 min-h-[320px] lg:min-h-full overflow-hidden">
+            <div class="lg:col-span-5 relative bg-brand-fundo dark:bg-[#0B0D10] border-t lg:border-t-0 lg:border-l border-brand-tinta/5 dark:border-white/5 min-h-[260px] sm:min-h-[320px] lg:min-h-full flex items-center justify-center p-4 sm:p-6 lg:p-0 overflow-hidden">
               <% if spotlight_project.image.attached? %>
-                <%= image_tag spotlight_project.image, class: "absolute inset-0 w-full h-full object-cover opacity-100 group-hover:scale-105 transition-transform duration-700 pointer-events-none" %>
+                <%= image_tag spotlight_project.image, class: "w-full h-auto max-h-[380px] lg:max-h-none lg:absolute lg:inset-0 lg:w-full lg:h-full object-contain lg:object-cover opacity-100 group-hover:scale-105 transition-transform duration-700 pointer-events-none rounded-xl lg:rounded-none" %>
               <% end %>
             </div>
           </div>
