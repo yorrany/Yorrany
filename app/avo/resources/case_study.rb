@@ -1,6 +1,6 @@
 class Avo::Resources::CaseStudy < Avo::BaseResource
   self.title = :title
-  self.includes = [:image_attachment, :gallery_images_attachments]
+  self.includes = [ :image_attachment, :gallery_images_attachments ]
 
   def fields
     field :id, as: :id
@@ -29,4 +29,3 @@ class Avo::Resources::CaseStudy < Avo::BaseResource
     field :full_description, as: :markdown, help: "Descrição completa com formatação rica (visível na página interna do case)"
   end
 end
-

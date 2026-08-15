@@ -2,7 +2,7 @@ class ContactController < ApplicationController
   def vcard
     photo_path = Rails.root.join("app", "assets", "images", "yorrany_thumb.jpg")
     photo_base64 = File.exist?(photo_path) ? Base64.strict_encode64(File.read(photo_path)) : ""
-    
+
     vcard_lines = [
       "BEGIN:VCARD",
       "VERSION:3.0",
