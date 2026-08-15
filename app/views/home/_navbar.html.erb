@@ -17,6 +17,12 @@
 
       <!-- Right Actions -->
       <div class="flex items-center gap-2">
+        <!-- Mobile Header CV Button -->
+        <a href="/cv/yorrany_cv_<%= I18n.locale.to_s.split('-').first %>" target="_blank" data-turbo="false" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-[#003CA5] text-white hover:bg-[#002361] shadow-sm transition-all border border-[#003CA5]/20" title="<%= I18n.locale.to_s.start_with?('pt') ? 'Descarregar CV' : (I18n.locale.to_s.start_with?('es') ? 'Descargar CV' : 'Download CV') %>">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          <span>CV</span>
+        </a>
+
         <!-- Theme Switcher -->
         <div data-controller="theme">
           <button data-action="click->theme#toggle" class="p-2 rounded-full text-brand-tinta dark:text-brand-dark-tinta hover:bg-brand-tinta/10 dark:hover:bg-brand-dark-tinta/10 transition-all" title="Toggle Theme">

@@ -35,6 +35,18 @@ es:
     gallery_title: "Galería Completa de Pantallas y Proceso"
     images_count: "imágenes"
     no_image: "Sin Imagen"
+  cv:
+    eyebrow: "Experiencia y Formación"
+    title: "Currículum y Credenciales"
+    subtitle: "Una cronología de mi trayectoria profesional, investigaciones académicas y certificaciones técnicas."
+    downloadPdf: "Descargar CV (PDF)"
+    expTab: "Experiencia"
+    certTab: "Certificaciones"
+    academicTab: "Formación"
+  contact_widget:
+    save_contact: "Guardar Contacto"
+    save_contact_agenda: "Guardar Contacto en la Agenda"
+    save_contact_desc: "Descarga una tarjeta .vcf con correo, portafolio y cargo"
   about:
     h2: "20 años aprendiendo cómo la gente lee, hace clic y confía."
     p1: "Empecé mi carrera en el diseño impreso, obsesionado con la tipografía suiza y las retículas milimétricas. Pero cuando la pantalla se convirtió en nuestro medio principal, entendí que la estética sola no bastaba. Estudié Psicología para comprender el porqué de las decisiones de las personas."

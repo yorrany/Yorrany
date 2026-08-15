@@ -35,6 +35,18 @@ en:
     gallery_title: "Full UI Gallery & Design Process"
     images_count: "images"
     no_image: "No Image"
+  cv:
+    eyebrow: "Curriculum & Credentials"
+    title: "Experience & Education"
+    subtitle: "A timeline of my professional journey, academic research, and technical certifications."
+    downloadPdf: "Download CV (PDF)"
+    expTab: "Experience"
+    certTab: "Certifications"
+    academicTab: "Education"
+  contact_widget:
+    save_contact: "Save Contact"
+    save_contact_agenda: "Save Contact to Address Book"
+    save_contact_desc: "Downloads a .vcf card with email, portfolio and role"
   about:
     h2: "20 years learning how people read, click and trust."
     p1: "I started my career in print design, obsessed with Swiss typography and millimetre-perfect grids. But when the screen became our main medium, I realised aesthetics alone weren't enough. I went on to study Psychology to understand the why behind people's choices."
