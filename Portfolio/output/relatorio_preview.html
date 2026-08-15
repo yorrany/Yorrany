@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfólio Behance - yorrany</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm 12mm 15mm 12mm;
+            @bottom-right {
+                content: counter(page);
+            }
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            background-color: #ffffff;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .header-cover {
+            padding: 40px 20px;
+            background: #0f172a;
+            color: #ffffff;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 250mm;
+            text-align: center;
+        }
+        .header-cover h1 {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            color: #38bdf8;
+        }
+        .header-cover p {
+            font-size: 16px;
+            color: #94a3b8;
+            margin-bottom: 24px;
+        }
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .stat-badge {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .stat-badge strong {
+            display: block;
+            font-size: 22px;
+            color: #ffffff;
+        }
+        .project-card {
+            page-break-after: always;
+            break-inside: avoid;
+            padding-top: 10px;
+            margin-bottom: 30px;
+        }
+        .project-header {
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+        .project-number {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #0284c7;
+            text-transform: uppercase;
+        }
+        .project-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 2px;
+        }
+        .project-tagline {
+            font-size: 14px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .meta-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+        .meta-box a {
+            color: #0284c7;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        .badge {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .content-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .cover-wrapper h3, .description-wrapper h3, .gallery-section h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .cover-img {
+            width: 100%;
+            max-height: 320px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .description-text {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #334155;
+            max-height: 320px;
+            overflow: hidden;
+            line-height: 1.6;
+        }
+        .gallery-section {
+            margin-top: 15px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-cover">
+        <h1>PORTFÓLIO DE PROJETOS</h1>
+        <p>Relatório Consolidado de Extração do Behance • @yorrany</p>
+        <div class="header-stats">
+            <div class="stat-badge">
+                <strong>16</strong>
+                Projetos Extraídos
+            </div>
+            <div class="stat-badge">
+                <strong>175</strong>
+                Imagens Baixadas
+            </div>
+            <div class="stat-badge">
+                <strong>15/08/2026</strong>
+                Data da Extração
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #01</span>
+                <h2 class="project-title">Cubos Academy</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 27 de setembro de 2023</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 24</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/181014093/Cubos-Academy" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design de interações</span><span class="badge">Direção artística</span><span class="badge">Interface e exp. do usuário</span><span class="badge">Figma</span><span class="badge">ux</span><span class="badge">uxdesign</span><span class="badge">UI/UX</span><span class="badge">uidesign</span><span class="badge">learning</span><span class="badge">learning app</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Cubos_Academy/capa.png" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (24 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_01.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_02.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_06.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_07.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_08.gif" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_09.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_10.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_11.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_12.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_13.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_14.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_15.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_16.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_17.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_18.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_19.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_20.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_21.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_22.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_23.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Cubos_Academy/imagens/imagem_24.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #02</span>
+                <h2 class="project-title">Kayo Paladino</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 28 de julho de 2024</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 12</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/204249217/Kayo-Paladino" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span><span class="badge">app design</span><span class="badge">UI/UX</span><span class="badge">ui design</span><span class="badge">ux</span><span class="badge">user interface</span><span class="badge">Figma</span><span class="badge">user experience</span><span class="badge">UX design</span><span class="badge">Mobile app</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/capa.png" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (12 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/imagens/imagem_01.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/imagens/imagem_02.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/imagens/imagem_06.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/imagens/imagem_07.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/imagens/imagem_08.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/imagens/imagem_09.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/imagens/imagem_10.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/imagens/imagem_11.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Kayo_Paladino/imagens/imagem_12.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #03</span>
+                <h2 class="project-title">Tecnorádio</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 27 de julho de 2024</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 10</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/188744247/Tecnoradio" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Publicidade</span><span class="badge">Design gráfico</span><span class="badge">Social media post</span><span class="badge">Figma</span><span class="badge">design gráfico</span><span class="badge">Socialmedia</span><span class="badge">Graphic Designer</span><span class="badge">design</span><span class="badge">marketing</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Tecnorádio/capa.png" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (10 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tecnorádio/imagens/imagem_01.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tecnorádio/imagens/imagem_02.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tecnorádio/imagens/imagem_03.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tecnorádio/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tecnorádio/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tecnorádio/imagens/imagem_06.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tecnorádio/imagens/imagem_07.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tecnorádio/imagens/imagem_08.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tecnorádio/imagens/imagem_09.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tecnorádio/imagens/imagem_10.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #04</span>
+                <h2 class="project-title">Gráfica Vitória</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 27 de julho de 2024</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 8</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/204195423/Grafica-Vitoria" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span><span class="badge">Portifólio</span><span class="badge">grafica</span><span class="badge">political</span><span class="badge">Political Art</span><span class="badge">politics</span><span class="badge">campaign</span><span class="badge">graphic design</span><span class="badge">Political campaign</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Gráfica_Vitória/capa.png" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (8 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Gráfica_Vitória/imagens/imagem_01.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Gráfica_Vitória/imagens/imagem_02.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Gráfica_Vitória/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Gráfica_Vitória/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Gráfica_Vitória/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Gráfica_Vitória/imagens/imagem_06.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Gráfica_Vitória/imagens/imagem_07.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Gráfica_Vitória/imagens/imagem_08.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #05</span>
+                <h2 class="project-title">Adriana Nunes</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 4 de setembro de 2024</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 13</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/207163601/Adriana-Nunes" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/capa.jpeg" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (13 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_01.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_02.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_06.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_07.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_08.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_09.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_10.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_11.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_12.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Adriana_Nunes/imagens/imagem_13.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #06</span>
+                <h2 class="project-title">LadyBee</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 6 de maio de 2025</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 8</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/225271679/LadyBee" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span><span class="badge">Web design</span><span class="badge">doceria</span><span class="badge">branding</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/LadyBee/capa.png" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (8 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/LadyBee/imagens/imagem_01.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/LadyBee/imagens/imagem_02.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/LadyBee/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/LadyBee/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/LadyBee/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/LadyBee/imagens/imagem_06.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/LadyBee/imagens/imagem_07.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/LadyBee/imagens/imagem_08.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #07</span>
+                <h2 class="project-title">Yorrany</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 19 de maio de 2025</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 8</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/226206145/Yorrany" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span><span class="badge">Marca</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Yorrany/capa.png" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (8 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Yorrany/imagens/imagem_01.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Yorrany/imagens/imagem_02.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Yorrany/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Yorrany/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Yorrany/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Yorrany/imagens/imagem_06.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Yorrany/imagens/imagem_07.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Yorrany/imagens/imagem_08.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #08</span>
+                <h2 class="project-title">Jungle Nutri</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 22 de julho de 2025</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 10</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/230870059/Jungle-Nutri" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span><span class="badge">Design de logotipo</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Jungle_Nutri/capa.png" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (10 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Jungle_Nutri/imagens/imagem_01.jpg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Jungle_Nutri/imagens/imagem_02.jpg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Jungle_Nutri/imagens/imagem_03.jpg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Jungle_Nutri/imagens/imagem_04.jpg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Jungle_Nutri/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Jungle_Nutri/imagens/imagem_06.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Jungle_Nutri/imagens/imagem_07.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Jungle_Nutri/imagens/imagem_08.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Jungle_Nutri/imagens/imagem_09.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Jungle_Nutri/imagens/imagem_10.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #09</span>
+                <h2 class="project-title">Geostrauss</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 9 de agosto de 2024</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 7</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/205190593/Geostrauss" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span><span class="badge">post</span><span class="badge">Social media post</span><span class="badge">motion design</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Geostrauss/capa.png" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (7 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Geostrauss/imagens/imagem_01.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Geostrauss/imagens/imagem_02.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Geostrauss/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Geostrauss/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Geostrauss/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Geostrauss/imagens/imagem_06.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Geostrauss/imagens/imagem_07.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #10</span>
+                <h2 class="project-title">CogniBox</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 20 de julho de 2024</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 12</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/203711349/CogniBox" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span><span class="badge">e-commerce</span><span class="badge">wordpress</span><span class="badge">Figma</span><span class="badge">psicologia</span><span class="badge">psicopedagogia</span><span class="badge">pedagogia</span><span class="badge">educação</span><span class="badge">identidade visual</span><span class="badge">branding</span><span class="badge">Logo Design</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/CogniBox/capa.png" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (12 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/CogniBox/imagens/imagem_01.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/CogniBox/imagens/imagem_02.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/CogniBox/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/CogniBox/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/CogniBox/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/CogniBox/imagens/imagem_06.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/CogniBox/imagens/imagem_07.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/CogniBox/imagens/imagem_08.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/CogniBox/imagens/imagem_09.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/CogniBox/imagens/imagem_10.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/CogniBox/imagens/imagem_11.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/CogniBox/imagens/imagem_12.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #11</span>
+                <h2 class="project-title">Dra. Priscilla Lima</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 11 de janeiro de 2024</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 7</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/188744299/Dra-Priscilla-Lima" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span><span class="badge">Marca</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Dra._Priscilla_Lima/capa.png" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (7 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Dra._Priscilla_Lima/imagens/imagem_01.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Dra._Priscilla_Lima/imagens/imagem_02.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Dra._Priscilla_Lima/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Dra._Priscilla_Lima/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Dra._Priscilla_Lima/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Dra._Priscilla_Lima/imagens/imagem_06.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Dra._Priscilla_Lima/imagens/imagem_07.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #12</span>
+                <h2 class="project-title">Itam</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 28 de julho de 2024</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 11</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/204248947/Itam" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span><span class="badge">Social media post</span><span class="badge">instagram</span><span class="badge">Socialmedia</span><span class="badge">Graphic Designer</span><span class="badge">design</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Itam/capa.jpeg" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (11 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Itam/imagens/imagem_01.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Itam/imagens/imagem_02.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Itam/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Itam/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Itam/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Itam/imagens/imagem_06.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Itam/imagens/imagem_07.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Itam/imagens/imagem_08.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Itam/imagens/imagem_09.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Itam/imagens/imagem_10.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Itam/imagens/imagem_11.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #13</span>
+                <h2 class="project-title">Grid Comercial</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 27 de julho de 2024</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 13</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/204195261/Grid-Comercial" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span><span class="badge">calendar</span><span class="badge">calendario</span><span class="badge">graphic design</span><span class="badge">Figma</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Grid_Comercial/capa.png" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (13 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_01.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_02.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_06.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_07.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_08.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_09.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_10.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_11.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_12.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Grid_Comercial/imagens/imagem_13.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #14</span>
+                <h2 class="project-title">Espaço Caboquinho</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 9 de agosto de 2024</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 10</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/205191049/Espaco-Caboquinho" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span><span class="badge">design</span><span class="badge">brand identity</span><span class="badge">Logo Design</span><span class="badge">branding</span><span class="badge">Graphic Designer</span><span class="badge">Social media post</span><span class="badge">marketing</span><span class="badge">visual identity</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Espaço_Caboquinho/capa.jpeg" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (10 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Espaço_Caboquinho/imagens/imagem_01.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Espaço_Caboquinho/imagens/imagem_02.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Espaço_Caboquinho/imagens/imagem_03.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Espaço_Caboquinho/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Espaço_Caboquinho/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Espaço_Caboquinho/imagens/imagem_06.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Espaço_Caboquinho/imagens/imagem_07.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Espaço_Caboquinho/imagens/imagem_08.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Espaço_Caboquinho/imagens/imagem_09.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Espaço_Caboquinho/imagens/imagem_10.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #15</span>
+                <h2 class="project-title">Diversos</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 11 de julho de 2021</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 15</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/123275353/Diversos" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Design gráfico</span><span class="badge">graphic design</span><span class="badge">print</span><span class="badge">flyer</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Diversos/capa.jpg" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (15 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_01.jpg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_02.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_04.jpg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_06.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_07.jpg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_08.jpg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_09.jpg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_10.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_11.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_12.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_13.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_14.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Diversos/imagens/imagem_15.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">PROJETO #16</span>
+                <h2 class="project-title">Tupinside</h2>
+                
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-box"><strong>Cliente:</strong> Não especificado</div>
+                <div class="meta-box"><strong>Publicação:</strong> 4 de setembro de 2024</div>
+                <div class="meta-box"><strong>Total Imagens:</strong> 7</div>
+                <div class="meta-box"><strong>Link:</strong> <a href="https://www.behance.net/gallery/207155465/Tupinside" target="_blank">Acessar no Behance</a></div>
+            </div>
+
+            <div class="tags-container"><span class="badge">Publicidade</span><span class="badge">Design gráfico</span></div>
+
+            <div class="content-body">
+                <div class="cover-wrapper">
+                    <h3>Capa Principal</h3>
+                    <img class="cover-img" src="file:///home/yorrany/Portfolio/output/Tupinside/capa.png" alt="Capa" />
+                </div>
+                <div class="description-wrapper">
+                    <h3>Descrição do Projeto</h3>
+                    <div class="description-text">Sem descrição fornecida.</div>
+                </div>
+            </div>
+
+            
+            <div class="gallery-section">
+                <h3>Galeria de Mídias (7 imagens)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tupinside/imagens/imagem_01.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tupinside/imagens/imagem_02.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tupinside/imagens/imagem_03.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tupinside/imagens/imagem_04.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tupinside/imagens/imagem_05.png" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tupinside/imagens/imagem_06.jpeg" alt="Imagem do Projeto" /></div><div class="gallery-item"><img src="file:///home/yorrany/Portfolio/output/Tupinside/imagens/imagem_07.png" alt="Imagem do Projeto" /></div>
+                </div>
+            </div>
+            
+        </div>
+        
+</body>
+</html>

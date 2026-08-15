@@ -1,0 +1,46 @@
+{
+  "titulo": "Espaço Caboquinho",
+  "slogan_tagline": "",
+  "cliente": "",
+  "data_publicacao": "9 de agosto de 2024",
+  "tags": [
+    "Design gráfico",
+    "design",
+    "brand identity",
+    "Logo Design",
+    "branding",
+    "Graphic Designer",
+    "Social media post",
+    "marketing",
+    "visual identity"
+  ],
+  "descricao": "",
+  "url_projeto": "https://www.behance.net/gallery/205191049/Espaco-Caboquinho",
+  "url_capa": "https://mir-s3-cdn-cf.behance.net/projects/original/2229ed205191049.Y3JvcCw0NTQ5LDM1NTgsMCwxNjIx.jpeg",
+  "caminho_local_capa": "Espaço_Caboquinho/capa.jpeg",
+  "urls_imagens_galeria": [
+    "https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/6531e3205191049.66d1d654881ef.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/7674ed205191049.66b8ea34d8245.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/992b64205191049.66b638f191864.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/3ffbc6205191049.66b6392e2677b.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d781c9181014093.Y3JvcCwxMjE3LDk1MiwzNDYsMA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d842e5204249217.Y3JvcCwyNDkwLDE5NDcsMCwxMg.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/1c9e07188744247.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea0787204195423.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea10f7207163601.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/74b452225271679.681a4c5f431d3.png"
+  ],
+  "caminhos_locais_galeria": [
+    "Espaço_Caboquinho/imagens/imagem_01.png",
+    "Espaço_Caboquinho/imagens/imagem_02.jpeg",
+    "Espaço_Caboquinho/imagens/imagem_03.jpeg",
+    "Espaço_Caboquinho/imagens/imagem_04.png",
+    "Espaço_Caboquinho/imagens/imagem_05.png",
+    "Espaço_Caboquinho/imagens/imagem_06.png",
+    "Espaço_Caboquinho/imagens/imagem_07.png",
+    "Espaço_Caboquinho/imagens/imagem_08.png",
+    "Espaço_Caboquinho/imagens/imagem_09.jpeg",
+    "Espaço_Caboquinho/imagens/imagem_10.png"
+  ],
+  "total_imagens": 10
+}

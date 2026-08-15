@@ -8,8 +8,15 @@
       <% end %>
     </div>
     <div class="flex-1">
-      <div class="flex justify-between">
-        <h3 class="text-white font-semibold"><%= case_study.title %></h3>
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <h3 class="text-white font-semibold"><%= case_study.title %></h3>
+          <% if case_study.is_spotlight? %>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#003CA5]/20 text-[#3d6cff] border border-[#003CA5]/40">
+              ★ DESTAQUE
+            </span>
+          <% end %>
+        </div>
         <div class="flex gap-2">
           <%= link_to "Editar", edit_admin_case_study_path(case_study), data: { turbo_frame: "modal" }, class: "text-xs text-neutral-400 hover:text-white" %>
           <%= button_to "Excluir", admin_case_study_path(case_study), method: :delete, data: { turbo_confirm: "Tem certeza?" }, class: "text-xs text-red-500 hover:text-red-400" %>

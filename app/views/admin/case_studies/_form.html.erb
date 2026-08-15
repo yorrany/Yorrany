@@ -9,6 +9,20 @@
     </div>
   <% end %>
 
+  <div class="flex items-center justify-between p-4 bg-[#13171F] border border-white/10 rounded-lg">
+    <div class="flex items-center gap-3">
+      <%= f.check_box :is_spotlight, class: "w-4 h-4 rounded border-white/20 text-[#003CA5] focus:ring-[#003CA5] bg-[#0B0D10]" %>
+      <div>
+        <%= f.label :is_spotlight, "Destacar na Página Inicial (Spotlight)", class: "text-sm font-semibold text-white cursor-pointer" %>
+        <p class="text-xs text-neutral-400">Exibe este projeto no bloco de destaque principal no topo da Home.</p>
+      </div>
+    </div>
+    <div class="w-40">
+      <%= f.label :accent_color, "Cor de Destaque", class: "block text-xs font-medium text-neutral-400 mb-1" %>
+      <%= f.text_field :accent_color, placeholder: "#003CA5", class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white focus:outline-none focus:border-[#003CA5]" %>
+    </div>
+  </div>
+
   <div>
     <%= f.label :title, "Título", class: "block text-sm font-medium text-neutral-300 mb-1" %>
     <%= f.text_field :title, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>

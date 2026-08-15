@@ -14,9 +14,9 @@ class AutoTranslateJob < ApplicationJob
     return if translated_attrs.empty?
 
     api_key = ENV.fetch("GEMINI_API_KEY", "")
-    url = URI("https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=#{api_key}")
+    url = URI("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent?key=#{api_key}")
 
-    Mobility.with_locale(:'pt-BR') do
+    Mobility.with_locale(:'pt-PT') do
       to_translate = {}
       translated_attrs.each do |attr|
         val = record.public_send(attr)
@@ -41,11 +41,6 @@ class AutoTranslateJob < ApplicationJob
 
       Mobility.with_locale(:es) do
         es_res.each { |k, v| record.public_send("#{k}=", v) } if es_res
-      end
-
-      # For pt-PT, just copy pt-BR
-      Mobility.with_locale(:'pt-PT') do
-        to_translate.each { |k, v| record.public_send("#{k}=", v) }
       end
 
       record.save!

@@ -1,0 +1,35 @@
+{
+  "titulo": "Geostrauss",
+  "slogan_tagline": "",
+  "cliente": "",
+  "data_publicacao": "9 de agosto de 2024",
+  "tags": [
+    "Design gráfico",
+    "post",
+    "Social media post",
+    "motion design"
+  ],
+  "descricao": "",
+  "url_projeto": "https://www.behance.net/gallery/205190593/Geostrauss",
+  "url_capa": "https://mir-s3-cdn-cf.behance.net/projects/original/812ae7205190593.Y3JvcCw4NTIsNjY3LDczLDA.png",
+  "caminho_local_capa": "Geostrauss/capa.png",
+  "urls_imagens_galeria": [
+    "https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/91160b205190593.66b6378390227.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d781c9181014093.Y3JvcCwxMjE3LDk1MiwzNDYsMA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d842e5204249217.Y3JvcCwyNDkwLDE5NDcsMCwxMg.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/1c9e07188744247.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea0787204195423.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea10f7207163601.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/74b452225271679.681a4c5f431d3.png"
+  ],
+  "caminhos_locais_galeria": [
+    "Geostrauss/imagens/imagem_01.png",
+    "Geostrauss/imagens/imagem_02.png",
+    "Geostrauss/imagens/imagem_03.png",
+    "Geostrauss/imagens/imagem_04.png",
+    "Geostrauss/imagens/imagem_05.png",
+    "Geostrauss/imagens/imagem_06.jpeg",
+    "Geostrauss/imagens/imagem_07.png"
+  ],
+  "total_imagens": 7
+}

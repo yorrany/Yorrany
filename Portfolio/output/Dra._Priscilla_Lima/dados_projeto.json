@@ -1,0 +1,33 @@
+{
+  "titulo": "Dra. Priscilla Lima",
+  "slogan_tagline": "",
+  "cliente": "",
+  "data_publicacao": "11 de janeiro de 2024",
+  "tags": [
+    "Design gráfico",
+    "Marca"
+  ],
+  "descricao": "",
+  "url_projeto": "https://www.behance.net/gallery/188744299/Dra-Priscilla-Lima",
+  "url_capa": "https://mir-s3-cdn-cf.behance.net/projects/original/27fd8c188744299.Y3JvcCwxMzUxLDEwNTYsMzAsNTMx.png",
+  "caminho_local_capa": "Dra._Priscilla_Lima/capa.png",
+  "urls_imagens_galeria": [
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/372de0188744299.65a06b142e7a0.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d781c9181014093.Y3JvcCwxMjE3LDk1MiwzNDYsMA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d842e5204249217.Y3JvcCwyNDkwLDE5NDcsMCwxMg.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/1c9e07188744247.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea0787204195423.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea10f7207163601.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/74b452225271679.681a4c5f431d3.png"
+  ],
+  "caminhos_locais_galeria": [
+    "Dra._Priscilla_Lima/imagens/imagem_01.png",
+    "Dra._Priscilla_Lima/imagens/imagem_02.png",
+    "Dra._Priscilla_Lima/imagens/imagem_03.png",
+    "Dra._Priscilla_Lima/imagens/imagem_04.png",
+    "Dra._Priscilla_Lima/imagens/imagem_05.png",
+    "Dra._Priscilla_Lima/imagens/imagem_06.jpeg",
+    "Dra._Priscilla_Lima/imagens/imagem_07.png"
+  ],
+  "total_imagens": 7
+}

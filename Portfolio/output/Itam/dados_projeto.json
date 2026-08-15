@@ -1,0 +1,45 @@
+{
+  "titulo": "Itam",
+  "slogan_tagline": "",
+  "cliente": "",
+  "data_publicacao": "28 de julho de 2024",
+  "tags": [
+    "Design gráfico",
+    "Social media post",
+    "instagram",
+    "Socialmedia",
+    "Graphic Designer",
+    "design"
+  ],
+  "descricao": "",
+  "url_projeto": "https://www.behance.net/gallery/204248947/Itam",
+  "url_capa": "https://mir-s3-cdn-cf.behance.net/projects/original/4fabc5204248947.Y3JvcCw4MTYsNjM4LDkwLDE0.jpeg",
+  "caminho_local_capa": "Itam/capa.jpeg",
+  "urls_imagens_galeria": [
+    "https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/ca5206204248947.66b639e3d7982.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/748508204248947.66b639e3d7e17.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/c6162a204248947.66b6345647b82.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/a7938a204248947.66a5aaa611a2e.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/bdd152204248947.66a5abd641d5d.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d781c9181014093.Y3JvcCwxMjE3LDk1MiwzNDYsMA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d842e5204249217.Y3JvcCwyNDkwLDE5NDcsMCwxMg.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/1c9e07188744247.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea0787204195423.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea10f7207163601.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/74b452225271679.681a4c5f431d3.png"
+  ],
+  "caminhos_locais_galeria": [
+    "Itam/imagens/imagem_01.jpeg",
+    "Itam/imagens/imagem_02.jpeg",
+    "Itam/imagens/imagem_03.png",
+    "Itam/imagens/imagem_04.png",
+    "Itam/imagens/imagem_05.png",
+    "Itam/imagens/imagem_06.png",
+    "Itam/imagens/imagem_07.png",
+    "Itam/imagens/imagem_08.png",
+    "Itam/imagens/imagem_09.png",
+    "Itam/imagens/imagem_10.jpeg",
+    "Itam/imagens/imagem_11.png"
+  ],
+  "total_imagens": 11
+}

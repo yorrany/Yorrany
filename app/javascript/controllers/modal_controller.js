@@ -42,9 +42,6 @@ export default class extends Controller {
 
   openCase(event) {
     event.preventDefault()
-    // For now, it opens the modal. In a full implementation, this could fetch
-    // a specific case study via turbo frame or show a pre-rendered one based on data-id.
-    // For this portfolio, we will just show the modal wrapper.
     const caseId = event.currentTarget.dataset.id
     this.caseStudyModalTarget.classList.remove("hidden")
     document.body.style.overflow = "hidden"
@@ -54,10 +51,22 @@ export default class extends Controller {
     contents.forEach(content => {
       if (content.dataset.id === caseId) {
         content.classList.remove('hidden')
+        const scrollable = content.querySelector('.modal-scroll-area')
+        if (scrollable) scrollable.scrollTop = 0
       } else {
         content.classList.add('hidden')
       }
     })
+  }
+
+  scrollToSection(event) {
+    if (event) event.preventDefault()
+    const targetId = event.currentTarget.dataset.targetId
+    if (!targetId) return
+    const el = document.getElementById(targetId)
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
   }
 
   closeCase(event) {

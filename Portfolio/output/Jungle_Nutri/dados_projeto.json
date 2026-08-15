@@ -1,0 +1,39 @@
+{
+  "titulo": "Jungle Nutri",
+  "slogan_tagline": "",
+  "cliente": "",
+  "data_publicacao": "22 de julho de 2025",
+  "tags": [
+    "Design gráfico",
+    "Design de logotipo"
+  ],
+  "descricao": "",
+  "url_projeto": "https://www.behance.net/gallery/230870059/Jungle-Nutri",
+  "url_capa": "https://mir-s3-cdn-cf.behance.net/projects/original/3819bb230870059.687efbba91ef5.png",
+  "caminho_local_capa": "Jungle_Nutri/capa.png",
+  "urls_imagens_galeria": [
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/1692c8230870059.687efbbb432f5.jpg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/d37b1c230870059.687efbbb44118.jpg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/79dfeb230870059.687efbbb43a24.jpg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/efffea230870059.687efbbb44832.jpg",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d781c9181014093.Y3JvcCwxMjE3LDk1MiwzNDYsMA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d842e5204249217.Y3JvcCwyNDkwLDE5NDcsMCwxMg.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/1c9e07188744247.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea0787204195423.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea10f7207163601.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/74b452225271679.681a4c5f431d3.png"
+  ],
+  "caminhos_locais_galeria": [
+    "Jungle_Nutri/imagens/imagem_01.jpg",
+    "Jungle_Nutri/imagens/imagem_02.jpg",
+    "Jungle_Nutri/imagens/imagem_03.jpg",
+    "Jungle_Nutri/imagens/imagem_04.jpg",
+    "Jungle_Nutri/imagens/imagem_05.png",
+    "Jungle_Nutri/imagens/imagem_06.png",
+    "Jungle_Nutri/imagens/imagem_07.png",
+    "Jungle_Nutri/imagens/imagem_08.png",
+    "Jungle_Nutri/imagens/imagem_09.jpeg",
+    "Jungle_Nutri/imagens/imagem_10.png"
+  ],
+  "total_imagens": 10
+}

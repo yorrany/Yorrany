@@ -1,0 +1,46 @@
+{
+  "titulo": "Tecnorádio",
+  "slogan_tagline": "",
+  "cliente": "",
+  "data_publicacao": "27 de julho de 2024",
+  "tags": [
+    "Publicidade",
+    "Design gráfico",
+    "Social media post",
+    "Figma",
+    "design gráfico",
+    "Socialmedia",
+    "Graphic Designer",
+    "design",
+    "marketing"
+  ],
+  "descricao": "",
+  "url_projeto": "https://www.behance.net/gallery/188744247/Tecnoradio",
+  "url_capa": "https://mir-s3-cdn-cf.behance.net/projects/original/1c9e07188744247.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+  "caminho_local_capa": "Tecnorádio/capa.png",
+  "urls_imagens_galeria": [
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d1e409188744247.66a5a6549c0d9.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/0a520f188744247.66a5a6549ca6e.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/efebbf188744247.66a47b166d39e.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/09889e188744247.66a47b166cbb7.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d781c9181014093.Y3JvcCwxMjE3LDk1MiwzNDYsMA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d842e5204249217.Y3JvcCwyNDkwLDE5NDcsMCwxMg.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea0787204195423.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea10f7207163601.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/74b452225271679.681a4c5f431d3.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/518250226206145.682af0d0ed877.png"
+  ],
+  "caminhos_locais_galeria": [
+    "Tecnorádio/imagens/imagem_01.png",
+    "Tecnorádio/imagens/imagem_02.png",
+    "Tecnorádio/imagens/imagem_03.jpeg",
+    "Tecnorádio/imagens/imagem_04.png",
+    "Tecnorádio/imagens/imagem_05.png",
+    "Tecnorádio/imagens/imagem_06.png",
+    "Tecnorádio/imagens/imagem_07.png",
+    "Tecnorádio/imagens/imagem_08.jpeg",
+    "Tecnorádio/imagens/imagem_09.png",
+    "Tecnorádio/imagens/imagem_10.png"
+  ],
+  "total_imagens": 10
+}

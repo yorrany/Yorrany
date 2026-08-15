@@ -1,0 +1,51 @@
+{
+  "titulo": "Diversos",
+  "slogan_tagline": "",
+  "cliente": "",
+  "data_publicacao": "11 de julho de 2021",
+  "tags": [
+    "Design gráfico",
+    "graphic design",
+    "print",
+    "flyer"
+  ],
+  "descricao": "",
+  "url_projeto": "https://www.behance.net/gallery/123275353/Diversos",
+  "url_capa": "https://mir-s3-cdn-cf.behance.net/projects/original/901414123275353.Y3JvcCw4NTIsNjY3LDUyLDA.jpg",
+  "caminho_local_capa": "Diversos/capa.jpg",
+  "urls_imagens_galeria": [
+    "https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/264ae8123275353.651cd91a56bc2.jpg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/b80fe6123275353.651cd7ff8e3e2.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/5e0d3b123275353.60eb5675c5dc0.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/b80df7123275353.65174726b305d.jpg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/92ab6d123275353.65174726b18ef.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/e2ff4f123275353.65174726b4ab3.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/ff2bce123275353.65174726b24d9.jpg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/cb19e2123275353.65174726b00e0.jpg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/8ae0ad123275353.65174726b0d01.jpg",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d781c9181014093.Y3JvcCwxMjE3LDk1MiwzNDYsMA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d842e5204249217.Y3JvcCwyNDkwLDE5NDcsMCwxMg.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/1c9e07188744247.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea0787204195423.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea10f7207163601.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/74b452225271679.681a4c5f431d3.png"
+  ],
+  "caminhos_locais_galeria": [
+    "Diversos/imagens/imagem_01.jpg",
+    "Diversos/imagens/imagem_02.png",
+    "Diversos/imagens/imagem_03.png",
+    "Diversos/imagens/imagem_04.jpg",
+    "Diversos/imagens/imagem_05.png",
+    "Diversos/imagens/imagem_06.png",
+    "Diversos/imagens/imagem_07.jpg",
+    "Diversos/imagens/imagem_08.jpg",
+    "Diversos/imagens/imagem_09.jpg",
+    "Diversos/imagens/imagem_10.png",
+    "Diversos/imagens/imagem_11.png",
+    "Diversos/imagens/imagem_12.png",
+    "Diversos/imagens/imagem_13.png",
+    "Diversos/imagens/imagem_14.jpeg",
+    "Diversos/imagens/imagem_15.png"
+  ],
+  "total_imagens": 15
+}

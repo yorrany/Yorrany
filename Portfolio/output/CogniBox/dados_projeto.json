@@ -1,0 +1,52 @@
+{
+  "titulo": "CogniBox",
+  "slogan_tagline": "",
+  "cliente": "",
+  "data_publicacao": "20 de julho de 2024",
+  "tags": [
+    "Design gráfico",
+    "e-commerce",
+    "wordpress",
+    "Figma",
+    "psicologia",
+    "psicopedagogia",
+    "pedagogia",
+    "educação",
+    "identidade visual",
+    "branding",
+    "Logo Design"
+  ],
+  "descricao": "",
+  "url_projeto": "https://www.behance.net/gallery/203711349/CogniBox",
+  "url_capa": "https://mir-s3-cdn-cf.behance.net/projects/original/358939203711349.Y3JvcCwxMDYzLDgzMiwxNjUsMA.png",
+  "caminho_local_capa": "CogniBox/capa.png",
+  "urls_imagens_galeria": [
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/68cacb203711349.669bf2aad7bc0.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/0d9785203711349.66a5452307fd6.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/b67afe203711349.66a5489d7c4c5.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/735eac203711349.66a5489d7bfa2.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/9d5b12203711349.66a5489d7b826.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/80e4fd203711349.66a5489d7b04c.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d781c9181014093.Y3JvcCwxMjE3LDk1MiwzNDYsMA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d842e5204249217.Y3JvcCwyNDkwLDE5NDcsMCwxMg.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/1c9e07188744247.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea0787204195423.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea10f7207163601.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/74b452225271679.681a4c5f431d3.png"
+  ],
+  "caminhos_locais_galeria": [
+    "CogniBox/imagens/imagem_01.png",
+    "CogniBox/imagens/imagem_02.png",
+    "CogniBox/imagens/imagem_03.png",
+    "CogniBox/imagens/imagem_04.png",
+    "CogniBox/imagens/imagem_05.png",
+    "CogniBox/imagens/imagem_06.png",
+    "CogniBox/imagens/imagem_07.png",
+    "CogniBox/imagens/imagem_08.png",
+    "CogniBox/imagens/imagem_09.png",
+    "CogniBox/imagens/imagem_10.png",
+    "CogniBox/imagens/imagem_11.jpeg",
+    "CogniBox/imagens/imagem_12.png"
+  ],
+  "total_imagens": 12
+}

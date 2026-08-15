@@ -6,7 +6,7 @@ class CvController < ApplicationController
 
     case locale_param
     when "pt"
-      I18n.locale = :'pt-BR'
+      I18n.locale = :pt
     when "es"
       I18n.locale = :es
     else

@@ -1,0 +1,48 @@
+{
+  "titulo": "Grid Comercial",
+  "slogan_tagline": "",
+  "cliente": "",
+  "data_publicacao": "27 de julho de 2024",
+  "tags": [
+    "Design gráfico",
+    "calendar",
+    "calendario",
+    "graphic design",
+    "Figma"
+  ],
+  "descricao": "",
+  "url_projeto": "https://www.behance.net/gallery/204195261/Grid-Comercial",
+  "url_capa": "https://mir-s3-cdn-cf.behance.net/projects/original/96d58a204195261.Y3JvcCwxMjIwLDk1NSw5MCww.png",
+  "caminho_local_capa": "Grid_Comercial/capa.png",
+  "urls_imagens_galeria": [
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/457f15204195261.66b6336315891.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/64f491204195261.66b6336314e3b.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/320a1f204195261.66a541f153ff5.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8509d2204195261.66a47d38da8c2.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/ee670c204195261.66a47d38da243.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/9e5d7f204195261.66a5428932f75.png",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/e492ef204195261.66abe6339922e.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d781c9181014093.Y3JvcCwxMjE3LDk1MiwzNDYsMA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/d842e5204249217.Y3JvcCwyNDkwLDE5NDcsMCwxMg.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/1c9e07188744247.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea0787204195423.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.png",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/ea10f7207163601.Y3JvcCw0MjYxLDMzMzMsMzY5LDA.jpeg",
+    "https://mir-s3-cdn-cf.behance.net/projects/original/74b452225271679.681a4c5f431d3.png"
+  ],
+  "caminhos_locais_galeria": [
+    "Grid_Comercial/imagens/imagem_01.jpeg",
+    "Grid_Comercial/imagens/imagem_02.jpeg",
+    "Grid_Comercial/imagens/imagem_03.png",
+    "Grid_Comercial/imagens/imagem_04.png",
+    "Grid_Comercial/imagens/imagem_05.png",
+    "Grid_Comercial/imagens/imagem_06.png",
+    "Grid_Comercial/imagens/imagem_07.png",
+    "Grid_Comercial/imagens/imagem_08.png",
+    "Grid_Comercial/imagens/imagem_09.png",
+    "Grid_Comercial/imagens/imagem_10.png",
+    "Grid_Comercial/imagens/imagem_11.png",
+    "Grid_Comercial/imagens/imagem_12.jpeg",
+    "Grid_Comercial/imagens/imagem_13.png"
+  ],
+  "total_imagens": 13
+}

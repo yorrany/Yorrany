@@ -134,96 +134,147 @@
 
   <!-- Case Study Modal Wrapper -->
   <div data-modal-target="caseStudyModal" data-action="click->modal#closeOutside" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/80 backdrop-blur-md overflow-y-auto animate-fade-in print:hidden">
-    <div class="relative w-full max-w-4xl bg-[#13171F] border border-white/10 rounded-3xl shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col">
+    <div class="relative w-full max-w-4xl bg-white dark:bg-[#13171F] text-brand-tinta dark:text-white border border-neutral-200 dark:border-white/10 rounded-3xl shadow-2xl overflow-hidden my-auto max-h-[90vh] flex flex-col transition-colors duration-300">
       <% @case_studies.each do |case_study| %>
-        <div class="case-study-content hidden h-full flex flex-col" data-id="<%= case_study.id %>" data-controller="tabs">
+        <div class="case-study-content hidden h-full flex flex-col overflow-hidden" data-id="<%= case_study.id %>">
+          
           <!-- Modal Header -->
-          <div class="p-6 sm:p-8 bg-[#0B0D10] border-b border-white/10 flex items-start justify-between gap-4 sticky top-0 z-20">
+          <div class="p-6 sm:p-8 bg-[#F8FAFC] dark:bg-[#0B0D10] border-b border-neutral-200 dark:border-white/10 flex items-start justify-between gap-4 shrink-0">
             <div>
-              <div class="flex items-center gap-2 text-xs font-mono text-[#003CA5] mb-2">
+              <div class="flex items-center gap-2 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] mb-2 font-bold">
                 <span><%= case_study.period %></span>
                 <span>•</span>
                 <span><%= case_study.client %></span>
               </div>
-              <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight"><%= case_study.title %></h2>
-              <p class="text-xs sm:text-sm text-neutral-400 font-mono mt-1"><%= case_study.role %></p>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-neutral-900 dark:text-white tracking-tight"><%= case_study.title %></h2>
+              <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-mono mt-1"><%= case_study.role %></p>
             </div>
-            <button data-action="click->modal#closeCase" class="p-2.5 rounded-full bg-[#13171F] hover:bg-white/10 border border-white/10 text-neutral-400 hover:text-white transition-all shrink-0">
+            <button data-action="click->modal#closeCase" class="p-2.5 rounded-full bg-neutral-200/80 hover:bg-neutral-300 dark:bg-[#13171F] dark:hover:bg-white/10 border border-neutral-300 dark:border-white/10 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-all shrink-0">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
           </div>
 
-          <!-- Modal Tabs -->
-          <div class="flex items-center gap-2 px-6 sm:px-8 py-3 bg-[#0B0D10]/50 border-b border-white/5 overflow-x-auto text-xs font-mono">
-            <button data-tabs-target="tab" data-action="click->tabs#switch" class="px-4 py-2 rounded-xl transition-all whitespace-nowrap font-semibold bg-[#003CA5] text-white shadow-md">1. Overview</button>
-            <button data-tabs-target="tab" data-action="click->tabs#switch" class="px-4 py-2 rounded-xl transition-all whitespace-nowrap font-semibold text-neutral-400 hover:text-white hover:bg-white/5">2. Strategy</button>
-            <% if case_study.respond_to?(:design_system_highlights) && case_study.design_system_highlights.present? %>
-              <button data-tabs-target="tab" data-action="click->tabs#switch" class="px-4 py-2 rounded-xl transition-all whitespace-nowrap font-semibold text-neutral-400 hover:text-white hover:bg-white/5">3. Design Tokens</button>
+          <!-- Barra de Navegação por Âncoras -->
+          <div class="flex items-center gap-2 px-6 sm:px-8 py-3 bg-neutral-100/90 dark:bg-[#0B0D10]/90 backdrop-blur-md border-b border-neutral-200 dark:border-white/5 overflow-x-auto text-xs font-mono shrink-0">
+            <button data-action="click->modal#scrollToSection" data-target-id="section-overview-<%= case_study.id %>" class="px-3.5 py-1.5 rounded-lg font-semibold bg-[#003CA5] text-white hover:bg-[#002361] shadow-sm transition-all whitespace-nowrap">
+              <%= t('case_modal.tab_overview', default: '1. Visão Geral') %>
+            </button>
+            <button data-action="click->modal#scrollToSection" data-target-id="section-challenge-<%= case_study.id %>" class="px-3.5 py-1.5 rounded-lg font-semibold bg-white dark:bg-[#13171F] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-white/10 border border-neutral-300 dark:border-white/10 shadow-sm transition-all whitespace-nowrap">
+              <%= t('case_modal.tab_challenge_solution', default: '2. Desafio & Solução') %>
+            </button>
+            <button data-action="click->modal#scrollToSection" data-target-id="section-strategy-<%= case_study.id %>" class="px-3.5 py-1.5 rounded-lg font-semibold bg-white dark:bg-[#13171F] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-white/10 border border-neutral-300 dark:border-white/10 shadow-sm transition-all whitespace-nowrap">
+              <%= t('case_modal.tab_strategy', default: '3. Estratégia & Psicologia') %>
+            </button>
+            <% if case_study.gallery_images.attached? %>
+              <button data-action="click->modal#scrollToSection" data-target-id="section-gallery-<%= case_study.id %>" class="px-3.5 py-1.5 rounded-lg font-semibold bg-white dark:bg-[#13171F] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-white/10 border border-neutral-300 dark:border-white/10 shadow-sm transition-all whitespace-nowrap">
+                <%= t('case_modal.tab_gallery', default: '4. Galeria de Telas') %> (<%= case_study.gallery_images.count %>)
+              </button>
             <% end %>
-            <button data-tabs-target="tab" data-action="click->tabs#switch" class="px-4 py-2 rounded-xl transition-all whitespace-nowrap font-semibold text-neutral-400 hover:text-white hover:bg-white/5">4. Metrics</button>
           </div>
 
-          <div class="p-6 sm:p-8 overflow-y-auto space-y-8 flex-1">
-            <!-- Overview -->
-            <div data-tabs-target="panel" class="space-y-6">
-              <div class="relative rounded-2xl overflow-hidden border border-white/10 h-48 sm:h-64">
+          <!-- Corpo do Modal com Scroll Unificado -->
+          <div class="modal-scroll-area p-6 sm:p-8 md:p-10 overflow-y-auto space-y-10 flex-1 bg-white dark:bg-[#13171F] text-neutral-800 dark:text-neutral-200">
+            
+            <!-- 1. SEÇÃO: VISÃO GERAL & CAPA -->
+            <div id="section-overview-<%= case_study.id %>" class="space-y-6 scroll-mt-4">
+              <!-- Imagem de Capa -->
+              <div class="relative rounded-2xl overflow-hidden border border-neutral-200 dark:border-white/10 max-h-96 bg-neutral-100 dark:bg-[#07090C]">
                 <% if case_study.image.attached? %>
-                  <%= image_tag case_study.image, class: "w-full h-full object-cover" %>
+                  <%= image_tag case_study.image, class: "w-full h-auto object-cover max-h-96", loading: "lazy" %>
                 <% end %>
-                <div class="absolute inset-0 bg-gradient-to-t from-[#13171F] via-[#13171F]/40 to-transparent"></div>
               </div>
-              <div class="bg-[#0B0D10] p-6 rounded-2xl border border-white/5">
-                <h3 class="text-sm font-mono text-[#003CA5] uppercase font-bold mb-3">Executive Narrative</h3>
-                <p class="text-sm text-neutral-300 leading-relaxed"><%= case_study.full_description %></p>
+
+              <!-- Tagline & Tags -->
+              <% if case_study.tagline.present? %>
+                <div class="text-base sm:text-lg font-semibold text-[#003CA5] dark:text-[#5B8EFF]">
+                  <%= case_study.tagline %>
+                </div>
+              <% end %>
+
+              <div class="flex flex-wrap gap-2">
+                <% (case_study.tags || "").split(',').each do |tag| %>
+                  <span class="px-3 py-1 rounded-lg bg-neutral-100 dark:bg-[#0B0D10] text-xs font-mono text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-white/10">
+                    <%= tag.strip %>
+                  </span>
+                <% end %>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-[#0B0D10] p-6 rounded-2xl border border-white/5">
-                  <h3 class="text-sm font-mono text-red-400 uppercase font-bold mb-3">The Challenge</h3>
-                  <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed"><%= case_study.challenge %></p>
-                </div>
-                <div class="bg-[#0B0D10] p-6 rounded-2xl border border-white/5">
-                  <h3 class="text-sm font-mono text-emerald-400 uppercase font-bold mb-3">The Solution</h3>
-                  <p class="text-xs sm:text-sm text-neutral-300 leading-relaxed"><%= case_study.solution %></p>
-                </div>
+
+              <!-- Narrativa do Projeto -->
+              <div class="bg-neutral-50 dark:bg-[#0B0D10] p-6 sm:p-7 rounded-2xl border border-neutral-200 dark:border-white/5">
+                <h3 class="text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] uppercase font-bold tracking-wider mb-3">
+                  <%= t('case_modal.executive_narrative', default: 'Narrativa do Projeto & Resumo Executivo') %>
+                </h3>
+                <p class="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+                  <%= case_study.full_description.presence || case_study.summary %>
+                </p>
               </div>
             </div>
 
-            <!-- Strategy -->
-            <div data-tabs-target="panel" class="hidden space-y-6">
-              <div class="bg-[#0B0D10] p-6 rounded-2xl border border-purple-500/20">
+            <!-- 2. SEÇÃO: DESAFIO & SOLUÇÃO -->
+            <div id="section-challenge-<%= case_study.id %>" class="grid grid-cols-1 md:grid-cols-2 gap-6 scroll-mt-4">
+              <div class="bg-red-50/70 dark:bg-[#0B0D10] p-6 sm:p-7 rounded-2xl border border-red-200 dark:border-red-500/20">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                  <h3 class="text-xs font-mono text-red-600 dark:text-red-400 uppercase font-bold tracking-wider">
+                    <%= t('case_modal.the_challenge', default: 'O Desafio') %>
+                  </h3>
+                </div>
+                <p class="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                  <%= case_study.challenge %>
+                </p>
+              </div>
+
+              <div class="bg-emerald-50/70 dark:bg-[#0B0D10] p-6 sm:p-7 rounded-2xl border border-emerald-200 dark:border-emerald-500/20">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                  <h3 class="text-xs font-mono text-emerald-600 dark:text-emerald-400 uppercase font-bold tracking-wider">
+                    <%= t('case_modal.the_solution', default: 'A Solução') %>
+                  </h3>
+                </div>
+                <p class="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                  <%= case_study.solution %>
+                </p>
+              </div>
+            </div>
+
+            <!-- 3. SEÇÃO: ESTRATÉGIA & BEHAVIORAL INSIGHT -->
+            <div id="section-strategy-<%= case_study.id %>" class="scroll-mt-4">
+              <div class="bg-purple-50/70 dark:bg-[#0B0D10] p-6 sm:p-7 rounded-2xl border border-purple-200 dark:border-purple-500/20">
                 <div class="flex items-center gap-3 mb-4">
-                  <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
-                  <h3 class="text-base font-bold text-white">Cognitive Psychology & Behavioral Architecture</h3>
+                  <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                  <h3 class="text-sm font-mono font-bold text-purple-700 dark:text-purple-300 uppercase tracking-wider">
+                    <%= t('case_modal.behavioral_title', default: 'Psicologia Cognitiva & Behavioral Architecture') %>
+                  </h3>
                 </div>
-                <p class="text-sm text-neutral-300 leading-relaxed mb-6"><%= case_study.behavioral_insight %></p>
+                <p class="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                  <%= case_study.behavioral_insight %>
+                </p>
               </div>
             </div>
 
-            <!-- Design Tokens -->
-            <% if case_study.respond_to?(:design_system_highlights) && case_study.design_system_highlights.present? %>
-              <div data-tabs-target="panel" class="hidden space-y-6">
-                <div class="bg-[#0B0D10] p-6 rounded-2xl border border-white/5">
-                  <div class="flex items-center gap-3 mb-4">
-                    <svg class="w-5 h-5 text-[#003CA5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z"></path></svg>
-                    <h3 class="text-base font-bold text-white">Design Tokens & System Architecture</h3>
-                  </div>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <% case_study.design_system_highlights.split('||').each do |item| %>
-                      <div class="p-4 bg-[#13171F] rounded-xl border border-white/5 flex items-center gap-3">
-                        <span class="text-xs font-mono text-neutral-200"><%= item.strip %></span>
-                      </div>
-                    <% end %>
-                  </div>
+            <!-- 4. SEÇÃO: GALERIA COMPLETA DE TELAS -->
+            <% if case_study.gallery_images.attached? %>
+              <div id="section-gallery-<%= case_study.id %>" class="space-y-6 scroll-mt-4 pt-4 border-t border-neutral-200 dark:border-white/10">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-base sm:text-lg font-bold text-neutral-900 dark:text-white flex items-center gap-2">
+                    <svg class="w-5 h-5 text-[#003CA5] dark:text-[#5B8EFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <%= t('case_modal.gallery_title', default: 'Galeria Completa de Telas & Processo') %>
+                  </h3>
+                  <span class="text-xs font-mono text-neutral-500">
+                    <%= case_study.gallery_images.count %> <%= t('case_modal.images_count', default: 'imagens') %>
+                  </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <% case_study.gallery_images.each do |img| %>
+                    <div class="relative group rounded-xl overflow-hidden border border-neutral-200 dark:border-white/10 bg-neutral-100 dark:bg-[#07090C] hover:border-[#003CA5]/50 dark:hover:border-white/20 transition-all shadow-sm">
+                      <%= image_tag img, class: "w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500", loading: "lazy" %>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             <% end %>
 
-            <!-- Metrics -->
-            <div data-tabs-target="panel" class="hidden space-y-6">
-              <div class="bg-[#0B0D10] p-6 rounded-2xl border border-white/5">
-                <p class="text-xs text-neutral-400">Metrics available soon or integrated in overview.</p>
-              </div>
-            </div>
           </div>
           
         </div>

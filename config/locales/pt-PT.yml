@@ -12,6 +12,33 @@ pt-PT:
     pillar2_desc: "Como psicólogo, olho para além dos cliques. Pergunto-me: qual é a carga cognitiva deste ecrã? Porque é que o utilizador desistiu aqui? Uso ciência comportamental e avaliações heurísticas para desenhar caminhos que fazem sentido para o cérebro humano, aumentando a conversão de forma ética e previsível."
     pillar3_title: "O fim do abismo entre o design e a engenharia"
     pillar3_desc: "O design não termina no Figma. Com a minha bagagem em front-end e segurança (JS/Python), falo a língua dos programadores. Entendo as limitações técnicas, previno falhas de segurança na interface e garanto que o que foi desenhado é, de facto, viável, acessível e seguro para ir para produção."
+  work:
+    eyebrow: "Estudos de Caso"
+    title: "Seleção de Portefólio"
+    subtitle: "Uma seleção de produtos onde a estratégia de design e os insights comportamentais geraram impacto mensurável para o negócio."
+    spotlightBadge: "Projeto em Destaque"
+    viewCase: "Ver Estudo de Caso"
+    behavioralEdge: "Diferencial Comportamental"
+    filters:
+      all: "Todos"
+      pd: "Product Design"
+      brand: "Estratégia de Marca"
+  case_modal:
+    tab_overview: "1. Visão Geral"
+    tab_challenge_solution: "2. Desafio & Solução"
+    tab_strategy: "3. Estratégia & Psicologia"
+    tab_gallery: "4. Galeria de Ecrãs"
+    executive_narrative: "Narrativa do Projeto & Resumo Executivo"
+    the_challenge: "O Desafio"
+    the_solution: "A Solução"
+    behavioral_title: "Psicologia Cognitiva & Behavioral Architecture"
+    gallery_title: "Galeria Completa de Ecrãs & Processo"
+    images_count: "imagens"
+    no_image: "Sem Imagem"
+  cv:
+    eyebrow: "Experiência & Formação"
+    title: "Currículo & Credenciais"
+    subtitle: "Uma linha do tempo da minha trajetória profissional, pesquisas académicas e certificações técnicas."
   about:
     h2: "20 anos a aprender como as pessoas leem, clicam e confiam."
     p1: "Comecei a minha carreira no design impresso, obcecado pela tipografia suíça e pelas grelhas milimétricas. Mas quando o ecrã se tornou o nosso principal meio, percebi que a estética sozinha não bastava. Fui estudar Psicologia para perceber o porquê das escolhas das pessoas."

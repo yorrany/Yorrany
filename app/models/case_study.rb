@@ -14,4 +14,12 @@ class CaseStudy < ApplicationRecord
   translates :solution, type: :text
   translates :behavioral_insight, type: :text
   translates :tags, type: :string
+
+  before_save :ensure_single_spotlight, if: :is_spotlight?
+
+  private
+
+  def ensure_single_spotlight
+    CaseStudy.where.not(id: id).where(is_spotlight: true).update_all(is_spotlight: false)
+  end
 end

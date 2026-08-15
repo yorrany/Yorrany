@@ -23,6 +23,18 @@ en:
       all: "All"
       pd: "Product Design"
       brand: "Brand Strategy"
+  case_modal:
+    tab_overview: "1. Overview"
+    tab_challenge_solution: "2. Challenge & Solution"
+    tab_strategy: "3. Strategy & Psychology"
+    tab_gallery: "4. UI Gallery"
+    executive_narrative: "Project Narrative & Executive Summary"
+    the_challenge: "The Challenge"
+    the_solution: "The Solution"
+    behavioral_title: "Cognitive Psychology & Behavioral Architecture"
+    gallery_title: "Full UI Gallery & Design Process"
+    images_count: "images"
+    no_image: "No Image"
   about:
     h2: "20 years learning how people read, click and trust."
     p1: "I started my career in print design, obsessed with Swiss typography and millimetre-perfect grids. But when the screen became our main medium, I realised aesthetics alone weren't enough. I went on to study Psychology to understand the why behind people's choices."

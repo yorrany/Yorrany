@@ -1,5 +1,4 @@
 pt-PT:
   cv:
-    view_doc: "Visualizar Doc"
-    validate: "Validar"
-    certificate: "Certificado"
+    title: "Currículo Europeu - Yorrany Braga"
+    filename: "yorrany_cv_pt.pdf"

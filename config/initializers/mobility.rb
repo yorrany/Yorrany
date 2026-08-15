@@ -78,7 +78,7 @@ Mobility.configure do
     # fallbacks
     #
     # Or uncomment this line to enable fallbacks with a global default.
-    fallbacks(en: :'pt-BR', es: :'pt-BR', 'pt-PT': :'pt-BR', 'pt-BR': :'pt-BR')
+    fallbacks(en: :'pt-PT', es: :'pt-PT', 'pt-PT': :'pt-PT')
 
     # Presence
     #
