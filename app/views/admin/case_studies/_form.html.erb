@@ -98,22 +98,33 @@
       </div>
     </div>
 
-    <div data-controller="image-preview">
-      <%= f.label :gallery_images, "Imagens do Projeto (Múltiplas)", class: "block text-sm font-medium text-neutral-300 mb-1" %>
-      <%= f.file_field :gallery_images, multiple: true, data: { action: "change->image-preview#preview", image_preview_target: "input" }, class: "w-full text-sm text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white/5 file:text-white hover:file:bg-white/10 mb-2" %>
+    <div>
+      <%= f.label :gallery_images, "Adicionar Novas Imagens à Galeria (Múltiplas)", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.file_field :gallery_images, multiple: true, class: "w-full text-sm text-neutral-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white/5 file:text-white hover:file:bg-white/10 mb-2" %>
       
-      <div data-image-preview-target="container" class="<%= case_study.gallery_images.attached? ? '' : 'hidden' %> mt-2">
-        <p class="text-xs text-neutral-500 mb-2">Preview (Novas seleções substituem as atuais):</p>
-        <div data-image-preview-target="preview" class="grid grid-cols-3 gap-2 max-h-48 overflow-y-auto pr-1 custom-scrollbar">
-          <% if case_study.gallery_images.attached? %>
-            <% case_study.gallery_images.each do |img| %>
-              <div class="relative group rounded-lg overflow-hidden border border-white/10">
-                <%= image_tag img, class: "w-full h-24 object-cover" %>
+      <% if case_study.persisted? && case_study.gallery_images.attached? %>
+        <div class="mt-4 p-3 bg-[#0B0D10] border border-white/10 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-mono text-neutral-400">Imagens Atuais da Galeria (<%= case_study.gallery_images.count %>)</span>
+            <span class="text-[10px] text-neutral-500">Passe o mouse e clique no ícone para excluir</span>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-60 overflow-y-auto pr-1">
+            <% case_study.gallery_images.attachments.each do |att| %>
+              <div id="gallery_attachment_<%= att.id %>" class="relative group rounded-lg overflow-hidden border border-white/10 bg-[#13171F]">
+                <%= image_tag att, class: "w-full h-24 object-cover", loading: "lazy" %>
+                <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-2">
+                  <%= link_to purge_attachment_admin_case_study_path(case_study, attachment_id: att.id),
+                              data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja excluir esta imagem da galeria?" },
+                              class: "p-2 rounded-full bg-red-600/90 hover:bg-red-600 text-white shadow-lg transition-transform hover:scale-110",
+                              title: "Excluir imagem" do %>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                  <% end %>
+                </div>
               </div>
             <% end %>
-          <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 

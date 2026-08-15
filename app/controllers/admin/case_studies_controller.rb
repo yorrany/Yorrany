@@ -1,6 +1,6 @@
 module Admin
   class CaseStudiesController < ApplicationController
-    before_action :set_case_study, only: %i[edit update destroy]
+    before_action :set_case_study, only: %i[edit update destroy purge_attachment]
 
     def new
       @case_study = CaseStudy.new
@@ -22,7 +22,11 @@ module Admin
     end
 
     def update
-      if @case_study.update(case_study_params)
+      params_to_update = case_study_params
+      new_gallery = params_to_update.delete(:gallery_images)
+      @case_study.gallery_images.attach(new_gallery) if new_gallery.present?
+
+      if @case_study.update(params_to_update)
         respond_to do |format|
           format.turbo_stream
           format.html { redirect_to admin_path, notice: "Estudo de caso atualizado." }
@@ -37,6 +41,19 @@ module Admin
       respond_to do |format|
         format.turbo_stream
         format.html { redirect_to admin_path, notice: "Estudo de caso removido." }
+      end
+    end
+
+    def purge_attachment
+      attachment = @case_study.gallery_images.attachments.find_by(id: params[:attachment_id])
+      if attachment
+        attachment.purge_later
+        respond_to do |format|
+          format.turbo_stream { render turbo_stream: turbo_stream.remove("gallery_attachment_#{params[:attachment_id]}") }
+          format.html { redirect_to edit_admin_case_study_path(@case_study), notice: "Imagem removida da galeria." }
+        end
+      else
+        redirect_to edit_admin_case_study_path(@case_study), alert: "Imagem não encontrada."
       end
     end
 

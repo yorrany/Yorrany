@@ -13,7 +13,11 @@ Rails.application.routes.draw do
 
   get "/admin", to: "admin/dashboard#index"
   namespace :admin do
-    resources :case_studies, except: [ :show ]
+    resources :case_studies, except: [ :show ] do
+      member do
+        delete "attachments/:attachment_id", action: :purge_attachment, as: :purge_attachment
+      end
+    end
     resources :experience_items, except: [ :show ]
     resources :certifications, except: [ :show ] do
       patch :reorder, on: :collection
