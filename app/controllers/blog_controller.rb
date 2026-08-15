@@ -1,3 +1,5 @@
+require "kramdown"
+
 class BlogController < ApplicationController
   def index
     @posts = Post.where("published_at <= ?", Time.current).order(published_at: :desc)

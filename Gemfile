@@ -80,3 +80,4 @@ gem "omniauth-linkedin-oauth2", "~> 1.0"
 gem "omniauth-rails_csrf_protection", "~> 2.0"
 
 gem "aws-sdk-s3", "~> 1.229"
+gem "kramdown", "~> 2.4"

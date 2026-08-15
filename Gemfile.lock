@@ -221,6 +221,8 @@ GEM
       sshkit (>= 1.23.0, < 2.0)
       thor (~> 1.3)
       zeitwerk (>= 2.6.18, < 3.0)
+    kramdown (2.5.2)
+      rexml (>= 3.4.4)
     language_server-protocol (3.17.0.6)
     lint_roller (1.1.0)
     logger (1.7.0)
@@ -538,6 +540,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
+  kramdown (~> 2.4)
   mobility (~> 1.3)
   omniauth-linkedin-oauth2 (~> 1.0)
   omniauth-rails_csrf_protection (~> 2.0)
