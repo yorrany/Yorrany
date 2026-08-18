@@ -167,6 +167,8 @@ else
     echo -e "${YELLOW}💡 Dica: Adicione-as no ambiente ou no arquivo .env para limpar a CDN automaticamente.${NC}"
 fi
 
+bundle config unset --local without 2>/dev/null || true
+
 echo -e "\n${GREEN}${BOLD}🎉 DEPLOY YORRANY CONCLUÍDO COM SUCESSO!${NC}"
 echo -e "------------------------------------------------------------"
 echo -e "🌎 Site: ${CYAN}https://yorrany.com.br${NC}"

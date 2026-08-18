@@ -19,6 +19,13 @@ class Rack::Attack
     end
   end
 
+  # Limit contact form submissions
+  throttle("contact/ip", limit: 10, period: 1.minute) do |req|
+    if req.path == "/contact" && req.post?
+      req.ip
+    end
+  end
+
   # Block known bad bots/scanners
   blocklist("block malicious bots") do |req|
     # commonly abused user agents
