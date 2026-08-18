@@ -31,16 +31,8 @@ class CvController < ApplicationController
                    "Page"
     end
 
-    europass_label = if locale_param.start_with?("es")
-                       "Formato Oficial Europass"
-    elsif locale_param.start_with?("pt")
-                       "Formato Oficial Europass"
-    else
-                       "Official Europass Format"
-    end
-
     logo_base64 = Base64.strict_encode64(File.read(Rails.root.join("app/assets/images/yorrany-horizontal.svg")))
-    footer_html = %Q(<div style="font-size: 9px; text-align: center; width: 100%; margin: 0 auto; color: #888; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; display: flex; justify-content: center; align-items: center; gap: 8px;"><img src="data:image/svg+xml;base64,#{logo_base64}" style="height: 12px; width: auto; opacity: 0.7;" /> <span>yorrany.com.br</span><span style="border-left: 1px solid #ccc; padding-left: 8px;">#{europass_label}</span><span style="border-left: 1px solid #ccc; padding-left: 8px;">#{page_label} <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>)
+    footer_html = %Q(<div style="font-size: 9px; text-align: center; width: 100%; margin: 0 auto; color: #888; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; display: flex; justify-content: center; align-items: center; gap: 8px;"><img src="data:image/svg+xml;base64,#{logo_base64}" style="height: 12px; width: auto; opacity: 0.7;" /> <span>yorrany.com.br</span><span style="border-left: 1px solid #ccc; padding-left: 8px;">#{page_label} <span class="pageNumber"></span> / <span class="totalPages"></span></span></div>)
 
     grover = Grover.new(html,
       format: "A4",
