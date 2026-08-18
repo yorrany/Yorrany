@@ -3,11 +3,11 @@
   <div class="max-w-6xl mx-auto px-6 sm:px-8">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
       <div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-tinta dark:text-white tracking-tight mb-2">Latest Insights</h2>
-        <p class="text-neutral-600 dark:text-neutral-400">Recent thoughts on product design and engineering.</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-tinta dark:text-white tracking-tight mb-2"><%= t('blog.latest_insights', default: 'Artigos Recentes') %></h2>
+        <p class="text-neutral-600 dark:text-neutral-400"><%= t('blog.latest_subtitle', default: 'Recent thoughts on product design and engineering.') %></p>
       </div>
-      <a href="/blog" class="inline-flex items-center gap-2 text-sm font-bold font-mono text-[#003CA5] hover:text-brand-primaria transition-colors">
-        Read the Blog
+      <a href="<%= blog_index_path %>" class="inline-flex items-center gap-2 text-sm font-bold font-mono text-[#003CA5] hover:text-brand-primaria transition-colors">
+        <%= t('blog.read_blog', default: 'Ler o Blog') %>
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
       </a>
     </div>
@@ -21,7 +21,7 @@
               <%= image_tag post.cover_image, class: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 relative z-0" %>
             </div>
           <% end %>
-          <time class="text-xs font-mono text-[#003CA5] mb-2 block"><%= post.published_at.strftime("%B %d, %Y") %></time>
+          <time class="text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] mb-2 block"><%= post.published_at ? (l(post.published_at.to_date, format: :long) rescue post.published_at.strftime("%B %d, %Y")) : "" %></time>
           <h3 class="text-2xl font-bold text-brand-tinta dark:text-white mb-3 group-hover:text-[#003CA5] transition-colors"><%= post.title %></h3>
           <p class="text-neutral-600 dark:text-neutral-400 line-clamp-2"><%= post.excerpt %></p>
         </a>
