@@ -3,7 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>Curriculum Vitae - Yorrany Braga</title>
-  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  <% 
+    tailwind_file = Dir.glob(Rails.root.join("public/assets/tailwind-*.css")).max_by { |f| File.mtime(f) }
+    if tailwind_file && File.exist?(tailwind_file)
+  %>
+    <style><%= File.read(tailwind_file).html_safe %></style>
+  <% else %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  <% end %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <style>
     /* Permitir margens nativas para Header/Footer do Puppeteer */
