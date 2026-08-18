@@ -23,6 +23,10 @@ en:
       all: "All"
       pd: "Product Design"
       brand: "Brand Strategy"
+      graphic: "Graphic Design"
+      ecommerce: "E-Commerce"
+    carousel_prev: "Previous project"
+    carousel_next: "Next project"
   case_modal:
     tab_overview: "1. Overview"
     tab_challenge_solution: "2. Challenge & Solution"
