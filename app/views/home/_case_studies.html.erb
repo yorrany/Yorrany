@@ -37,15 +37,15 @@
         <% end %>
       </div>
 
-      <!-- Navigation Arrows (Fixed/Interactive for Carousel) -->
-      <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+      <!-- Navigation Arrows (Interactive for Carousel on Mobile) -->
+      <div class="flex items-center gap-2 shrink-0 sm:hidden">
         <button 
           type="button"
           data-action="click->portfolio-filter#scrollPrev"
           data-portfolio-filter-target="prevBtn"
           aria-label="<%= t('work.carousel_prev', default: 'Previous project') %>"
           title="<%= t('work.carousel_prev', default: 'Previous project') %>"
-          class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-surface dark:bg-[#13171F] border border-brand-tinta/15 dark:border-white/15 hover:border-[#003CA5] dark:hover:border-[#5B8EFF] text-brand-tinta dark:text-white flex items-center justify-center shadow-sm hover:shadow-md transition-all active:scale-95">
+          class="w-9 h-9 rounded-full bg-brand-surface dark:bg-[#13171F] border border-brand-tinta/15 dark:border-white/15 hover:border-[#003CA5] dark:hover:border-[#5B8EFF] text-brand-tinta dark:text-white flex items-center justify-center shadow-sm hover:shadow-md transition-all active:scale-95">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
         </button>
         <button 
@@ -54,7 +54,7 @@
           data-portfolio-filter-target="nextBtn"
           aria-label="<%= t('work.carousel_next', default: 'Next project') %>"
           title="<%= t('work.carousel_next', default: 'Next project') %>"
-          class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#003CA5] hover:bg-[#002361] text-white border border-[#003CA5] flex items-center justify-center shadow-sm hover:shadow-md transition-all active:scale-95">
+          class="w-9 h-9 rounded-full bg-[#003CA5] hover:bg-[#002361] text-white border border-[#003CA5] flex items-center justify-center shadow-sm hover:shadow-md transition-all active:scale-95">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
         </button>
       </div>
@@ -145,14 +145,14 @@
       <!-- 2. SECONDARY PROJECTS CAROUSEL / GRID -->
       <div 
         data-portfolio-filter-target="carousel"
-        class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scroll-pl-4 sm:scroll-pl-6 md:scroll-pl-0 gap-4 sm:gap-6 md:gap-8 pb-6 pt-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2">
+        class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scroll-pl-4 gap-4 pb-4 sm:grid sm:grid-cols-1 md:grid-cols-2 sm:gap-8 sm:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0">
         <% @case_studies.reject { |cs| cs.id == spotlight_project.id }.each do |project| %>
           <div 
             data-portfolio-filter-target="item" 
             data-tags="<%= [project.tags, project.role, project_main_category(project)].compact.join(' ') %>" 
             data-action="click->modal#openCase" 
             data-id="<%= project.id %>" 
-            class="w-[74vw] max-w-[310px] sm:w-[320px] md:w-full shrink-0 snap-start bg-brand-surface dark:bg-[#13171F] rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#003CA5]/70 transition-all duration-300 cursor-pointer flex flex-col justify-between group overflow-hidden hover:shadow-2xl">
+            class="w-[74vw] max-w-[310px] sm:w-full sm:max-w-none shrink-0 sm:shrink snap-start sm:snap-align-none bg-brand-surface dark:bg-[#13171F] rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#003CA5]/70 transition-all duration-300 cursor-pointer flex flex-col justify-between group overflow-hidden hover:shadow-2xl">
             
             <!-- Imagem em Destaque (Topo do Card com Aspect-Ratio Fixo 16:10) -->
             <div class="relative w-full aspect-[16/10] bg-neutral-100 dark:bg-[#07090E] overflow-hidden">
