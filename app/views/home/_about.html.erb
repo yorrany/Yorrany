@@ -95,32 +95,77 @@
   </div>
   
   <div class="max-w-4xl mx-auto px-6 sm:px-8 text-center relative z-10">
-    <!-- Relógio ao vivo (simulated here for structure) -->
-    <div class="inline-flex flex-col items-center gap-1 mb-8">
-      <span class="text-brand-acento font-mono text-sm tracking-widest uppercase">Lisboa / Madrid</span>
-      <span class="text-xl font-mono opacity-80" data-controller="clock">--:--:--</span>
+    <!-- Relógio ao vivo -->
+    <div class="inline-flex flex-wrap items-center justify-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
+      <span class="inline-flex items-center gap-1.5 text-xs font-mono text-brand-acento uppercase tracking-wider font-semibold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <%= t('europe.time_label', default: 'Lisboa (WET) · Madrid (CET)') %>
+      </span>
+      <span class="text-xs text-white/30 hidden sm:inline">•</span>
+      <span class="text-xs sm:text-sm font-mono text-white/90 font-medium" data-controller="clock">--:--:--</span>
     </div>
 
-    <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-6 font-serif">
+    <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6 font-serif">
       <%= t('europe.h2') %>
     </h2>
     
-    <p class="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-10">
+    <p class="text-base sm:text-lg text-white/80 max-w-2xl mx-auto leading-relaxed mb-10">
       <%= t('europe.desc') %>
     </p>
 
-    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 mb-12 max-w-2xl mx-auto border border-brand-acento/30">
-      <p class="font-mono text-sm sm:text-base text-brand-acento">
-        <%= t('europe.status') %>
-      </p>
+    <!-- Grid de Especificações e Destaques de Contratação -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3.5 max-w-3xl mx-auto mb-12 text-left">
+      <!-- Item 1: Fuso Horário -->
+      <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-brand-acento/40 transition-all group flex flex-col justify-between">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-brand-acento font-bold"><%= t('europe.spec_tz_label') %></span>
+          <svg class="w-3.5 h-3.5 text-brand-acento opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div class="text-xs sm:text-[13px] font-semibold text-white leading-snug">
+          <%= t('europe.spec_tz_val') %>
+        </div>
+      </div>
+
+      <!-- Item 2: Modelo de Trabalho -->
+      <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-brand-acento/40 transition-all group flex flex-col justify-between">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-brand-acento font-bold"><%= t('europe.spec_model_label') %></span>
+          <svg class="w-3.5 h-3.5 text-brand-acento opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="text-xs sm:text-[13px] font-semibold text-white leading-snug">
+          <%= t('europe.spec_model_val') %>
+        </div>
+      </div>
+
+      <!-- Item 3: Elegibilidade & Vistos -->
+      <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-brand-acento/40 transition-all group flex flex-col justify-between">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-brand-acento font-bold"><%= t('europe.spec_eligibility_label') %></span>
+          <svg class="w-3.5 h-3.5 text-brand-acento opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <div class="text-xs sm:text-[13px] font-semibold text-white leading-snug">
+          <%= t('europe.spec_eligibility_val') %>
+        </div>
+      </div>
+
+      <!-- Item 4: Idiomas -->
+      <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-brand-acento/40 transition-all group flex flex-col justify-between">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-brand-acento font-bold"><%= t('europe.spec_languages_label') %></span>
+          <svg class="w-3.5 h-3.5 text-brand-acento opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+        </div>
+        <div class="text-xs sm:text-[13px] font-semibold text-white leading-snug">
+          <%= t('europe.spec_languages_val') %>
+        </div>
+      </div>
     </div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-      <a href="/cv/yorrany_cv_<%= I18n.locale.to_s.split('-').first %>" target="_blank" data-turbo="false" class="px-8 py-4 bg-brand-acento hover:bg-brand-acento/80 text-brand-titulos font-bold text-lg rounded-full transition-colors shadow-lg shadow-brand-acento/20 text-center">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+      <a href="/cv/yorrany_cv_<%= I18n.locale.to_s.split('-').first %>" target="_blank" data-turbo="false" class="w-full sm:w-auto px-8 py-4 bg-brand-acento hover:bg-brand-acento/80 text-brand-titulos font-bold text-base sm:text-lg rounded-full transition-all shadow-lg shadow-brand-acento/20 text-center hover:scale-[1.02] active:scale-[0.98]">
         <%= t('europe.cta_primary') %>
       </a>
       
-      <a href="https://linkedin.com/in/yorrany" target="_blank" class="px-8 py-4 bg-transparent border-2 border-white/20 hover:border-brand-acento text-white font-medium text-lg rounded-full transition-colors">
+      <a href="https://linkedin.com/in/yorrany" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-white/20 hover:border-brand-acento hover:bg-white/5 text-white font-medium text-base sm:text-lg rounded-full transition-all text-center hover:scale-[1.02] active:scale-[0.98]">
         <%= t('europe.cta_secondary') %>
       </a>
     </div>
