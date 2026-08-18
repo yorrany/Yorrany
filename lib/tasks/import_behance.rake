@@ -63,7 +63,7 @@ namespace :portfolio do
       case_study.period = period_str if case_study.period.blank? && period_str.present?
       case_study.client = p_data["cliente"] if case_study.client.blank? && p_data["cliente"].present?
       case_study.tagline = p_data["slogan_tagline"] if case_study.tagline.blank? && p_data["slogan_tagline"].present?
-      
+
       if case_study.summary.blank? && raw_desc.present?
         case_study.summary = raw_desc.truncate(300)
       end
@@ -132,7 +132,7 @@ namespace :portfolio do
       sorted_gallery = gallery_files.to_a.sort_by do |path|
         basename = File.basename(path, ".*")
         num = basename.scan(/\d+/).first.to_i
-        [num > 0 ? num : 9999, basename]
+        [ num > 0 ? num : 9999, basename ]
       end
 
       new_images_count = 0

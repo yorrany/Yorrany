@@ -30,6 +30,9 @@ fi
 # ETAPA 0: Qualidade e Segurança
 print_header "0" "Validações Locais (Testes, Lint e Segurança)"
 
+bundle config unset --local without 2>/dev/null || true
+bundle install --quiet
+
 echo -e "${YELLOW}🔒 Verificando vulnerabilidades nas dependências (bundle-audit)...${NC}"
 bundle exec bundle-audit check --update || { echo -e "${RED}Falha de segurança nas dependências! Abortando.${NC}"; exit 1; }
 
