@@ -4,10 +4,9 @@ class Rack::Attack
     req.ip == "127.0.0.1" || req.ip == "::1"
   end
 
-  # Safelist admin paths, Active Storage, assets and health check from general throttling
-  safelist("allow admin and static assets") do |req|
-    req.path.start_with?("/admin") ||
-      req.path.start_with?("/rails/active_storage") ||
+  # Safelist Active Storage, assets and health check from general throttling
+  safelist("allow static assets") do |req|
+    req.path.start_with?("/rails/active_storage") ||
       req.path.start_with?("/assets") ||
       req.path == "/up"
   end
@@ -15,7 +14,7 @@ class Rack::Attack
   # Rate limits for public routes
   # Limit public requests to 1000 per 5 minutes
   throttle("req/ip", limit: 1000, period: 5.minutes) do |req|
-    req.ip unless req.path.start_with?("/admin", "/rails/active_storage", "/assets")
+    req.ip
   end
 
   # Limit login attempts (Devise)
@@ -41,6 +40,6 @@ class Rack::Attack
   # Block known bad bots/scanners
   blocklist("block malicious bots") do |req|
     # commonly abused user agents
-    req.user_agent.to_s.match?(/Jorgee|python-requests|sqlmap|nikto/i) unless req.path.start_with?("/api", "/admin")
+    req.user_agent.to_s.match?(/Jorgee|python-requests|sqlmap|nikto/i)
   end
 end
