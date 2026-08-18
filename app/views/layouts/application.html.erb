@@ -22,16 +22,25 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- Theme Mode FOUC Prevention -->
+    <!-- Theme Meta & FOUC Prevention -->
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#F7F8FC" id="theme-color-meta">
     <script nonce="<%= content_security_policy_nonce %>">
       (function() {
         try {
           var t = localStorage.getItem('theme');
-          var isDark = t === 'dark' || ((!t || t === 'auto' || t === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = t === 'dark' || ((!t || t === 'auto' || t === 'system') && prefersDark);
           if (isDark) {
             document.documentElement.classList.add('dark');
+            document.documentElement.style.colorScheme = 'dark';
+            var meta = document.getElementById('theme-color-meta');
+            if (meta) meta.setAttribute('content', '#0A0E19');
           } else {
             document.documentElement.classList.remove('dark');
+            document.documentElement.style.colorScheme = 'light';
+            var meta = document.getElementById('theme-color-meta');
+            if (meta) meta.setAttribute('content', '#F7F8FC');
           }
         } catch (e) {}
       })();
