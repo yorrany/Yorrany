@@ -82,3 +82,11 @@ en:
     sentTitle: "Message Transmitted!"
     sendInquiry: "Send a Direct Inquiry"
     profilesLabel: "Professional Profiles"
+  blog:
+    index_title: "Blog"
+    index_subtitle: "Insights, thoughts, and writings on product design, human behaviour, and front-end architecture."
+    latest_insights: "Latest Insights"
+    latest_subtitle: "Recent thoughts on product design and engineering."
+    read_blog: "Read the Blog"
+    back_to_blog: "Back to Blog"
+    no_posts: "No posts published at the moment."

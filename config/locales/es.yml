@@ -82,3 +82,11 @@ es:
     sentTitle: "¡Mensaje Enviado!"
     sendInquiry: "Formulario de Contacto Directo"
     profilesLabel: "Perfiles Profesionales"
+  blog:
+    index_title: "Blog"
+    index_subtitle: "Artículos, reflexiones y ensayos sobre diseño de producto, conducta humana y arquitectura front-end."
+    latest_insights: "Artículos Recientes"
+    latest_subtitle: "Reflexiones sobre diseño de producto, comportamiento y tecnología."
+    read_blog: "Leer el Blog"
+    back_to_blog: "Volver al Blog"
+    no_posts: "No hay artículos publicados en este momento."

@@ -2,8 +2,8 @@
 <main class="py-24 md:py-32 bg-brand-fundo dark:bg-brand-dark-fundo min-h-screen">
   <div class="max-w-4xl mx-auto px-6 sm:px-8">
     <header class="mb-16">
-      <h1 class="text-4xl md:text-5xl font-bold text-brand-tinta dark:text-white mb-4">Blog</h1>
-      <p class="text-neutral-600 dark:text-neutral-400 text-lg">Insights, thoughts, and writings on design and engineering.</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-tinta dark:text-white mb-4"><%= t('blog.index_title', default: 'Blog') %></h1>
+      <p class="text-neutral-600 dark:text-neutral-400 text-lg"><%= t('blog.index_subtitle', default: 'Insights, thoughts, and writings on design and engineering.') %></p>
     </header>
 
     <div class="space-y-12">
@@ -15,7 +15,7 @@
             </div>
           <% end %>
           <div class="flex-1 flex flex-col justify-center">
-            <time class="text-xs font-mono text-[#003CA5] mb-2 block"><%= post.published_at.strftime("%B %d, %Y") %></time>
+            <time class="text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] mb-2 block"><%= post.published_at ? (l(post.published_at.to_date, format: :long) rescue post.published_at.strftime("%B %d, %Y")) : "" %></time>
             <h2 class="text-2xl font-bold text-brand-tinta dark:text-white mb-3 group-hover:text-[#003CA5] transition-colors">
               <a href="<%= blog_path(post.slug) %>" class="after:absolute after:inset-0">
                 <%= post.title %>
@@ -26,6 +26,10 @@
             </p>
           </div>
         </article>
+      <% end %>
+
+      <% if @posts.empty? %>
+        <p class="text-neutral-500 dark:text-neutral-400 text-sm font-mono italic"><%= t('blog.no_posts', default: 'Nenhum artigo publicado no momento.') %></p>
       <% end %>
     </div>
   </div>

@@ -1,53 +1,104 @@
 <%
   t_headers = {
     'en' => {
+      sub_title: "Principal Product Designer & Front-End Architect",
+      email_label: "Email",
+      tel_label: "Tel / WA",
+      loc_label: "Location",
+      loc_val: "Spain 🇪🇸 / Portugal 🇵🇹",
+      cred_label: "Credentials",
+      cred_psych: "B.Sc. in Psychology",
+      cred_psych_sub: "human behaviour",
+      cred_tech: "Front-End Architecture, Python & JS Security",
+      cred_tech_sub: "The Linux Foundation",
+      focus_label: "Focus",
+      focus_val: "digital health, e-commerce, design systems",
       profile: "Personal Statement & Professional Profile",
       exp: "Work Experience (2006 - 2026)",
       edu: "Education & Academic Degree",
       cert: "Certifications & Technical Credentials",
       lang: "Language & Digital Competences",
       thesis: "Thesis/Research:",
-      loc_val: "Spain 🇪🇸 / Portugal 🇵🇹",
+      lang_pt: "Portuguese",
+      lang_es: "Spanish",
+      lang_en: "English",
       pt_level: "Mother tongue (C2)",
       es_level: "Working Comprehension (A1)",
       en_level: "Technical / Prof. (A1)",
-      footer: "Official Europass Format - Generated dynamically via Rails Admin"
+      footer_doc: "Official Europass Format",
+      footer_gen: "Generated dynamically via Rails Admin"
     },
     'es' => {
+      sub_title: "Principal Product Designer & Front-End Architect",
+      email_label: "Correo",
+      tel_label: "Tel / WA",
+      loc_label: "Ubicación",
+      loc_val: "España 🇪🇸 / Portugal 🇵🇹",
+      cred_label: "Credenciales",
+      cred_psych: "Grado en Psicología",
+      cred_psych_sub: "conducta humana",
+      cred_tech: "Arquitectura Front-End, Python y JS Security",
+      cred_tech_sub: "The Linux Foundation",
+      focus_label: "Enfoque",
+      focus_val: "salud digital, e-commerce, design systems",
       profile: "Declaración Personal y Perfil Profesional",
       exp: "Experiencia Profesional (2006 - 2026)",
-      edu: "Educación y Grado Académico",
+      edu: "Educación y Formación Académica",
       cert: "Certificaciones y Credenciales Técnicas",
       lang: "Competencias Lingüísticas y Digitales",
-      thesis: "Tesis/Investigación:",
-      loc_val: "España 🇪🇸 / Portugal 🇵🇹",
+      thesis: "Tesis / Investigación:",
+      lang_pt: "Portugués",
+      lang_es: "Español",
+      lang_en: "Inglés",
       pt_level: "Lengua materna (C2)",
       es_level: "Comprensión funcional (A1)",
-      en_level: "Técnico / Prof. (A1)",
-      footer: "Formato Oficial Europass - Generado dinámicamente vía Rails Admin"
+      en_level: "Técnico / Profesional (A1)",
+      footer_doc: "Formato Oficial Europass",
+      footer_gen: "Generado dinámicamente vía Rails Admin"
     },
-    'pt-BR' => {
-      profile: "Resumo Profissional e Declaração Pessoal",
-      exp: "Experiência Profissional (2006 - 2026)",
-      edu: "Educação e Formação Acadêmica",
-      cert: "Certificações e Credenciais Técnicas",
-      lang: "Competências Linguísticas e Digitais",
-      thesis: "Tese/Pesquisa:",
+    'pt' => {
+      sub_title: "Principal Product Designer & Front-End Architect",
+      email_label: "E-mail",
+      tel_label: "Tel / WA",
+      loc_label: "Localização",
       loc_val: "Espanha 🇪🇸 / Portugal 🇵🇹",
+      cred_label: "Credenciais",
+      cred_psych: "Licenciatura em Psicologia",
+      cred_psych_sub: "comportamento humano",
+      cred_tech: "Front-End Architecture, Python & JS Security",
+      cred_tech_sub: "The Linux Foundation",
+      focus_label: "Foco",
+      focus_val: "saúde digital, e-commerce, design systems",
+      profile: "Resumo Profissional & Perfil Estratégico",
+      exp: "Experiência Profissional (2006 - 2026)",
+      edu: "Formação Académica & Ensino Superior",
+      cert: "Certificações & Credenciais Técnicas",
+      lang: "Competências Linguísticas & Digitais",
+      thesis: "Tese / Linha de Pesquisa:",
+      lang_pt: "Português",
+      lang_es: "Espanhol",
+      lang_en: "Inglês",
       pt_level: "Língua materna (C2)",
-      es_level: "Compreensão funcional (A1)",
-      en_level: "Técnico / Prof. (A1)",
-      footer: "Formato Oficial Europass - Gerado dinamicamente via Rails Admin"
+      es_level: "Compreensão profissional (A1)",
+      en_level: "Técnico / Profissional (A1)",
+      footer_doc: "Formato Oficial Europass",
+      footer_gen: "Gerado dinamicamente via Rails Admin"
     }
   }
-  
-  lang_key = I18n.locale.to_s
-  lang_key = 'en' unless t_headers.key?(lang_key)
+
+  current_loc = I18n.locale.to_s.downcase
+  lang_key = if current_loc.start_with?('pt')
+               'pt'
+             elsif current_loc.start_with?('es')
+               'es'
+             else
+               'en'
+             end
   tl = t_headers[lang_key]
 %>
 <div style="position: fixed; top: 0; left: 0; right: 0; height: 30px; border-bottom: 1px solid #e5e5e5; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 4px; background-color: #ffffff; z-index: 1;">
   <span style="font-weight: 900; font-size: 11px; color: #171717; letter-spacing: -0.02em;">YORRANY BRAGA</span>
-  <span style="font-weight: 700; font-size: 10px; color: #003CA5;">Principal Product Designer</span>
+  <span style="font-weight: 700; font-size: 10px; color: #003CA5;"><%= tl[:sub_title] %></span>
 </div>
 
 <table style="width: 100%; border-collapse: collapse; border-spacing: 0;">
@@ -64,110 +115,113 @@
           <!-- PAGE 1 HEADER (Cobre o header fixo na primeira página) -->
           <div class="border-b-2 border-neutral-900 pb-5 avoid-break" style="position: relative; z-index: 10; background-color: #ffffff; margin-top: -38px; padding-top: 38px;">
             <div class="flex justify-between items-start gap-6">
-      <div class="flex-1 min-w-0">
-        <h1 class="text-4xl font-black tracking-tight text-neutral-900 truncate">YORRANY BRAGA</h1>
-        <p class="text-lg font-semibold text-[#003CA5] mt-1 truncate">Principal Product Designer & Front-End Architect</p>
-      </div>
-      <div class="text-[11px] font-mono text-neutral-600 space-y-1 text-right border-l-2 border-[#003CA5] pl-4 flex-shrink-0">
-        <div class="whitespace-nowrap">Email: <a href="mailto:yorranymb@gmail.com" style="text-decoration: none; color: inherit;" class="font-semibold text-neutral-800 hover:text-[#003CA5]">yorranymb@gmail.com</a></div>
-        <div class="whitespace-nowrap">Tel / WA: <span class="font-semibold text-neutral-800">+55 92 98414-3818</span></div>
-        <div class="whitespace-nowrap">Location: <span class="font-semibold text-neutral-800"><%= tl[:loc_val] %></span></div>
-      </div>
-    </div>
-    <div class="mt-4 pt-3 border-t border-neutral-200">
-      <div class="flex justify-between items-center w-full text-[9px] sm:text-[10px] font-semibold text-neutral-600 whitespace-nowrap tracking-tight">
-        <span><span class="text-[#003CA5] uppercase tracking-normal">Credentials:</span> B.Sc. in Psychology <span class="text-neutral-400 font-normal">(human behaviour)</span></span>
-        <span class="text-neutral-300 mx-1">•</span>
-        <span>Front-End Architecture, Python &amp; JS Security <span class="text-neutral-400 font-normal">(The Linux Foundation)</span></span>
-        <span class="text-neutral-300 mx-1">•</span>
-        <span><span class="text-[#003CA5] uppercase tracking-normal">Focus:</span> digital health, e-commerce, design systems</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Content Sections -->
-  <div class="space-y-8 mt-4">
-    
-    <div class="avoid-break">
-      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-2 border-b border-neutral-200 pb-1"><%= tl[:profile] %></h2>
-      <p class="text-sm text-neutral-700 leading-relaxed text-justify">
-        <%= I18n.t('about.p2', default: 'Product designer with 20 years of experience, bridging visual precision, cognitive psychology, brand strategy, and software engineering. Specialized in building 0-to-1 digital health platforms, design systems, and high-conversion e-commerce infrastructures.') %> <%= I18n.t('about.p3', default: '') %>
-      </p>
-    </div>
-
-    <div>
-      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1 mt-6"><%= tl[:exp] %></h2>
-      <div class="space-y-6">
-        <% @experiences.each do |exp| %>
-          <div class="border-l-2 border-[#003CA5]/20 pl-4 py-1 avoid-break">
-            <div class="flex justify-between items-start text-xs font-mono mb-1">
-              <span class="font-bold text-neutral-900 text-sm"><%= exp.role %></span>
-              <span class="text-[#003CA5] font-bold"><%= exp.period %></span>
+              <div class="flex-1 min-w-0">
+                <h1 class="text-4xl font-black tracking-tight text-neutral-900 truncate">YORRANY BRAGA</h1>
+                <p class="text-lg font-semibold text-[#003CA5] mt-1 truncate"><%= tl[:sub_title] %></p>
+              </div>
+              <div class="text-[11px] font-mono text-neutral-600 space-y-1 text-right border-l-2 border-[#003CA5] pl-4 flex-shrink-0">
+                <div class="whitespace-nowrap"><%= tl[:email_label] %>: <a href="mailto:yorranymb@gmail.com" style="text-decoration: none; color: inherit;" class="font-semibold text-neutral-800 hover:text-[#003CA5]">yorranymb@gmail.com</a></div>
+                <div class="whitespace-nowrap"><%= tl[:tel_label] %>: <span class="font-semibold text-neutral-800">+55 92 98414-3818</span></div>
+                <div class="whitespace-nowrap"><%= tl[:loc_label] %>: <span class="font-semibold text-neutral-800"><%= tl[:loc_val] %></span></div>
+              </div>
             </div>
-            <div class="text-[11px] font-semibold text-neutral-600 mb-2"><%= exp.company %> <span class="mx-1">•</span> <%= exp.location %></div>
-            <p class="text-xs text-neutral-700 mb-2 leading-relaxed"><%= exp.summary %></p>
-            <ul class="list-disc list-inside text-[11px] text-neutral-600 space-y-1 ml-1">
-              <% (exp.highlights || "").split('||').each do |h| %>
-                <li><%= h.strip %></li>
-              <% end %>
-            </ul>
+            <div class="mt-4 pt-3 border-t border-neutral-200">
+              <div class="flex justify-between items-center w-full text-[9px] sm:text-[10px] font-semibold text-neutral-600 whitespace-nowrap tracking-tight">
+                <span><span class="text-[#003CA5] uppercase tracking-normal"><%= tl[:cred_label] %>:</span> <%= tl[:cred_psych] %> <span class="text-neutral-400 font-normal">(<%= tl[:cred_psych_sub] %>)</span></span>
+                <span class="text-neutral-300 mx-1">•</span>
+                <span><%= tl[:cred_tech] %> <span class="text-neutral-400 font-normal">(<%= tl[:cred_tech_sub] %>)</span></span>
+                <span class="text-neutral-300 mx-1">•</span>
+                <span><span class="text-[#003CA5] uppercase tracking-normal"><%= tl[:focus_label] %>:</span> <%= tl[:focus_val] %></span>
+              </div>
+            </div>
           </div>
-        <% end %>
-      </div>
-    </div>
 
-    <div class="avoid-break mt-6">
-      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1"><%= tl[:edu] %></h2>
-      <div class="space-y-4">
-        <% if @academic_bgs.present? %>
-          <% @academic_bgs.each do |bg| %>
-            <div class="border-l-2 border-[#003CA5]/20 pl-4 avoid-break">
-              <div class="font-bold text-sm text-neutral-900"><%= bg.degree %></div>
-              <div class="text-xs text-neutral-600 font-semibold mb-1"><%= bg.institution %></div>
-              <% if bg.thesis.present? %>
-                <div class="text-[11px] text-neutral-700 leading-relaxed"><%= tl[:thesis] %> "<%= bg.thesis %>"</div>
-              <% end %>
+          <!-- Content Sections -->
+          <div class="space-y-8 mt-4">
+            
+            <div class="avoid-break">
+              <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-2 border-b border-neutral-200 pb-1"><%= tl[:profile] %></h2>
+              <p class="text-sm text-neutral-700 leading-relaxed text-justify">
+                <%= I18n.t('about.p2', default: 'Product designer with 20 years of experience, bridging visual precision, cognitive psychology, brand strategy, and software engineering.') %> <%= I18n.t('about.p3', default: '') %>
+              </p>
             </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
 
-    <div class="avoid-break mt-6">
-      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1"><%= tl[:cert] %></h2>
-      <div class="grid grid-cols-2 gap-3">
-        <% @certifications.each do |c| %>
-          <a href="https://yorrany.com.br/?cert=<%= c.id %>" target="_blank" style="text-decoration: none; color: inherit; display: block;" class="avoid-break">
-            <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 flex flex-col justify-center h-full">
-              <div class="cert-title font-bold text-neutral-900 mb-1 leading-tight"><%= c.title %></div>
-              <div class="cert-pill text-neutral-600 mb-0.5"><%= c.issuer %> <%= c.year.present? ? "(#{c.year})" : "" %></div>
-              <div class="cert-pill text-[#003CA5] font-mono"><%= c.badge_code %></div>
+            <div>
+              <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1 mt-6"><%= tl[:exp] %></h2>
+              <div class="space-y-6">
+                <% @experiences.each do |exp| %>
+                  <div class="border-l-2 border-[#003CA5]/20 pl-4 py-1 avoid-break">
+                    <div class="flex justify-between items-start text-xs font-mono mb-1">
+                      <span class="font-bold text-neutral-900 text-sm"><%= exp.role %></span>
+                      <span class="text-[#003CA5] font-bold"><%= exp.period %></span>
+                    </div>
+                    <div class="text-[11px] font-semibold text-neutral-600 mb-2"><%= exp.company %> <span class="mx-1">•</span> <%= exp.location %></div>
+                    <p class="text-xs text-neutral-700 mb-2 leading-relaxed"><%= exp.summary %></p>
+                    <% if exp.highlights.present? %>
+                      <ul class="list-disc list-inside text-[11px] text-neutral-600 space-y-1 ml-1">
+                        <% exp.highlights.split('||').each do |h| %>
+                          <li><%= h.strip %></li>
+                        <% end %>
+                      </ul>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
             </div>
-          </a>
-        <% end %>
-      </div>
-    </div>
 
-    <div class="avoid-break mt-6">
-      <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1"><%= tl[:lang] %></h2>
-      <div class="grid grid-cols-3 gap-3 text-[11px] font-mono">
-        <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
-          <div class="font-bold text-neutral-900 text-xs"><%= lang_key == 'pt-BR' ? 'Português' : (lang_key == 'es' ? 'Portugués' : 'Portuguese') %></div>
-          <div class="text-neutral-600 mt-1"><%= tl[:pt_level] %></div>
-        </div>
-        <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
-          <div class="font-bold text-neutral-900 text-xs"><%= lang_key == 'pt-BR' ? 'Espanhol' : (lang_key == 'es' ? 'Español' : 'Spanish') %></div>
-          <div class="text-neutral-600 mt-1"><%= tl[:es_level] %></div>
-        </div>
-        <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
-          <div class="font-bold text-neutral-900 text-xs"><%= lang_key == 'pt-BR' ? 'Inglês' : (lang_key == 'es' ? 'Inglés' : 'English') %></div>
-          <div class="text-neutral-600 mt-1"><%= tl[:en_level] %></div>
-        </div>
-      </div>
-    </div>
-  </div>
+            <div class="avoid-break mt-6">
+              <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1"><%= tl[:edu] %></h2>
+              <div class="space-y-4">
+                <% if @academic_bgs.present? %>
+                  <% @academic_bgs.each do |bg| %>
+                    <div class="border-l-2 border-[#003CA5]/20 pl-4 avoid-break">
+                      <div class="font-bold text-sm text-neutral-900"><%= bg.degree %></div>
+                      <div class="text-xs text-neutral-600 font-semibold mb-1"><%= bg.institution %></div>
+                      <% if bg.thesis.present? %>
+                        <div class="text-[11px] text-neutral-700 leading-relaxed"><%= tl[:thesis] %> "<%= bg.thesis %>"</div>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="avoid-break mt-6">
+              <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1"><%= tl[:cert] %></h2>
+              <div class="grid grid-cols-2 gap-3">
+                <% @certifications.each do |c| %>
+                  <a href="https://yorrany.com.br/?cert=<%= c.id %>" target="_blank" style="text-decoration: none; color: inherit; display: block;" class="avoid-break">
+                    <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 flex flex-col justify-center h-full">
+                      <div class="cert-title font-bold text-neutral-900 mb-1 leading-tight"><%= c.title %></div>
+                      <div class="cert-pill text-neutral-600 mb-0.5"><%= c.issuer %> <%= c.year.present? ? "(#{c.year})" : "" %></div>
+                      <div class="cert-pill text-[#003CA5] font-mono"><%= c.badge_code %></div>
+                    </div>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="avoid-break mt-6">
+              <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1"><%= tl[:lang] %></h2>
+              <div class="grid grid-cols-3 gap-3 text-[11px] font-mono">
+                <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
+                  <div class="font-bold text-neutral-900 text-xs"><%= tl[:lang_pt] %></div>
+                  <div class="text-neutral-600 mt-1"><%= tl[:pt_level] %></div>
+                </div>
+                <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
+                  <div class="font-bold text-neutral-900 text-xs"><%= tl[:lang_es] %></div>
+                  <div class="text-neutral-600 mt-1"><%= tl[:es_level] %></div>
+                </div>
+                <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
+                  <div class="font-bold text-neutral-900 text-xs"><%= tl[:lang_en] %></div>
+                  <div class="text-neutral-600 mt-1"><%= tl[:en_level] %></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </td>
     </tr>
   </tbody>
 </table>
+

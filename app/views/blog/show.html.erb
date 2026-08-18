@@ -2,7 +2,7 @@
 <main class="py-24 md:py-32 bg-brand-fundo dark:bg-brand-dark-fundo min-h-screen">
   <article class="max-w-3xl mx-auto px-6 sm:px-8">
     <header class="mb-12 text-center">
-      <time class="text-sm font-mono text-[#003CA5] mb-4 block uppercase tracking-widest"><%= @post.published_at.strftime("%B %d, %Y") %></time>
+      <time class="text-sm font-mono text-[#003CA5] dark:text-[#5B8EFF] mb-4 block uppercase tracking-widest"><%= @post.published_at ? (l(@post.published_at.to_date, format: :long) rescue @post.published_at.strftime("%B %d, %Y")) : "" %></time>
       <h1 class="text-4xl md:text-5xl font-extrabold text-brand-tinta dark:text-white mb-6 leading-tight"><%= @post.title %></h1>
       <p class="text-xl text-neutral-600 dark:text-neutral-400 font-medium"><%= @post.excerpt %></p>
     </header>
@@ -18,9 +18,9 @@
     </div>
     
     <div class="mt-16 pt-8 border-t border-brand-tinta/10 dark:border-white/10 text-center">
-      <a href="/blog" class="inline-flex items-center gap-2 text-sm font-mono text-neutral-600 dark:text-neutral-400 hover:text-[#003CA5] dark:hover:text-[#003CA5] transition-colors">
+      <a href="<%= blog_index_path %>" class="inline-flex items-center gap-2 text-sm font-mono text-neutral-600 dark:text-neutral-400 hover:text-[#003CA5] dark:hover:text-[#5B8EFF] transition-colors">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-        Back to Blog
+        <%= t('blog.back_to_blog', default: 'Voltar ao Blog') %>
       </a>
     </div>
   </article>
