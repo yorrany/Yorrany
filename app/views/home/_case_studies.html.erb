@@ -89,7 +89,7 @@
             </div>
 
             <!-- Coluna da Imagem em Destaque (Lado Direito no Desktop) -->
-            <div class="w-full lg:w-5/12 min-h-[280px] sm:min-h-[360px] lg:min-h-[420px] relative overflow-hidden bg-neutral-100 dark:bg-[#07090E] border-t lg:border-t-0 lg:border-l border-neutral-200/60 dark:border-white/10">
+            <div class="w-full lg:w-5/12 min-h-[200px] sm:min-h-[360px] lg:min-h-[420px] relative overflow-hidden bg-neutral-100 dark:bg-[#07090E] border-t lg:border-t-0 lg:border-l border-neutral-200/60 dark:border-white/10">
               <% if spotlight_project.image.attached? %>
                 <%= image_tag spotlight_project.image, class: "absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 pointer-events-none", loading: "eager" %>
               <% else %>
@@ -102,9 +102,9 @@
       </div>
 
       <!-- 2. SECONDARY PROJECTS GRID -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 sm:grid sm:grid-cols-1 md:grid-cols-2 sm:gap-8 sm:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0">
         <% @case_studies.reject { |cs| cs.id == spotlight_project.id }.each do |project| %>
-          <div data-portfolio-filter-target="item" data-tags="<%= project.tags %> <%= project.role %>" data-action="click->modal#openCase" data-id="<%= project.id %>" class="bg-brand-surface dark:bg-[#13171F] rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#003CA5]/70 transition-all duration-300 cursor-pointer flex flex-col justify-between group overflow-hidden hover:shadow-2xl">
+          <div data-portfolio-filter-target="item" data-tags="<%= project.tags %> <%= project.role %>" data-action="click->modal#openCase" data-id="<%= project.id %>" class="w-[85vw] shrink-0 snap-start sm:w-full bg-brand-surface dark:bg-[#13171F] rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#003CA5]/70 transition-all duration-300 cursor-pointer flex flex-col justify-between group overflow-hidden hover:shadow-2xl">
             
             <!-- Imagem em Destaque Nítido (Topo do Card com Aspect-Ratio Fixo 16:10) -->
             <div class="relative w-full aspect-[16/10] bg-neutral-100 dark:bg-[#07090E] overflow-hidden">
