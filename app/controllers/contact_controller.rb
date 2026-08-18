@@ -1,4 +1,6 @@
 class ContactController < ApplicationController
+  protect_from_forgery with: :null_session, only: [ :create ]
+
   def vcard
     photo_path = Rails.root.join("app", "assets", "images", "yorrany_thumb.jpg")
     photo_base64 = File.exist?(photo_path) ? Base64.strict_encode64(File.read(photo_path)) : ""
@@ -37,14 +39,15 @@ class ContactController < ApplicationController
 
   def create
     # Anti-spam: honeypot field
-    if params[:nickname].present? || params[:website].present?
+    honeypot = (params[:nickname] || params[:website] || params.dig(:contact, :nickname)).to_s.strip
+    if honeypot.present?
       render json: { success: true, message: "Mensagem enviada com sucesso!" }
       return
     end
 
-    name = params[:name].to_s.strip
-    email = params[:email].to_s.strip
-    message = params[:message].to_s.strip
+    name = (params[:name] || params.dig(:contact, :name)).to_s.strip
+    email = (params[:email] || params.dig(:contact, :email)).to_s.strip
+    message = (params[:message] || params.dig(:contact, :message)).to_s.strip
 
     if name.blank? || email.blank? || message.blank?
       render json: { success: false, error: "Por favor, preencha todos os campos." }, status: :unprocessable_entity
