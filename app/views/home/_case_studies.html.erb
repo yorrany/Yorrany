@@ -15,41 +15,73 @@
       </p>
     </div>
 
-    <!-- Centered Filter Chips -->
-    <div class="flex flex-wrap justify-center items-center gap-2 mb-14 font-mono text-xs">
-      <% [t('work.filters.all', default: 'Todos'), t('work.filters.pd', default: 'Product Design'), 'UX/UI', t('work.filters.brand', default: 'Estratégia de Marca'), 'E-Commerce'].each do |filter| %>
+    <!-- Centered Filter Chips & Carousel Nav Controls -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12">
+      <!-- Filter Chips -->
+      <div class="flex flex-wrap justify-center sm:justify-start items-center gap-2 font-mono text-xs w-full sm:w-auto">
+        <% [
+            { key: 'all', label: t('work.filters.all', default: 'Todos') },
+            { key: 'pd', label: t('work.filters.pd', default: 'Product Design') },
+            { key: 'ui_ux', label: 'UI/UX' },
+            { key: 'brand', label: t('work.filters.brand', default: 'Estratégia de Marca') },
+            { key: 'graphic', label: t('work.filters.graphic', default: 'Design Gráfico') },
+            { key: 'ecommerce', label: t('work.filters.ecommerce', default: 'E-Commerce') }
+          ].each do |filter_item| %>
+          <button 
+            data-action="click->portfolio-filter#filter"
+            data-portfolio-filter-target="button"
+            data-filter="<%= filter_item[:label] %>"
+            class="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full whitespace-nowrap transition-all border text-xs <%= filter_item[:key] == 'all' ? 'bg-[#003CA5] text-white border-[#003CA5] font-bold shadow-md' : 'bg-brand-surface dark:bg-[#13171F] text-brand-tinta/70 dark:text-neutral-400 border-brand-tinta/10 dark:border-white/10 hover:bg-brand-tinta hover:text-brand-surface dark:hover:bg-white/10 dark:hover:text-white' %>">
+            <%= filter_item[:label] %>
+          </button>
+        <% end %>
+      </div>
+
+      <!-- Navigation Arrows (Fixed/Interactive for Carousel) -->
+      <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
         <button 
-          data-action="click->portfolio-filter#filter"
-          data-portfolio-filter-target="button"
-          data-filter="<%= filter %>"
-          class="px-5 py-2.5 rounded-full whitespace-nowrap transition-all border <%= filter == t('work.filters.all', default: 'Todos') ? 'bg-[#003CA5] text-white border-[#003CA5] font-bold shadow-md' : 'bg-brand-surface dark:bg-[#13171F] text-brand-tinta/70 dark:text-neutral-400 border-brand-tinta/10 dark:border-white/10 hover:bg-brand-tinta hover:text-brand-surface dark:hover:bg-white/10 dark:hover:text-white' %>">
-          <%= filter %>
+          type="button"
+          data-action="click->portfolio-filter#scrollPrev"
+          data-portfolio-filter-target="prevBtn"
+          aria-label="<%= t('work.carousel_prev', default: 'Previous project') %>"
+          title="<%= t('work.carousel_prev', default: 'Previous project') %>"
+          class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-surface dark:bg-[#13171F] border border-brand-tinta/15 dark:border-white/15 hover:border-[#003CA5] dark:hover:border-[#5B8EFF] text-brand-tinta dark:text-white flex items-center justify-center shadow-sm hover:shadow-md transition-all active:scale-95">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
         </button>
-      <% end %>
+        <button 
+          type="button"
+          data-action="click->portfolio-filter#scrollNext"
+          data-portfolio-filter-target="nextBtn"
+          aria-label="<%= t('work.carousel_next', default: 'Next project') %>"
+          title="<%= t('work.carousel_next', default: 'Next project') %>"
+          class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#003CA5] hover:bg-[#002361] text-white border border-[#003CA5] flex items-center justify-center shadow-sm hover:shadow-md transition-all active:scale-95">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+      </div>
     </div>
 
     <% spotlight_project = @case_studies.find(&:is_spotlight) || @case_studies.first %>
     <% if spotlight_project %>
       <!-- 1. SPOTLIGHT CASE STUDY -->
-      <div data-portfolio-filter-target="item" data-tags="<%= spotlight_project.tags %> <%= spotlight_project.role %>" class="mb-14 transition-all duration-500">
+      <div data-portfolio-filter-target="item" data-tags="<%= [spotlight_project.tags, spotlight_project.role, project_main_category(spotlight_project)].compact.join(' ') %>" class="mb-14 transition-all duration-500">
         <div data-action="click->modal#openCase" data-id="<%= spotlight_project.id %>" class="bg-brand-surface dark:bg-[#13171F] rounded-3xl border border-[#003CA5]/30 hover:border-[#003CA5]/60 overflow-hidden shadow-2xl relative group cursor-pointer transition-all duration-300">
           <div class="flex flex-col lg:flex-row items-stretch min-h-[420px]">
             
             <!-- Coluna de Conteúdo (Lado Esquerdo no Desktop) -->
             <div class="w-full lg:w-7/12 p-7 sm:p-10 lg:p-12 flex flex-col justify-between z-10 bg-brand-surface dark:bg-[#13171F]">
               <div>
-                <!-- Spotlight Badge & Período -->
-                <div class="flex flex-wrap items-center gap-3 mb-5">
-                  <span class="px-3 py-1 rounded-full bg-[#003CA5]/15 border border-[#003CA5]/40 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] font-bold flex items-center gap-1.5">
+                <!-- Spotlight Badge & Período & Categoria -->
+                <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-5">
+                  <span class="px-3 py-1 rounded-full bg-[#003CA5]/15 border border-[#003CA5]/40 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] font-bold flex items-center gap-1.5 shrink-0">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
                     <%= t('work.spotlightBadge', default: 'Featured Spotlight') %>
                   </span>
-                  <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400">
-                    <%= spotlight_project.period %>
+                  <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400 shrink-0">
+                    <%= display_period(spotlight_project.period) %>
                   </span>
-                  <% if spotlight_project.role.present? %>
-                    <span class="text-xs font-mono text-neutral-600 dark:text-neutral-400 bg-brand-fundo dark:bg-[#0B0D10] px-2.5 py-0.5 rounded-full border border-brand-tinta/5 dark:border-white/10">
-                      <%= spotlight_project.role %>
+                  <% if (spot_cat = project_main_category(spotlight_project)).present? %>
+                    <span class="text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] bg-brand-fundo dark:bg-[#0B0D10] px-2.5 py-0.5 rounded-full border border-[#003CA5]/20 dark:border-white/10 shrink-0 truncate max-w-[220px]">
+                      <%= spot_cat %>
                     </span>
                   <% end %>
                 </div>
@@ -58,20 +90,27 @@
                   <%= spotlight_project.title %>
                 </h3>
 
-                <p class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 font-medium mb-4">
-                  <%= spotlight_project.tagline %>
-                </p>
+                <% if spotlight_project.tagline.present? %>
+                  <p class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 font-medium mb-4">
+                    <%= spotlight_project.tagline %>
+                  </p>
+                <% end %>
 
-                <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 line-clamp-3">
-                  <%= spotlight_project.summary %>
-                </p>
+                <% if spotlight_project.summary.present? %>
+                  <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 line-clamp-3">
+                    <%= spotlight_project.summary %>
+                  </p>
+                <% end %>
 
                 <!-- Tags -->
                 <div class="flex flex-wrap gap-2 mb-6">
                   <% (spotlight_project.tags || "").split(',').first(5).each do |tag| %>
-                    <span class="px-2.5 py-1 rounded-lg bg-brand-fundo dark:bg-[#0B0D10] text-[11px] font-mono text-neutral-700 dark:text-neutral-300 border border-brand-tinta/5 dark:border-white/10">
-                      <%= tag.strip %>
-                    </span>
+                    <% tag_name = translate_tag(tag) %>
+                    <% if tag_name.present? %>
+                      <span class="px-2.5 py-1 rounded-lg bg-brand-fundo dark:bg-[#0B0D10] text-[11px] font-mono text-neutral-700 dark:text-neutral-300 border border-brand-tinta/5 dark:border-white/10">
+                        <%= tag_name %>
+                      </span>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
@@ -82,9 +121,11 @@
                   <%= t('work.viewCase', default: 'Read Case Study') %>
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                 </span>
-                <span class="text-xs font-mono text-neutral-500">
-                  <%= spotlight_project.client %>
-                </span>
+                <% if spotlight_project.client.present? %>
+                  <span class="text-xs font-mono text-neutral-500">
+                    <%= spotlight_project.client %>
+                  </span>
+                <% end %>
               </div>
             </div>
 
@@ -101,12 +142,19 @@
         </div>
       </div>
 
-      <!-- 2. SECONDARY PROJECTS GRID -->
-      <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 sm:grid sm:grid-cols-1 md:grid-cols-2 sm:gap-8 sm:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+      <!-- 2. SECONDARY PROJECTS CAROUSEL / GRID -->
+      <div 
+        data-portfolio-filter-target="carousel"
+        class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scroll-pl-4 sm:scroll-pl-6 md:scroll-pl-0 gap-4 sm:gap-6 md:gap-8 pb-6 pt-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2">
         <% @case_studies.reject { |cs| cs.id == spotlight_project.id }.each do |project| %>
-          <div data-portfolio-filter-target="item" data-tags="<%= project.tags %> <%= project.role %>" data-action="click->modal#openCase" data-id="<%= project.id %>" class="w-[85vw] shrink-0 snap-start sm:w-full bg-brand-surface dark:bg-[#13171F] rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#003CA5]/70 transition-all duration-300 cursor-pointer flex flex-col justify-between group overflow-hidden hover:shadow-2xl">
+          <div 
+            data-portfolio-filter-target="item" 
+            data-tags="<%= [project.tags, project.role, project_main_category(project)].compact.join(' ') %>" 
+            data-action="click->modal#openCase" 
+            data-id="<%= project.id %>" 
+            class="w-[74vw] max-w-[310px] sm:w-[320px] md:w-full shrink-0 snap-start bg-brand-surface dark:bg-[#13171F] rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#003CA5]/70 transition-all duration-300 cursor-pointer flex flex-col justify-between group overflow-hidden hover:shadow-2xl">
             
-            <!-- Imagem em Destaque Nítido (Topo do Card com Aspect-Ratio Fixo 16:10) -->
+            <!-- Imagem em Destaque (Topo do Card com Aspect-Ratio Fixo 16:10) -->
             <div class="relative w-full aspect-[16/10] bg-neutral-100 dark:bg-[#07090E] overflow-hidden">
               <% if project.image.attached? %>
                 <%= image_tag project.image, class: "absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 pointer-events-none", loading: "lazy" %>
@@ -114,32 +162,32 @@
                 <div class="w-full h-full flex items-center justify-center text-neutral-600 text-xs font-mono">Sem Imagem</div>
               <% end %>
 
-              <!-- Badges Flutuantes sobre a imagem -->
-              <div class="absolute top-3 left-3 flex items-center gap-2">
-                <span class="text-[11px] font-mono text-white bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 shadow-sm">
-                  <%= project.period %>
+              <!-- Badges Flutuantes sobre a imagem (Container Flex Unificado com Truncate e Proteção de Colisão) -->
+              <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
+                <!-- Pílula de Data -->
+                <span class="inline-flex items-center text-[10px] sm:text-[11px] font-mono text-white bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15 shadow-sm shrink-0 truncate max-w-[48%] pointer-events-auto">
+                  <%= display_period(project.period) %>
                 </span>
-              </div>
 
-              <% if project.role.present? %>
-                <div class="absolute top-3 right-3">
-                  <span class="text-[11px] font-mono text-[#5B8EFF] bg-[#0B0D10]/85 backdrop-blur-md px-3 py-1 rounded-full border border-[#003CA5]/30 font-semibold shadow-sm">
-                    <%= project.role %>
+                <!-- Pílula de Categoria -->
+                <% if (cat_badge = project_main_category(project)).present? %>
+                  <span class="inline-flex items-center text-[10px] sm:text-[11px] font-mono text-[#5B8EFF] bg-[#0B0D10]/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#003CA5]/40 font-semibold shadow-sm shrink-0 truncate max-w-[48%] pointer-events-auto text-right">
+                    <%= cat_badge %>
                   </span>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
 
             <!-- Conteúdo Textual Abaixo da Imagem -->
-            <div class="p-6 sm:p-7 flex flex-col justify-between flex-1">
+            <div class="p-5 sm:p-7 flex flex-col justify-between flex-1">
               <div>
-                <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-2 group-hover:text-[#003CA5] dark:group-hover:text-[#5B8EFF] transition-colors flex items-center justify-between">
-                  <span><%= project.title %></span>
+                <h3 class="text-lg sm:text-xl font-bold text-brand-tinta dark:text-white mb-2 group-hover:text-[#003CA5] dark:group-hover:text-[#5B8EFF] transition-colors flex items-center justify-between gap-2">
+                  <span class="truncate"><%= project.title %></span>
                   <svg class="w-4 h-4 text-neutral-400 group-hover:text-[#003CA5] dark:group-hover:text-[#5B8EFF] group-hover:translate-x-1 transition-all shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </h3>
 
                 <% if project.tagline.present? %>
-                  <p class="text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-300 mb-3">
+                  <p class="text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-300 mb-3 line-clamp-2">
                     <%= project.tagline %>
                   </p>
                 <% end %>
@@ -152,19 +200,24 @@
               </div>
 
               <div>
-                <!-- Tags -->
+                <!-- Tags Traduzidas -->
                 <div class="flex flex-wrap gap-1.5 mb-5">
                   <% (project.tags || "").split(',').first(4).each do |tag| %>
-                    <span class="px-2.5 py-1 rounded-md bg-brand-fundo dark:bg-[#0B0D10] text-[10px] font-mono text-neutral-600 dark:text-neutral-400 border border-brand-tinta/5 dark:border-white/5">
-                      <%= tag.strip %>
-                    </span>
+                    <% tag_name = translate_tag(tag) %>
+                    <% if tag_name.present? %>
+                      <span class="px-2.5 py-1 rounded-md bg-brand-fundo dark:bg-[#0B0D10] text-[10px] font-mono text-neutral-600 dark:text-neutral-400 border border-brand-tinta/5 dark:border-white/5 truncate max-w-[140px]">
+                        <%= tag_name %>
+                      </span>
+                    <% end %>
                   <% end %>
                 </div>
 
                 <!-- Rodapé do Card -->
                 <div class="pt-4 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] font-semibold">
                   <span><%= t('work.viewCase', default: 'Read Case Study') %></span>
-                  <span class="text-neutral-400 dark:text-neutral-500 font-normal"><%= project.client %></span>
+                  <% if project.client.present? %>
+                    <span class="text-neutral-400 dark:text-neutral-500 font-normal truncate max-w-[140px] text-right"><%= project.client %></span>
+                  <% end %>
                 </div>
               </div>
             </div>

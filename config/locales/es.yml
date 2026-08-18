@@ -23,6 +23,10 @@ es:
       all: "Todos"
       pd: "Product Design"
       brand: "Estrategia de Marca"
+      graphic: "Diseño Gráfico"
+      ecommerce: "E-Commerce"
+    carousel_prev: "Proyecto anterior"
+    carousel_next: "Siguiente proyecto"
   case_modal:
     tab_overview: "1. Visión General"
     tab_challenge_solution: "2. Desafío y Solución"
