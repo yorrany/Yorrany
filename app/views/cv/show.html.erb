@@ -29,7 +29,7 @@
       footer_gen: "Generated dynamically via Rails Admin"
     },
     'es' => {
-      sub_title: "Principal Product Designer & Arquitecto Front-End",
+      sub_title: "Diseñador de Producto & Arquitecto Front-End",
       email_label: "Correo",
       tel_label: "Tel / WA",
       loc_label: "Ubicación",
@@ -57,7 +57,7 @@
       footer_gen: "Generado dinámicamente vía Rails Admin"
     },
     'pt' => {
-      sub_title: "Principal Product Designer & Arquiteto Front-End",
+      sub_title: "Designer de Produto & Arquiteto Front-End",
       email_label: "E-mail",
       tel_label: "Tel / WA",
       loc_label: "Localização",
@@ -82,7 +82,7 @@
       es_level: "Compreensão profissional (A1)",
       en_level: "Técnico / Profissional (A1)",
       footer_doc: "Formato Oficial Europass",
-      footer_gen: "Gerado dinamicamente vía Rails Admin"
+      footer_gen: "Gerado dinamicamente via Rails Admin"
     }
   }
 
@@ -137,11 +137,11 @@
           </div>
 
           <!-- Content Sections -->
-          <div class="space-y-8 mt-4">
+          <div class="space-y-6 mt-4">
             
             <div class="avoid-break">
               <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-2 border-b border-neutral-200 pb-1"><%= tl[:profile] %></h2>
-              <p class="text-sm text-neutral-700 leading-relaxed text-justify">
+              <p class="text-[12.5px] text-neutral-700 leading-relaxed text-justify">
                 <%= I18n.t('about.p2', default: 'Product designer with 20 years of experience, bridging visual precision, cognitive psychology, brand strategy, and software engineering.') %> <%= I18n.t('about.p3', default: '') %>
               </p>
             </div>
@@ -150,15 +150,15 @@
               <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1 mt-6"><%= tl[:exp] %></h2>
               <div class="space-y-6">
                 <% @experiences.each do |exp| %>
-                  <div class="border-l-2 border-[#003CA5]/20 pl-4 py-1 avoid-break">
+                  <div class="border-l-2 border-[#003CA5]/30 pl-4 py-1 avoid-break">
                     <div class="flex justify-between items-start text-xs font-mono mb-1">
-                      <span class="font-bold text-neutral-900 text-sm"><%= exp.role %></span>
-                      <span class="text-[#003CA5] font-bold"><%= exp.period %></span>
+                      <span class="font-bold text-neutral-900 text-[13.5px]"><%= exp.role %></span>
+                      <span class="text-[#003CA5] font-bold text-xs"><%= exp.period %></span>
                     </div>
-                    <div class="text-[11px] font-semibold text-neutral-600 mb-2"><%= exp.company %> <span class="mx-1">•</span> <%= exp.location %></div>
-                    <p class="text-xs text-neutral-700 mb-2 leading-relaxed"><%= exp.summary %></p>
+                    <div class="text-xs font-semibold text-neutral-700 mb-1.5"><%= exp.company %> <span class="mx-1 text-neutral-400">•</span> <%= exp.location %></div>
+                    <p class="text-xs text-neutral-700 mb-1.5 leading-relaxed"><%= exp.summary %></p>
                     <% if exp.highlights.present? %>
-                      <ul class="list-disc list-inside text-[11px] text-neutral-600 space-y-1 ml-1">
+                      <ul class="list-disc list-inside text-[11.5px] text-neutral-600 space-y-1 ml-1">
                         <% exp.highlights.split('||').each do |h| %>
                           <li><%= h.strip %></li>
                         <% end %>
@@ -174,11 +174,14 @@
               <div class="space-y-4">
                 <% if @academic_bgs.present? %>
                   <% @academic_bgs.each do |bg| %>
-                    <div class="border-l-2 border-[#003CA5]/20 pl-4 avoid-break">
-                      <div class="font-bold text-sm text-neutral-900"><%= bg.degree %></div>
-                      <div class="text-xs text-neutral-600 font-semibold mb-1"><%= bg.institution %></div>
+                    <div class="border-l-2 border-[#003CA5]/40 pl-4 py-1 avoid-break">
+                      <div class="flex justify-between items-baseline mb-0.5">
+                        <div class="font-bold text-[13px] text-neutral-900"><%= bg.degree %></div>
+                        <div class="text-xs font-mono text-[#003CA5] font-semibold"><%= bg.period %></div>
+                      </div>
+                      <div class="text-xs text-neutral-700 font-semibold mb-1"><%= bg.institution %></div>
                       <% if bg.thesis.present? %>
-                        <div class="text-[11px] text-neutral-700 leading-relaxed"><%= tl[:thesis] %> "<%= bg.thesis %>"</div>
+                        <div class="text-[11.5px] text-neutral-700 leading-relaxed italic"><%= tl[:thesis] %> "<%= bg.thesis %>"</div>
                       <% end %>
                     </div>
                   <% end %>
@@ -188,13 +191,18 @@
 
             <div class="avoid-break mt-6">
               <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1"><%= tl[:cert] %></h2>
-              <div class="grid grid-cols-2 gap-3">
+              <div class="grid grid-cols-2 gap-3.5">
                 <% @certifications.each do |c| %>
                   <a href="https://yorrany.com.br/?cert=<%= c.id %>" target="_blank" style="text-decoration: none; color: inherit; display: block;" class="avoid-break">
-                    <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 flex flex-col justify-center h-full">
-                      <div class="cert-title font-bold text-neutral-900 mb-1 leading-tight"><%= c.title %></div>
-                      <div class="cert-pill text-neutral-600 mb-0.5"><%= c.issuer %> <%= c.year.present? ? "(#{c.year})" : "" %></div>
-                      <div class="cert-pill text-[#003CA5] font-mono"><%= c.badge_code %></div>
+                    <div class="p-3 bg-neutral-50/90 rounded-xl border border-neutral-200/80 flex flex-col justify-between h-full hover:border-[#003CA5]/40 transition-colors">
+                      <div>
+                        <div class="text-[9.5px] font-mono font-bold text-[#003CA5] uppercase tracking-wide mb-1"><%= c.category %></div>
+                        <div class="font-bold text-xs text-neutral-900 leading-snug mb-1"><%= c.title %></div>
+                        <div class="text-[10.5px] text-neutral-600 font-medium"><%= c.issuer %> <%= c.year.present? ? "(#{c.year})" : "" %></div>
+                      </div>
+                      <% if c.skills.present? %>
+                        <div class="text-[9.5px] text-neutral-500 font-mono mt-1.5 pt-1 border-t border-neutral-200/60 truncate"><%= c.skills.split(',').first(3).join(', ') %></div>
+                      <% end %>
                     </div>
                   </a>
                 <% end %>
@@ -203,18 +211,18 @@
 
             <div class="avoid-break mt-6">
               <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1"><%= tl[:lang] %></h2>
-              <div class="grid grid-cols-3 gap-3 text-[11px] font-mono">
-                <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
+              <div class="grid grid-cols-3 gap-3.5 text-[11px] font-mono">
+                <div class="p-3.5 bg-neutral-50/90 rounded-xl border border-neutral-200 avoid-break">
                   <div class="font-bold text-neutral-900 text-xs"><%= tl[:lang_pt] %></div>
-                  <div class="text-neutral-600 mt-1"><%= tl[:pt_level] %></div>
+                  <div class="text-[#003CA5] font-bold text-xs mt-1"><%= tl[:pt_level] %></div>
                 </div>
-                <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
+                <div class="p-3.5 bg-neutral-50/90 rounded-xl border border-neutral-200 avoid-break">
                   <div class="font-bold text-neutral-900 text-xs"><%= tl[:lang_es] %></div>
-                  <div class="text-neutral-600 mt-1"><%= tl[:es_level] %></div>
+                  <div class="text-[#003CA5] font-bold text-xs mt-1"><%= tl[:es_level] %></div>
                 </div>
-                <div class="p-3 bg-neutral-50 rounded-lg border border-neutral-200 avoid-break">
+                <div class="p-3.5 bg-neutral-50/90 rounded-xl border border-neutral-200 avoid-break">
                   <div class="font-bold text-neutral-900 text-xs"><%= tl[:lang_en] %></div>
-                  <div class="text-neutral-600 mt-1"><%= tl[:en_level] %></div>
+                  <div class="text-[#003CA5] font-bold text-xs mt-1"><%= tl[:en_level] %></div>
                 </div>
               </div>
             </div>
