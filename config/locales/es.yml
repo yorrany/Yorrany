@@ -1,4 +1,10 @@
 es:
+  nav:
+    work: "Portafolio"
+    bento: "Pilares"
+    cv: "Experiencia"
+    about: "Sobre Mí"
+    contact: "Contacto"
   hero:
     h1: "Diseño, comportamiento y código. Lo que de verdad hace que un producto funcione."
     sub: "Después de 20 años en esto, he aprendido que una interfaz bonita no salva un producto confuso. Creo experiencias pensadas para la mente humana y construidas con la solidez técnica que tu equipo de ingeniería exige."

@@ -1,53 +1,161 @@
-<!-- Bento Grid Section -->
-<section id="pillars" class="py-24 md:py-32 bg-brand-tint dark:bg-brand-dark-fundo/50 relative w-full">
-  <div class="max-w-6xl mx-auto px-6 sm:px-8">
+<!-- Bento Grid Section (Visual Interactive Modules) -->
+<section id="pillars" class="py-20 md:py-28 bg-brand-tint/50 dark:bg-[#07090E] relative w-full border-t border-brand-tinta/5 dark:border-white/5" data-controller="reveal">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <!-- Section Title -->
-    <div class="mb-16">
-      <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-brand-titulos dark:text-brand-dark-tinta mb-4">
-        <%= t('pillars.title') %>
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16" data-reveal-target="item">
+      <div class="inline-flex items-center gap-2 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] uppercase tracking-widest font-bold mb-3">
+        <span>✦</span>
+        <span><%= t('pillars.title', default: 'Pilares Estratégicos') %></span>
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-brand-titulos dark:text-white font-serif">
+        O que realmente faz um produto escalar
       </h2>
+      <p class="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base mt-3">
+        Três competências raras unificadas para eliminar retrabalho, conectar design à engenharia e acelerar o negócio.
+      </p>
     </div>
 
-    <!-- 3-Column Bento Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <% if @pillars.any? %>
-        <% @pillars.each do |pillar| %>
-          <div class="card-bento card-bento-hover-motif flex flex-col justify-between group overflow-hidden relative">
-            <div class="relative z-10">
-              <h3 class="text-xl font-bold text-brand-tinta dark:text-brand-dark-tinta mb-4 font-serif">
-                <%= pillar.title %>
-              </h3>
-              <p class="text-brand-tinta/70 dark:text-brand-dark-tinta/70 text-base leading-relaxed">
-                <%= pillar.description %>
-              </p>
+    <!-- 3-Column Bento Grid with Rich Visual Widgets -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      
+      <!-- CARD 1: DESIGN SYSTEMS & ESCALA VISUAL -->
+      <div class="card-bento card-bento-hover-motif flex flex-col justify-between group overflow-hidden relative shadow-lg" data-reveal-target="item" data-controller="tilt">
+        <div>
+          <!-- Visual Interactive Mini UI Canvas -->
+          <div class="p-4 rounded-2xl bg-neutral-100 dark:bg-[#0B0D10] border border-neutral-200 dark:border-white/5 mb-6 space-y-3">
+            <div class="flex items-center justify-between text-[11px] font-mono text-neutral-500 pb-2 border-b border-neutral-200 dark:border-white/5">
+              <span>design-tokens.json</span>
+              <span class="text-emerald-500 font-bold">● Live Sync</span>
             </div>
-            <% if pillar.image.attached? %>
-              <div class="absolute inset-0 bg-cover bg-center opacity-0 group-hover:opacity-20 transition-all duration-700 pointer-events-none" style="background-image: url('<%= url_for(pillar.image) %>')"></div>
-            <% end %>
+            
+            <!-- Interactive Mini UI Components -->
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-mono text-neutral-600 dark:text-neutral-400">Botão Primário</span>
+                <span class="px-3 py-1 rounded-full text-[11px] font-mono bg-[#003CA5] text-white shadow-sm font-semibold group-hover:scale-105 transition-transform">
+                  Action CTA
+                </span>
+              </div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-mono text-neutral-600 dark:text-neutral-400">Tokens de Cor</span>
+                <div class="flex items-center gap-1.5">
+                  <span class="w-4 h-4 rounded-full bg-[#003CA5] ring-2 ring-white/20"></span>
+                  <span class="w-4 h-4 rounded-full bg-[#3D33FF] ring-2 ring-white/20"></span>
+                  <span class="w-4 h-4 rounded-full bg-[#00A5FF] ring-2 ring-white/20"></span>
+                </div>
+              </div>
+            </div>
           </div>
-        <% end %>
-      <% else %>
-        <!-- Default Fallback Cards if DB is empty -->
-        <div class="card-bento card-bento-hover-motif flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-bold text-brand-tinta dark:text-brand-dark-tinta mb-4 font-serif"><%= t('pillars.pillar1_title') %></h3>
-            <p class="text-brand-tinta/70 dark:text-brand-dark-tinta/70 text-base leading-relaxed"><%= t('pillars.pillar1_desc') %></p>
+
+          <div class="flex items-center gap-2 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] font-bold mb-2">
+            <span>01</span>
+            <span>•</span>
+            <span>Design Systems</span>
           </div>
+
+          <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3 font-serif">
+            Design que Escala sem Burocracia
+          </h3>
+          
+          <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed mb-6">
+            Construção e liderança de design systems (0 → 1) com tokens sincronizados entre Figma e código, reduzindo em até 40% o ciclo de handoff.
+          </p>
         </div>
-        <div class="card-bento card-bento-hover-motif flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-bold text-brand-tinta dark:text-brand-dark-tinta mb-4 font-serif"><%= t('pillars.pillar2_title') %></h3>
-            <p class="text-brand-tinta/70 dark:text-brand-dark-tinta/70 text-base leading-relaxed"><%= t('pillars.pillar2_desc') %></p>
-          </div>
+
+        <!-- Metrics Strip -->
+        <div class="pt-4 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono">
+          <span class="text-neutral-500">Handoff Ágil</span>
+          <span class="text-[#003CA5] dark:text-[#5B8EFF] font-bold">100% Reutilizável</span>
         </div>
-        <div class="card-bento card-bento-hover-motif flex flex-col justify-between">
-          <div>
-            <h3 class="text-xl font-bold text-brand-tinta dark:text-brand-dark-tinta mb-4 font-serif"><%= t('pillars.pillar3_title') %></h3>
-            <p class="text-brand-tinta/70 dark:text-brand-dark-tinta/70 text-base leading-relaxed"><%= t('pillars.pillar3_desc') %></p>
+      </div>
+
+      <!-- CARD 2: PSICOLOGIA COGNITIVA & IHC -->
+      <div class="card-bento card-bento-hover-motif flex flex-col justify-between group overflow-hidden relative shadow-lg" data-reveal-target="item" data-controller="tilt">
+        <div>
+          <!-- Visual Cognitive Flow Graphic -->
+          <div class="p-4 rounded-2xl bg-neutral-100 dark:bg-[#0B0D10] border border-neutral-200 dark:border-white/5 mb-6 space-y-3">
+            <div class="flex items-center justify-between text-[11px] font-mono text-purple-600 dark:text-purple-400 pb-2 border-b border-neutral-200 dark:border-white/5">
+              <span>Arquitetura de Decisão</span>
+              <span class="font-bold">IHC / Heurística</span>
+            </div>
+
+            <!-- Cognitive Steps -->
+            <div class="space-y-2 font-mono text-[11px]">
+              <div class="flex items-center justify-between p-2 rounded-xl bg-white dark:bg-[#13171F] border border-brand-tinta/5 dark:border-white/5">
+                <span class="text-neutral-600 dark:text-neutral-300">Carga Mental</span>
+                <span class="text-emerald-500 font-bold">-42% Fricção</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-xl bg-white dark:bg-[#13171F] border border-brand-tinta/5 dark:border-white/5">
+                <span class="text-neutral-600 dark:text-neutral-300">Taxa de Conversão</span>
+                <span class="text-sky-500 font-bold">+180% Retenção</span>
+              </div>
+            </div>
           </div>
+
+          <div class="flex items-center gap-2 text-xs font-mono text-purple-600 dark:text-purple-400 font-bold mb-2">
+            <span>02</span>
+            <span>•</span>
+            <span>Psicologia Comportamental</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3 font-serif">
+            Menos Atrito, Mais Clareza
+          </h3>
+          
+          <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed mb-6">
+            Uso de ciência comportamental e avaliações heurísticas para desenhar caminhos que fazem sentido para o cérebro humano, elevando a conversão.
+          </p>
         </div>
-      <% end %>
+
+        <!-- Metrics Strip -->
+        <div class="pt-4 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono">
+          <span class="text-neutral-500">Heurística Nielsen</span>
+          <span class="text-purple-600 dark:text-purple-400 font-bold">Alta Conversão</span>
+        </div>
+      </div>
+
+      <!-- CARD 3: PONTE DESIGN-ENGENHARIA & SEGURANÇA -->
+      <div class="card-bento card-bento-hover-motif flex flex-col justify-between group overflow-hidden relative shadow-lg" data-reveal-target="item" data-controller="tilt">
+        <div>
+          <!-- Visual Terminal & Security Badge Canvas -->
+          <div class="p-4 rounded-2xl bg-[#0B0D10] text-white border border-white/10 mb-6 font-mono text-xs space-y-2">
+            <div class="flex items-center justify-between pb-1.5 border-b border-white/10 text-[10px] text-neutral-400">
+              <span class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>The Linux Foundation</span>
+              </span>
+              <span class="text-sky-400">JS / Python</span>
+            </div>
+            <div class="text-[11px] text-neutral-300 py-1">
+              <span class="text-emerald-400">✓</span> Type-Safe Components<br/>
+              <span class="text-emerald-400">✓</span> WCAG AAA Accessibility<br/>
+              <span class="text-emerald-400">✓</span> Hardened Front-End
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 text-xs font-mono text-sky-600 dark:text-sky-400 font-bold mb-2">
+            <span>03</span>
+            <span>•</span>
+            <span>Engenharia &amp; Segurança</span>
+          </div>
+
+          <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3 font-serif">
+            Fim do Abismo com a Engenharia
+          </h3>
+          
+          <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed mb-6">
+            Fluência total em código (JS/Python/Rails). Compreensão de limites técnicos, prevenção de falhas de segurança e entrega 100% pronta para produção.
+          </p>
+        </div>
+
+        <!-- Metrics Strip -->
+        <div class="pt-4 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono">
+          <span class="text-neutral-500">Arquitetura</span>
+          <span class="text-sky-600 dark:text-sky-400 font-bold">Zero Retrabalho</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

@@ -98,8 +98,132 @@
     100% { opacity: 0; }
   }
 
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes marquee-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes float-delayed {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(8px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.35; transform: scale(1); }
+    50% { opacity: 0.75; transform: scale(1.06); }
+  }
+
+  .animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  .animate-marquee-reverse {
+    display: flex;
+    width: max-content;
+    animation: marquee-reverse 35s linear infinite;
+  }
+
+  .animate-marquee-reverse:hover {
+    animation-play-state: paused;
+  }
+
+  .animate-float-slow {
+    animation: float-slow 5s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float-delayed 6s ease-in-out infinite 1s;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 60, 165, 0.1);
+  }
+
+  .dark .glass-panel {
+    background: rgba(19, 24, 40, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(135deg, #003CA5 0%, #3D33FF 50%, #00A5FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .dark .text-gradient-brand {
+    background: linear-gradient(135deg, #5B8EFF 0%, #8A84FF 50%, #00C6FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .card-border-glow {
+    position: relative;
+  }
+
+  .card-border-glow::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(0, 60, 165, 0.2), transparent, rgba(0, 165, 255, 0.2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .card-border-glow:hover::after {
+    opacity: 1;
+  }
+
+  .reveal-init {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
   .card-bento {
-    @apply bg-brand-surface rounded-xl border border-[#E3E7F4] p-8 transition-all duration-300;
+    @apply bg-brand-surface rounded-2xl border border-[#E3E7F4] p-6 sm:p-8 transition-all duration-300;
   }
   
   .dark .card-bento {
@@ -107,11 +231,11 @@
   }
 
   .card-bento:hover {
-    @apply border-brand-primaria shadow-xl shadow-brand-primaria/10;
+    @apply border-brand-primaria shadow-2xl shadow-brand-primaria/10 -translate-y-1;
   }
   
   .dark .card-bento:hover {
-    @apply border-brand-dark-primaria shadow-brand-dark-primaria/20;
+    @apply border-brand-dark-primaria shadow-brand-dark-primaria/20 -translate-y-1;
   }
 
   /* Triangle motif on hover */

@@ -1,23 +1,23 @@
 <!-- Contact Footer -->
-<footer id="contact" class="pt-20 pb-28 md:pb-16 bg-brand-fundo dark:bg-[#0B0D10] relative w-full" data-controller="contact-form">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+<footer id="contact" class="pt-20 pb-28 md:pb-16 bg-brand-fundo dark:bg-[#0B0D10] relative w-full border-t border-brand-tinta/5 dark:border-white/5" data-controller="contact-form reveal">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Contact Header -->
-    <div class="mb-14">
-      <div class="inline-flex items-center gap-2 text-xs font-mono text-[#003CA5] uppercase tracking-widest mb-3">
+    <div class="mb-14" data-reveal-target="item">
+      <div class="inline-flex items-center gap-2 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] uppercase tracking-widest font-bold mb-3">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-        <span><%= t('contact.eyebrow', default: 'Direct Outreach') %></span>
+        <span><%= t('contact.eyebrow', default: 'Contato Direto') %></span>
       </div>
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-tinta dark:text-white tracking-tight">
-        <%= t('contact.title', default: 'Let\'s Discuss Opportunities') %>
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-tinta dark:text-white tracking-tight font-serif">
+        <%= t('contact.title', default: 'Vamos conversar sobre oportunidades') %>
       </h2>
       <p class="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-2xl mt-2">
-        <%= t('contact.subtitle', default: 'Available for strategic roles, design system leadership, or product architecture consulting in Europe or remotely.') %>
+        <%= t('contact.subtitle', default: 'Disponível para posições de liderança em Design System, Arquitetura de Produto ou consultoria remota e presencial na Europa.') %>
       </p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-20">
       <!-- Direct Channels Column -->
-      <div class="lg:col-span-5 space-y-4 h-full flex flex-col justify-between">
+      <div class="lg:col-span-5 space-y-4 h-full flex flex-col justify-between" data-reveal-target="item">
         <!-- Email Card -->
         <div class="bg-brand-surface dark:bg-[#13171F] p-6 rounded-2xl border border-brand-tinta/5 dark:border-white/5 hover:border-brand-tinta/15 dark:border-white/15 transition-all card-border-glow">
           <div class="flex items-center justify-between mb-3">
@@ -90,7 +90,7 @@
       </div>
 
       <!-- Contact Form Column -->
-      <div class="lg:col-span-7 bg-brand-surface dark:bg-[#13171F] p-8 sm:p-10 rounded-3xl border border-brand-tinta/5 dark:border-white/5 card-border-glow flex flex-col">
+      <div class="lg:col-span-7 bg-brand-surface dark:bg-[#13171F] p-8 sm:p-10 rounded-3xl border border-brand-tinta/5 dark:border-white/5 card-border-glow flex flex-col" data-reveal-target="item">
         <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-6 flex items-center gap-2 shrink-0">
           <svg class="w-5 h-5 text-[#003CA5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
           <span><%= t('contact.sendInquiry', default: 'Send a Direct Inquiry') %></span>

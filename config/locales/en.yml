@@ -1,4 +1,10 @@
 en:
+  nav:
+    work: "Portfolio"
+    bento: "Expertise"
+    cv: "Experience"
+    about: "About"
+    contact: "Contact"
   hero:
     h1: "Design, behaviour and code. What actually makes a product work."
     sub: "Twenty years in, I've learned one thing: a beautiful interface won't save a confusing product. I design experiences shaped around the human mind and built with the technical rigour your engineering team expects."

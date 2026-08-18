@@ -1,22 +1,23 @@
-<!-- Case Studies Section -->
-<section id="work" class="py-20 md:py-28 bg-[#F5F8FF] dark:bg-[#0A101C] border-y border-[#003CA5]/10 w-full" data-controller="portfolio-filter">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+<!-- Case Studies Section (Visual-First Cinematic Showcase) -->
+<section id="work" class="py-20 md:py-28 bg-[#F5F8FF] dark:bg-[#07090E] border-y border-[#003CA5]/10 w-full" data-controller="portfolio-filter reveal">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
     <!-- Title Header -->
-    <div class="text-center mb-8">
-      <div class="inline-flex items-center justify-center gap-2 text-xs font-mono text-[#003CA5] uppercase tracking-widest mb-3">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-        <span><%= t('work.eyebrow', default: 'Selected Portfolio') %></span>
+    <div class="text-center mb-12" data-reveal-target="item">
+      <div class="inline-flex items-center justify-center gap-2 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] uppercase tracking-widest font-bold mb-3">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+        <span><%= t('work.eyebrow', default: 'Portfólio & Estudos de Caso') %></span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-tinta dark:text-white tracking-tight">
-        <%= t('work.title', default: 'Case Studies') %>
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-tinta dark:text-white tracking-tight font-serif">
+        <%= t('work.title', default: 'Trabalhos Selecionados') %>
       </h2>
-      <p class="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-xl mx-auto mt-2">
-        <%= t('work.subtitle', default: 'A selection of products where design strategy and behavioral insights drove measurable business impact.') %>
+      <p class="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-xl mx-auto mt-3">
+        <%= t('work.subtitle', default: 'Uma seleção de produtos onde a estratégia visual, o design system e a psicologia geraram impacto real.') %>
       </p>
     </div>
 
     <!-- Centered Filter Chips & Carousel Nav Controls -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12" data-reveal-target="item">
       <!-- Filter Chips -->
       <div class="flex flex-wrap justify-center sm:justify-start items-center gap-2 font-mono text-xs w-full sm:w-auto">
         <% [
@@ -31,7 +32,7 @@
             data-action="click->portfolio-filter#filter"
             data-portfolio-filter-target="button"
             data-filter="<%= filter_item[:label] %>"
-            class="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full whitespace-nowrap transition-all border text-xs <%= filter_item[:key] == 'all' ? 'bg-[#003CA5] text-white border-[#003CA5] font-bold shadow-md' : 'bg-brand-surface dark:bg-[#13171F] text-brand-tinta/70 dark:text-neutral-400 border-brand-tinta/10 dark:border-white/10 hover:bg-brand-tinta hover:text-brand-surface dark:hover:bg-white/10 dark:hover:text-white' %>">
+            class="px-4 sm:px-5 py-2.5 rounded-full whitespace-nowrap transition-all border text-xs <%= filter_item[:key] == 'all' ? 'bg-[#003CA5] text-white border-[#003CA5] font-bold shadow-md' : 'bg-brand-surface dark:bg-[#13171F] text-brand-tinta/70 dark:text-neutral-300 border-brand-tinta/10 dark:border-white/10 hover:bg-[#003CA5] hover:text-white dark:hover:bg-white/10 dark:hover:text-white' %>">
             <%= filter_item[:label] %>
           </button>
         <% end %>
@@ -62,49 +63,79 @@
 
     <% spotlight_project = @case_studies.find(&:is_spotlight) || @case_studies.first %>
     <% if spotlight_project %>
-      <!-- 1. SPOTLIGHT CASE STUDY -->
-      <div data-portfolio-filter-target="item" data-tags="<%= [spotlight_project.tags, spotlight_project.role, project_main_category(spotlight_project)].compact.join(' ') %>" class="mb-14 transition-all duration-500">
-        <div data-action="click->modal#openCase" data-id="<%= spotlight_project.id %>" class="bg-brand-surface dark:bg-[#13171F] rounded-3xl border border-[#003CA5]/30 hover:border-[#003CA5]/60 overflow-hidden shadow-2xl relative group cursor-pointer transition-all duration-300">
-          <div class="flex flex-col lg:flex-row items-stretch min-h-[420px]">
+      <!-- 1. SPOTLIGHT CASE STUDY (High Impact Showcase Card) -->
+      <div data-portfolio-filter-target="item" data-tags="<%= [spotlight_project.tags, spotlight_project.role, project_main_category(spotlight_project)].compact.join(' ') %>" class="mb-12 transition-all duration-500" data-reveal-target="item">
+        <div data-controller="card-preview tilt" data-action="click->modal#openCase" data-id="<%= spotlight_project.id %>" class="bg-brand-surface dark:bg-[#13171F] rounded-3xl border border-[#003CA5]/30 hover:border-[#003CA5]/60 overflow-hidden shadow-2xl relative group cursor-pointer transition-all duration-300 card-border-glow">
+          <div class="flex flex-col lg:flex-row items-stretch min-h-[460px]">
             
-            <!-- Coluna de Conteúdo (Lado Esquerdo no Desktop) -->
-            <div class="w-full lg:w-7/12 p-7 sm:p-10 lg:p-12 flex flex-col justify-between z-10 bg-brand-surface dark:bg-[#13171F]">
+            <!-- Coluna de Imagem Cinematográfica em Destaque (Esquerda ou Topo) -->
+            <div class="w-full lg:w-7/12 min-h-[260px] sm:min-h-[380px] lg:min-h-[460px] relative overflow-hidden bg-neutral-950 flex items-center justify-center">
+              <% if spotlight_project.image.attached? %>
+                <img data-card-preview-target="mainImage" src="<%= url_for(spotlight_project.image) %>" alt="<%= spotlight_project.title %>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none" loading="eager" />
+              <% else %>
+                <div class="w-full h-full flex items-center justify-center text-neutral-500 text-sm font-mono">Sem Imagem</div>
+              <% end %>
+
+              <!-- Badges Flutuantes sobre a Imagem -->
+              <div class="absolute top-4 left-4 z-10 flex flex-wrap items-center gap-2 pointer-events-none">
+                <span class="px-3.5 py-1.5 rounded-full bg-[#003CA5]/90 backdrop-blur-md text-white text-xs font-mono font-bold flex items-center gap-1.5 shadow-lg">
+                  <span>✦</span> <%= t('work.spotlightBadge', default: 'Destaque Principal') %>
+                </span>
+                <% if (spot_cat = project_main_category(spotlight_project)).present? %>
+                  <span class="px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md text-[#5B8EFF] border border-white/10 text-xs font-mono font-semibold">
+                    <%= spot_cat %>
+                  </span>
+                <% end %>
+              </div>
+
+              <!-- Mini-Galeria Rápida de Telas no Rodapé da Imagem -->
+              <% if spotlight_project.gallery_images.attached? && spotlight_project.gallery_images.any? %>
+                <div class="absolute bottom-4 inset-x-4 z-10 flex items-center justify-between gap-2 p-2 rounded-2xl bg-black/70 backdrop-blur-md border border-white/10">
+                  <span class="text-[10px] font-mono text-neutral-300 hidden sm:inline">
+                    Visualização rápida:
+                  </span>
+                  <div class="flex items-center gap-2 overflow-x-auto [scrollbar-width:none]">
+                    <% if spotlight_project.image.attached? %>
+                      <button type="button" data-action="click->card-preview#switch mouseenter->card-preview#switch" data-card-preview-target="thumb" data-image-url="<%= url_for(spotlight_project.image) %>" class="w-8 h-8 rounded-lg overflow-hidden border border-white/20 ring-2 ring-[#003CA5] shrink-0 opacity-100 transition-all">
+                        <img src="<%= url_for(spotlight_project.image) %>" class="w-full h-full object-cover" />
+                      </button>
+                    <% end %>
+                    <% spotlight_project.gallery_images.first(4).each do |g_img| %>
+                      <button type="button" data-action="click->card-preview#switch mouseenter->card-preview#switch" data-card-preview-target="thumb" data-image-url="<%= url_for(g_img) %>" class="w-8 h-8 rounded-lg overflow-hidden border border-white/20 shrink-0 opacity-60 hover:opacity-100 transition-all">
+                        <img src="<%= url_for(g_img) %>" class="w-full h-full object-cover" />
+                      </button>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+            <!-- Coluna de Síntese Estratégica & CTA (Lado Direito) -->
+            <div class="w-full lg:w-5/12 p-7 sm:p-10 flex flex-col justify-between z-10 bg-brand-surface dark:bg-[#13171F]">
               <div>
-                <!-- Spotlight Badge & Período & Categoria -->
-                <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-5">
-                  <span class="px-3 py-1 rounded-full bg-[#003CA5]/15 border border-[#003CA5]/40 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] font-bold flex items-center gap-1.5 shrink-0">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                    <%= t('work.spotlightBadge', default: 'Featured Spotlight') %>
-                  </span>
-                  <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400 shrink-0">
-                    <%= display_period(spotlight_project.period) %>
-                  </span>
-                  <% if (spot_cat = project_main_category(spotlight_project)).present? %>
-                    <span class="text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] bg-brand-fundo dark:bg-[#0B0D10] px-2.5 py-0.5 rounded-full border border-[#003CA5]/20 dark:border-white/10 shrink-0 truncate max-w-[220px]">
-                      <%= spot_cat %>
-                    </span>
-                  <% end %>
+                <div class="text-xs font-mono text-neutral-500 dark:text-neutral-400 mb-2">
+                  <%= display_period(spotlight_project.period) %> • <%= spotlight_project.client %>
                 </div>
 
-                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-tinta dark:text-white tracking-tight mb-3 group-hover:text-[#003CA5] dark:group-hover:text-[#5B8EFF] transition-colors">
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-tinta dark:text-white tracking-tight mb-3 group-hover:text-[#003CA5] dark:group-hover:text-[#5B8EFF] transition-colors font-serif">
                   <%= spotlight_project.title %>
                 </h3>
 
                 <% if spotlight_project.tagline.present? %>
-                  <p class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 font-medium mb-4">
+                  <p class="text-sm font-semibold text-[#003CA5] dark:text-[#5B8EFF] mb-4 leading-snug">
                     <%= spotlight_project.tagline %>
                   </p>
                 <% end %>
 
                 <% if spotlight_project.summary.present? %>
-                  <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 line-clamp-3">
+                  <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-6 line-clamp-3">
                     <%= spotlight_project.summary %>
                   </p>
                 <% end %>
 
-                <!-- Tags -->
-                <div class="flex flex-wrap gap-2 mb-6">
-                  <% (spotlight_project.tags || "").split(',').first(5).each do |tag| %>
+                <!-- Tags Traduzidas -->
+                <div class="flex flex-wrap gap-1.5 mb-6">
+                  <% (spotlight_project.tags || "").split(',').first(4).each do |tag| %>
                     <% tag_name = translate_tag(tag) %>
                     <% if tag_name.present? %>
                       <span class="px-2.5 py-1 rounded-lg bg-brand-fundo dark:bg-[#0B0D10] text-[11px] font-mono text-neutral-700 dark:text-neutral-300 border border-brand-tinta/5 dark:border-white/10">
@@ -115,97 +146,95 @@
                 </div>
               </div>
 
-              <!-- CTA & Cliente -->
+              <!-- CTA Rodapé -->
               <div class="pt-6 border-t border-brand-tinta/5 dark:border-white/10 flex items-center justify-between">
                 <span class="inline-flex items-center gap-2 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] font-bold group-hover:translate-x-1 transition-transform">
-                  <%= t('work.viewCase', default: 'Read Case Study') %>
+                  <%= t('work.viewCase', default: 'Explorar Estudo de Caso Completo') %>
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                 </span>
-                <% if spotlight_project.client.present? %>
-                  <span class="text-xs font-mono text-neutral-500">
-                    <%= spotlight_project.client %>
-                  </span>
-                <% end %>
+                <span class="text-xs font-mono text-neutral-400">
+                  <%= spotlight_project.gallery_images.count + (spotlight_project.image.attached? ? 1 : 0) %> telas
+                </span>
               </div>
-            </div>
-
-            <!-- Coluna da Imagem em Destaque (Lado Direito no Desktop) -->
-            <div class="w-full lg:w-5/12 min-h-[200px] sm:min-h-[360px] lg:min-h-[420px] relative overflow-hidden bg-neutral-100 dark:bg-[#07090E] border-t lg:border-t-0 lg:border-l border-neutral-200/60 dark:border-white/10">
-              <% if spotlight_project.image.attached? %>
-                <%= image_tag spotlight_project.image, class: "absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 pointer-events-none", loading: "eager" %>
-              <% else %>
-                <div class="w-full h-full flex items-center justify-center text-neutral-600 text-sm font-mono">Sem Imagem</div>
-              <% end %>
             </div>
 
           </div>
         </div>
       </div>
 
-      <!-- 2. SECONDARY PROJECTS CAROUSEL / GRID -->
+      <!-- 2. SECONDARY PROJECTS GALLERY (Visual 2-Column Grid) -->
       <div 
         data-portfolio-filter-target="carousel"
-        class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scroll-pl-4 gap-4 pb-4 sm:grid sm:grid-cols-1 md:grid-cols-2 sm:gap-8 sm:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+        class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scroll-pl-4 gap-6 pb-4 sm:grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:gap-6 sm:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0">
         <% @case_studies.reject { |cs| cs.id == spotlight_project.id }.each do |project| %>
           <div 
             data-portfolio-filter-target="item" 
             data-tags="<%= [project.tags, project.role, project_main_category(project)].compact.join(' ') %>" 
+            data-controller="card-preview tilt"
             data-action="click->modal#openCase" 
             data-id="<%= project.id %>" 
-            class="w-[74vw] max-w-[310px] sm:w-full sm:max-w-none shrink-0 sm:shrink snap-start sm:snap-align-none bg-brand-surface dark:bg-[#13171F] rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#003CA5]/70 transition-all duration-300 cursor-pointer flex flex-col justify-between group overflow-hidden hover:shadow-2xl">
+            data-reveal-target="item"
+            class="w-[82vw] max-w-[340px] sm:w-full sm:max-w-none shrink-0 sm:shrink snap-start sm:snap-align-none bg-brand-surface dark:bg-[#13171F] rounded-3xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#5B8EFF]/50 transition-all duration-300 cursor-pointer flex flex-col justify-between group overflow-hidden hover:shadow-2xl card-border-glow">
             
-            <!-- Imagem em Destaque (Topo do Card com Aspect-Ratio Fixo 16:10) -->
-            <div class="relative w-full aspect-[16/10] bg-neutral-100 dark:bg-[#07090E] overflow-hidden">
+            <!-- Imagem em Destaque (Aspect-Ratio 16:10) -->
+            <div class="relative w-full aspect-[16/10] bg-neutral-950 overflow-hidden">
               <% if project.image.attached? %>
-                <%= image_tag project.image, class: "absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 pointer-events-none", loading: "lazy" %>
+                <img data-card-preview-target="mainImage" src="<%= url_for(project.image) %>" alt="<%= project.title %>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none" loading="lazy" />
               <% else %>
-                <div class="w-full h-full flex items-center justify-center text-neutral-600 text-xs font-mono">Sem Imagem</div>
+                <div class="w-full h-full flex items-center justify-center text-neutral-500 text-xs font-mono">Sem Imagem</div>
               <% end %>
 
-              <!-- Badges Flutuantes sobre a imagem (Container Flex Unificado com Truncate e Proteção de Colisão) -->
+              <!-- Badges Flutuantes sobre a Imagem -->
               <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
-                <!-- Pílula de Data -->
-                <span class="inline-flex items-center text-[10px] sm:text-[11px] font-mono text-white bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15 shadow-sm shrink-0 truncate max-w-[48%] pointer-events-auto">
+                <span class="inline-flex items-center text-[10px] font-mono text-white bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15 shadow-sm truncate max-w-[48%]">
                   <%= display_period(project.period) %>
                 </span>
-
-                <!-- Pílula de Categoria -->
                 <% if (cat_badge = project_main_category(project)).present? %>
-                  <span class="inline-flex items-center text-[10px] sm:text-[11px] font-mono text-[#5B8EFF] bg-[#0B0D10]/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#003CA5]/40 font-semibold shadow-sm shrink-0 truncate max-w-[48%] pointer-events-auto text-right">
+                  <span class="inline-flex items-center text-[10px] font-mono text-[#5B8EFF] bg-[#0B0D10]/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#003CA5]/40 font-semibold shadow-sm truncate max-w-[48%]">
                     <%= cat_badge %>
                   </span>
                 <% end %>
               </div>
+
+              <!-- Mini-Thumbs no Card (Hover Preview) -->
+              <% if project.gallery_images.attached? && project.gallery_images.any? %>
+                <div class="absolute bottom-2.5 right-2.5 z-10 flex items-center gap-1.5 p-1 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <% if project.image.attached? %>
+                    <button type="button" data-action="click->card-preview#switch mouseenter->card-preview#switch" data-card-preview-target="thumb" data-image-url="<%= url_for(project.image) %>" class="w-5 h-5 rounded-md overflow-hidden border border-white/20 opacity-100 transition-all">
+                      <img src="<%= url_for(project.image) %>" class="w-full h-full object-cover" />
+                    </button>
+                  <% end %>
+                  <% project.gallery_images.first(3).each do |g_img| %>
+                    <button type="button" data-action="click->card-preview#switch mouseenter->card-preview#switch" data-card-preview-target="thumb" data-image-url="<%= url_for(g_img) %>" class="w-5 h-5 rounded-md overflow-hidden border border-white/20 opacity-60 hover:opacity-100 transition-all">
+                      <img src="<%= url_for(g_img) %>" class="w-full h-full object-cover" />
+                    </button>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
 
             <!-- Conteúdo Textual Abaixo da Imagem -->
-            <div class="p-5 sm:p-7 flex flex-col justify-between flex-1">
+            <div class="p-5 sm:p-6 flex flex-col justify-between flex-1">
               <div>
-                <h3 class="text-lg sm:text-xl font-bold text-brand-tinta dark:text-white mb-2 group-hover:text-[#003CA5] dark:group-hover:text-[#5B8EFF] transition-colors flex items-center justify-between gap-2">
+                <h3 class="text-lg sm:text-xl font-bold text-brand-tinta dark:text-white mb-1.5 group-hover:text-[#003CA5] dark:group-hover:text-[#5B8EFF] transition-colors flex items-center justify-between gap-2 font-serif">
                   <span class="truncate"><%= project.title %></span>
                   <svg class="w-4 h-4 text-neutral-400 group-hover:text-[#003CA5] dark:group-hover:text-[#5B8EFF] group-hover:translate-x-1 transition-all shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </h3>
 
                 <% if project.tagline.present? %>
-                  <p class="text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-300 mb-3 line-clamp-2">
+                  <p class="text-xs text-neutral-600 dark:text-neutral-300 font-medium mb-3 line-clamp-1">
                     <%= project.tagline %>
-                  </p>
-                <% end %>
-
-                <% if project.summary.present? %>
-                  <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed mb-5 line-clamp-2">
-                    <%= project.summary %>
                   </p>
                 <% end %>
               </div>
 
               <div>
                 <!-- Tags Traduzidas -->
-                <div class="flex flex-wrap gap-1.5 mb-5">
-                  <% (project.tags || "").split(',').first(4).each do |tag| %>
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                  <% (project.tags || "").split(',').first(3).each do |tag| %>
                     <% tag_name = translate_tag(tag) %>
                     <% if tag_name.present? %>
-                      <span class="px-2.5 py-1 rounded-md bg-brand-fundo dark:bg-[#0B0D10] text-[10px] font-mono text-neutral-600 dark:text-neutral-400 border border-brand-tinta/5 dark:border-white/5 truncate max-w-[140px]">
+                      <span class="px-2 py-0.5 rounded-md bg-brand-fundo dark:bg-[#0B0D10] text-[10px] font-mono text-neutral-600 dark:text-neutral-400 border border-brand-tinta/5 dark:border-white/5 truncate max-w-[120px]">
                         <%= tag_name %>
                       </span>
                     <% end %>
@@ -213,10 +242,10 @@
                 </div>
 
                 <!-- Rodapé do Card -->
-                <div class="pt-4 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] font-semibold">
-                  <span><%= t('work.viewCase', default: 'Read Case Study') %></span>
+                <div class="pt-3 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] font-semibold">
+                  <span><%= t('work.viewCase', default: 'Ver Estudo') %></span>
                   <% if project.client.present? %>
-                    <span class="text-neutral-400 dark:text-neutral-500 font-normal truncate max-w-[140px] text-right"><%= project.client %></span>
+                    <span class="text-neutral-400 dark:text-neutral-500 font-normal truncate max-w-[120px] text-right"><%= project.client %></span>
                   <% end %>
                 </div>
               </div>
