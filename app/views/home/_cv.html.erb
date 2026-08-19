@@ -1,4 +1,4 @@
-<!-- CV & Credentials Section (Compact & Visual Timeline with Certification Thumbs) -->
+<!-- CV & Credentials Section (Compact & Visual Timeline with Landscape Certificate Cards) -->
 <section id="cv" class="py-20 md:py-28 bg-brand-fundo dark:bg-[#0B0D10] border-b border-brand-tinta/5 dark:border-white/5 relative w-full" data-controller="tabs reveal">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -24,18 +24,18 @@
     </div>
 
     <!-- CV View Tabs -->
-    <div class="flex flex-wrap items-center justify-center gap-2 mb-10 font-mono text-xs" data-reveal-target="item">
-      <button data-tabs-target="tab" data-action="click->tabs#switch" class="flex items-center gap-2 px-5 py-2.5 rounded-full border text-xs font-mono font-bold transition-all whitespace-nowrap bg-[#003CA5] hover:bg-[#002361] text-white shadow-lg border-[#003CA5]">
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-10 text-xs font-semibold" data-reveal-target="item">
+      <button data-tabs-target="tab" data-action="click->tabs#switch" class="flex items-center gap-2 px-5 py-2.5 rounded-full border text-xs font-bold transition-all whitespace-nowrap bg-[#003CA5] hover:bg-[#002361] text-white shadow-lg border-[#003CA5]">
         <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
         <span class="pointer-events-none"><%= t('cv.expTab', default: 'Experiência') %> (<%= @experiences.size %>)</span>
       </button>
 
-      <button data-tabs-target="tab" data-action="click->tabs#switch" class="flex items-center gap-2 px-5 py-2.5 rounded-full border text-xs font-mono font-bold transition-all whitespace-nowrap text-neutral-600 dark:text-neutral-400 hover:text-brand-tinta dark:hover:text-white hover:bg-brand-tinta/5 dark:hover:bg-white/10 border-brand-tinta/10 dark:border-white/10 bg-brand-surface dark:bg-[#13171F]">
+      <button data-tabs-target="tab" data-action="click->tabs#switch" class="flex items-center gap-2 px-5 py-2.5 rounded-full border text-xs font-semibold transition-all whitespace-nowrap text-neutral-600 dark:text-neutral-400 hover:text-brand-tinta dark:hover:text-white hover:bg-brand-tinta/5 dark:hover:bg-white/10 border-brand-tinta/10 dark:border-white/10 bg-brand-surface dark:bg-[#13171F]">
         <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         <span class="pointer-events-none"><%= t('cv.certTab', default: 'Certificações') %> (<%= @certifications.size %>)</span>
       </button>
 
-      <button data-tabs-target="tab" data-action="click->tabs#switch" class="flex items-center gap-2 px-5 py-2.5 rounded-full border text-xs font-mono font-bold transition-all whitespace-nowrap text-neutral-600 dark:text-neutral-400 hover:text-brand-tinta dark:hover:text-white hover:bg-brand-tinta/5 dark:hover:bg-white/10 border-brand-tinta/10 dark:border-white/10 bg-brand-surface dark:bg-[#13171F]">
+      <button data-tabs-target="tab" data-action="click->tabs#switch" class="flex items-center gap-2 px-5 py-2.5 rounded-full border text-xs font-semibold transition-all whitespace-nowrap text-neutral-600 dark:text-neutral-400 hover:text-brand-tinta dark:hover:text-white hover:bg-brand-tinta/5 dark:hover:bg-white/10 border-brand-tinta/10 dark:border-white/10 bg-brand-surface dark:bg-[#13171F]">
         <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path></svg>
         <span class="pointer-events-none"><%= t('cv.academicTab', default: 'Formação') %> (<%= @academic_bgs.size %>)</span>
       </button>
@@ -44,24 +44,24 @@
     <!-- TAB 1: COMPACT CAREER TIMELINE -->
     <div data-tabs-target="panel" class="space-y-4 max-w-4xl mx-auto">
       <% @experiences.each_with_index do |exp, index| %>
-        <div class="bg-brand-surface dark:bg-[#13171F] p-5 sm:p-6 rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/40 dark:hover:border-[#5B8EFF]/40 transition-all card-border-glow shadow-sm" data-controller="expandable" data-reveal-target="item">
+        <div class="bg-brand-surface dark:bg-[#13171F] p-5 sm:p-6 rounded-3xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/40 dark:hover:border-[#5B8EFF]/40 transition-all card-border-glow shadow-sm" data-controller="expandable" data-reveal-target="item">
           
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
             <div class="flex items-center gap-3">
-              <span class="w-9 h-9 rounded-xl bg-[#003CA5]/10 dark:bg-white/5 text-[#003CA5] dark:text-[#5B8EFF] font-mono font-bold text-xs flex items-center justify-center shrink-0">
+              <span class="w-9 h-9 rounded-xl bg-[#003CA5]/10 dark:bg-white/5 text-[#003CA5] dark:text-[#5B8EFF] font-bold text-xs flex items-center justify-center shrink-0 font-sans">
                 <%= exp.company.to_s.first(2).upcase %>
               </span>
               <div>
                 <h3 class="text-base sm:text-lg font-bold text-brand-tinta dark:text-white leading-snug">
                   <%= exp.role %>
                 </h3>
-                <div class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">
-                  <%= exp.company %> • <span class="font-mono text-[11px]"><%= exp.location %></span>
+                <div class="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+                  <%= exp.company %> • <span class="text-[11px]"><%= exp.location %></span>
                 </div>
               </div>
             </div>
 
-            <span class="text-xs font-mono font-bold text-[#003CA5] dark:text-[#5B8EFF] bg-brand-fundo dark:bg-[#0B0D10] px-3 py-1 rounded-full border border-brand-tinta/5 dark:border-white/5 self-start sm:self-auto shrink-0">
+            <span class="text-xs font-semibold text-[#003CA5] dark:text-[#5B8EFF] bg-brand-fundo dark:bg-[#0B0D10] px-3.5 py-1 rounded-full border border-brand-tinta/5 dark:border-white/5 self-start sm:self-auto shrink-0">
               <%= exp.period %>
             </span>
           </div>
@@ -73,7 +73,7 @@
           <!-- Expandable Highlights & Skills -->
           <div data-expandable-target="content" class="hidden pt-4 mt-4 border-t border-brand-tinta/5 dark:border-white/5 space-y-3">
             <% if exp.highlights.present? %>
-              <div class="space-y-1.5 font-mono text-xs">
+              <div class="space-y-1.5 text-xs">
                 <% exp.highlights.split('||').each do |h| %>
                   <div class="flex items-start gap-2 text-neutral-700 dark:text-neutral-300">
                     <svg class="w-3.5 h-3.5 text-[#003CA5] dark:text-[#5B8EFF] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -86,7 +86,7 @@
             <% if exp.skills.present? %>
               <div class="flex flex-wrap gap-1.5 pt-2">
                 <% exp.skills.split(',').each do |skill| %>
-                  <span class="px-2.5 py-1 rounded-md bg-brand-fundo dark:bg-[#0B0D10] text-[10px] font-mono text-neutral-700 dark:text-neutral-300 border border-brand-tinta/5 dark:border-white/5">
+                  <span class="px-2.5 py-1 rounded-lg bg-brand-fundo dark:bg-[#0B0D10] text-[11px] font-medium text-neutral-700 dark:text-neutral-300 border border-brand-tinta/5 dark:border-white/5">
                     <%= skill.strip %>
                   </span>
                 <% end %>
@@ -95,55 +95,55 @@
           </div>
 
           <% if exp.highlights.present? || exp.skills.present? %>
-            <button data-action="click->expandable#expand" data-expandable-target="toggleText" class="mt-3 text-xs font-mono font-bold text-[#003CA5] dark:text-[#5B8EFF] hover:underline focus:outline-none inline-flex items-center gap-1">
-              Ver detalhes &amp; stack ▾
+            <button data-action="click->expandable#expand" data-expandable-target="toggleText" class="mt-3 text-xs font-semibold text-[#003CA5] dark:text-[#5B8EFF] hover:underline focus:outline-none inline-flex items-center gap-1">
+              <%= t('cv.view_details', default: 'Ver detalhes & stack') %> ▾
             </button>
           <% end %>
         </div>
       <% end %>
     </div>
 
-    <!-- TAB 2: CERTIFICATIONS (Landscape Thumbs & Spacious Layout) -->
+    <!-- TAB 2: CERTIFICATIONS (Landscape Thumbs & Spacious Modern Layout) -->
     <div data-tabs-target="panel" class="hidden space-y-5 max-w-4xl mx-auto">
       <div class="flex flex-col gap-5">
         <% @certifications.each do |cert| %>
-          <div class="bg-brand-surface dark:bg-[#13171F] p-5 sm:p-6 rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#5B8EFF]/50 transition-all card-border-glow flex flex-col sm:flex-row gap-6 group" data-reveal-target="item">
+          <div class="bg-brand-surface dark:bg-[#13171F] p-5 sm:p-6 rounded-3xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#5B8EFF]/50 transition-all card-border-glow flex flex-col sm:flex-row gap-6 group shadow-sm" data-reveal-target="item">
             
-            <!-- Landscape Thumbnail (Aspect 16:10) -->
-            <div class="relative w-full sm:w-60 md:w-72 aspect-[16/10] bg-neutral-900 rounded-xl border border-brand-tinta/10 dark:border-white/10 flex items-center justify-center overflow-hidden shrink-0 cursor-pointer group-hover:border-[#003CA5]/60 transition-all shadow-inner" <% if cert.image.attached? %>data-action="click->modal#openCert" data-cert-id="<%= cert.id %>" data-url="<%= url_for(cert.image) %>" data-title="<%= cert.title %>" data-is-image="<%= cert.image.content_type.start_with?('image/').to_s %>" data-credential-code="<%= cert.credential_code %>" data-credential-url="<%= cert.credential_url %>"<% end %>>
+            <!-- Landscape Thumbnail (Aspect 16:10, Clean Borderless Finish) -->
+            <div class="relative w-full sm:w-60 md:w-72 aspect-[16/10] bg-brand-tint/30 dark:bg-[#0B0D10] rounded-2xl overflow-hidden shrink-0 cursor-pointer border border-brand-tinta/10 dark:border-white/10 group-hover:border-[#003CA5]/50 transition-all" <% if cert.image.attached? %>data-action="click->modal#openCert" data-cert-id="<%= cert.id %>" data-url="<%= url_for(cert.image) %>" data-title="<%= cert.title %>" data-is-image="<%= cert.image.content_type.start_with?('image/').to_s %>" data-credential-code="<%= cert.credential_code %>" data-credential-url="<%= cert.credential_url %>"<% end %>>
               <% if cert.image.attached? && cert.image.representable? %>
                 <%= image_tag cert.image.representation(resize_to_limit: [600, 375]), class: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500", loading: "lazy" %>
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
                 </div>
               <% else %>
-                <div class="flex flex-col items-center justify-center p-4 text-center">
-                  <div class="w-10 h-10 rounded-xl bg-white/10 text-white flex items-center justify-center font-mono font-bold text-sm mb-2">
+                <div class="flex flex-col items-center justify-center p-4 text-center h-full">
+                  <div class="w-11 h-11 rounded-2xl bg-[#003CA5]/10 dark:bg-white/10 text-[#003CA5] dark:text-[#5B8EFF] flex items-center justify-center font-bold text-sm mb-2">
                     <%= cert.issuer.to_s.first(2).upcase %>
                   </div>
-                  <span class="text-[10px] font-mono text-neutral-400"><%= cert.issuer %></span>
+                  <span class="text-xs font-semibold text-neutral-600 dark:text-neutral-400 line-clamp-1"><%= cert.issuer %></span>
                 </div>
               <% end %>
             </div>
 
-            <!-- Content Column (Spacious & Non-Cropped) -->
+            <!-- Content Column (Spacious & Modern) -->
             <div class="flex-1 flex flex-col justify-between">
               <div>
-                <!-- Top Badges Row -->
-                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-                  <div class="flex items-center gap-2">
-                    <span class="text-[10px] font-mono font-bold uppercase text-[#003CA5] dark:text-[#5B8EFF] bg-[#003CA5]/10 dark:bg-white/5 px-2.5 py-1 rounded-full border border-[#003CA5]/20 dark:border-white/10">
-                      <%= cert.category %>
+                <!-- Top Modern Badges Row -->
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#003CA5]/10 text-[#003CA5] dark:bg-[#003CA5]/20 dark:text-[#5B8EFF] border border-[#003CA5]/15 dark:border-[#5B8EFF]/20">
+                      <span>✦</span> <%= cert.category %>
                     </span>
                     <% if cert.credential_code.present? %>
-                      <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 font-semibold">
+                      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
                         ID: <%= cert.credential_code %>
                       </span>
                     <% end %>
                   </div>
 
                   <% if cert.year.present? %>
-                    <span class="text-xs font-mono font-bold text-neutral-500 dark:text-neutral-400">
+                    <span class="text-xs font-semibold text-neutral-500 dark:text-neutral-400">
                       <%= cert.year %>
                     </span>
                   <% end %>
@@ -155,7 +155,7 @@
                 </h3>
 
                 <!-- Issuer -->
-                <div class="text-xs font-mono text-neutral-600 dark:text-neutral-400 font-semibold mb-2.5">
+                <div class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2.5">
                   <%= cert.issuer %>
                 </div>
 
@@ -170,7 +170,7 @@
                 <% if cert.skills.present? %>
                   <div class="flex flex-wrap gap-1.5 mb-4">
                     <% cert.skills.split(',').each do |skill| %>
-                      <span class="px-2 py-0.5 rounded-md bg-brand-fundo dark:bg-[#0B0D10] text-[10px] font-mono text-neutral-600 dark:text-neutral-400 border border-brand-tinta/5 dark:border-white/5">
+                      <span class="px-2.5 py-0.5 rounded-lg bg-brand-fundo dark:bg-[#0B0D10] text-[11px] font-medium text-neutral-600 dark:text-neutral-300 border border-brand-tinta/5 dark:border-white/5">
                         <%= skill.strip %>
                       </span>
                     <% end %>
@@ -179,18 +179,18 @@
               </div>
 
               <!-- Footer Actions -->
-              <div class="pt-3 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono">
-                <span class="text-[11px] text-neutral-400">Credencial Oficial</span>
+              <div class="pt-3 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs">
+                <span class="text-[11px] text-neutral-400 font-medium"><%= t('cv.official_cred', default: 'Credencial Oficial') %></span>
 
                 <div class="flex items-center gap-4">
                   <% if cert.image.attached? %>
                     <button data-action="click->modal#openCert" data-cert-id="<%= cert.id %>" data-url="<%= url_for(cert.image) %>" data-title="<%= cert.title %>" data-is-image="<%= cert.image.content_type.start_with?('image/').to_s %>" data-credential-code="<%= cert.credential_code %>" data-credential-url="<%= cert.credential_url %>" class="text-xs font-bold text-[#003CA5] dark:text-[#5B8EFF] hover:underline flex items-center gap-1">
-                      <span>Visualizar Documento</span> ↗
+                      <span><%= t('cv.view_document', default: 'Visualizar Documento') %></span> ↗
                     </button>
                   <% end %>
                   <% if cert.credential_url.present? %>
                     <a href="<%= cert.credential_url %>" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-neutral-600 dark:text-neutral-300 hover:text-[#003CA5] dark:hover:text-white transition-colors flex items-center gap-1">
-                      <span>Validar Emissor</span> ↗
+                      <span><%= t('cv.validate_issuer', default: 'Validar Emissor') %></span> ↗
                     </a>
                   <% end %>
                 </div>
@@ -212,28 +212,28 @@
                 🎓
               </div>
               <div>
-                <span class="px-2.5 py-0.5 rounded-full bg-[#003CA5]/10 text-[#003CA5] dark:text-[#5B8EFF] text-[10px] font-mono font-bold">
+                <span class="px-3 py-1 rounded-full bg-[#003CA5]/10 text-[#003CA5] dark:text-[#5B8EFF] text-[11px] font-semibold">
                   <%= bg.period %>
                 </span>
-                <h3 class="text-xl sm:text-2xl font-bold text-brand-tinta dark:text-white mt-1">
+                <h3 class="text-xl sm:text-2xl font-bold text-brand-tinta dark:text-white mt-1.5">
                   <%= bg.degree %>
                 </h3>
-                <div class="text-sm font-semibold text-neutral-600 dark:text-neutral-400">
-                  <%= bg.institution %> • <span class="font-mono text-xs"><%= bg.field_of_study %></span>
+                <div class="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                  <%= bg.institution %> • <span class="text-xs"><%= bg.field_of_study %></span>
                 </div>
               </div>
             </div>
 
             <% if bg.certificate.attached? %>
-              <button data-action="click->modal#openCert" data-cert-id="academic-<%= bg.id %>" data-url="<%= url_for(bg.certificate) %>" data-title="<%= bg.degree %> - Certificado" data-is-image="<%= bg.certificate.content_type.start_with?('image/').to_s %>" class="px-4 py-2 bg-[#003CA5]/10 hover:bg-[#003CA5] text-[#003CA5] hover:text-white rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 self-start shrink-0">
-                <span>Visualizar Diploma</span> ↗
+              <button data-action="click->modal#openCert" data-cert-id="academic-<%= bg.id %>" data-url="<%= url_for(bg.certificate) %>" data-title="<%= bg.degree %> - Certificado" data-is-image="<%= bg.certificate.content_type.start_with?('image/').to_s %>" class="px-4 py-2 bg-[#003CA5]/10 hover:bg-[#003CA5] text-[#003CA5] hover:text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 self-start shrink-0">
+                <span><%= t('cv.view_diploma', default: 'Visualizar Diploma') %></span> ↗
               </button>
             <% end %>
           </div>
 
           <% if bg.thesis.present? %>
             <div class="p-4 rounded-2xl bg-brand-fundo dark:bg-[#0B0D10] border border-brand-tinta/5 dark:border-white/5 text-xs sm:text-sm">
-              <span class="font-mono text-[10px] text-[#003CA5] dark:text-[#5B8EFF] uppercase font-bold block mb-1">Pesquisa &amp; Tese Publicada</span>
+              <span class="text-[11px] text-[#003CA5] dark:text-[#5B8EFF] uppercase font-bold block mb-1"><%= t('cv.published_thesis', default: 'Pesquisa & Tese Publicada') %></span>
               <p class="text-neutral-700 dark:text-neutral-300 italic">"<%= bg.thesis %>"</p>
             </div>
           <% end %>
