@@ -4,36 +4,36 @@
       title_key: "skills.cat_design",
       default_title: "Design de Produto & Sistemas",
       skills: [
-        { name: "Figma & Design Tokens", years: 10, percent: 95, icon: "figma" },
-        { name: "Design Systems (0 → 1)", years: 12, percent: 98, icon: "system" },
-        { name: "Adobe Creative Cloud", years: 18, percent: 100, icon: "adobe" },
-        { name: "Prototipagem & Microinterações", years: 10, percent: 92, icon: "prototype" }
+        { name: "Figma & Design Tokens", years: 10, logo_type: "figma" },
+        { name: "Design Systems (0 → 1)", years: 12, logo_type: "system" },
+        { name: "Adobe Creative Cloud", years: 18, logo_type: "adobe" },
+        { name: "Prototipagem & Microinterações", years: 10, logo_type: "prototype" }
       ]
     },
     {
       title_key: "skills.cat_eng",
       default_title: "Engenharia Front-End & Código",
       skills: [
-        { name: "Tailwind CSS & Tokens", years: 6, percent: 96, icon: "tailwind" },
-        { name: "TypeScript & JavaScript", years: 12, percent: 94, icon: "js" },
-        { name: "Ruby on Rails & Hotwire", years: 8, percent: 90, icon: "rails" },
-        { name: "React & Next.js", years: 7, percent: 88, icon: "react" }
+        { name: "Tailwind CSS & Tokens", years: 6, logo_type: "tailwind" },
+        { name: "TypeScript & JavaScript", years: 12, logo_type: "typescript" },
+        { name: "Ruby on Rails & Hotwire", years: 8, logo_type: "rails" },
+        { name: "React & Next.js", years: 7, logo_type: "react" }
       ]
     },
     {
       title_key: "skills.cat_science",
       default_title: "Ciência Comportamental & Segurança",
       skills: [
-        { name: "Psicologia Cognitiva & IHC", years: 8, percent: 95, icon: "brain" },
-        { name: "WCAG & Acessibilidade AAA", years: 10, percent: 96, icon: "wcag" },
-        { name: "Linux & JS Security (Linux Foundation)", years: 6, percent: 88, icon: "security" },
-        { name: "Python & Automação de Dados", years: 5, percent: 85, icon: "python" }
+        { name: "Psicologia Cognitiva & IHC", years: 8, logo_type: "psychology" },
+        { name: "WCAG & Acessibilidade AAA", years: 10, logo_type: "wcag" },
+        { name: "Linux & JS Security", years: 6, logo_type: "security" },
+        { name: "Python & Automação de Dados", years: 5, logo_type: "python" }
       ]
     }
   ]
 %>
 
-<!-- Software Stack & Tools (With Visual Mastery Bars & Icons) -->
+<!-- Software Stack & Tools (With Official Brand Logos) -->
 <section class="py-16 md:py-24 bg-brand-surface dark:bg-[#0B0D10] w-full border-t border-brand-tinta/5 dark:border-white/5" data-controller="reveal">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -51,64 +51,93 @@
       </p>
     </div>
 
-    <!-- 3-Column Categorized Stack Grid with Evolution Bars -->
+    <!-- 3-Column Categorized Stack Grid with Official Logos -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
       <% categories.each do |cat| %>
         <div class="p-6 sm:p-7 rounded-3xl bg-brand-fundo dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 flex flex-col justify-between shadow-sm card-border-glow" data-reveal-target="item">
           <div>
             <h3 class="text-xs font-bold font-mono text-[#003CA5] dark:text-[#5B8EFF] uppercase tracking-wider mb-5 pb-3 border-b border-brand-tinta/10 dark:border-white/10 flex items-center justify-between">
               <span><%= t(cat[:title_key], default: cat[:default_title]) %></span>
-              <span class="text-[10px] text-neutral-400 font-normal"><%= t('skills.mastery', default: 'Domínio') %></span>
+              <span class="text-[10px] text-neutral-400 font-normal"><%= t('skills.mastery', default: 'Experiência') %></span>
             </h3>
 
-            <div class="space-y-4">
+            <div class="space-y-3.5">
               <% cat[:skills].each do |skill| %>
-                <div class="space-y-1.5">
-                  <div class="flex items-center justify-between text-xs">
-                    <div class="flex items-center gap-2">
-                      <!-- Skill Icon / Glyph -->
-                      <span class="w-5 h-5 rounded-md bg-[#003CA5]/10 dark:bg-white/5 text-[#003CA5] dark:text-[#5B8EFF] flex items-center justify-center text-[10px] font-bold shrink-0">
-                        <% case skill[:icon] %>
-                        <% when "figma" %>
-                          ❖
-                        <% when "system" %>
-                          ◫
-                        <% when "adobe" %>
-                          ▲
-                        <% when "prototype" %>
-                          ◈
-                        <% when "tailwind" %>
-                          ≈
-                        <% when "js" %>
-                          JS
-                        <% when "rails" %>
-                          ♦
-                        <% when "react" %>
-                          ⚛
-                        <% when "brain" %>
-                          🧠
-                        <% when "wcag" %>
-                          ♿
-                        <% when "security" %>
-                          🛡
-                        <% when "python" %>
-                          🐍
-                        <% else %>
-                          ✦
-                        <% end %>
-                      </span>
-                      <span class="font-semibold text-brand-tinta dark:text-white"><%= skill[:name] %></span>
+                <div class="flex items-center justify-between p-2.5 rounded-2xl bg-brand-surface dark:bg-white/5 border border-brand-tinta/5 dark:border-white/5 hover:border-[#003CA5]/30 dark:hover:border-[#5B8EFF]/30 transition-all">
+                  <div class="flex items-center gap-3">
+                    <!-- Official Logo Container -->
+                    <div class="w-8 h-8 rounded-xl bg-brand-fundo dark:bg-[#0B0D10] border border-brand-tinta/5 dark:border-white/10 flex items-center justify-center shrink-0 p-1.5 shadow-sm">
+                      <% case skill[:logo_type] %>
+                      <% when "figma" %>
+                        <svg class="w-full h-full" viewBox="0 0 24 24" fill="none">
+                          <path d="M8 24c2.208 0 4-1.792 4-4v-4H8c-2.208 0-4 1.792-4 4s1.792 4 4 4z" fill="#0ACF83"/>
+                          <path d="M4 12c0-2.208 1.792-4 4-4h4v8H8c-2.208 0-4-1.792-4-4z" fill="#A259FF"/>
+                          <path d="M4 4c0-2.208 1.792-4 4-4h4v8H8C5.792 8 4 6.208 4 4z" fill="#F24E1E"/>
+                          <path d="M12 0h4c2.208 0 4 1.792 4 4s-1.792 4-4 4h-4V0z" fill="#FF7262"/>
+                          <path d="M20 12c0 2.208-1.792 4-4 4s-4-1.792-4-4 1.792-4 4-4 4 1.792 4 4z" fill="#1ABCFE"/>
+                        </svg>
+                      <% when "system" %>
+                        <svg class="w-full h-full text-[#8B5CF6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                          <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                          <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                          <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                        </svg>
+                      <% when "adobe" %>
+                        <svg class="w-full h-full text-[#FF0000]" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M13.983 0h10.017v24h-10.017zm-4.996 0h-8.987v24h8.987zm-1.89 4.316l-3.328 8.65h2.164l.872-2.316h3.493l.86 2.316h2.19l-3.33-8.65zm.96 2.012l1.246 3.322h-2.483zm9.034-2.012l-4.103 10.662h2.24l.957-2.52h4.372l.946 2.52h2.257l-4.1-10.662zm1.187 2.476l1.554 4.144h-3.116z"/>
+                        </svg>
+                      <% when "prototype" %>
+                        <svg class="w-full h-full text-[#EC4899]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                      <% when "tailwind" %>
+                        <svg class="w-full h-full text-[#38BDF8]" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/>
+                        </svg>
+                      <% when "typescript" %>
+                        <svg class="w-full h-full text-[#3178C6]" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0H1.125zm14.28 10.29h2.38v8.66c-.63.29-1.32.44-2.07.44-2.73 0-4.08-1.5-4.08-4.5 0-3.08 1.4-4.6 4.2-4.6.61 0 1.15.09 1.57.26v2.1c-.42-.23-.88-.34-1.38-.34-1.47 0-2.12.87-2.12 2.6 0 1.65.65 2.47 2.05 2.47.28 0 .54-.04.77-.12v-5.26v-1.71h-1.32zm-6.19 2.37h2.36v6.29H9.215v-6.29zm0-2.37h2.36v1.44H9.215v-1.44z"/>
+                        </svg>
+                      <% when "rails" %>
+                        <svg class="w-full h-full text-[#CC0000]" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M22.822 5.097a.885.885 0 0 0-.462-.774l-6.85-3.81a.885.885 0 0 0-.857 0L1.64 8.044a.885.885 0 0 0-.463.774v8.136c0 .324.177.622.463.774l13.013 7.531c.265.154.592.154.857 0l6.85-3.81a.885.885 0 0 0 .462-.774V5.097z"/>
+                        </svg>
+                      <% when "react" %>
+                        <svg class="w-full h-full text-[#61DAFB]" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.16c4.084 0 7.632 2.766 8.784 6.744-1.92-.81-4.22-1.32-6.784-1.44-.336-.888-.732-1.74-1.176-2.544 1.104-.6 2.376-.96 3.744-.96zm-3.744.96c-.444.804-.84 1.656-1.176 2.544-2.564.12-4.864.63-6.784 1.44C1.452 4.926 5 2.16 9.084 2.16zM2.16 12c0-1.368.36-2.64.96-3.744.804.444 1.656.84 2.544 1.176-.12 2.564-.63 4.864-1.44 6.784C2.766 15.632 2.16 13.884 2.16 12z"/>
+                        </svg>
+                      <% when "psychology" %>
+                        <svg class="w-full h-full text-[#A855F7]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.54Z"></path>
+                          <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.54Z"></path>
+                        </svg>
+                      <% when "wcag" %>
+                        <svg class="w-full h-full text-[#10B981]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="4" r="2"></circle>
+                          <path d="m4 9 8 2 8-2"></path>
+                          <path d="M6 13V22"></path>
+                          <path d="M18 13V22"></path>
+                        </svg>
+                      <% when "security" %>
+                        <svg class="w-full h-full text-[#003CA5] dark:text-[#5B8EFF]" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                        </svg>
+                      <% when "python" %>
+                        <svg class="w-full h-full" viewBox="0 0 24 24" fill="none">
+                          <path d="M11.914 0C5.82 0 6.2 2.644 6.2 2.644l.006 2.738h5.816v.826H3.906S0 5.762 0 11.874c0 6.112 3.407 5.918 3.407 5.918h2.036v-2.856s-.11-3.407 3.35-3.407h5.76v-.884h.054V5.733s.51-5.733-6.22-5.733zm-3.32 1.808c.594 0 1.077.483 1.077 1.077 0 .595-.483 1.077-1.077 1.077-.595 0-1.077-.482-1.077-1.077 0-.594.482-1.077 1.077-1.077z" fill="#3776AB"/>
+                          <path d="M12.086 24c6.094 0 5.714-2.644 5.714-2.644l-.006-2.738h-5.816v-.826h8.116s3.906.446 3.906-5.666c0-6.112-3.407-5.918-3.407-5.918h-2.036v2.856s.11 3.407-3.35 3.407h-5.76v.884h-.054v4.915s-.51 5.733 6.22 5.733zm3.32-1.808c-.594 0-1.077-.483-1.077-1.077 0-.595.483-1.077 1.077-1.077.595 0 1.077.482 1.077 1.077 0 .594-.482 1.077-1.077 1.077z" fill="#FFD438"/>
+                        </svg>
+                      <% end %>
                     </div>
 
-                    <span class="text-[11px] font-mono text-neutral-500 dark:text-neutral-400 shrink-0 font-medium">
-                      <%= skill[:years] %> <%= t('skills.years', default: 'anos') %>
-                    </span>
+                    <span class="text-xs font-bold text-brand-tinta dark:text-white"><%= skill[:name] %></span>
                   </div>
 
-                  <!-- Visual Evolution / Mastery Bar -->
-                  <div class="w-full bg-brand-tinta/5 dark:bg-white/5 rounded-full h-1.5 overflow-hidden">
-                    <div class="bg-gradient-to-r from-[#003CA5] to-[#00A5FF] h-full rounded-full transition-all duration-1000" style="width: <%= skill[:percent] %>%;"></div>
-                  </div>
+                  <!-- Clean Experience Badge -->
+                  <span class="px-2.5 py-1 rounded-lg bg-brand-fundo dark:bg-[#0B0D10] text-[11px] font-semibold text-neutral-600 dark:text-neutral-400 border border-brand-tinta/5 dark:border-white/5">
+                    <%= skill[:years] %> <%= t('skills.years', default: 'anos') %>
+                  </span>
                 </div>
               <% end %>
             </div>
