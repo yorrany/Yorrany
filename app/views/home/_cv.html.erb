@@ -1,4 +1,4 @@
-<!-- CV & Credentials Section (Compact & Visual Timeline) -->
+<!-- CV & Credentials Section (Compact & Visual Timeline with Certification Thumbs) -->
 <section id="cv" class="py-20 md:py-28 bg-brand-fundo dark:bg-[#0B0D10] border-b border-brand-tinta/5 dark:border-white/5 relative w-full" data-controller="tabs reveal">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -9,7 +9,7 @@
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           <span><%= t('cv.eyebrow', default: 'Trajetória & Credenciais') %></span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-tinta dark:text-white tracking-tight font-serif">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-tinta dark:text-white tracking-tight">
           <%= t('cv.title', default: 'Experiência & Formação') %>
         </h2>
         <p class="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-2xl mt-2">
@@ -48,7 +48,7 @@
           
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
             <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-xl bg-[#003CA5]/10 dark:bg-white/5 text-[#003CA5] dark:text-[#5B8EFF] font-mono font-bold text-xs flex items-center justify-center shrink-0">
+              <span class="w-9 h-9 rounded-xl bg-[#003CA5]/10 dark:bg-white/5 text-[#003CA5] dark:text-[#5B8EFF] font-mono font-bold text-xs flex items-center justify-center shrink-0">
                 <%= exp.company.to_s.first(2).upcase %>
               </span>
               <div>
@@ -103,43 +103,75 @@
       <% end %>
     </div>
 
-    <!-- TAB 2: CERTIFICATIONS GRID -->
-    <div data-tabs-target="panel" class="hidden space-y-4 max-w-4xl mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <!-- TAB 2: CERTIFICATIONS GRID (With High-Res Visual Thumbnails Restored!) -->
+    <div data-tabs-target="panel" class="hidden space-y-4 max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <% @certifications.each do |cert| %>
-          <div class="bg-brand-surface dark:bg-[#13171F] p-5 rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/40 dark:hover:border-[#5B8EFF]/40 transition-all card-border-glow flex flex-col justify-between" data-reveal-target="item">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="text-[10px] font-mono text-neutral-500 bg-brand-fundo dark:bg-[#0B0D10] px-2.5 py-0.5 rounded-full border border-brand-tinta/5 dark:border-white/5">
-                  <%= cert.category %>
-                </span>
-                <span class="text-xs font-mono font-bold text-[#003CA5] dark:text-[#5B8EFF]">
-                  <%= cert.year %>
-                </span>
+          <div class="bg-brand-surface dark:bg-[#13171F] p-5 sm:p-6 rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#5B8EFF]/50 transition-all card-border-glow flex flex-col sm:flex-row gap-5 group" data-reveal-target="item">
+            
+            <!-- Certificate Image Thumbnail -->
+            <% if cert.image.attached? %>
+              <div class="relative w-full sm:w-44 aspect-[4/3] bg-neutral-100 dark:bg-[#0B0D10] rounded-xl border border-brand-tinta/10 dark:border-white/10 flex items-center justify-center overflow-hidden shrink-0 cursor-pointer group-hover:border-[#003CA5]/50 transition-all" data-action="click->modal#openCert" data-cert-id="<%= cert.id %>" data-url="<%= url_for(cert.image) %>" data-title="<%= cert.title %>" data-is-image="<%= cert.image.content_type.start_with?('image/').to_s %>" data-credential-code="<%= cert.credential_code %>" data-credential-url="<%= cert.credential_url %>">
+                <% if cert.image.representable? %>
+                  <%= image_tag cert.image.representation(resize_to_fill: [400, 300]), class: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500", loading: "lazy" %>
+                <% else %>
+                  <svg class="w-8 h-8 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                <% end %>
+                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                </div>
+              </div>
+            <% end %>
+
+            <!-- Content Column -->
+            <div class="flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-[10px] font-mono text-neutral-600 dark:text-neutral-400 bg-brand-fundo dark:bg-[#0B0D10] px-2.5 py-0.5 rounded-full border border-brand-tinta/5 dark:border-white/5">
+                    <%= cert.category %>
+                  </span>
+                  <span class="text-xs font-mono font-bold text-[#003CA5] dark:text-[#5B8EFF]">
+                    <%= cert.year %>
+                  </span>
+                </div>
+
+                <h3 class="text-sm sm:text-base font-bold text-brand-tinta dark:text-white leading-snug mb-1 group-hover:text-[#003CA5] dark:group-hover:text-[#5B8EFF] transition-colors">
+                  <%= cert.title %>
+                </h3>
+
+                <div class="text-xs font-mono text-neutral-600 dark:text-neutral-400 mb-2">
+                  <%= cert.issuer %>
+                </div>
+
+                <% if cert.description.present? %>
+                  <p class="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-2 mb-3">
+                    <%= cert.description %>
+                  </p>
+                <% end %>
               </div>
 
-              <h3 class="text-sm sm:text-base font-bold text-brand-tinta dark:text-white leading-snug mb-1">
-                <%= cert.title %>
-              </h3>
+              <div class="pt-3 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono">
+                <% if cert.credential_code.present? %>
+                  <span class="text-[10px] text-emerald-500 font-bold">ID: <%= cert.credential_code %></span>
+                <% else %>
+                  <span class="text-[10px] text-neutral-400">Certificado Oficial</span>
+                <% end %>
 
-              <div class="text-xs font-mono text-neutral-600 dark:text-neutral-400 mb-3">
-                <%= cert.issuer %>
+                <div class="flex items-center gap-3">
+                  <% if cert.image.attached? %>
+                    <button data-action="click->modal#openCert" data-cert-id="<%= cert.id %>" data-url="<%= url_for(cert.image) %>" data-title="<%= cert.title %>" data-is-image="<%= cert.image.content_type.start_with?('image/').to_s %>" data-credential-code="<%= cert.credential_code %>" data-credential-url="<%= cert.credential_url %>" class="text-xs font-bold text-[#003CA5] dark:text-[#5B8EFF] hover:underline flex items-center gap-1">
+                      Visualizar Doc ↗
+                    </button>
+                  <% end %>
+                  <% if cert.credential_url.present? %>
+                    <a href="<%= cert.credential_url %>" target="_blank" rel="noopener noreferrer" class="text-[11px] text-neutral-400 hover:text-white transition-colors">
+                      Validar
+                    </a>
+                  <% end %>
+                </div>
               </div>
             </div>
 
-            <div class="pt-3 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono">
-              <% if cert.credential_code.present? %>
-                <span class="text-[10px] text-emerald-500 font-bold">ID: <%= cert.credential_code %></span>
-              <% else %>
-                <span class="text-[10px] text-neutral-400">Certificado Oficial</span>
-              <% end %>
-
-              <% if cert.image.attached? %>
-                <button data-action="click->modal#openCert" data-cert-id="<%= cert.id %>" data-url="<%= url_for(cert.image) %>" data-title="<%= cert.title %>" data-is-image="<%= cert.image.content_type.start_with?('image/').to_s %>" data-credential-code="<%= cert.credential_code %>" data-credential-url="<%= cert.credential_url %>" class="text-xs font-bold text-[#003CA5] dark:text-[#5B8EFF] hover:underline flex items-center gap-1">
-                  Visualizar Doc ↗
-                </button>
-              <% end %>
-            </div>
           </div>
         <% end %>
       </div>
@@ -151,7 +183,7 @@
         <div class="bg-brand-surface dark:bg-[#13171F] p-6 sm:p-8 rounded-3xl border border-brand-tinta/10 dark:border-white/10 card-border-glow space-y-4" data-reveal-target="item">
           <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-[#003CA5]/10 text-[#003CA5] dark:text-[#5B8EFF] flex items-center justify-center shrink-0 font-bold">
+              <div class="w-12 h-12 rounded-2xl bg-[#003CA5]/10 text-[#003CA5] dark:text-[#5B8EFF] flex items-center justify-center shrink-0 font-bold text-lg">
                 🎓
               </div>
               <div>
@@ -166,6 +198,12 @@
                 </div>
               </div>
             </div>
+
+            <% if bg.certificate.attached? %>
+              <button data-action="click->modal#openCert" data-cert-id="academic-<%= bg.id %>" data-url="<%= url_for(bg.certificate) %>" data-title="<%= bg.degree %> - Certificado" data-is-image="<%= bg.certificate.content_type.start_with?('image/').to_s %>" class="px-4 py-2 bg-[#003CA5]/10 hover:bg-[#003CA5] text-[#003CA5] hover:text-white rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 self-start shrink-0">
+                <span>Visualizar Diploma</span> ↗
+              </button>
+            <% end %>
           </div>
 
           <% if bg.thesis.present? %>

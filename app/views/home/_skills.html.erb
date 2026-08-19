@@ -1,70 +1,74 @@
 <%
-  skills_list = [
-    { name: "Figma & Design Tokens", category: "Design", years: 10, icon: "🎨", color: "text-purple-500 bg-purple-500/10 border-purple-500/20" },
-    { name: "Design Systems (0 → 1)", category: "Design", years: 12, icon: "❖", color: "text-[#003CA5] dark:text-[#5B8EFF] bg-[#003CA5]/10 border-[#003CA5]/20" },
-    { name: "Tailwind CSS", category: "Code", years: 6, icon: "🌊", color: "text-sky-500 bg-sky-500/10 border-sky-500/20" },
-    { name: "TypeScript & JavaScript", category: "Code", years: 12, icon: "⚡", color: "text-yellow-500 bg-yellow-500/10 border-yellow-500/20" },
-    { name: "Ruby on Rails & Hotwire", category: "Code", years: 8, icon: "💎", color: "text-red-500 bg-red-500/10 border-red-500/20" },
-    { name: "Psicologia Cognitiva & IHC", category: "Science", years: 8, icon: "🧠", color: "text-purple-500 bg-purple-500/10 border-purple-500/20" },
-    { name: "React & Next.js", category: "Code", years: 7, icon: "⚛️", color: "text-cyan-500 bg-cyan-500/10 border-cyan-500/20" },
-    { name: "Python & Automation", category: "Code", years: 5, icon: "🐍", color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/20" },
-    { name: "Linux & JS Security", category: "Security", years: 6, icon: "🛡️", color: "text-amber-500 bg-amber-500/10 border-amber-500/20" },
-    { name: "Adobe Creative Cloud", category: "Design", years: 18, icon: "✏️", color: "text-orange-500 bg-orange-500/10 border-orange-500/20" },
-    { name: "WCAG & Acessibilidade AAA", category: "Science", years: 10, icon: "👁️", color: "text-teal-500 bg-teal-500/10 border-teal-500/20" },
-    { name: "PostgreSQL & Databases", category: "Code", years: 8, icon: "🗄️", color: "text-blue-500 bg-blue-500/10 border-blue-500/20" }
+  categories = [
+    {
+      title: "Design de Produto & Sistemas",
+      skills: [
+        { name: "Figma & Design Tokens", years: "10 anos" },
+        { name: "Design Systems (0 → 1)", years: "12 anos" },
+        { name: "Adobe Creative Cloud", years: "18 anos" },
+        { name: "Prototipagem & Microinterações", years: "10 anos" }
+      ]
+    },
+    {
+      title: "Engenharia Front-End & Código",
+      skills: [
+        { name: "Tailwind CSS & Design Tokens", years: "6 anos" },
+        { name: "TypeScript & JavaScript", years: "12 anos" },
+        { name: "Ruby on Rails & Hotwire", years: "8 anos" },
+        { name: "React & Next.js", years: "7 anos" }
+      ]
+    },
+    {
+      title: "Ciência Comportamental & Segurança",
+      skills: [
+        { name: "Psicologia Cognitiva & IHC", years: "8 anos" },
+        { name: "WCAG & Acessibilidade AAA", years: "10 anos" },
+        { name: "Linux & JS Security (Linux Foundation)", years: "6 anos" },
+        { name: "Python & Automação de Dados", years: "5 anos" }
+      ]
+    }
   ]
 %>
 
-<!-- Software Stack & Mastery (Animated Infinite Marquee + Visual Grid) -->
-<section class="py-16 md:py-24 bg-brand-surface dark:bg-[#0B0D10] w-full border-y border-brand-tinta/5 dark:border-white/5 overflow-hidden" data-controller="reveal">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-10" data-reveal-target="item">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-      <div>
-        <div class="inline-flex items-center gap-2 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] uppercase tracking-widest font-bold mb-2">
-          <span>✦</span>
-          <span>Stack &amp; Ferramentas</span>
-        </div>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-brand-tinta dark:text-white tracking-tight font-serif">
-          Ecossistema Técnico &amp; Visual
-        </h2>
+<!-- Software Stack & Tools (Clean, Static & Elegant Presentation) -->
+<section class="py-16 md:py-24 bg-brand-surface dark:bg-[#0B0D10] w-full border-t border-brand-tinta/5 dark:border-white/5" data-controller="reveal">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="max-w-2xl mb-12" data-reveal-target="item">
+      <div class="inline-flex items-center gap-2 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] uppercase tracking-widest font-bold mb-2">
+        <span>✦</span>
+        <span>Ferramentas &amp; Stack</span>
       </div>
-      <p class="text-xs sm:text-sm font-mono text-neutral-500 dark:text-neutral-400">
-        20 anos de domínio prático do conceito ao código final
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-brand-tinta dark:text-white tracking-tight">
+        Ferramentas do Ofício &amp; Experiência
+      </h2>
+      <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">
+        Ferramentas e tecnologias dominadas ao longo de duas décadas de prática contínua.
       </p>
     </div>
-  </div>
 
-  <!-- Row 1: Infinite Animated Marquee (Left to Right) -->
-  <div class="relative w-full overflow-hidden py-3 bg-brand-fundo/50 dark:bg-[#07090E]/50 border-y border-brand-tinta/5 dark:border-white/5">
-    <div class="animate-marquee flex items-center gap-4">
-      <% (skills_list + skills_list).each do |skill| %>
-        <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 shadow-sm shrink-0 hover:border-[#003CA5]/50 transition-all">
-          <span class="w-8 h-8 rounded-xl flex items-center justify-center text-sm <%= skill[:color] %> font-bold">
-            <%= skill[:icon] %>
-          </span>
+    <!-- 3-Column Categorized Stack Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      <% categories.each do |cat| %>
+        <div class="p-6 rounded-2xl bg-brand-fundo dark:bg-[#13171F] border border-brand-tinta/5 dark:border-white/5 flex flex-col justify-between" data-reveal-target="item">
           <div>
-            <div class="text-xs font-bold text-brand-tinta dark:text-white whitespace-nowrap"><%= skill[:name] %></div>
-            <div class="text-[10px] font-mono text-neutral-500"><%= skill[:years] %> anos exp.</div>
+            <h3 class="text-sm font-bold font-mono text-[#003CA5] dark:text-[#5B8EFF] uppercase tracking-wider mb-4 pb-2 border-b border-brand-tinta/5 dark:border-white/5">
+              <%= cat[:title] %>
+            </h3>
+
+            <div class="space-y-3">
+              <% cat[:skills].each do |skill| %>
+                <div class="flex items-center justify-between py-1 text-xs">
+                  <span class="font-medium text-brand-tinta dark:text-white"><%= skill[:name] %></span>
+                  <span class="font-mono text-[11px] text-neutral-500 shrink-0 ml-2"><%= skill[:years] %></span>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       <% end %>
     </div>
-  </div>
 
-  <!-- Row 2: Infinite Animated Marquee Reverse (Right to Left) -->
-  <div class="relative w-full overflow-hidden py-3 mt-3">
-    <div class="animate-marquee-reverse flex items-center gap-4">
-      <% (skills_list.reverse + skills_list.reverse).each do |skill| %>
-        <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 shadow-sm shrink-0 hover:border-[#003CA5]/50 transition-all">
-          <span class="w-8 h-8 rounded-xl flex items-center justify-center text-sm <%= skill[:color] %> font-bold">
-            <%= skill[:icon] %>
-          </span>
-          <div>
-            <div class="text-xs font-bold text-brand-tinta dark:text-white whitespace-nowrap"><%= skill[:name] %></div>
-            <div class="text-[10px] font-mono text-neutral-500"><%= skill[:years] %> anos exp.</div>
-          </div>
-        </div>
-      <% end %>
-    </div>
   </div>
 </section>

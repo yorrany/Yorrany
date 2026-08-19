@@ -1,235 +1,90 @@
 <%
   featured_project = @case_studies.find(&:is_spotlight) || @case_studies.first
-  featured_image = featured_project&.image&.attached? ? url_for(featured_project.image) : nil
-  second_project = @case_studies.second
-  second_image = second_project&.image&.attached? ? url_for(second_project.image) : nil
 %>
 
-<!-- Hero Section (Visual-First & Immersive) -->
-<section class="relative min-h-[92vh] flex flex-col justify-center pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-brand-fundo dark:bg-brand-dark-fundo w-full bg-grid-suico" data-controller="reveal">
-  <!-- Ambient Animated Glows -->
-  <div class="absolute top-10 right-1/4 w-96 h-96 bg-[#003CA5]/15 dark:bg-[#003CA5]/25 rounded-full blur-[130px] animate-float-slow pointer-events-none"></div>
-  <div class="absolute bottom-10 left-10 w-80 h-80 bg-[#00A5FF]/10 dark:bg-[#00A5FF]/15 rounded-full blur-[110px] animate-float-delayed pointer-events-none"></div>
+<!-- Hero Section (Clean, Elegant & High-Impact) -->
+<section class="relative min-h-[88vh] flex flex-col justify-center pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-brand-fundo dark:bg-brand-dark-fundo w-full bg-grid-suico" data-controller="reveal">
+  <!-- Subtle Ambient Glows -->
+  <div class="absolute top-12 right-1/4 w-96 h-96 bg-[#003CA5]/10 dark:bg-[#003CA5]/20 rounded-full blur-[140px] pointer-events-none"></div>
+  <div class="absolute bottom-12 left-12 w-80 h-80 bg-[#00A5FF]/10 dark:bg-[#00A5FF]/15 rounded-full blur-[120px] pointer-events-none"></div>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
       
-      <!-- Left Column: High-Impact Typography & Fast Value Prop (7 Cols on LG) -->
+      <!-- Left Column: Editorial & Value Proposition (7 Cols on LG) -->
       <div class="lg:col-span-7 flex flex-col items-start text-left" data-reveal-target="item">
         
-        <!-- Live Status Badge -->
-        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#003CA5]/10 dark:bg-white/5 border border-[#003CA5]/20 dark:border-white/10 backdrop-blur-md mb-6 shadow-sm">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span class="text-xs font-mono font-bold text-[#003CA5] dark:text-[#5B8EFF] tracking-wide">
-            <%= I18n.locale.to_s.start_with?('pt') ? 'Disponível para Posições & Projetos Globais (EU / Remoto)' : (I18n.locale.to_s.start_with?('es') ? 'Disponible para Roles Globales (EU / Remoto)' : 'Available for Global Roles (EU / Remote)') %>
+        <!-- Live Status Pill -->
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-brand-surface dark:bg-white/5 border border-brand-tinta/10 dark:border-white/10 shadow-sm mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-xs font-mono font-medium text-neutral-700 dark:text-neutral-300">
+            <%= I18n.locale.to_s.start_with?('pt') ? 'Disponível para Projetos & Posições Globais (EU / Remoto)' : (I18n.locale.to_s.start_with?('es') ? 'Disponible para Proyectos Globales (EU / Remoto)' : 'Available for Global Roles (EU / Remote)') %>
           </span>
         </div>
 
         <!-- Main Headline -->
-        <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-brand-titulos dark:text-white leading-[1.12] mb-6 font-serif">
+        <h1 class="text-4xl sm:text-6xl lg:text-[62px] font-extrabold tracking-tight text-brand-titulos dark:text-white leading-[1.08] mb-6">
           <%= t('hero.h1') %>
         </h1>
 
-        <!-- Concise Subheadline -->
-        <p class="text-base sm:text-lg text-brand-tinta/80 dark:text-neutral-300 font-normal leading-relaxed mb-6 max-w-2xl">
-          <%= raw t('hero.sub').gsub(/mente humana/, '<span class="marker-highlight font-semibold">mente humana</span>').gsub(/human mind/, '<span class="marker-highlight font-semibold">human mind</span>') %>
+        <!-- Subheadline -->
+        <p class="text-lg sm:text-xl text-brand-tinta/80 dark:text-neutral-300 font-normal leading-relaxed mb-8 max-w-2xl">
+          <%= raw t('hero.sub').gsub(/mente humana/, '<span class="marker-highlight font-semibold text-brand-titulos dark:text-white">mente humana</span>').gsub(/human mind/, '<span class="marker-highlight font-semibold text-brand-titulos dark:text-white">human mind</span>') %>
         </p>
 
-        <!-- Quick Value Proof Pills -->
-        <div class="flex flex-wrap gap-2 mb-8">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-surface dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 text-xs font-mono text-neutral-700 dark:text-neutral-200 font-medium shadow-sm">
-            <span class="text-[#003CA5] dark:text-[#5B8EFF]">✦</span> 20+ Anos de Carreira
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-surface dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 text-xs font-mono text-neutral-700 dark:text-neutral-200 font-medium shadow-sm">
-            <span class="text-emerald-500">✦</span> 0 → 1 Design Systems
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-surface dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 text-xs font-mono text-neutral-700 dark:text-neutral-200 font-medium shadow-sm">
-            <span class="text-purple-500">✦</span> Lic. Psicologia & IHC
-          </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-brand-surface dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 text-xs font-mono text-neutral-700 dark:text-neutral-200 font-medium shadow-sm">
-            <span class="text-sky-500">✦</span> Linux Foundation Security
-          </span>
-        </div>
-
-        <!-- Primary Action Bar -->
+        <!-- Primary Actions -->
         <div class="flex flex-wrap items-center gap-4 w-full sm:w-auto">
-          <a href="#work" class="group relative flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-[#003CA5] hover:bg-[#002361] overflow-hidden hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#003CA5]/30 transition-all duration-300">
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shine_1.5s_ease-out]"></div>
-            <span class="text-white font-mono font-bold text-sm relative z-10"><%= t('hero.cta_primary', default: 'Ver Portfólio (16 Cases)') %></span>
+          <a href="#work" class="group relative flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#003CA5] hover:bg-[#002361] overflow-hidden hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#003CA5]/25 transition-all duration-300 text-white font-mono font-bold text-sm">
+            <span class="relative z-10"><%= t('hero.cta_primary', default: 'Ver Portfólio') %></span>
             <svg class="w-4 h-4 text-white relative z-10 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
           </a>
 
-          <a href="#europe" class="group flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-brand-surface dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#5B8EFF]/50 text-brand-tinta dark:text-white font-mono font-bold text-sm transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
-            <span class="text-base leading-none">🇪🇺</span>
-            <span><%= t('hero.cta_secondary', default: 'Europa & Global') %></span>
+          <a href="#contact" class="flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-brand-surface dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#5B8EFF]/50 text-brand-tinta dark:text-white font-mono font-bold text-sm transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
+            <span><%= t('contact.title', default: 'Entrar em Contato') %></span>
           </a>
 
-          <a href="/cv/yorrany_cv_<%= I18n.locale.to_s.split('-').first %>" target="_blank" data-turbo="false" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-full text-xs font-mono text-neutral-600 dark:text-neutral-400 hover:text-brand-titulos dark:hover:text-white hover:bg-brand-surface dark:hover:bg-[#13171F] border border-transparent hover:border-brand-tinta/10 dark:hover:border-white/10 transition-all">
+          <a href="/cv/yorrany_cv_<%= I18n.locale.to_s.split('-').first %>" target="_blank" data-turbo="false" class="inline-flex items-center gap-2 px-4 py-4 rounded-full text-xs font-mono text-neutral-600 dark:text-neutral-400 hover:text-brand-titulos dark:hover:text-white transition-colors">
             <svg class="w-4 h-4 text-[#003CA5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-            <span>CV em PDF</span>
+            <span>CV (PDF)</span>
           </a>
         </div>
 
       </div>
 
-      <!-- Right Column: Interactive Dual Engine Showcase (5 Cols on LG) -->
-      <div class="lg:col-span-5 w-full relative" data-reveal-target="item">
-        
-        <!-- Floating Micro-Badge Top -->
-        <div class="absolute -top-4 -left-4 z-20 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white dark:bg-[#1A2234] border border-neutral-200 dark:border-white/15 shadow-xl animate-float-slow">
-          <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-          <span class="text-[11px] font-mono font-bold text-neutral-800 dark:text-neutral-100">16+ Projetos Reais</span>
-        </div>
-
-        <!-- Floating Micro-Badge Bottom -->
-        <div class="absolute -bottom-4 -right-2 z-20 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white dark:bg-[#1A2234] border border-neutral-200 dark:border-white/15 shadow-xl animate-float-delayed">
-          <span class="text-xs">⚡</span>
-          <span class="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400">100% Produção & Escala</span>
-        </div>
-
-        <!-- Showcase Device Frame Card -->
-        <div data-controller="hero-showcase tilt" class="glass-panel p-4 sm:p-5 rounded-3xl shadow-2xl border border-[#003CA5]/20 dark:border-white/10 transition-all duration-300 relative overflow-hidden group">
-          
-          <!-- Interactive Tab Header -->
-          <div class="flex items-center justify-between gap-1 p-1 bg-neutral-100 dark:bg-[#0B0D10] rounded-2xl mb-4 border border-neutral-200/80 dark:border-white/5 text-[11px] font-mono">
-            <button data-action="click->hero-showcase#switch" data-hero-showcase-target="tab" data-index="0" class="flex-1 py-2 px-2 rounded-xl text-center transition-all whitespace-nowrap text-[#003CA5] dark:text-[#5B8EFF] bg-[#003CA5]/10 border border-[#003CA5]/30 font-bold">
-              🎨 Design System
-            </button>
-            <button data-action="click->hero-showcase#switch" data-hero-showcase-target="tab" data-index="1" class="flex-1 py-2 px-2 rounded-xl text-center transition-all whitespace-nowrap text-neutral-500 dark:text-neutral-400 hover:text-brand-titulos dark:hover:text-white">
-              ⚡ Arquitetura
-            </button>
-            <button data-action="click->hero-showcase#switch" data-hero-showcase-target="tab" data-index="2" class="flex-1 py-2 px-2 rounded-xl text-center transition-all whitespace-nowrap text-neutral-500 dark:text-neutral-400 hover:text-brand-titulos dark:hover:text-white">
-              🧠 Psicologia
-            </button>
-          </div>
-
-          <!-- SLIDE 0: DESIGN SYSTEM SHOWCASE -->
-          <div data-hero-showcase-target="panel" class="transition-all duration-500">
-            <div class="relative rounded-2xl overflow-hidden aspect-[16/11] bg-neutral-900 border border-neutral-800 shadow-inner group/img">
-              <% if featured_image.present? %>
-                <img src="<%= featured_image %>" alt="<%= featured_project&.title %>" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700" />
-              <% else %>
-                <div class="w-full h-full flex items-center justify-center text-xs font-mono text-neutral-400">Design System Preview</div>
-              <% end %>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-4 text-white">
-                <div class="flex items-center justify-between mb-1.5">
-                  <span class="text-xs font-bold truncate"><%= featured_project&.title || "Cubos Academy" %></span>
-                  <span class="text-[10px] font-mono text-sky-400 bg-sky-950/80 px-2 py-0.5 rounded border border-sky-400/30">0 → 1 System</span>
-                </div>
-                <div class="flex items-center gap-2 text-[10px] font-mono text-neutral-300">
-                  <span class="bg-white/10 px-2 py-0.5 rounded">Figma Tokens</span>
-                  <span class="bg-white/10 px-2 py-0.5 rounded">Tailwind Sync</span>
-                  <span class="bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-400/30">WCAG AAA</span>
-                </div>
-              </div>
-            </div>
+      <!-- Right Column: Authentic Spotlight Showcase (5 Cols on LG) -->
+      <div class="lg:col-span-5 w-full" data-reveal-target="item">
+        <% if featured_project && featured_project.image.attached? %>
+          <div data-controller="tilt" data-action="click->modal#openCase" data-id="<%= featured_project.id %>" class="group relative rounded-3xl overflow-hidden bg-neutral-900 border border-brand-tinta/10 dark:border-white/10 shadow-2xl cursor-pointer hover:border-[#003CA5]/50 transition-all duration-500 card-border-glow">
             
-            <!-- Token Specs Bar below image -->
-            <div class="mt-3 grid grid-cols-3 gap-2 text-center font-mono text-[10px]">
-              <div class="p-2 rounded-xl bg-brand-surface dark:bg-[#0B0D10] border border-brand-tinta/5 dark:border-white/5">
-                <div class="text-neutral-400">Velocidade</div>
-                <div class="font-bold text-[#003CA5] dark:text-sky-400">+40% Handoff</div>
-              </div>
-              <div class="p-2 rounded-xl bg-brand-surface dark:bg-[#0B0D10] border border-brand-tinta/5 dark:border-white/5">
-                <div class="text-neutral-400">Consistência</div>
-                <div class="font-bold text-emerald-600 dark:text-emerald-400">100% Reuso</div>
-              </div>
-              <div class="p-2 rounded-xl bg-brand-surface dark:bg-[#0B0D10] border border-brand-tinta/5 dark:border-white/5">
-                <div class="text-neutral-400">Acessibilidade</div>
-                <div class="font-bold text-purple-600 dark:text-purple-400">Contraste AAA</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SLIDE 1: FRONT-END & SECURITY SHOWCASE -->
-          <div data-hero-showcase-target="panel" class="hidden transition-all duration-500">
-            <div class="rounded-2xl bg-[#07090E] p-4 border border-white/10 font-mono text-xs text-neutral-300 aspect-[16/11] flex flex-col justify-between shadow-inner">
-              <div class="flex items-center justify-between pb-2 border-b border-white/10">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] text-neutral-400">ProductArchitecture.tsx</span>
-              </div>
-              <div class="space-y-1 text-[11px] leading-relaxed overflow-hidden my-auto py-2">
-                <div class="text-neutral-500">// Zero handoff friction: semantic & hardened</div>
-                <div><span class="text-purple-400">export const</span> <span class="text-sky-300">DesignEngine</span> = () =&gt; {</div>
-                <div class="pl-3"><span class="text-purple-400">const</span> { security, ux } = <span class="text-yellow-300">useRobustStack</span>()</div>
-                <div class="pl-3 text-emerald-400">return &lt;<span class="text-sky-400">Component</span> tokens={figma} /&gt;</div>
-                <div>}</div>
-              </div>
-              <div class="flex items-center justify-between pt-2 border-t border-white/10 text-[10px] text-neutral-400">
-                <span class="text-emerald-400">✓ The Linux Foundation Verified</span>
-                <span class="text-sky-400">SSR &amp; Type-Safe</span>
-              </div>
-            </div>
-
-            <!-- Architecture metrics -->
-            <div class="mt-3 grid grid-cols-3 gap-2 text-center font-mono text-[10px]">
-              <div class="p-2 rounded-xl bg-brand-surface dark:bg-[#0B0D10] border border-brand-tinta/5 dark:border-white/5">
-                <div class="text-neutral-400">Clean Code</div>
-                <div class="font-bold text-[#003CA5] dark:text-sky-400">JS / Python</div>
-              </div>
-              <div class="p-2 rounded-xl bg-brand-surface dark:bg-[#0B0D10] border border-brand-tinta/5 dark:border-white/5">
-                <div class="text-neutral-400">Performance</div>
-                <div class="font-bold text-emerald-600 dark:text-emerald-400">Core Web Vitals</div>
-              </div>
-              <div class="p-2 rounded-xl bg-brand-surface dark:bg-[#0B0D10] border border-brand-tinta/5 dark:border-white/5">
-                <div class="text-neutral-400">Segurança</div>
-                <div class="font-bold text-purple-600 dark:text-purple-400">Hardened UX</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SLIDE 2: COGNITIVE PSYCHOLOGY SHOWCASE -->
-          <div data-hero-showcase-target="panel" class="hidden transition-all duration-500">
-            <div class="relative rounded-2xl bg-gradient-to-br from-purple-950/40 via-[#0B0D10] to-[#0B0D10] p-4 border border-purple-500/20 aspect-[16/11] flex flex-col justify-between text-neutral-200 font-mono">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-purple-400 flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
-                  Arquitetura de Decisão
+            <!-- Real Case Showcase Image -->
+            <div class="relative w-full aspect-[4/3] overflow-hidden bg-neutral-950">
+              <%= image_tag featured_project.image, alt: featured_project.title, class: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none", loading: "eager" %>
+              
+              <!-- Subtle Vignette & Gradient Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              
+              <!-- Spotlight Badge -->
+              <div class="absolute top-4 left-4 z-10">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-white border border-white/15 text-[11px] font-mono font-semibold">
+                  <span class="text-[#5B8EFF]">✦</span> Projeto em Destaque
                 </span>
-                <span class="text-[10px] text-neutral-400">IHC &amp; Heurísticas</span>
               </div>
-              <div class="space-y-2.5 my-auto">
-                <div class="p-2.5 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between text-xs">
-                  <span class="text-neutral-300">Carga Cognitiva</span>
-                  <span class="text-emerald-400 font-bold">-45% Atrito</span>
+
+              <!-- Project Caption on Image -->
+              <div class="absolute bottom-4 inset-x-4 z-10 flex items-end justify-between gap-4 text-white">
+                <div>
+                  <h3 class="text-xl font-bold font-sans leading-snug"><%= featured_project.title %></h3>
+                  <p class="text-xs text-neutral-300 font-mono mt-0.5"><%= featured_project.role.presence || "Product Design & Strategy" %></p>
                 </div>
-                <div class="p-2.5 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between text-xs">
-                  <span class="text-neutral-300">Taxa de Conversão</span>
-                  <span class="text-sky-400 font-bold">+180% Retenção</span>
-                </div>
-                <div class="p-2.5 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between text-xs">
-                  <span class="text-neutral-300">Alinhamento Mental</span>
-                  <span class="text-purple-400 font-bold">100% Previsível</span>
-                </div>
-              </div>
-              <div class="text-[10px] text-neutral-400 text-center">
-                Pesquisa com usuários baseada em evidências científicas
+
+                <span class="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center shrink-0 group-hover:bg-[#003CA5] group-hover:scale-110 transition-all">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </span>
               </div>
             </div>
 
-            <!-- Psychology metrics -->
-            <div class="mt-3 grid grid-cols-3 gap-2 text-center font-mono text-[10px]">
-              <div class="p-2 rounded-xl bg-brand-surface dark:bg-[#0B0D10] border border-brand-tinta/5 dark:border-white/5">
-                <div class="text-neutral-400">Formação</div>
-                <div class="font-bold text-[#003CA5] dark:text-sky-400">Lic. Psicologia</div>
-              </div>
-              <div class="p-2 rounded-xl bg-brand-surface dark:bg-[#0B0D10] border border-brand-tinta/5 dark:border-white/5">
-                <div class="text-neutral-400">Método</div>
-                <div class="font-bold text-emerald-600 dark:text-emerald-400">Heurísticas</div>
-              </div>
-              <div class="p-2 rounded-xl bg-brand-surface dark:bg-[#0B0D10] border border-brand-tinta/5 dark:border-white/5">
-                <div class="text-neutral-400">Resultado</div>
-                <div class="font-bold text-purple-600 dark:text-purple-400">Alta Conversão</div>
-              </div>
-            </div>
           </div>
-
-        </div>
-
+        <% end %>
       </div>
 
     </div>
