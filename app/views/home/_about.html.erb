@@ -20,7 +20,7 @@
       <div class="md:col-span-7 flex flex-col justify-center space-y-6" data-reveal-target="item">
         <div class="inline-flex items-center gap-2 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] uppercase tracking-widest font-bold">
           <span>✦</span>
-          <span>Filosofia &amp; Trajetória</span>
+          <span><%= t('about.eyebrow', default: 'Filosofia & Trajetória') %></span>
         </div>
 
         <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-titulos dark:text-white leading-[1.12]">
@@ -34,9 +34,9 @@
               01
             </span>
             <div>
-              <h3 class="text-base font-bold text-brand-tinta dark:text-white mb-1">Rigor Visual &amp; Tipografia</h3>
+              <h3 class="text-base font-bold text-brand-tinta dark:text-white mb-1"><%= t('about.credo1_title', default: 'Rigor Visual & Tipografia') %></h3>
               <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                Origens no design gráfico e na precisão milimétrica suíça. Onde cada espaçamento, proporção e hierarquia visual tem propósito estratégico.
+                <%= t('about.credo1_desc', default: 'Origens no design gráfico e na precisão milimétrica suíça. Onde cada espaçamento, proporção e hierarquia visual tem propósito estratégico.') %>
               </p>
             </div>
           </div>
@@ -46,9 +46,9 @@
               02
             </span>
             <div>
-              <h3 class="text-base font-bold text-brand-tinta dark:text-white mb-1">Psicologia da Escolha Humana</h3>
+              <h3 class="text-base font-bold text-brand-tinta dark:text-white mb-1"><%= t('about.credo2_title', default: 'Psicologia da Escolha Humana') %></h3>
               <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                Licenciado em Psicologia para decifrar a tomada de decisão, reduzindo a sobrecarga cognitiva e gerando conversões éticas e sustentáveis.
+                <%= t('about.credo2_desc', default: 'Licenciado em Psicologia para decifrar a tomada de decisão, reduzindo a sobrecarga cognitiva e gerando conversões éticas e sustentáveis.') %>
               </p>
             </div>
           </div>
@@ -58,9 +58,9 @@
               03
             </span>
             <div>
-              <h3 class="text-base font-bold text-brand-tinta dark:text-white mb-1">Arquitetura de Front-End &amp; Segurança</h3>
+              <h3 class="text-base font-bold text-brand-tinta dark:text-white mb-1"><%= t('about.credo3_title', default: 'Arquitetura de Front-End & Segurança') %></h3>
               <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                Certificado pela Linux Foundation. Código limpo, componentes resilientes, acessibilidade WCAG AAA e zero fricção com os desenvolvedores.
+                <%= t('about.credo3_desc', default: 'Certificado pela Linux Foundation. Código limpo, componentes resilientes, acessibilidade WCAG AAA e zero fricção com os desenvolvedores.') %>
               </p>
             </div>
           </div>
@@ -72,65 +72,66 @@
   </div>
 </section>
 
-<!-- Europe Block (Expansion Hub) -->
-<section id="europe" class="py-20 md:py-28 bg-[#07090E] text-white relative w-full overflow-hidden" data-controller="reveal">
-  <!-- Ambient glow -->
-  <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-[#003CA5]/20 rounded-full blur-[140px] pointer-events-none"></div>
+<!-- Europe Block (Fully Themed for Light & Dark Mode) -->
+<section id="europe" class="py-20 md:py-28 bg-brand-tint/30 dark:bg-[#07090E] text-brand-tinta dark:text-white relative w-full overflow-hidden border-t border-brand-tinta/5 dark:border-white/5" data-controller="reveal">
+  <!-- Subtle Ambient glow -->
+  <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-[#003CA5]/10 dark:bg-[#003CA5]/20 rounded-full blur-[140px] pointer-events-none"></div>
+  <div class="absolute -left-20 -top-20 w-80 h-80 bg-[#00A5FF]/10 dark:bg-[#00A5FF]/15 rounded-full blur-[120px] pointer-events-none"></div>
   
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-reveal-target="item">
     
-    <!-- Relógio ao vivo de fusos europeus -->
-    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 border border-white/15 backdrop-blur-md mb-8 shadow-sm">
-      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span class="text-xs font-mono text-sky-300 font-bold uppercase tracking-wider">
+    <!-- Live European Clock Badge -->
+    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand-surface dark:bg-white/10 border border-brand-tinta/10 dark:border-white/15 shadow-sm mb-8 backdrop-blur-md">
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+      <span class="text-xs font-mono text-[#003CA5] dark:text-sky-300 font-bold uppercase tracking-wider">
         <%= t('europe.time_label', default: 'Lisboa (WET) · Madrid (CET)') %>
       </span>
-      <span class="text-xs text-white/30">•</span>
-      <span class="text-xs sm:text-sm font-mono text-white font-bold" data-controller="clock">--:--:--</span>
+      <span class="text-xs text-neutral-400 dark:text-white/30">•</span>
+      <span class="text-xs sm:text-sm font-mono text-brand-tinta dark:text-white font-bold" data-controller="clock">--:--:--</span>
     </div>
 
-    <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-6 max-w-3xl mx-auto leading-tight">
+    <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-brand-titulos dark:text-white mb-6 max-w-3xl mx-auto leading-tight">
       <%= t('europe.h2') %>
     </h2>
     
-    <p class="text-sm sm:text-base text-neutral-300 max-w-2xl mx-auto leading-relaxed mb-10">
+    <p class="text-sm sm:text-base text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto leading-relaxed mb-10">
       <%= t('europe.desc') %>
     </p>
 
     <!-- Grid de Especificações e Destaques de Contratação -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 max-w-3xl mx-auto mb-10 text-left">
       <!-- Item 1: Fuso Horário -->
-      <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-[#003CA5] transition-all">
-        <span class="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-bold block mb-1">Fuso Horário</span>
-        <div class="text-xs sm:text-sm font-semibold text-white">WET / CET</div>
+      <div class="p-4 rounded-2xl bg-brand-surface dark:bg-white/5 border border-brand-tinta/10 dark:border-white/10 shadow-sm hover:border-[#003CA5] transition-all">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-[#003CA5] dark:text-sky-400 font-bold block mb-1">Fuso Horário</span>
+        <div class="text-xs sm:text-sm font-semibold text-brand-tinta dark:text-white">WET / CET</div>
       </div>
 
       <!-- Item 2: Modelo de Trabalho -->
-      <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-[#003CA5] transition-all">
-        <span class="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-bold block mb-1">Modelo</span>
-        <div class="text-xs sm:text-sm font-semibold text-white">Remoto / Realocação</div>
+      <div class="p-4 rounded-2xl bg-brand-surface dark:bg-white/5 border border-brand-tinta/10 dark:border-white/10 shadow-sm hover:border-[#003CA5] transition-all">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-[#003CA5] dark:text-sky-400 font-bold block mb-1">Modelo</span>
+        <div class="text-xs sm:text-sm font-semibold text-brand-tinta dark:text-white">Remoto / Realocação</div>
       </div>
 
       <!-- Item 3: Elegibilidade & Vistos -->
-      <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-[#003CA5] transition-all">
-        <span class="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-bold block mb-1">Elegibilidade</span>
-        <div class="text-xs sm:text-sm font-semibold text-white">B2B / EOR / Sponsor</div>
+      <div class="p-4 rounded-2xl bg-brand-surface dark:bg-white/5 border border-brand-tinta/10 dark:border-white/10 shadow-sm hover:border-[#003CA5] transition-all">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-[#003CA5] dark:text-sky-400 font-bold block mb-1">Elegibilidade</span>
+        <div class="text-xs sm:text-sm font-semibold text-brand-tinta dark:text-white">B2B / EOR / Sponsor</div>
       </div>
 
       <!-- Item 4: Idiomas -->
-      <div class="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-[#003CA5] transition-all">
-        <span class="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-bold block mb-1">Idiomas</span>
-        <div class="text-xs sm:text-sm font-semibold text-white">PT (Nativo) · EN · ES</div>
+      <div class="p-4 rounded-2xl bg-brand-surface dark:bg-white/5 border border-brand-tinta/10 dark:border-white/10 shadow-sm hover:border-[#003CA5] transition-all">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-[#003CA5] dark:text-sky-400 font-bold block mb-1">Idiomas</span>
+        <div class="text-xs sm:text-sm font-semibold text-brand-tinta dark:text-white">PT (Nativo) · EN · ES</div>
       </div>
     </div>
 
     <!-- CTAs -->
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="/cv/yorrany_cv_<%= I18n.locale.to_s.split('-').first %>" target="_blank" data-turbo="false" class="w-full sm:w-auto px-8 py-4 bg-[#003CA5] hover:bg-[#002361] text-white font-mono font-bold text-sm rounded-full transition-all shadow-xl shadow-[#003CA5]/30 hover:scale-[1.02] active:scale-[0.98]">
+      <a href="/cv/yorrany_cv_<%= I18n.locale.to_s.split('-').first %>" target="_blank" data-turbo="false" class="w-full sm:w-auto px-8 py-4 bg-[#003CA5] hover:bg-[#002361] text-white font-mono font-bold text-sm rounded-full transition-all shadow-xl shadow-[#003CA5]/25 hover:scale-[1.02] active:scale-[0.98]">
         <%= t('europe.cta_primary', default: 'Descarregar CV Oficial') %>
       </a>
       
-      <a href="https://linkedin.com/in/yorrany" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-white/10 border border-white/20 hover:border-white hover:bg-white/15 text-white font-mono font-bold text-sm rounded-full transition-all hover:scale-[1.02] active:scale-[0.98]">
+      <a href="https://linkedin.com/in/yorrany" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-brand-surface dark:bg-white/10 border border-brand-tinta/15 dark:border-white/20 hover:border-[#003CA5] dark:hover:border-white hover:bg-brand-tinta/5 dark:hover:bg-white/15 text-brand-tinta dark:text-white font-mono font-bold text-sm rounded-full transition-all hover:scale-[1.02] active:scale-[0.98]">
         <%= t('europe.cta_secondary', default: 'Conectar no LinkedIn') %>
       </a>
     </div>
