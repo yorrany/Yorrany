@@ -1,22 +1,22 @@
 <!-- About & Philosophy Section (Visual Editorial Storytelling) -->
 <section id="about" class="py-20 md:py-32 bg-brand-surface dark:bg-brand-dark-surface relative w-full border-t border-brand-tinta/5 dark:border-white/5" data-controller="reveal">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-stretch">
       
       <!-- Photo Column with Deep Immersion & Atmospheric Lighting (5 Cols on MD) -->
-      <div class="md:col-span-5 relative flex items-center justify-center" data-reveal-target="item">
+      <div class="md:col-span-5 relative flex flex-col h-full min-h-[480px]" data-reveal-target="item">
         <!-- Ambient Backlight Glow -->
         <div class="absolute -inset-4 bg-gradient-to-tr from-[#003CA5]/25 via-[#3D33FF]/15 to-[#00A5FF]/20 rounded-3xl blur-2xl opacity-80 pointer-events-none"></div>
 
-        <div class="relative w-full aspect-[3/4] sm:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-brand-tinta/10 dark:border-white/10 bg-neutral-950 group card-border-glow" data-controller="tilt">
+        <div class="relative w-full h-full min-h-[480px] rounded-3xl overflow-hidden shadow-2xl border border-brand-tinta/10 dark:border-white/10 bg-neutral-950 group card-border-glow flex flex-col justify-between" data-controller="tilt">
           <%= image_tag 'yorrany.png', alt: 'Yorrany Braga', class: 'object-cover absolute inset-0 w-full h-full object-top group-hover:scale-105 transition-all duration-700 pointer-events-none' %>
           
           <!-- Cinematic Vignette & Ambient Color Gradients -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
-          <div class="absolute inset-0 bg-gradient-to-tr from-[#003CA5]/20 via-transparent to-transparent mix-blend-overlay"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-tr from-[#003CA5]/20 via-transparent to-transparent mix-blend-overlay pointer-events-none"></div>
           
           <!-- Top Floating Identity Tag -->
-          <div class="absolute top-4 left-4 z-10">
+          <div class="relative top-4 left-4 self-start z-10">
             <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/65 backdrop-blur-md text-white border border-white/15 text-xs font-semibold shadow-lg">
               <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span>Yorrany Braga</span>
@@ -24,7 +24,7 @@
           </div>
 
           <!-- Bottom Editorial Showcase Card -->
-          <div class="absolute bottom-4 inset-x-4 z-10 text-white">
+          <div class="relative bottom-0 inset-x-0 p-4 z-10 text-white mt-auto">
             <div class="p-4 rounded-2xl bg-black/50 backdrop-blur-md border border-white/15 shadow-xl">
               <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-white leading-tight">Yorrany Braga</h3>
               <p class="text-xs text-sky-300 font-semibold mt-0.5">Principal Product Designer &amp; Front-End Architect</p>
@@ -40,7 +40,7 @@
       </div>
 
       <!-- Editorial Narrative Column (7 Cols on MD) -->
-      <div class="md:col-span-7 flex flex-col justify-center space-y-6" data-reveal-target="item">
+      <div class="md:col-span-7 flex flex-col justify-between space-y-6 h-full" data-reveal-target="item">
         <div class="inline-flex items-center gap-2 text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] uppercase tracking-widest font-bold">
           <span>✦</span>
           <span><%= t('about.eyebrow', default: 'Filosofia & Trajetória') %></span>
