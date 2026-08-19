@@ -103,69 +103,94 @@
       <% end %>
     </div>
 
-    <!-- TAB 2: CERTIFICATIONS GRID (With High-Res Visual Thumbnails Restored!) -->
-    <div data-tabs-target="panel" class="hidden space-y-4 max-w-5xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <!-- TAB 2: CERTIFICATIONS (Landscape Thumbs & Spacious Layout) -->
+    <div data-tabs-target="panel" class="hidden space-y-5 max-w-4xl mx-auto">
+      <div class="flex flex-col gap-5">
         <% @certifications.each do |cert| %>
-          <div class="bg-brand-surface dark:bg-[#13171F] p-5 sm:p-6 rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#5B8EFF]/50 transition-all card-border-glow flex flex-col sm:flex-row gap-5 group" data-reveal-target="item">
+          <div class="bg-brand-surface dark:bg-[#13171F] p-5 sm:p-6 rounded-2xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#5B8EFF]/50 transition-all card-border-glow flex flex-col sm:flex-row gap-6 group" data-reveal-target="item">
             
-            <!-- Certificate Image Thumbnail -->
-            <% if cert.image.attached? %>
-              <div class="relative w-full sm:w-44 aspect-[4/3] bg-neutral-100 dark:bg-[#0B0D10] rounded-xl border border-brand-tinta/10 dark:border-white/10 flex items-center justify-center overflow-hidden shrink-0 cursor-pointer group-hover:border-[#003CA5]/50 transition-all" data-action="click->modal#openCert" data-cert-id="<%= cert.id %>" data-url="<%= url_for(cert.image) %>" data-title="<%= cert.title %>" data-is-image="<%= cert.image.content_type.start_with?('image/').to_s %>" data-credential-code="<%= cert.credential_code %>" data-credential-url="<%= cert.credential_url %>">
-                <% if cert.image.representable? %>
-                  <%= image_tag cert.image.representation(resize_to_fill: [400, 300]), class: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500", loading: "lazy" %>
-                <% else %>
-                  <svg class="w-8 h-8 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                <% end %>
-                <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+            <!-- Landscape Thumbnail (Aspect 16:10) -->
+            <div class="relative w-full sm:w-60 md:w-72 aspect-[16/10] bg-neutral-900 rounded-xl border border-brand-tinta/10 dark:border-white/10 flex items-center justify-center overflow-hidden shrink-0 cursor-pointer group-hover:border-[#003CA5]/60 transition-all shadow-inner" <% if cert.image.attached? %>data-action="click->modal#openCert" data-cert-id="<%= cert.id %>" data-url="<%= url_for(cert.image) %>" data-title="<%= cert.title %>" data-is-image="<%= cert.image.content_type.start_with?('image/').to_s %>" data-credential-code="<%= cert.credential_code %>" data-credential-url="<%= cert.credential_url %>"<% end %>>
+              <% if cert.image.attached? && cert.image.representable? %>
+                <%= image_tag cert.image.representation(resize_to_limit: [600, 375]), class: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500", loading: "lazy" %>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
                 </div>
-              </div>
-            <% end %>
+              <% else %>
+                <div class="flex flex-col items-center justify-center p-4 text-center">
+                  <div class="w-10 h-10 rounded-xl bg-white/10 text-white flex items-center justify-center font-mono font-bold text-sm mb-2">
+                    <%= cert.issuer.to_s.first(2).upcase %>
+                  </div>
+                  <span class="text-[10px] font-mono text-neutral-400"><%= cert.issuer %></span>
+                </div>
+              <% end %>
+            </div>
 
-            <!-- Content Column -->
+            <!-- Content Column (Spacious & Non-Cropped) -->
             <div class="flex-1 flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between gap-2 mb-2">
-                  <span class="text-[10px] font-mono text-neutral-600 dark:text-neutral-400 bg-brand-fundo dark:bg-[#0B0D10] px-2.5 py-0.5 rounded-full border border-brand-tinta/5 dark:border-white/5">
-                    <%= cert.category %>
-                  </span>
-                  <span class="text-xs font-mono font-bold text-[#003CA5] dark:text-[#5B8EFF]">
-                    <%= cert.year %>
-                  </span>
+                <!-- Top Badges Row -->
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-mono font-bold uppercase text-[#003CA5] dark:text-[#5B8EFF] bg-[#003CA5]/10 dark:bg-white/5 px-2.5 py-1 rounded-full border border-[#003CA5]/20 dark:border-white/10">
+                      <%= cert.category %>
+                    </span>
+                    <% if cert.credential_code.present? %>
+                      <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 font-semibold">
+                        ID: <%= cert.credential_code %>
+                      </span>
+                    <% end %>
+                  </div>
+
+                  <% if cert.year.present? %>
+                    <span class="text-xs font-mono font-bold text-neutral-500 dark:text-neutral-400">
+                      <%= cert.year %>
+                    </span>
+                  <% end %>
                 </div>
 
-                <h3 class="text-sm sm:text-base font-bold text-brand-tinta dark:text-white leading-snug mb-1 group-hover:text-[#003CA5] dark:group-hover:text-[#5B8EFF] transition-colors">
+                <!-- Title -->
+                <h3 class="text-base sm:text-lg font-bold text-brand-tinta dark:text-white leading-snug mb-1 group-hover:text-[#003CA5] dark:group-hover:text-[#5B8EFF] transition-colors">
                   <%= cert.title %>
                 </h3>
 
-                <div class="text-xs font-mono text-neutral-600 dark:text-neutral-400 mb-2">
+                <!-- Issuer -->
+                <div class="text-xs font-mono text-neutral-600 dark:text-neutral-400 font-semibold mb-2.5">
                   <%= cert.issuer %>
                 </div>
 
+                <!-- Description -->
                 <% if cert.description.present? %>
-                  <p class="text-xs text-neutral-500 dark:text-neutral-400 line-clamp-2 mb-3">
+                  <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed mb-3">
                     <%= cert.description %>
                   </p>
                 <% end %>
+
+                <!-- Skills Chips -->
+                <% if cert.skills.present? %>
+                  <div class="flex flex-wrap gap-1.5 mb-4">
+                    <% cert.skills.split(',').each do |skill| %>
+                      <span class="px-2 py-0.5 rounded-md bg-brand-fundo dark:bg-[#0B0D10] text-[10px] font-mono text-neutral-600 dark:text-neutral-400 border border-brand-tinta/5 dark:border-white/5">
+                        <%= skill.strip %>
+                      </span>
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
 
+              <!-- Footer Actions -->
               <div class="pt-3 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono">
-                <% if cert.credential_code.present? %>
-                  <span class="text-[10px] text-emerald-500 font-bold">ID: <%= cert.credential_code %></span>
-                <% else %>
-                  <span class="text-[10px] text-neutral-400">Certificado Oficial</span>
-                <% end %>
+                <span class="text-[11px] text-neutral-400">Credencial Oficial</span>
 
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-4">
                   <% if cert.image.attached? %>
                     <button data-action="click->modal#openCert" data-cert-id="<%= cert.id %>" data-url="<%= url_for(cert.image) %>" data-title="<%= cert.title %>" data-is-image="<%= cert.image.content_type.start_with?('image/').to_s %>" data-credential-code="<%= cert.credential_code %>" data-credential-url="<%= cert.credential_url %>" class="text-xs font-bold text-[#003CA5] dark:text-[#5B8EFF] hover:underline flex items-center gap-1">
-                      Visualizar Doc ↗
+                      <span>Visualizar Documento</span> ↗
                     </button>
                   <% end %>
                   <% if cert.credential_url.present? %>
-                    <a href="<%= cert.credential_url %>" target="_blank" rel="noopener noreferrer" class="text-[11px] text-neutral-400 hover:text-white transition-colors">
-                      Validar
+                    <a href="<%= cert.credential_url %>" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-neutral-600 dark:text-neutral-300 hover:text-[#003CA5] dark:hover:text-white transition-colors flex items-center gap-1">
+                      <span>Validar Emissor</span> ↗
                     </a>
                   <% end %>
                 </div>
