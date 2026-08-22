@@ -107,24 +107,26 @@
     <div data-tabs-target="panel" class="hidden space-y-5 max-w-4xl mx-auto">
       <div class="flex flex-col gap-5">
         <% @certifications.each do |cert| %>
-          <div class="bg-brand-surface dark:bg-[#13171F] p-5 sm:p-6 rounded-3xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#5B8EFF]/50 transition-all card-border-glow flex flex-col sm:flex-row gap-6 group shadow-sm" data-reveal-target="item">
+          <div class="bg-brand-surface dark:bg-[#13171F] p-5 sm:p-6 rounded-3xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#5B8EFF]/50 transition-all card-border-glow flex flex-col <%= cert.image.attached? ? 'sm:flex-row' : '' %> gap-6 group shadow-sm" data-reveal-target="item">
             
-            <!-- Landscape Thumbnail (Aspect 16:10, Clean Borderless Finish) -->
-            <div class="relative w-full sm:w-60 md:w-72 aspect-[16/10] bg-brand-tint/30 dark:bg-[#0B0D10] rounded-2xl overflow-hidden shrink-0 cursor-pointer border border-brand-tinta/10 dark:border-white/10 group-hover:border-[#003CA5]/50 transition-all" <% if cert.image.attached? %>data-action="click->modal#openCert" data-cert-id="<%= cert.id %>" data-url="<%= url_for(cert.image) %>" data-title="<%= cert.title %>" data-is-image="<%= cert.image.content_type.start_with?('image/').to_s %>" data-credential-code="<%= cert.credential_code %>" data-credential-url="<%= cert.credential_url %>"<% end %>>
-              <% if cert.image.attached? && cert.image.representable? %>
-                <%= image_tag cert.image.representation(resize_to_limit: [600, 375]), class: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500", loading: "lazy" %>
+            <% if cert.image.attached? %>
+              <!-- Landscape Thumbnail (Aspect 16:10, Clean Borderless Finish) -->
+              <div class="relative w-full sm:w-60 md:w-72 aspect-[16/10] bg-brand-tint/30 dark:bg-[#0B0D10] rounded-2xl overflow-hidden shrink-0 cursor-pointer border border-brand-tinta/10 dark:border-white/10 group-hover:border-[#003CA5]/50 transition-all" data-action="click->modal#openCert" data-cert-id="<%= cert.id %>" data-url="<%= url_for(cert.image) %>" data-title="<%= cert.title %>" data-is-image="<%= cert.image.content_type.start_with?('image/').to_s %>" data-credential-code="<%= cert.credential_code %>" data-credential-url="<%= cert.credential_url %>">
+                <% if cert.image.content_type.start_with?('image/') %>
+                  <%= image_tag cert.image, class: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500", loading: "lazy", alt: cert.title %>
+                <% elsif cert.image.representable? %>
+                  <%= image_tag cert.image.representation(resize_to_limit: [600, 375]), class: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-500", loading: "lazy", alt: cert.title %>
+                <% else %>
+                  <div class="flex flex-col items-center justify-center p-4 text-center h-full bg-[#003CA5]/5 dark:bg-white/5">
+                    <svg class="w-8 h-8 text-[#003CA5] dark:text-[#5B8EFF] mb-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <span class="text-xs font-mono font-bold text-[#003CA5] dark:text-[#5B8EFF]">Documento (PDF)</span>
+                  </div>
+                <% end %>
                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
                 </div>
-              <% else %>
-                <div class="flex flex-col items-center justify-center p-4 text-center h-full">
-                  <div class="w-11 h-11 rounded-2xl bg-[#003CA5]/10 dark:bg-white/10 text-[#003CA5] dark:text-[#5B8EFF] flex items-center justify-center font-bold text-sm mb-2">
-                    <%= cert.issuer.to_s.first(2).upcase %>
-                  </div>
-                  <span class="text-xs font-semibold text-neutral-600 dark:text-neutral-400 line-clamp-1"><%= cert.issuer %></span>
-                </div>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
 
             <!-- Content Column (Spacious & Modern) -->
             <div class="flex-1 flex flex-col justify-between">
@@ -132,6 +134,11 @@
                 <!-- Top Modern Badges Row -->
                 <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
                   <div class="flex flex-wrap items-center gap-2">
+                    <% unless cert.image.attached? %>
+                      <div class="w-7 h-7 rounded-lg bg-[#003CA5]/10 dark:bg-white/5 text-[#003CA5] dark:text-[#5B8EFF] flex items-center justify-center font-bold text-[11px] shrink-0 border border-[#003CA5]/15 dark:border-white/10">
+                        <%= cert.issuer.to_s.first(2).upcase %>
+                      </div>
+                    <% end %>
                     <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#003CA5]/10 text-[#003CA5] dark:bg-[#003CA5]/20 dark:text-[#5B8EFF] border border-[#003CA5]/15 dark:border-[#5B8EFF]/20">
                       <span>✦</span> <%= cert.category %>
                     </span>
