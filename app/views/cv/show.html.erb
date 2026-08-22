@@ -5,7 +5,7 @@
       email_label: "Email",
       tel_label: "Tel / WA",
       loc_label: "Location",
-      loc_val: "Spain 🇪🇸 / Portugal 🇵🇹",
+      loc_val: "Open to Relocation (Spain 🇪🇸 / Portugal 🇵🇹)",
       cred_label: "Credentials",
       cred_psych: "B.Sc. in Psychology",
       cred_psych_sub: "human behaviour",
@@ -18,22 +18,22 @@
       edu: "Education & Academic Degree",
       cert: "Certifications & Technical Credentials",
       lang: "Language & Digital Competences",
-      thesis: "Thesis/Research:",
+      thesis: "Thesis / Research:",
       lang_pt: "Portuguese",
       lang_es: "Spanish",
       lang_en: "English",
-      pt_level: "Mother tongue (C2)",
-      es_level: "Working Comprehension (A1)",
-      en_level: "Technical / Prof. (A1)",
+      pt_level: "Native (C2)",
+      es_level: "Working Proficiency (B2)",
+      en_level: "Fluent / Professional (C1)",
       footer_doc: "Official Europass Format",
       footer_gen: "Generated dynamically via Rails Admin"
     },
     'es' => {
-      sub_title: "Diseñador de Producto & Arquitecto Front-End",
+      sub_title: "Principal Product Designer & Front-End Architect",
       email_label: "Correo",
       tel_label: "Tel / WA",
       loc_label: "Ubicación",
-      loc_val: "España 🇪🇸 / Portugal 🇵🇹",
+      loc_val: "Disponible para Reubicación (España 🇪🇸 / Portugal 🇵🇹)",
       cred_label: "Credenciales",
       cred_psych: "Grado en Psicología",
       cred_psych_sub: "conducta humana",
@@ -46,22 +46,22 @@
       edu: "Educación y Formación Académica",
       cert: "Certificaciones y Credenciales Técnicas",
       lang: "Competencias Lingüísticas y Digitales",
-      thesis: "Tesis / Investigación:",
+      thesis: "Tesis / Línea de Investigación:",
       lang_pt: "Portugués",
       lang_es: "Español",
       lang_en: "Inglés",
       pt_level: "Lengua materna (C2)",
-      es_level: "Comprensión funcional (A1)",
-      en_level: "Técnico / Profesional (A1)",
+      es_level: "Competencia profesional (B2)",
+      en_level: "Fluido / Profesional (C1)",
       footer_doc: "Formato Oficial Europass",
       footer_gen: "Generado dinámicamente vía Rails Admin"
     },
     'pt' => {
-      sub_title: "Designer de Produto & Arquiteto Front-End",
+      sub_title: "Principal Product Designer & Front-End Architect",
       email_label: "E-mail",
       tel_label: "Tel / WA",
       loc_label: "Localização",
-      loc_val: "Espanha 🇪🇸 / Portugal 🇵🇹",
+      loc_val: "Disponível para Realocação (Espanha 🇪🇸 / Portugal 🇵🇹)",
       cred_label: "Credenciais",
       cred_psych: "Licenciatura em Psicologia",
       cred_psych_sub: "comportamento humano",
@@ -79,8 +79,8 @@
       lang_es: "Espanhol",
       lang_en: "Inglês",
       pt_level: "Língua materna (C2)",
-      es_level: "Compreensão profissional (A1)",
-      en_level: "Técnico / Profissional (A1)",
+      es_level: "Compreensão profissional (B2)",
+      en_level: "Fluente / Profissional (C1)",
       footer_doc: "Formato Oficial Europass",
       footer_gen: "Gerado dinamicamente via Rails Admin"
     }
@@ -112,7 +112,7 @@
       <td style="padding: 0; border: none;">
         <div class="space-y-6 text-sm leading-relaxed text-neutral-800">
 
-          <!-- PAGE 1 HEADER (Cobre o header fixo na primeira página sem respiro extra) -->
+          <!-- PAGE 1 HEADER -->
           <div class="border-b-2 border-neutral-900 pb-5 avoid-break" style="position: relative; z-index: 10; background-color: #ffffff; margin-top: -44px; padding-top: 0;">
             <div class="flex justify-between items-start gap-6">
               <div class="flex-1 min-w-0">
@@ -147,7 +147,7 @@
               </p>
             </div>
 
-            <!-- Experiências Profissionais (7 itens ocupando toda a página 1) -->
+            <!-- Experiências Profissionais -->
             <div>
               <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1.5"><%= tl[:exp] %></h2>
               <div class="space-y-5">
@@ -195,7 +195,7 @@
               </div>
             </div>
 
-            <!-- Certificações & Credenciais Técnicas (Página 2: 12 itens ampliados) -->
+            <!-- Certificações & Credenciais Técnicas (Página 2) -->
             <div class="avoid-break mb-6">
               <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-[#003CA5] mb-4 border-b border-neutral-200 pb-1.5"><%= tl[:cert] %></h2>
               <div class="grid grid-cols-2 gap-3.5">
@@ -240,4 +240,3 @@
     </tr>
   </tbody>
 </table>
-
