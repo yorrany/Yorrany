@@ -2,11 +2,11 @@
 
 require "rails"
 
-puts "=== SINCRONIZANDO E HARMONIZANDO TODOS OS ESTUDOS DE CASO (PT-BR, EN, ES) ==="
+puts "=== SINCRONIZANDO E HARMONIZANDO TODOS OS ESTUDOS DE CASO (PT-PT, EN, ES) ==="
 
 case_studies_data = {
   1 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Cubos Academy",
       client: "Cubos Academy",
       role: "UI/UX Design",
@@ -47,7 +47,7 @@ case_studies_data = {
     }
   },
   2 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Kayo Paladino",
       client: "Kayo Paladino",
       role: "Product Design",
@@ -88,7 +88,7 @@ case_studies_data = {
     }
   },
   3 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Tecnorádio",
       client: "Tecnorádio",
       role: "Design Gráfico",
@@ -129,7 +129,7 @@ case_studies_data = {
     }
   },
   4 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Gráfica Vitória",
       client: "Gráfica Vitória",
       role: "Design Gráfico",
@@ -170,7 +170,7 @@ case_studies_data = {
     }
   },
   5 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Adriana Nunes",
       client: "Adriana Nunes",
       role: "Estratégia de Marca",
@@ -211,7 +211,7 @@ case_studies_data = {
     }
   },
   6 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "LadyBee",
       client: "LadyBee",
       role: "E-Commerce",
@@ -252,7 +252,7 @@ case_studies_data = {
     }
   },
   7 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Yorrany",
       client: "Yorrany Braga",
       role: "Estratégia de Marca",
@@ -293,7 +293,7 @@ case_studies_data = {
     }
   },
   8 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Jungle Nutri",
       client: "Jungle Nutri",
       role: "Estratégia de Marca",
@@ -334,7 +334,7 @@ case_studies_data = {
     }
   },
   9 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Geostrauss",
       client: "Geostrauss",
       role: "Estratégia Digital",
@@ -375,7 +375,7 @@ case_studies_data = {
     }
   },
   10 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "CogniBox",
       client: "CogniBox",
       role: "Product Design",
@@ -416,7 +416,7 @@ case_studies_data = {
     }
   },
   11 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Dra. Priscilla Lima",
       client: "Dra. Priscilla Lima",
       role: "Estratégia de Marca",
@@ -457,7 +457,7 @@ case_studies_data = {
     }
   },
   12 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Itam",
       client: "ITAM",
       role: "Estratégia Digital",
@@ -498,7 +498,7 @@ case_studies_data = {
     }
   },
   13 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Grid Comercial",
       client: "Grid Comercial",
       role: "Design Gráfico",
@@ -539,7 +539,7 @@ case_studies_data = {
     }
   },
   14 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Espaço Caboquinho",
       client: "Espaço Caboquinho",
       role: "Estratégia de Marca",
@@ -580,7 +580,7 @@ case_studies_data = {
     }
   },
   15 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Trabalhos Selecionados",
       client: "Clientes Diversos",
       role: "Design Gráfico",
@@ -621,7 +621,7 @@ case_studies_data = {
     }
   },
   16 => {
-    "pt-BR" => {
+    "pt-PT" => {
       title: "Tupinside",
       client: "Tupinside",
       role: "Publicidade",
@@ -667,10 +667,12 @@ case_studies_data.each do |id, translations|
   cs = CaseStudy.find_by(id: id)
   next unless cs
 
-  puts "Sincronizando CaseStudy ##{id} (#{translations['pt-BR'][:title]})..."
+  title_pt = translations.dig("pt-PT", :title) || translations.dig("pt-BR", :title) || translations.values.first[:title]
+  puts "Sincronizando CaseStudy ##{id} (#{title_pt})..."
 
   translations.each do |locale, attrs|
-    Mobility.with_locale(locale.to_sym) do
+    target_locale = (locale.to_s == "pt-BR" ? :"pt-PT" : locale.to_sym)
+    Mobility.with_locale(target_locale) do
       attrs.each do |attr_name, val|
         if cs.respond_to?("#{attr_name}=")
           cs.public_send("#{attr_name}=", val)
@@ -683,4 +685,4 @@ case_studies_data.each do |id, translations|
   cs.save(validate: false)
 end
 
-puts "\n✔ Todos os 16 Estudos de Caso foram harmonizados com sucesso em PT-BR, EN e ES!"
+puts "\n✔ Todos os 16 Estudos de Caso foram harmonizados com sucesso em PT-PT, EN e ES!"

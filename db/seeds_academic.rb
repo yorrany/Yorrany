@@ -8,7 +8,7 @@ ab1 = AcademicBackground.create!(
   period: "Fev 2019 - Atual",
   created_at: Time.current
 )
-I18n.locale = :'pt-BR'
+I18n.locale = :'pt-PT'
 ab1.update!(
   degree: "Bacharelado",
   institution: "Faculdade Santa Teresa",
@@ -26,7 +26,7 @@ ab2 = AcademicBackground.create!(
   period: "Jan 2005 - Dez 2006",
   created_at: 1.day.ago
 )
-I18n.locale = :'pt-BR'
+I18n.locale = :'pt-PT'
 ab2.update!(
   degree: "Ensino Secundário",
   institution: "Colégio Estadual Professor José Carlos de Almeida",

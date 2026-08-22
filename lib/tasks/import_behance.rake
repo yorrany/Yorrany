@@ -12,7 +12,7 @@ namespace :portfolio do
     projects_data = JSON.parse(File.read(json_path))
     puts "Iniciando importação de #{projects_data.size} projetos..."
 
-    I18n.locale = :'pt-BR'
+    I18n.locale = :'pt-PT'
 
     projects_data.each_with_index do |p_data, index|
       title = p_data["titulo"]&.strip
@@ -20,7 +20,7 @@ namespace :portfolio do
 
       puts "\n[#{index + 1}/#{projects_data.size}] Processando: #{title}"
 
-      # Localiza projeto existente pelo título no locale pt-BR ou por correspondência
+      # Localiza projeto existente pelo título no locale pt-PT ou por correspondência
       case_study = CaseStudy.all.find do |cs|
         cs.title&.strip&.downcase == title.downcase
       end || CaseStudy.new
