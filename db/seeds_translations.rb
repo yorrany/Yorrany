@@ -1,4 +1,4 @@
-I18n.locale = :'pt-BR'
+I18n.locale = :'pt-PT'
 
 experiences = ExperienceItem.all
 en_translations = [
@@ -30,9 +30,7 @@ experiences.order(created_at: :desc).each_with_index do |e, i|
     es_translations[i].each { |k, v| e.send("#{k}=", v) }
   end
   Mobility.with_locale(:'pt-PT') do
-    Mobility.with_locale(:'pt-BR') do
-      e.class.mobility_attributes.each { |a| e.send("#{a}=", e.public_send(a)) }
-    end
+    e.class.mobility_attributes.each { |a| e.send("#{a}=", e.public_send(a)) }
   end
   e.save!
 end
@@ -58,9 +56,7 @@ academic_bgs.each_with_index do |a, i|
     es_academic[i].each { |k, v| a.send("#{k}=", v) }
   end
   Mobility.with_locale(:'pt-PT') do
-    Mobility.with_locale(:'pt-BR') do
-      a.class.mobility_attributes.each { |attr| a.send("#{attr}=", a.public_send(attr)) }
-    end
+    a.class.mobility_attributes.each { |attr| a.send("#{attr}=", a.public_send(attr)) }
   end
   a.save!
 end

@@ -1,5 +1,5 @@
 # db/seeds_experiences.rb
-I18n.locale = :'pt-BR'
+I18n.locale = :'pt-PT'
 
 puts "Cleaning up existing experience items..."
 ExperienceItem.destroy_all
