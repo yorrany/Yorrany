@@ -16,55 +16,30 @@
       </p>
     </div>
 
-    <!-- Centered Filter Chips & Carousel Nav Controls -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12" data-reveal-target="item">
-      <!-- Filter Chips -->
-      <div class="flex flex-wrap justify-center sm:justify-start items-center gap-2 font-mono text-xs w-full sm:w-auto">
-        <% [
-            { key: 'all', label: t('work.filters.all', default: 'Todos') },
-            { key: 'pd', label: t('work.filters.pd', default: 'Product Design') },
-            { key: 'ui_ux', label: 'UI/UX' },
-            { key: 'brand', label: t('work.filters.brand', default: 'Estratégia de Marca') },
-            { key: 'graphic', label: t('work.filters.graphic', default: 'Design Gráfico') },
-            { key: 'ecommerce', label: t('work.filters.ecommerce', default: 'E-Commerce') }
-          ].each do |filter_item| %>
-          <button 
-            data-action="click->portfolio-filter#filter"
-            data-portfolio-filter-target="button"
-            data-filter="<%= filter_item[:label] %>"
-            class="px-4 sm:px-5 py-2.5 rounded-full whitespace-nowrap transition-all border text-xs <%= filter_item[:key] == 'all' ? 'bg-[#003CA5] text-white border-[#003CA5] font-bold shadow-md' : 'bg-brand-surface dark:bg-[#13171F] text-brand-tinta/70 dark:text-neutral-300 border-brand-tinta/10 dark:border-white/10 hover:bg-[#003CA5] hover:text-white dark:hover:bg-white/10 dark:hover:text-white' %>">
-            <%= filter_item[:label] %>
-          </button>
-        <% end %>
-      </div>
-
-      <!-- Navigation Arrows (Interactive for Carousel on Mobile) -->
-      <div class="flex items-center gap-2 shrink-0 sm:hidden">
+    <!-- Centered Filter Chips -->
+    <div class="flex flex-wrap justify-center sm:justify-start items-center gap-2 font-mono text-xs mb-12" data-reveal-target="item">
+      <% [
+          { key: 'all', label: t('work.filters.all', default: 'Todos') },
+          { key: 'pd', label: t('work.filters.pd', default: 'Product Design') },
+          { key: 'ui_ux', label: 'UI/UX' },
+          { key: 'brand', label: t('work.filters.brand', default: 'Estratégia de Marca') },
+          { key: 'graphic', label: t('work.filters.graphic', default: 'Design Gráfico') },
+          { key: 'ecommerce', label: t('work.filters.ecommerce', default: 'E-Commerce') }
+        ].each do |filter_item| %>
         <button 
-          type="button"
-          data-action="click->portfolio-filter#scrollPrev"
-          data-portfolio-filter-target="prevBtn"
-          aria-label="<%= t('work.carousel_prev', default: 'Previous project') %>"
-          title="<%= t('work.carousel_prev', default: 'Previous project') %>"
-          class="w-9 h-9 rounded-full bg-brand-surface dark:bg-[#13171F] border border-brand-tinta/15 dark:border-white/15 hover:border-[#003CA5] dark:hover:border-[#5B8EFF] text-brand-tinta dark:text-white flex items-center justify-center shadow-sm hover:shadow-md transition-all active:scale-95">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+          data-action="click->portfolio-filter#filter"
+          data-portfolio-filter-target="button"
+          data-filter="<%= filter_item[:label] %>"
+          class="px-4 sm:px-5 py-2.5 rounded-full whitespace-nowrap transition-all border text-xs cursor-pointer <%= filter_item[:key] == 'all' ? 'bg-[#003CA5] text-white border-[#003CA5] font-bold shadow-md' : 'bg-brand-surface dark:bg-[#13171F] text-brand-tinta/70 dark:text-neutral-300 border-brand-tinta/10 dark:border-white/10 hover:bg-[#003CA5] hover:text-white dark:hover:bg-white/10 dark:hover:text-white' %>">
+          <%= filter_item[:label] %>
         </button>
-        <button 
-          type="button"
-          data-action="click->portfolio-filter#scrollNext"
-          data-portfolio-filter-target="nextBtn"
-          aria-label="<%= t('work.carousel_next', default: 'Next project') %>"
-          title="<%= t('work.carousel_next', default: 'Next project') %>"
-          class="w-9 h-9 rounded-full bg-[#003CA5] hover:bg-[#002361] text-white border border-[#003CA5] flex items-center justify-center shadow-sm hover:shadow-md transition-all active:scale-95">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
-        </button>
-      </div>
+      <% end %>
     </div>
 
     <% spotlight_project = @case_studies.find(&:is_spotlight) || @case_studies.first %>
     <% if spotlight_project %>
       <!-- 1. SPOTLIGHT CASE STUDY (High Impact Showcase Card) -->
-      <div data-portfolio-filter-target="item" data-tags="<%= [spotlight_project.tags, spotlight_project.role, project_main_category(spotlight_project)].compact.join(' ') %>" class="mb-12 transition-all duration-500" data-reveal-target="item">
+      <div data-portfolio-filter-target="item" data-tags="<%= [spotlight_project.tags, spotlight_project.role, project_main_category(spotlight_project)].compact.join(' ') %>" class="mb-12 transition-all duration-500 w-full" data-reveal-target="item">
         <div data-controller="card-preview tilt" data-action="click->modal#openCase" data-id="<%= spotlight_project.id %>" class="bg-brand-surface dark:bg-[#13171F] rounded-3xl border border-[#003CA5]/30 hover:border-[#003CA5]/60 overflow-hidden shadow-2xl relative group cursor-pointer transition-all duration-300 card-border-glow">
           <div class="flex flex-col lg:flex-row items-stretch min-h-[460px]">
             
@@ -82,7 +57,7 @@
                   <span>✦</span> <%= t('work.spotlightBadge', default: 'Destaque Principal') %>
                 </span>
                 <% if (spot_cat = project_main_category(spotlight_project)).present? %>
-                  <span class="px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md text-[#5B8EFF] border border-white/10 text-xs font-mono font-semibold">
+                  <span class="px-3.5 py-1.5 rounded-full bg-black/75 backdrop-blur-md text-[#5B8EFF] border border-white/10 text-xs font-mono font-semibold">
                     <%= spot_cat %>
                   </span>
                 <% end %>
@@ -96,12 +71,12 @@
                   </span>
                   <div class="flex items-center gap-2 overflow-x-auto [scrollbar-width:none]">
                     <% if spotlight_project.image.attached? %>
-                      <button type="button" data-action="click->card-preview#switch mouseenter->card-preview#switch" data-card-preview-target="thumb" data-image-url="<%= url_for(spotlight_project.image) %>" class="w-8 h-8 rounded-lg overflow-hidden border border-white/20 ring-2 ring-[#003CA5] shrink-0 opacity-100 transition-all">
+                      <button type="button" data-action="click->card-preview#switch mouseenter->card-preview#switch" data-card-preview-target="thumb" data-image-url="<%= url_for(spotlight_project.image) %>" class="w-8 h-8 rounded-lg overflow-hidden border border-white/20 ring-2 ring-[#003CA5] shrink-0 opacity-100 transition-all cursor-pointer">
                         <img src="<%= url_for(spotlight_project.image) %>" class="w-full h-full object-cover" />
                       </button>
                     <% end %>
                     <% spotlight_project.gallery_images.first(4).each do |g_img| %>
-                      <button type="button" data-action="click->card-preview#switch mouseenter->card-preview#switch" data-card-preview-target="thumb" data-image-url="<%= url_for(g_img) %>" class="w-8 h-8 rounded-lg overflow-hidden border border-white/20 shrink-0 opacity-60 hover:opacity-100 transition-all">
+                      <button type="button" data-action="click->card-preview#switch mouseenter->card-preview#switch" data-card-preview-target="thumb" data-image-url="<%= url_for(g_img) %>" class="w-8 h-8 rounded-lg overflow-hidden border border-white/20 shrink-0 opacity-60 hover:opacity-100 transition-all cursor-pointer">
                         <img src="<%= url_for(g_img) %>" class="w-full h-full object-cover" />
                       </button>
                     <% end %>
@@ -162,10 +137,8 @@
         </div>
       </div>
 
-      <!-- 2. SECONDARY PROJECTS GALLERY (Visual 2-Column Grid) -->
-      <div 
-        data-portfolio-filter-target="carousel"
-        class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scroll-pl-4 gap-6 pb-4 sm:grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:gap-6 sm:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+      <!-- 2. SECONDARY PROJECTS GALLERY (Pure Responsive Grid, No Horizontal Scroll) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full">
         <% @case_studies.reject { |cs| cs.id == spotlight_project.id }.each do |project| %>
           <div 
             data-portfolio-filter-target="item" 
@@ -174,7 +147,7 @@
             data-action="click->modal#openCase" 
             data-id="<%= project.id %>" 
             data-reveal-target="item"
-            class="w-[82vw] max-w-[340px] sm:w-full sm:max-w-none shrink-0 sm:shrink snap-start sm:snap-align-none bg-brand-surface dark:bg-[#13171F] rounded-3xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#5B8EFF]/50 transition-all duration-300 cursor-pointer flex flex-col justify-between group overflow-hidden hover:shadow-2xl card-border-glow">
+            class="w-full bg-brand-surface dark:bg-[#13171F] rounded-3xl border border-brand-tinta/10 dark:border-white/10 hover:border-[#003CA5]/50 dark:hover:border-[#5B8EFF]/50 transition-all duration-300 cursor-pointer flex flex-col justify-between group overflow-hidden hover:shadow-2xl card-border-glow">
             
             <!-- Imagem em Destaque (Aspect-Ratio 16:10) -->
             <div class="relative w-full aspect-[16/10] bg-neutral-950 overflow-hidden">
@@ -200,12 +173,12 @@
               <% if project.gallery_images.attached? && project.gallery_images.any? %>
                 <div class="absolute bottom-2.5 right-2.5 z-10 flex items-center gap-1.5 p-1 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
                   <% if project.image.attached? %>
-                    <button type="button" data-action="click->card-preview#switch mouseenter->card-preview#switch" data-card-preview-target="thumb" data-image-url="<%= url_for(project.image) %>" class="w-5 h-5 rounded-md overflow-hidden border border-white/20 opacity-100 transition-all">
+                    <button type="button" data-action="click->card-preview#switch mouseenter->card-preview#switch" data-card-preview-target="thumb" data-image-url="<%= url_for(project.image) %>" class="w-5 h-5 rounded-md overflow-hidden border border-white/20 opacity-100 transition-all cursor-pointer">
                       <img src="<%= url_for(project.image) %>" class="w-full h-full object-cover" />
                     </button>
                   <% end %>
                   <% project.gallery_images.first(3).each do |g_img| %>
-                    <button type="button" data-action="click->card-preview#switch mouseenter->card-preview#switch" data-card-preview-target="thumb" data-image-url="<%= url_for(g_img) %>" class="w-5 h-5 rounded-md overflow-hidden border border-white/20 opacity-60 hover:opacity-100 transition-all">
+                    <button type="button" data-action="click->card-preview#switch mouseenter->card-preview#switch" data-card-preview-target="thumb" data-image-url="<%= url_for(g_img) %>" class="w-5 h-5 rounded-md overflow-hidden border border-white/20 opacity-60 hover:opacity-100 transition-all cursor-pointer">
                       <img src="<%= url_for(g_img) %>" class="w-full h-full object-cover" />
                     </button>
                   <% end %>
