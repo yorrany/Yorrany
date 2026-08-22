@@ -6,7 +6,7 @@ puts "=== SINCRONIZANDO E HARMONIZANDO TODOS OS ESTUDOS DE CASO (PT-BR, EN, ES) 
 
 case_studies_data = {
   1 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Cubos Academy",
       client: "Cubos Academy",
       role: "UI/UX Design",
@@ -47,7 +47,7 @@ case_studies_data = {
     }
   },
   2 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Kayo Paladino",
       client: "Kayo Paladino",
       role: "Product Design",
@@ -88,7 +88,7 @@ case_studies_data = {
     }
   },
   3 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Tecnorádio",
       client: "Tecnorádio",
       role: "Design Gráfico",
@@ -129,7 +129,7 @@ case_studies_data = {
     }
   },
   4 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Gráfica Vitória",
       client: "Gráfica Vitória",
       role: "Design Gráfico",
@@ -170,7 +170,7 @@ case_studies_data = {
     }
   },
   5 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Adriana Nunes",
       client: "Adriana Nunes",
       role: "Estratégia de Marca",
@@ -211,7 +211,7 @@ case_studies_data = {
     }
   },
   6 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "LadyBee",
       client: "LadyBee",
       role: "E-Commerce",
@@ -252,7 +252,7 @@ case_studies_data = {
     }
   },
   7 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Yorrany",
       client: "Yorrany Braga",
       role: "Estratégia de Marca",
@@ -293,7 +293,7 @@ case_studies_data = {
     }
   },
   8 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Jungle Nutri",
       client: "Jungle Nutri",
       role: "Estratégia de Marca",
@@ -334,7 +334,7 @@ case_studies_data = {
     }
   },
   9 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Geostrauss",
       client: "Geostrauss",
       role: "Estratégia Digital",
@@ -375,7 +375,7 @@ case_studies_data = {
     }
   },
   10 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "CogniBox",
       client: "CogniBox",
       role: "Product Design",
@@ -416,7 +416,7 @@ case_studies_data = {
     }
   },
   11 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Dra. Priscilla Lima",
       client: "Dra. Priscilla Lima",
       role: "Estratégia de Marca",
@@ -457,7 +457,7 @@ case_studies_data = {
     }
   },
   12 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Itam",
       client: "ITAM",
       role: "Estratégia Digital",
@@ -498,7 +498,7 @@ case_studies_data = {
     }
   },
   13 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Grid Comercial",
       client: "Grid Comercial",
       role: "Design Gráfico",
@@ -539,7 +539,7 @@ case_studies_data = {
     }
   },
   14 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Espaço Caboquinho",
       client: "Espaço Caboquinho",
       role: "Estratégia de Marca",
@@ -580,7 +580,7 @@ case_studies_data = {
     }
   },
   15 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Trabalhos Selecionados",
       client: "Clientes Diversos",
       role: "Design Gráfico",
@@ -621,7 +621,7 @@ case_studies_data = {
     }
   },
   16 => {
-    "pt-PT" => {
+    "pt-BR" => {
       title: "Tupinside",
       client: "Tupinside",
       role: "Publicidade",
@@ -667,7 +667,7 @@ case_studies_data.each do |id, translations|
   cs = CaseStudy.find_by(id: id)
   next unless cs
 
-  puts "Sincronizando CaseStudy ##{id} (#{translations['pt-PT'][:title]})..."
+  puts "Sincronizando CaseStudy ##{id} (#{translations['pt-BR'][:title]})..."
 
   translations.each do |locale, attrs|
     Mobility.with_locale(locale.to_sym) do
