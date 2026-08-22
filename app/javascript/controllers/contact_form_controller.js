@@ -8,6 +8,27 @@ export default class extends Controller {
     "submitButton", "submitButtonText", "spinner"
   ]
 
+  getLocale() {
+    const htmlLang = (document.documentElement.lang || "en").toLowerCase()
+    if (htmlLang.startsWith("pt")) return "pt"
+    if (htmlLang.startsWith("es")) return "es"
+    return "en"
+  }
+
+  getCopySuccessText() {
+    const loc = this.getLocale()
+    if (loc === "pt") return "Copiado!"
+    if (loc === "es") return "¡Copiado!"
+    return "Copied!"
+  }
+
+  getSendingText() {
+    const loc = this.getLocale()
+    if (loc === "pt") return "Transmitindo..."
+    if (loc === "es") return "Enviando..."
+    return "Sending..."
+  }
+
   copyEmail(event) {
     event.preventDefault()
     const email = "falecom@yorrany.com.br"
@@ -16,7 +37,7 @@ export default class extends Controller {
       if (this.hasCheckIconTarget) this.checkIconTarget.classList.remove("hidden")
       if (this.hasCopyTextTarget) {
         const oldText = this.copyTextTarget.innerText
-        this.copyTextTarget.innerText = "Copiado!"
+        this.copyTextTarget.innerText = this.getCopySuccessText()
 
         setTimeout(() => {
           if (this.hasCopyIconTarget) this.copyIconTarget.classList.remove("hidden")
@@ -36,7 +57,9 @@ export default class extends Controller {
     const nickname = this.hasHoneypotInputTarget ? this.honeypotInputTarget.value.trim() : ""
 
     if (!name || !email || !message) {
-      this.showError("Por favor, preencha todos os campos.")
+      const loc = this.getLocale()
+      const reqMsg = loc === "pt" ? "Por favor, preencha todos os campos." : (loc === "es" ? "Por favor, complete todos los campos." : "Please fill in all fields.")
+      this.showError(reqMsg)
       return
     }
 
@@ -68,11 +91,15 @@ export default class extends Controller {
         if (this.hasSuccessMessageTarget) this.successMessageTarget.classList.remove("hidden")
         this.formTarget.reset()
       } else {
-        this.showError(data.error || "Ocorreu um erro ao enviar sua mensagem. Tente novamente.")
+        const loc = this.getLocale()
+        const defErr = loc === "pt" ? "Ocorreu um erro ao enviar sua mensagem. Tente novamente." : (loc === "es" ? "Ocurrió un error al enviar el mensaje. Por favor, inténtelo de nuevo." : "An error occurred while sending your message. Please try again.")
+        this.showError(data.error || defErr)
       }
     } catch (err) {
       console.error("[ContactForm] Erro ao enviar:", err)
-      this.showError("Falha de conexão ao enviar a mensagem. Verifique sua internet e tente novamente.")
+      const loc = this.getLocale()
+      const netErr = loc === "pt" ? "Falha de conexão ao enviar a mensagem. Verifique sua internet e tente novamente." : (loc === "es" ? "Error de conexión al enviar el mensaje. Compruebe su conexión e inténtelo de nuevo." : "Connection failure while sending. Please check your internet and try again.")
+      this.showError(netErr)
     } finally {
       this.setLoading(false)
     }
@@ -94,7 +121,7 @@ export default class extends Controller {
     if (this.hasSubmitButtonTextTarget) {
       if (isLoading) {
         this.submitButtonTextTarget.dataset.originalText = this.submitButtonTextTarget.innerText
-        this.submitButtonTextTarget.innerText = "Transmitindo..."
+        this.submitButtonTextTarget.innerText = this.getSendingText()
       } else if (this.submitButtonTextTarget.dataset.originalText) {
         this.submitButtonTextTarget.innerText = this.submitButtonTextTarget.dataset.originalText
       }
