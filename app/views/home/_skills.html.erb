@@ -3,6 +3,9 @@
     {
       title_key: "skills.cat_design",
       default_title: "Design de Produto & Sistemas",
+      icon: "❖",
+      color: "text-[#003CA5] dark:text-[#5B8EFF]",
+      bg: "bg-[#003CA5]/10",
       skills: [
         { name: "Figma & Design Tokens", years: 10, logo_type: "figma" },
         { name: "Design Systems & Storybook", years: 12, logo_type: "system" },
@@ -13,6 +16,9 @@
     {
       title_key: "skills.cat_eng",
       default_title: "Engenharia Front-End & Código",
+      icon: "⚡",
+      color: "text-sky-600 dark:text-sky-400",
+      bg: "bg-sky-500/10",
       skills: [
         { name: "Tailwind CSS & Tokens", years: 6, logo_type: "tailwind" },
         { name: "TypeScript & JavaScript", years: 12, logo_type: "typescript" },
@@ -23,6 +29,9 @@
     {
       title_key: "skills.cat_science",
       default_title: "Ciência Comportamental & Segurança",
+      icon: "🧠",
+      color: "text-purple-600 dark:text-purple-400",
+      bg: "bg-purple-500/10",
       skills: [
         { name: "Psicologia Cognitiva & IHC", years: 8, logo_type: "psychology" },
         { name: "WCAG & Acessibilidade AAA", years: 10, logo_type: "wcag" },
@@ -33,7 +42,7 @@
   ]
 %>
 
-<!-- Software Stack & Tools (With Official Brand Logos) -->
+<!-- Software Stack & Tools (With Official Brand Logos & Optimized Experience Pills) -->
 <section class="py-16 md:py-24 bg-brand-surface dark:bg-[#0B0D10] w-full border-t border-brand-tinta/5 dark:border-white/5" data-controller="reveal">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     
@@ -54,19 +63,32 @@
     <!-- 3-Column Categorized Stack Grid with Official Logos -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
       <% categories.each do |cat| %>
-        <div class="p-6 sm:p-7 rounded-3xl bg-brand-fundo dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 flex flex-col justify-between shadow-sm card-border-glow" data-reveal-target="item">
+        <div class="p-6 sm:p-7 rounded-3xl bg-brand-fundo dark:bg-[#13171F] border border-brand-tinta/10 dark:border-white/10 flex flex-col justify-between shadow-sm card-border-glow hover:border-[#003CA5]/30 dark:hover:border-[#5B8EFF]/30 transition-all" data-reveal-target="item">
           <div>
-            <h3 class="text-xs font-bold font-mono text-[#003CA5] dark:text-[#5B8EFF] uppercase tracking-wider mb-5 pb-3 border-b border-brand-tinta/10 dark:border-white/10 flex items-center justify-between">
-              <span><%= t(cat[:title_key], default: cat[:default_title]) %></span>
-              <span class="text-[10px] text-neutral-400 font-normal"><%= t('skills.mastery', default: 'Experiência') %></span>
-            </h3>
+            <!-- Category Header -->
+            <div class="flex items-center justify-between pb-4 mb-5 border-b border-brand-tinta/10 dark:border-white/10">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <span class="w-6 h-6 rounded-lg <%= cat[:bg] %> <%= cat[:color] %> flex items-center justify-center text-xs font-bold shrink-0">
+                  <%= cat[:icon] %>
+                </span>
+                <h3 class="text-xs font-bold font-mono text-[#003CA5] dark:text-[#5B8EFF] uppercase tracking-wider truncate">
+                  <%= t(cat[:title_key], default: cat[:default_title]) %>
+                </h3>
+              </div>
+              <span class="text-[10px] font-mono text-neutral-400 dark:text-neutral-500 uppercase tracking-widest shrink-0 ml-2">
+                <%= t('skills.mastery', default: 'Experiência') %>
+              </span>
+            </div>
 
-            <div class="space-y-3.5">
+            <!-- Skills List -->
+            <div class="space-y-2.5">
               <% cat[:skills].each do |skill| %>
-                <div class="flex items-center justify-between p-2.5 rounded-2xl bg-brand-surface dark:bg-white/5 border border-brand-tinta/5 dark:border-white/5 hover:border-[#003CA5]/30 dark:hover:border-[#5B8EFF]/30 transition-all">
-                  <div class="flex items-center gap-3">
+                <div class="group flex items-center justify-between p-2.5 sm:p-3 rounded-2xl bg-brand-surface dark:bg-white/[0.03] hover:bg-white dark:hover:bg-white/[0.08] border border-brand-tinta/5 dark:border-white/5 hover:border-[#003CA5]/30 dark:hover:border-[#5B8EFF]/40 hover:shadow-md transition-all duration-200">
+                  
+                  <!-- Left: Icon + Name -->
+                  <div class="flex items-center gap-3 min-w-0 pr-2">
                     <!-- Official Logo Container -->
-                    <div class="w-8 h-8 rounded-xl bg-brand-fundo dark:bg-[#0B0D10] border border-brand-tinta/10 dark:border-white/10 flex items-center justify-center shrink-0 p-1.5 shadow-sm">
+                    <div class="w-8 h-8 rounded-xl bg-brand-fundo dark:bg-[#0B0D10] border border-brand-tinta/10 dark:border-white/10 flex items-center justify-center shrink-0 p-1.5 shadow-xs group-hover:scale-105 group-hover:border-[#003CA5]/40 dark:group-hover:border-[#5B8EFF]/40 transition-all">
                       <% case skill[:logo_type] %>
                       <% when "figma" %>
                         <svg class="w-full h-full" viewBox="0 0 38 57" fill="none">
@@ -136,13 +158,19 @@
                       <% end %>
                     </div>
 
-                    <span class="text-xs font-bold text-brand-tinta dark:text-white"><%= skill[:name] %></span>
+                    <span class="text-xs font-bold text-brand-tinta dark:text-white group-hover:text-[#003CA5] dark:group-hover:text-[#5B8EFF] transition-colors truncate">
+                      <%= skill[:name] %>
+                    </span>
                   </div>
 
-                  <!-- Clean Experience Badge -->
-                  <span class="px-2.5 py-1 rounded-lg bg-brand-fundo dark:bg-[#0B0D10] text-[11px] font-semibold text-neutral-600 dark:text-neutral-400 border border-brand-tinta/5 dark:border-white/5">
-                    <%= skill[:years] %> <%= t('skills.years', default: 'anos') %>
-                  </span>
+                  <!-- Right: High-Precision Experience Metric Pill -->
+                  <div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-[#003CA5]/5 dark:bg-[#5B8EFF]/10 text-[#003CA5] dark:text-[#5B8EFF] border border-[#003CA5]/15 dark:border-[#5B8EFF]/25 shrink-0 group-hover:bg-[#003CA5] group-hover:text-white dark:group-hover:bg-[#5B8EFF] dark:group-hover:text-[#0B0D10] group-hover:border-transparent transition-all duration-200 shadow-2xs">
+                    <span class="tracking-tight"><%= skill[:years] %>+</span>
+                    <span class="text-[10px] font-sans font-medium uppercase tracking-wider opacity-75 group-hover:opacity-100">
+                      <%= t('skills.years', default: 'anos') %>
+                    </span>
+                  </div>
+
                 </div>
               <% end %>
             </div>
