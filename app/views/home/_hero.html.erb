@@ -18,7 +18,7 @@
         <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-brand-surface dark:bg-white/5 border border-brand-tinta/10 dark:border-white/10 shadow-sm mb-6">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
           <span class="text-xs font-mono font-medium text-neutral-700 dark:text-neutral-300">
-            <%= I18n.locale.to_s.start_with?('pt') ? 'Disponível para Projetos & Posições Globais (EU / Remoto)' : (I18n.locale.to_s.start_with?('es') ? 'Disponible para Proyectos Globales (EU / Remoto)' : 'Available for Global Roles (EU / Remote)') %>
+            <%= t('hero.available_pill', default: (I18n.locale.to_s.start_with?('pt') ? 'Disponível para Projetos & Posições Globais (EU / Remoto)' : (I18n.locale.to_s.start_with?('es') ? 'Disponible para Proyectos Globales (EU / Remoto)' : 'Available for Global Roles (EU / Remote)'))) %>
           </span>
         </div>
 
@@ -66,7 +66,7 @@
               <!-- Spotlight Badge -->
               <div class="absolute top-4 left-4 z-10">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-white border border-white/15 text-[11px] font-mono font-semibold">
-                  <span class="text-[#5B8EFF]">✦</span> Projeto em Destaque
+                  <span class="text-[#5B8EFF]">✦</span> <%= t('work.spotlightBadge', default: 'Projeto em Destaque') %>
                 </span>
               </div>
 

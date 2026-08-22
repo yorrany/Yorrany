@@ -9,10 +9,10 @@
         <span><%= t('pillars.title', default: 'Diferenciais de Atuação') %></span>
       </div>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-titulos dark:text-white">
-        O que realmente faz um produto funcionar
+        <%= t('pillars.heading', default: 'O que realmente faz um produto funcionar') %>
       </h2>
       <p class="text-neutral-600 dark:text-neutral-400 text-base mt-3 leading-relaxed">
-        Três competências estratégicas combinadas para conectar a visão do negócio à experiência do usuário e à viabilidade de engenharia.
+        <%= t('pillars.subheading', default: 'Três competências estratégicas combinadas para conectar a visão do negócio à experiência do usuário e à viabilidade de engenharia.') %>
       </p>
     </div>
 
@@ -20,9 +20,9 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
       <% 
         pillar_styles = [
-          { icon: "❖", color: "text-[#003CA5] dark:text-[#5B8EFF]", bg: "bg-[#003CA5]/10", tag: "Design Tokens", tag_hl: "Consistência Total", prefix: "01 • Sistemas Visuais" },
-          { icon: "🧠", color: "text-purple-600 dark:text-purple-400", bg: "bg-purple-500/10", tag: "Heurísticas & Decisão", tag_hl: "Alta Conversão", prefix: "02 • Psicologia & IHC" },
-          { icon: "⚡", color: "text-sky-600 dark:text-sky-400", bg: "bg-sky-500/10", tag: "The Linux Foundation", tag_hl: "Zero Retrabalho", prefix: "03 • Engenharia Front-End" }
+          { icon: "❖", color: "text-[#003CA5] dark:text-[#5B8EFF]", bg: "bg-[#003CA5]/10", tag: t('pillars.tag1', default: "Design Tokens"), tag_hl: t('pillars.tag1_hl', default: "Consistência Total"), prefix: t('pillars.prefix1', default: "01 • Sistemas Visuais") },
+          { icon: "🧠", color: "text-purple-600 dark:text-purple-400", bg: "bg-purple-500/10", tag: t('pillars.tag2', default: "Heurísticas & Decisão"), tag_hl: t('pillars.tag2_hl', default: "Alta Conversão"), prefix: t('pillars.prefix2', default: "02 • Psicologia & IHC") },
+          { icon: "⚡", color: "text-sky-600 dark:text-sky-400", bg: "bg-sky-500/10", tag: t('pillars.tag3', default: "The Linux Foundation"), tag_hl: t('pillars.tag3_hl', default: "Zero Retrabalho"), prefix: t('pillars.prefix3', default: "03 • Engenharia Front-End") }
         ]
       %>
 
@@ -63,39 +63,39 @@
         <div class="card-bento flex flex-col justify-between group relative shadow-sm hover:shadow-xl transition-all" data-reveal-target="item" data-controller="tilt">
           <div>
             <div class="w-12 h-12 rounded-2xl bg-[#003CA5]/10 text-[#003CA5] dark:text-[#5B8EFF] flex items-center justify-center text-lg font-bold mb-6 group-hover:scale-110 transition-transform">❖</div>
-            <div class="text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] font-bold uppercase tracking-wider mb-2">01 • Sistemas Visuais</div>
-            <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3">Design que Escala sem Burocracia</h3>
-            <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">Construção e governança de design systems (0 → 1) com tokens sincronizados entre Figma e código de produção.</p>
+            <div class="text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] font-bold uppercase tracking-wider mb-2"><%= t('pillars.prefix1', default: "01 • Sistemas Visuais") %></div>
+            <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3"><%= t('pillars.pillar1_title', default: "Design que Escala sem Burocracia") %></h3>
+            <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed"><%= t('pillars.pillar1_desc', default: "Construção e governança de design systems (0 → 1) com tokens sincronizados entre Figma e código de produção.") %></p>
           </div>
           <div class="pt-6 mt-6 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
-            <span>Design Tokens</span>
-            <span class="text-[#003CA5] dark:text-[#5B8EFF] font-semibold">Consistência Total</span>
+            <span><%= t('pillars.tag1', default: "Design Tokens") %></span>
+            <span class="text-[#003CA5] dark:text-[#5B8EFF] font-semibold"><%= t('pillars.tag1_hl', default: "Consistência Total") %></span>
           </div>
         </div>
 
         <div class="card-bento flex flex-col justify-between group relative shadow-sm hover:shadow-xl transition-all" data-reveal-target="item" data-controller="tilt">
           <div>
             <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg font-bold mb-6 group-hover:scale-110 transition-transform">🧠</div>
-            <div class="text-xs font-mono text-purple-600 dark:text-purple-400 font-bold uppercase tracking-wider mb-2">02 • Psicologia & IHC</div>
-            <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3">Menos Atrito, Mais Clareza</h3>
-            <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">Aplicação de ciência comportamental e avaliações heurísticas para mapear modelos mentais e eliminar pontos de fricção.</p>
+            <div class="text-xs font-mono text-purple-600 dark:text-purple-400 font-bold uppercase tracking-wider mb-2"><%= t('pillars.prefix2', default: "02 • Psicologia & IHC") %></div>
+            <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3"><%= t('pillars.pillar2_title', default: "Menos Atrito, Mais Clareza") %></h3>
+            <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed"><%= t('pillars.pillar2_desc', default: "Aplicação de ciência comportamental e avaliações heurísticas para mapear modelos mentais e eliminar pontos de fricção.") %></p>
           </div>
           <div class="pt-6 mt-6 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
-            <span>Heurísticas & Decisão</span>
-            <span class="text-purple-600 dark:text-purple-400 font-semibold">Alta Conversão</span>
+            <span><%= t('pillars.tag2', default: "Heurísticas & Decisão") %></span>
+            <span class="text-purple-600 dark:text-purple-400 font-semibold"><%= t('pillars.tag2_hl', default: "Alta Conversão") %></span>
           </div>
         </div>
 
         <div class="card-bento flex flex-col justify-between group relative shadow-sm hover:shadow-xl transition-all" data-reveal-target="item" data-controller="tilt">
           <div>
             <div class="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg font-bold mb-6 group-hover:scale-110 transition-transform">⚡</div>
-            <div class="text-xs font-mono text-sky-600 dark:text-sky-400 font-bold uppercase tracking-wider mb-2">03 • Engenharia Front-End</div>
-            <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3">Fim do Abismo com os Desenvolvedores</h3>
-            <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">Fluência em código (JS/Python/Rails). Compreensão exata de limites técnicos e acessibilidade WCAG AAA pronta para produção.</p>
+            <div class="text-xs font-mono text-sky-600 dark:text-sky-400 font-bold uppercase tracking-wider mb-2"><%= t('pillars.prefix3', default: "03 • Engenharia Front-End") %></div>
+            <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3"><%= t('pillars.pillar3_title', default: "Fim do Abismo com os Desenvolvedores") %></h3>
+            <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed"><%= t('pillars.pillar3_desc', default: "Fluência em código (JS/Python/Rails). Compreensão exata de limites técnicos e acessibilidade WCAG AAA pronta para produção.") %></p>
           </div>
           <div class="pt-6 mt-6 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
-            <span>The Linux Foundation</span>
-            <span class="text-sky-600 dark:text-sky-400 font-semibold">Zero Retrabalho</span>
+            <span><%= t('pillars.tag3', default: "The Linux Foundation") %></span>
+            <span class="text-sky-600 dark:text-sky-400 font-semibold"><%= t('pillars.tag3_hl', default: "Zero Retrabalho") %></span>
           </div>
         </div>
       <% end %>
