@@ -13,7 +13,7 @@ def run_full_sync!
       Mobility.with_locale(:"pt-PT") do
         e.role = "Senior Product Designer & Front-End Architect"
         e.company = "Matterna"
-        e.period = "Dez 2024 - Atual"
+        e.period = "Dez 2024 - Presente"
         e.location = "Remoto • São Paulo, Brasil"
         e.summary = "Liderança de ponta a ponta em design de produto, governança de design systems e arquitetura front-end para plataforma digital de saúde materno-infantil."
         e.highlights = "Projeto autoral focado em inovação de produto e validação completa de processos de design do zero ao um."
@@ -115,7 +115,7 @@ def run_full_sync!
       Mobility.with_locale(:es) do
         e.role = "Investigador Académico"
         e.company = "ULBRA - Universidade Luterana do Brasil"
-        e.period = "May 2021 - Oct 2021"
+        e.period = "Mayo 2021 - Oct 2021"
         e.location = "Manaus, Brasil"
         e.summary = "Investigación científica y redacción del Capítulo V (pp. 53-66) del libro 'Educación en Salud: embarazo en la adolescencia, bullying, prevención de accidentes, envejecimiento y bienestar en la Amazonía'. Análisis psicosocial y elaboración de diagnósticos sobre los impactos del embarazo precoz."
         e.highlights = "Capítulo de libro publicado y aprobado por comité científico."
@@ -171,7 +171,7 @@ def run_full_sync!
       Mobility.with_locale(:es) do
         e.role = "Director de Arte"
         e.company = "All Night Pub"
-        e.period = "May 2016 - Jun 2017"
+        e.period = "Mayo 2016 - Jun 2017"
         e.location = "Manaus, Brasil"
         e.summary = "Gestión de la identidad visual de la marca, creación de materiales institucionales, cartas y piezas promocionales. Gestión de redes sociales y planificación visual de campañas para eventos."
         e.highlights = "Branding para eventos de gran escala y gestión de redes sociales."
@@ -208,19 +208,18 @@ def run_full_sync!
     end
     e.save!
   end
-  puts "✓ Todas as 7 experiências foram sincronizadas nos 3 idiomas."
+  puts "✓ Todas as 7 experiências foram sincronizadas nos 3 idiomas com datas corretas."
 
   # =========================================================================
   # 2. FORMAÇÃO ACADÊMICA
   # =========================================================================
-  AcademicBackground.order(id: :asc).each do |a|
+  AcademicBackground.all.each do |a|
     a.skip_auto_translate = true
-    case a.id
-    when 1
+    if a.institution(locale: :en).to_s.include?("Santa Teresa") || a.institution(locale: :"pt-PT").to_s.include?("Santa Teresa") || a.id == 3 || a.id == 1
       Mobility.with_locale(:"pt-PT") do
         a.degree = "Licenciatura em Psicologia"
         a.institution = "Faculdade Santa Teresa"
-        a.period = "Fev 2019 - Atual"
+        a.period = "Fev 2019 - Dez 2023"
         a.field_of_study = "Psicologia Cognitiva e Comportamental aplicada a Produtos Digitais"
         a.thesis = "Fatores Psicossociais e Comportamentais na Adoção de Tecnologias"
         a.research_focus = "Formação abrangente em Ciências Humanas e Psicologia, com ênfase em Psicologia Organizacional, Psicologia Comunitária, Saúde Pública e Psicopatologia.||Atividades Principais: Pesquisa Científica (Coautoria do Capítulo V no livro 'Educação em Saúde') e Estágio em Psicopatologia (Processos grupais e saúde pública)."
@@ -228,7 +227,7 @@ def run_full_sync!
       Mobility.with_locale(:en) do
         a.degree = "B.Sc. in Psychology"
         a.institution = "Faculdade Santa Teresa"
-        a.period = "Feb 2019 - Present"
+        a.period = "Feb 2019 - Dec 2023"
         a.field_of_study = "Cognitive & Behavioral Psychology applied to Digital Products"
         a.thesis = "Psychosocial and Behavioral Factors in Technology Adoption"
         a.research_focus = "Comprehensive training in Humanities and Psychology, focusing on Organizational Psychology, Community Psychology, Public Health, and Psychopathology.||Key Activities: Scientific Research (Co-author of Chapter V in the book 'Health Education') and Psychopathology Internship (Group processes and public health)."
@@ -236,12 +235,12 @@ def run_full_sync!
       Mobility.with_locale(:es) do
         a.degree = "Licenciatura en Psicología"
         a.institution = "Faculdade Santa Teresa"
-        a.period = "Feb 2019 - Actualidad"
+        a.period = "Feb 2019 - Dic 2023"
         a.field_of_study = "Psicología Cognitiva y Conductual aplicada a Productos Digitales"
         a.thesis = "Factores Psicosociales y Conductuales en la Adopción de Tecnologías"
         a.research_focus = "Formación integral en Ciencias Humanas y Psicología, con énfasis en Psicología Organizacional, Psicología Comunitaria, Salud Pública y Psicopatología.||Actividades Principales: Investigación Científica (Coautoría del Capítulo V en el libro 'Educación en Salud') y Prácticas en Psicopatología (Procesos grupales y salud pública)."
       end
-    when 2
+    elsif a.institution(locale: :en).to_s.include?("José Carlos") || a.institution(locale: :"pt-PT").to_s.include?("José Carlos") || a.id == 2
       Mobility.with_locale(:"pt-PT") do
         a.degree = "Ensino Secundário / Médio Completo"
         a.institution = "Colégio Estadual Professor José Carlos de Almeida"
@@ -269,7 +268,7 @@ def run_full_sync!
     end
     a.save!
   end
-  puts "✓ Todas as formações acadêmicas foram sincronizadas nos 3 idiomas."
+  puts "✓ Todas as formações acadêmicas foram sincronizadas nos 3 idiomas com datas corretas."
 
   # =========================================================================
   # 3. CERTIFICAÇÕES
