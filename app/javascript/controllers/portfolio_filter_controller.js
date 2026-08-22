@@ -4,11 +4,12 @@ export default class extends Controller {
   static targets = ["button", "item"]
 
   filter(event) {
-    const selectedFilter = event.currentTarget.dataset.filter
+    const selectedKey = (event.currentTarget.dataset.filter || "all").toLowerCase()
     
     // Atualizar estado visual dos botões de filtro
     this.buttonTargets.forEach(btn => {
-      if (btn.dataset.filter === selectedFilter) {
+      const btnKey = (btn.dataset.filter || "").toLowerCase()
+      if (btnKey === selectedKey) {
         btn.classList.add("bg-[#003CA5]", "text-white", "border-[#003CA5]", "font-bold", "shadow-md")
         btn.classList.remove("bg-brand-surface", "dark:bg-[#13171F]", "text-brand-tinta/70", "dark:text-neutral-300", "border-brand-tinta/10", "dark:border-white/10")
       } else {
@@ -17,12 +18,13 @@ export default class extends Controller {
       }
     })
 
-    const isAll = ["Todos", "All", "todos", "all"].includes(selectedFilter.toLowerCase())
+    const isAll = selectedKey === "all" || ["todos", "all"].includes(selectedKey)
 
     // Filtrar itens com animação suave
     this.itemTargets.forEach(item => {
+      const keys = (item.dataset.filterKeys || "").toLowerCase()
       const tags = (item.dataset.tags || "").toLowerCase()
-      const matches = isAll || tags.includes(selectedFilter.toLowerCase())
+      const matches = isAll || keys.includes(selectedKey) || tags.includes(selectedKey)
 
       if (matches) {
         item.style.display = ""
