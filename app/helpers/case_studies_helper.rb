@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CaseStudiesHelper
   CATEGORY_TRANSLATIONS = {
     "Design Gráfico" => { "pt-PT" => "Design Gráfico", "en" => "Graphic Design", "es" => "Diseño Gráfico" },
@@ -8,6 +10,7 @@ module CaseStudiesHelper
     "Diseño de Producto" => { "pt-PT" => "Product Design", "en" => "Product Design", "es" => "Diseño de Producto" },
     "UI/UX Design" => { "pt-PT" => "UI/UX Design", "en" => "UI/UX Design", "es" => "Diseño UI/UX" },
     "UI/UX" => { "pt-PT" => "UI/UX Design", "en" => "UI/UX Design", "es" => "Diseño UI/UX" },
+    "Diseño UI/UX" => { "pt-PT" => "UI/UX Design", "en" => "UI/UX Design", "es" => "Diseño UI/UX" },
     "Interface e exp. do usuário" => { "pt-PT" => "UI/UX Design", "en" => "UI/UX Design", "es" => "Diseño UI/UX" },
     "Estratégia de Marca" => { "pt-PT" => "Estratégia de Marca", "en" => "Brand Strategy", "es" => "Estrategia de Marca" },
     "Brand Strategy" => { "pt-PT" => "Estratégia de Marca", "en" => "Brand Strategy", "es" => "Estrategia de Marca" },
@@ -30,26 +33,50 @@ module CaseStudiesHelper
 
   TAG_TRANSLATIONS = {
     "Design de interações" => { "pt-PT" => "Design de Interações", "en" => "Interaction Design", "es" => "Diseño de Interacción" },
-    "Direção artística" => { "pt-PT" => "Direção de Arte", "en" => "Art Direction", "es" => "Dirección de Arte" },
-    "Interface e exp. do usuário" => { "pt-PT" => "UI/UX Design", "en" => "UI/UX Design", "es" => "Diseño UI/UX" },
-    "Design gráfico" => { "pt-PT" => "Design Gráfico", "en" => "Graphic Design", "es" => "Diseño Gráfico" },
-    "app design" => { "pt-PT" => "App Design", "en" => "App Design", "es" => "Diseño de Apps" },
-    "Mobile app" => { "pt-PT" => "App Mobile", "en" => "Mobile App", "es" => "App Móvil" },
-    "Social media post" => { "pt-PT" => "Social Media", "en" => "Social Media", "es" => "Redes Sociales" },
-    "Socialmedia" => { "pt-PT" => "Social Media", "en" => "Social Media", "es" => "Redes Sociales" },
-    "Graphic Designer" => { "pt-PT" => "Design Gráfico", "en" => "Graphic Design", "es" => "Diseño Gráfico" },
-    "design" => { "pt-PT" => "Design", "en" => "Design", "es" => "Diseño" },
-    "marketing" => { "pt-PT" => "Marketing", "en" => "Marketing", "es" => "Marketing" },
-    "Marca" => { "pt-PT" => "Marca", "en" => "Brand Identity", "es" => "Identidad de Marca" },
-    "Design de logotipo" => { "pt-PT" => "Design de Logotipo", "en" => "Logo Design", "es" => "Diseño de Logotipo" },
-    "Logo Design" => { "pt-PT" => "Design de Logotipo", "en" => "Logo Design", "es" => "Diseño de Logotipo" },
-    "identidade visual" => { "pt-PT" => "Identidade Visual", "en" => "Visual Identity", "es" => "Identidad Visual" },
-    "visual identity" => { "pt-PT" => "Identidade Visual", "en" => "Visual Identity", "es" => "Identidad Visual" },
-    "brand identity" => { "pt-PT" => "Identidade de Marca", "en" => "Brand Identity", "es" => "Identidad de Marca" },
-    "motion design" => { "pt-PT" => "Motion Design", "en" => "Motion Design", "es" => "Motion Design" },
-    "psicologia" => { "pt-PT" => "Psicologia", "en" => "Psychology", "es" => "Psicología" },
-    "educação" => { "pt-PT" => "Educação", "en" => "Education", "es" => "Educación" },
-    "learning app" => { "pt-PT" => "EdTech", "en" => "EdTech", "es" => "EdTech" }
+    "Interaction Design" => { "pt-PT" => "Design de Interações", "en" => "Interaction Design", "es" => "Diseño de Interacción" },
+    "Diseño de Interacción" => { "pt-PT" => "Design de Interações", "en" => "Interaction Design", "es" => "Diseño de Interacción" },
+    "Direção de Arte" => { "pt-PT" => "Direção de Arte", "en" => "Art Direction", "es" => "Dirección de Arte" },
+    "Art Direction" => { "pt-PT" => "Direção de Arte", "en" => "Art Direction", "es" => "Dirección de Arte" },
+    "Dirección de Arte" => { "pt-PT" => "Direção de Arte", "en" => "Art Direction", "es" => "Dirección de Arte" },
+    "UI/UX Design" => { "pt-PT" => "UI/UX Design", "en" => "UI/UX Design", "es" => "Diseño UI/UX" },
+    "Diseño UI/UX" => { "pt-PT" => "UI/UX Design", "en" => "UI/UX Design", "es" => "Diseño UI/UX" },
+    "Design Gráfico" => { "pt-PT" => "Design Gráfico", "en" => "Graphic Design", "es" => "Diseño Gráfico" },
+    "Graphic Design" => { "pt-PT" => "Design Gráfico", "en" => "Graphic Design", "es" => "Diseño Gráfico" },
+    "Diseño Gráfico" => { "pt-PT" => "Design Gráfico", "en" => "Graphic Design", "es" => "Diseño Gráfico" },
+    "Product Design" => { "pt-PT" => "Product Design", "en" => "Product Design", "es" => "Diseño de Producto" },
+    "Diseño de Producto" => { "pt-PT" => "Product Design", "en" => "Product Design", "es" => "Diseño de Producto" },
+    "App Mobile" => { "pt-PT" => "App Mobile", "en" => "Mobile App", "es" => "App Móvil" },
+    "Mobile App" => { "pt-PT" => "App Mobile", "en" => "Mobile App", "es" => "App Móvil" },
+    "App Móvil" => { "pt-PT" => "App Mobile", "en" => "Mobile App", "es" => "App Móvil" },
+    "Social Media" => { "pt-PT" => "Social Media", "en" => "Social Media", "es" => "Redes Sociales" },
+    "Redes Sociales" => { "pt-PT" => "Social Media", "en" => "Social Media", "es" => "Redes Sociales" },
+    "Branding" => { "pt-PT" => "Branding", "en" => "Branding", "es" => "Branding" },
+    "Identidade Visual" => { "pt-PT" => "Identidade Visual", "en" => "Visual Identity", "es" => "Identidad Visual" },
+    "Visual Identity" => { "pt-PT" => "Identidade Visual", "en" => "Visual Identity", "es" => "Identidad Visual" },
+    "Identidad Visual" => { "pt-PT" => "Identidade Visual", "en" => "Visual Identity", "es" => "Identidad Visual" },
+    "Estratégia de Marca" => { "pt-PT" => "Estratégia de Marca", "en" => "Brand Strategy", "es" => "Estrategia de Marca" },
+    "Brand Strategy" => { "pt-PT" => "Estratégia de Marca", "en" => "Brand Strategy", "es" => "Estrategia de Marca" },
+    "Estrategia de Marca" => { "pt-PT" => "Estratégia de Marca", "en" => "Brand Strategy", "es" => "Estrategia de Marca" },
+    "Motion Design" => { "pt-PT" => "Motion Design", "en" => "Motion Design", "es" => "Motion Design" },
+    "Psicologia" => { "pt-PT" => "Psicologia", "en" => "Psychology", "es" => "Psicología" },
+    "Psicologia Cognitiva" => { "pt-PT" => "Psicologia Cognitiva", "en" => "Cognitive Psychology", "es" => "Psicología Cognitiva" },
+    "Cognitive Psychology" => { "pt-PT" => "Psicologia Cognitiva", "en" => "Cognitive Psychology", "es" => "Psicología Cognitiva" },
+    "Psicología Cognitiva" => { "pt-PT" => "Psicologia Cognitiva", "en" => "Cognitive Psychology", "es" => "Psicología Cognitiva" },
+    "EdTech" => { "pt-PT" => "EdTech", "en" => "EdTech", "es" => "EdTech" },
+    "E-Commerce" => { "pt-PT" => "E-Commerce", "en" => "E-Commerce", "es" => "E-Commerce" },
+    "Publicidade" => { "pt-PT" => "Publicidade", "en" => "Advertising", "es" => "Publicidad" },
+    "Advertising" => { "pt-PT" => "Publicidade", "en" => "Advertising", "es" => "Publicidad" },
+    "Publicidad" => { "pt-PT" => "Publicidade", "en" => "Advertising", "es" => "Publicidad" },
+    "Impressos" => { "pt-PT" => "Impressos", "en" => "Print Design", "es" => "Impresos" },
+    "Print Design" => { "pt-PT" => "Impressos", "en" => "Print Design", "es" => "Impresos" },
+    "Impresos" => { "pt-PT" => "Impressos", "en" => "Print Design", "es" => "Impresos" },
+    "Packaging" => { "pt-PT" => "Packaging", "en" => "Packaging", "es" => "Packaging" },
+    "Design Sustentável" => { "pt-PT" => "Design Sustentável", "en" => "Sustainable Design", "es" => "Diseño Sostenible" },
+    "Sustainable Design" => { "pt-PT" => "Design Sustentável", "en" => "Sustainable Design", "es" => "Diseño Sostenible" },
+    "Diseño Sostenible" => { "pt-PT" => "Design Sustentável", "en" => "Sustainable Design", "es" => "Diseño Sostenible" },
+    "Design de Informação" => { "pt-PT" => "Design de Informação", "en" => "Information Design", "es" => "Diseño de Información" },
+    "Information Design" => { "pt-PT" => "Design de Informação", "en" => "Information Design", "es" => "Diseño de Información" },
+    "Diseño de Información" => { "pt-PT" => "Design de Informação", "en" => "Information Design", "es" => "Diseño de Información" }
   }.freeze
 
   def project_main_category(project)
@@ -75,6 +102,17 @@ module CaseStudiesHelper
     TAG_TRANSLATIONS.dig(clean_tag, loc) ||
       CATEGORY_TRANSLATIONS.dig(clean_tag, loc) ||
       clean_tag
+  end
+
+  def project_filter_keys(project)
+    raw = [ project.role, project.tags, project_main_category(project) ].compact.join(" ").downcase
+    keys = [ "all" ]
+    keys << "pd" if raw.include?("product") || raw.include?("produto") || raw.include?("diseño de producto")
+    keys << "ui_ux" if raw.include?("ui") || raw.include?("ux") || raw.include?("interação") || raw.include?("interaccion") || raw.include?("interaction")
+    keys << "brand" if raw.include?("brand") || raw.include?("marca") || raw.include?("identidade") || raw.include?("identidad")
+    keys << "graphic" if raw.include?("graphic") || raw.include?("gráfico") || raw.include?("grafico") || raw.include?("editorial") || raw.include?("impressos") || raw.include?("print") || raw.include?("información") || raw.include?("informação")
+    keys << "ecommerce" if raw.include?("commerce") || raw.include?("comércio") || raw.include?("comercio") || raw.include?("loja") || raw.include?("packaging")
+    keys.uniq.join(" ")
   end
 
   def display_period(raw_period)
