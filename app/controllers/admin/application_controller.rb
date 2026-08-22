@@ -9,11 +9,7 @@ module Admin
     private
 
     def set_admin_locale
-      I18n.locale = if params[:locale].present? && I18n.available_locales.include?(params[:locale].to_sym)
-                      params[:locale].to_sym
-      else
-                      :'pt-PT'
-      end
+      I18n.locale = :'pt-PT'
     end
   end
 end
