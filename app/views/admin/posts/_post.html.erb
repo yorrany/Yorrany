@@ -1,0 +1,36 @@
+<%= turbo_frame_tag post do %>
+  <div class="flex gap-4 items-start py-2">
+    <div class="w-16 h-16 bg-[#1A1F2B] rounded-xl border border-white/10 flex-shrink-0 flex justify-center items-center overflow-hidden">
+      <% if post.cover_image.attached? %>
+        <%= image_tag post.cover_image, class: "w-full h-full object-cover" %>
+      <% else %>
+        <span class="text-neutral-500 text-xs">Blog</span>
+      <% end %>
+    </div>
+    <div class="flex-1 min-w-0">
+      <div class="flex flex-wrap justify-between items-start gap-2 mb-1">
+        <div class="flex items-center gap-2 flex-wrap">
+          <h3 class="text-white font-semibold truncate"><%= post.title %></h3>
+          <% if post.published_at.present? && post.published_at <= Time.current %>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              PUBLICADO
+            </span>
+          <% else %>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">
+              RASCUNHO
+            </span>
+          <% end %>
+        </div>
+        <div class="flex items-center gap-3">
+          <%= link_to "Editar", edit_admin_post_path(post), data: { turbo_frame: "modal" }, class: "text-xs font-mono text-[#5B8EFF] hover:underline" %>
+          <%= button_to "Excluir", admin_post_path(post), method: :delete, data: { turbo_confirm: "Tem certeza que deseja remover este artigo?" }, class: "text-xs font-mono text-red-500 hover:text-red-400 cursor-pointer" %>
+        </div>
+      </div>
+      <p class="text-xs text-neutral-400 line-clamp-1"><%= post.excerpt %></p>
+      <div class="flex flex-wrap items-center justify-between gap-2 mt-2 pt-2 border-t border-white/5">
+        <span class="text-[11px] font-mono text-neutral-500">Slug: <%= post.slug %> • <%= post.published_at&.strftime("%d/%m/%Y") || "Não agendado" %></span>
+        <%= render "admin/shared/translation_badges", record: post, translate_path: translate_admin_post_path(post) %>
+      </div>
+    </div>
+  </div>
+<% end %>

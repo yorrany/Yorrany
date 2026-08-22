@@ -1,29 +1,32 @@
 <%= turbo_frame_tag case_study do %>
-  <div class="flex gap-4">
-    <div class="w-16 h-16 bg-[#1A1F2B] rounded-lg border border-white/5 flex-shrink-0 flex justify-center items-center overflow-hidden">
+  <div class="flex gap-4 items-start py-2">
+    <div class="w-16 h-16 bg-[#1A1F2B] rounded-xl border border-white/10 flex-shrink-0 flex justify-center items-center overflow-hidden">
       <% if case_study.image.attached? %>
         <%= image_tag case_study.image, class: "w-full h-full object-cover" %>
       <% else %>
-        <span class="text-neutral-500 text-xs">Sem Imagem</span>
+        <span class="text-neutral-500 text-[10px] font-mono">Sem Foto</span>
       <% end %>
     </div>
-    <div class="flex-1">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center gap-2">
-          <h3 class="text-white font-semibold"><%= case_study.title %></h3>
+    <div class="flex-1 min-w-0">
+      <div class="flex flex-wrap justify-between items-start gap-2 mb-1">
+        <div class="flex items-center gap-2 flex-wrap">
+          <h3 class="text-white font-semibold truncate"><%= case_study.title %></h3>
           <% if case_study.is_spotlight? %>
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#003CA5]/20 text-[#3d6cff] border border-[#003CA5]/40">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#003CA5]/20 text-[#5B8EFF] border border-[#003CA5]/40">
               ★ DESTAQUE
             </span>
           <% end %>
         </div>
-        <div class="flex gap-2">
-          <%= link_to "Editar", edit_admin_case_study_path(case_study), data: { turbo_frame: "modal" }, class: "text-xs text-neutral-400 hover:text-white" %>
-          <%= button_to "Excluir", admin_case_study_path(case_study), method: :delete, data: { turbo_confirm: "Tem certeza?" }, class: "text-xs text-red-500 hover:text-red-400" %>
+        <div class="flex items-center gap-3">
+          <%= link_to "Editar", edit_admin_case_study_path(case_study), data: { turbo_frame: "modal" }, class: "text-xs font-mono text-[#5B8EFF] hover:underline" %>
+          <%= button_to "Excluir", admin_case_study_path(case_study), method: :delete, data: { turbo_confirm: "Tem certeza que deseja remover este estudo de caso?" }, class: "text-xs font-mono text-red-500 hover:text-red-400 cursor-pointer" %>
         </div>
       </div>
-      <p class="text-sm text-neutral-400"><%= case_study.tagline %></p>
-      <p class="text-xs text-neutral-500 mt-1"><%= case_study.client %> • <%= case_study.period %></p>
+      <p class="text-xs text-neutral-400 line-clamp-1"><%= case_study.tagline %></p>
+      <div class="flex flex-wrap items-center justify-between gap-2 mt-2 pt-2 border-t border-white/5">
+        <span class="text-[11px] font-mono text-neutral-500"><%= case_study.client %> • <%= case_study.period %></span>
+        <%= render "admin/shared/translation_badges", record: case_study, translate_path: translate_admin_case_study_path(case_study) %>
+      </div>
     </div>
   </div>
 <% end %>

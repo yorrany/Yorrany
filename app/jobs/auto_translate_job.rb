@@ -1,89 +1,69 @@
-require "net/http"
-require "uri"
-require "json"
+# frozen_string_literal: true
 
 class AutoTranslateJob < ApplicationJob
   queue_as :default
 
-  def perform(class_name, record_id)
-    record = class_name.constantize.find_by(id: record_id)
+  def perform(class_name, record_id, source_locale = :'pt-PT')
+    record = class_name.safe_constantize&.find_by(id: record_id)
     return unless record
 
-    # Find which attributes are translated by Mobility
-    translated_attrs = record.class.mobility_attributes
+    translated_attrs = record.class.try(:mobility_attributes) || []
     return if translated_attrs.empty?
 
-    api_key = ENV.fetch("GEMINI_API_KEY", "")
-    url = URI("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent?key=#{api_key}")
+    source_sym = source_locale.to_sym
+    to_translate = {}
 
-    Mobility.with_locale(:'pt-PT') do
-      to_translate = {}
+    # Read attributes from the specified source locale
+    Mobility.with_locale(source_sym) do
       translated_attrs.each do |attr|
         val = record.public_send(attr)
-        to_translate[attr] = val if val.present?
+        to_translate[attr.to_s] = val if val.present?
       end
+    end
 
-      return if to_translate.empty?
+    # Fallback: If specified source locale is empty, inspect other available locales
+    if to_translate.empty?
+      (I18n.available_locales - [ source_sym ]).each do |alt_locale|
+        Mobility.with_locale(alt_locale) do
+          translated_attrs.each do |attr|
+            val = record.public_send(attr)
+            to_translate[attr.to_s] = val if val.present?
+          end
+        end
+        if to_translate.present?
+          source_sym = alt_locale
+          break
+        end
+      end
+    end
 
-      # Translate to English
-      en_payload = build_payload(to_translate, "Translate the following JSON values from Portuguese to English. Return ONLY valid JSON with the exact same keys. Do not return anything else.")
-      en_res = fetch_translation(url, en_payload)
+    return if to_translate.empty?
 
-      # Translate to Spanish
-      es_payload = build_payload(to_translate, "Translate the following JSON values from Portuguese to Spanish. Return ONLY valid JSON with the exact same keys. Do not return anything else.")
-      es_res = fetch_translation(url, es_payload)
+    target_locales = I18n.available_locales - [ source_sym ]
+    any_updated = false
 
+    target_locales.each do |target_locale|
+      res = TranslationService.translate_attributes(to_translate, from: source_sym, to: target_locale)
+      if res.success? && res.translations.present?
+        Mobility.with_locale(target_locale) do
+          res.translations.each do |attr_name, translated_val|
+            if record.respond_to?("#{attr_name}=")
+              record.public_send("#{attr_name}=", translated_val)
+            end
+          end
+        end
+        any_updated = true
+      else
+        Rails.logger.warn "[AutoTranslateJob] Translation from #{source_sym} to #{target_locale} for #{class_name}##{record_id} failed: #{res.error}"
+      end
+    end
+
+    if any_updated
       record.skip_auto_translate = true
-
-      Mobility.with_locale(:en) do
-        en_res.each { |k, v| record.public_send("#{k}=", v) } if en_res
-      end
-
-      Mobility.with_locale(:es) do
-        es_res.each { |k, v| record.public_send("#{k}=", v) } if es_res
-      end
-
-      record.save!
+      record.save(validate: false)
+      Rails.logger.info "[AutoTranslateJob] Successfully translated #{class_name}##{record_id} to #{target_locales.join(', ')}"
     end
-  end
-
-  private
-
-  def build_payload(data, instruction)
-    {
-      contents: [
-        {
-          parts: [
-            { text: "#{instruction}\n\n#{data.to_json}" }
-          ]
-        }
-      ]
-    }.to_json
-  end
-
-  def fetch_translation(url, body)
-    req = Net::HTTP::Post.new(url)
-    req["Content-Type"] = "application/json"
-    req.body = body
-
-    res = Net::HTTP.start(url.hostname, url.port, use_ssl: true) do |http|
-      http.request(req)
-    end
-
-    return nil unless res.is_a?(Net::HTTPSuccess)
-
-    parsed = JSON.parse(res.body)
-    text = parsed.dig("candidates", 0, "content", "parts", 0, "text") || ""
-
-    # Extract JSON object from potential markdown
-    match = text.match(/\{.*\}/m)
-    return nil unless match
-
-    text = match[0]
-
-    JSON.parse(text)
   rescue StandardError => e
-    Rails.logger.error "Translation failed: #{e.message}"
-    nil
+    Rails.logger.error "[AutoTranslateJob] Error translating #{class_name}##{record_id}: #{e.class} - #{e.message}\n#{e.backtrace.first(5).join("\n")}"
   end
 end

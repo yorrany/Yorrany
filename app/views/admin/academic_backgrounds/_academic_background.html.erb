@@ -1,22 +1,30 @@
 <%= turbo_frame_tag academic_background do %>
-  <div class="flex gap-4">
-    <div class="w-16 h-16 bg-[#1A1F2B] rounded-lg border border-white/5 flex-shrink-0 flex justify-center items-center overflow-hidden">
+  <div class="flex gap-4 items-start py-2">
+    <div class="w-16 h-16 bg-[#1A1F2B] rounded-xl border border-white/10 flex-shrink-0 flex justify-center items-center overflow-hidden">
       <% if academic_background.image.attached? %>
         <%= image_tag academic_background.image, class: "w-full h-full object-cover" %>
       <% else %>
-        <span class="text-neutral-500 text-xs">Sem Imagem</span>
+        <span class="text-neutral-500 text-lg">🎓</span>
       <% end %>
     </div>
-    <div class="flex-1">
-      <div class="flex justify-between">
-        <h3 class="text-white font-semibold"><%= academic_background.degree %></h3>
-        <div class="flex gap-2">
-          <%= link_to "Editar", edit_admin_academic_background_path(academic_background), data: { turbo_frame: "modal" }, class: "text-xs text-neutral-400 hover:text-white" %>
-          <%= button_to "Excluir", admin_academic_background_path(academic_background), method: :delete, data: { turbo_confirm: "Tem certeza?" }, class: "text-xs text-red-500 hover:text-red-400" %>
+    <div class="flex-1 min-w-0">
+      <div class="flex flex-wrap justify-between items-start gap-2 mb-1">
+        <h3 class="text-white font-semibold truncate"><%= academic_background.degree %></h3>
+        <div class="flex items-center gap-3">
+          <%= link_to "Editar", edit_admin_academic_background_path(academic_background), data: { turbo_frame: "modal" }, class: "text-xs font-mono text-[#5B8EFF] hover:underline" %>
+          <%= button_to "Excluir", admin_academic_background_path(academic_background), method: :delete, data: { turbo_confirm: "Tem certeza que deseja remover esta formação?" }, class: "text-xs font-mono text-red-500 hover:text-red-400 cursor-pointer" %>
         </div>
       </div>
-      <p class="text-sm text-neutral-400"><%= academic_background.institution %> • <%= academic_background.period %></p>
-      <p class="text-xs text-neutral-500 mt-1"><%= academic_background.field_of_study %></p>
+      <p class="text-xs text-neutral-400"><%= academic_background.institution %> • <%= academic_background.period %></p>
+      <p class="text-xs text-neutral-500 mt-0.5"><%= academic_background.field_of_study %></p>
+      <div class="flex flex-wrap items-center justify-between gap-2 mt-2 pt-2 border-t border-white/5">
+        <% if academic_background.thesis.present? %>
+          <span class="text-[11px] font-mono text-neutral-500 italic truncate max-w-sm">"<%= academic_background.thesis.truncate(50) %>"</span>
+        <% else %>
+          <span class="text-[11px] font-mono text-neutral-500">-</span>
+        <% end %>
+        <%= render "admin/shared/translation_badges", record: academic_background, translate_path: translate_admin_academic_background_path(academic_background) %>
+      </div>
     </div>
   </div>
 <% end %>

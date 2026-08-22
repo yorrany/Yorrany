@@ -16,87 +16,89 @@
       </p>
     </div>
 
-    <!-- 3-Column Bento Grid (Clean & High-End Cards) -->
+    <!-- 3-Column Bento Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-      
-      <!-- CARD 1: DESIGN SYSTEMS -->
-      <div class="card-bento flex flex-col justify-between group relative shadow-sm hover:shadow-xl transition-all" data-reveal-target="item" data-controller="tilt">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-[#003CA5]/10 text-[#003CA5] dark:text-[#5B8EFF] flex items-center justify-center text-lg font-bold mb-6 group-hover:scale-110 transition-transform">
-            ❖
-          </div>
+      <% 
+        pillar_styles = [
+          { icon: "❖", color: "text-[#003CA5] dark:text-[#5B8EFF]", bg: "bg-[#003CA5]/10", tag: "Design Tokens", tag_hl: "Consistência Total", prefix: "01 • Sistemas Visuais" },
+          { icon: "🧠", color: "text-purple-600 dark:text-purple-400", bg: "bg-purple-500/10", tag: "Heurísticas & Decisão", tag_hl: "Alta Conversão", prefix: "02 • Psicologia & IHC" },
+          { icon: "⚡", color: "text-sky-600 dark:text-sky-400", bg: "bg-sky-500/10", tag: "The Linux Foundation", tag_hl: "Zero Retrabalho", prefix: "03 • Engenharia Front-End" }
+        ]
+      %>
 
-          <div class="text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] font-bold uppercase tracking-wider mb-2">
-            01 • Sistemas Visuais
-          </div>
+      <% if @pillars.present? %>
+        <% @pillars.each_with_index do |pillar, idx| %>
+          <% style = pillar_styles[idx % pillar_styles.size] %>
+          <div class="card-bento flex flex-col justify-between group relative shadow-sm hover:shadow-xl transition-all" data-reveal-target="item" data-controller="tilt">
+            <div>
+              <div class="w-12 h-12 rounded-2xl <%= style[:bg] %> <%= style[:color] %> flex items-center justify-center text-lg font-bold mb-6 group-hover:scale-110 transition-transform">
+                <% if pillar.image.attached? %>
+                  <%= image_tag pillar.image, class: "w-6 h-6 object-contain" %>
+                <% else %>
+                  <%= style[:icon] %>
+                <% end %>
+              </div>
 
-          <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3">
-            Design que Escala sem Burocracia
-          </h3>
-          
-          <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">
-            Construção e governança de design systems (0 → 1) com tokens sincronizados entre Figma e código de produção. Consistência estética aliada à máxima velocidade de entrega para o time de produto.
-          </p>
+              <div class="text-xs font-mono <%= style[:color] %> font-bold uppercase tracking-wider mb-2">
+                <%= style[:prefix] %>
+              </div>
+
+              <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3">
+                <%= pillar.title %>
+              </h3>
+              
+              <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">
+                <%= pillar.description %>
+              </p>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
+              <span><%= style[:tag] %></span>
+              <span class="<%= style[:color] %> font-semibold"><%= style[:tag_hl] %></span>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <!-- Fallback static cards if DB empty -->
+        <div class="card-bento flex flex-col justify-between group relative shadow-sm hover:shadow-xl transition-all" data-reveal-target="item" data-controller="tilt">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-[#003CA5]/10 text-[#003CA5] dark:text-[#5B8EFF] flex items-center justify-center text-lg font-bold mb-6 group-hover:scale-110 transition-transform">❖</div>
+            <div class="text-xs font-mono text-[#003CA5] dark:text-[#5B8EFF] font-bold uppercase tracking-wider mb-2">01 • Sistemas Visuais</div>
+            <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3">Design que Escala sem Burocracia</h3>
+            <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">Construção e governança de design systems (0 → 1) com tokens sincronizados entre Figma e código de produção.</p>
+          </div>
+          <div class="pt-6 mt-6 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
+            <span>Design Tokens</span>
+            <span class="text-[#003CA5] dark:text-[#5B8EFF] font-semibold">Consistência Total</span>
+          </div>
         </div>
 
-        <div class="pt-6 mt-6 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
-          <span>Design Tokens</span>
-          <span class="text-[#003CA5] dark:text-[#5B8EFF] font-semibold">Consistência Total</span>
-        </div>
-      </div>
-
-      <!-- CARD 2: PSICOLOGIA COGNITIVA -->
-      <div class="card-bento flex flex-col justify-between group relative shadow-sm hover:shadow-xl transition-all" data-reveal-target="item" data-controller="tilt">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg font-bold mb-6 group-hover:scale-110 transition-transform">
-            🧠
+        <div class="card-bento flex flex-col justify-between group relative shadow-sm hover:shadow-xl transition-all" data-reveal-target="item" data-controller="tilt">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg font-bold mb-6 group-hover:scale-110 transition-transform">🧠</div>
+            <div class="text-xs font-mono text-purple-600 dark:text-purple-400 font-bold uppercase tracking-wider mb-2">02 • Psicologia & IHC</div>
+            <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3">Menos Atrito, Mais Clareza</h3>
+            <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">Aplicação de ciência comportamental e avaliações heurísticas para mapear modelos mentais e eliminar pontos de fricção.</p>
           </div>
-
-          <div class="text-xs font-mono text-purple-600 dark:text-purple-400 font-bold uppercase tracking-wider mb-2">
-            02 • Psicologia &amp; IHC
+          <div class="pt-6 mt-6 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
+            <span>Heurísticas & Decisão</span>
+            <span class="text-purple-600 dark:text-purple-400 font-semibold">Alta Conversão</span>
           </div>
-
-          <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3">
-            Menos Atrito, Mais Clareza
-          </h3>
-          
-          <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">
-            Aplicação de ciência comportamental e avaliações heurísticas para mapear modelos mentais e eliminar pontos de fricção. Interfaces que respeitam a cognição humana e aumentam a conversão.
-          </p>
         </div>
 
-        <div class="pt-6 mt-6 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
-          <span>Heurísticas &amp; Decisão</span>
-          <span class="text-purple-600 dark:text-purple-400 font-semibold">Alta Conversão</span>
-        </div>
-      </div>
-
-      <!-- CARD 3: ENGENHARIA & SEGURANÇA -->
-      <div class="card-bento flex flex-col justify-between group relative shadow-sm hover:shadow-xl transition-all" data-reveal-target="item" data-controller="tilt">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg font-bold mb-6 group-hover:scale-110 transition-transform">
-            ⚡
+        <div class="card-bento flex flex-col justify-between group relative shadow-sm hover:shadow-xl transition-all" data-reveal-target="item" data-controller="tilt">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg font-bold mb-6 group-hover:scale-110 transition-transform">⚡</div>
+            <div class="text-xs font-mono text-sky-600 dark:text-sky-400 font-bold uppercase tracking-wider mb-2">03 • Engenharia Front-End</div>
+            <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3">Fim do Abismo com os Desenvolvedores</h3>
+            <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">Fluência em código (JS/Python/Rails). Compreensão exata de limites técnicos e acessibilidade WCAG AAA pronta para produção.</p>
           </div>
-
-          <div class="text-xs font-mono text-sky-600 dark:text-sky-400 font-bold uppercase tracking-wider mb-2">
-            03 • Engenharia Front-End
+          <div class="pt-6 mt-6 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
+            <span>The Linux Foundation</span>
+            <span class="text-sky-600 dark:text-sky-400 font-semibold">Zero Retrabalho</span>
           </div>
-
-          <h3 class="text-xl font-bold text-brand-tinta dark:text-white mb-3">
-            Fim do Abismo com os Desenvolvedores
-          </h3>
-          
-          <p class="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed">
-            Fluência em código (JS/Python/Rails). Compreensão exata de limites técnicos, prevenção de falhas de segurança no front-end e entrega com acessibilidade (WCAG AAA) pronta para produção.
-          </p>
         </div>
-
-        <div class="pt-6 mt-6 border-t border-brand-tinta/5 dark:border-white/5 flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
-          <span>The Linux Foundation</span>
-          <span class="text-sky-600 dark:text-sky-400 font-semibold">Zero Retrabalho</span>
-        </div>
-      </div>
-
+      <% end %>
     </div>
   </div>
 </section>
