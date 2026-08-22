@@ -1,0 +1,27 @@
+<%
+  status = record.try(:translation_status) || {}
+  pt_ok = status[:"pt-PT"] || status[:pt]
+  en_ok = status[:en]
+  es_ok = status[:es]
+%>
+
+<div class="flex items-center gap-2 flex-wrap">
+  <div class="inline-flex items-center gap-1 font-mono text-[10px]">
+    <span class="px-1.5 py-0.5 rounded <%= pt_ok ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30' : 'bg-red-500/15 text-red-400 border border-red-500/30' %> font-bold" title="Português: <%= pt_ok ? 'Presente' : 'Vazio' %>">
+      PT
+    </span>
+    <span class="px-1.5 py-0.5 rounded <%= en_ok ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/15 text-amber-400 border border-amber-500/30' %> font-bold" title="Inglês: <%= en_ok ? 'Traduzido' : 'Pendente' %>">
+      EN
+    </span>
+    <span class="px-1.5 py-0.5 rounded <%= es_ok ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30' : 'bg-amber-500/15 text-amber-400 border border-amber-500/30' %> font-bold" title="Espanhol: <%= es_ok ? 'Traduzido' : 'Pendente' %>">
+      ES
+    </span>
+  </div>
+
+  <% if local_assigns[:translate_path].present? %>
+    <%= button_to translate_path, method: :post, class: "inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-[#003CA5]/20 hover:bg-[#003CA5]/40 text-[#5B8EFF] border border-[#003CA5]/30 transition-all hover:scale-105 active:scale-95 cursor-pointer", title: "Acionar tradução automática com IA" do %>
+      <span>⚡</span>
+      <span>Traduzir IA</span>
+    <% end %>
+  <% end %>
+</div>

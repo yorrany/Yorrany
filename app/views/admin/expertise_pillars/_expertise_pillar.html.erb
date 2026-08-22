@@ -1,0 +1,31 @@
+<%= turbo_frame_tag expertise_pillar, data: { sortable_id: expertise_pillar.id }, class: "group/item" do %>
+  <div class="flex gap-4 items-start py-2">
+    <!-- Handle -->
+    <div class="cursor-grab text-neutral-600 hover:text-white flex items-center shrink-0 pt-3" data-sortable-handle>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path></svg>
+    </div>
+
+    <div class="w-12 h-12 bg-[#1A1F2B] rounded-xl border border-white/10 flex-shrink-0 flex justify-center items-center overflow-hidden">
+      <% if expertise_pillar.image.attached? %>
+        <%= image_tag expertise_pillar.image, class: "w-full h-full object-cover" %>
+      <% else %>
+        <span class="text-neutral-400 font-bold text-sm">#<%= expertise_pillar.position %></span>
+      <% end %>
+    </div>
+
+    <div class="flex-1 min-w-0">
+      <div class="flex flex-wrap justify-between items-start gap-2 mb-1">
+        <h3 class="text-white font-semibold truncate"><%= expertise_pillar.title %></h3>
+        <div class="flex items-center gap-3">
+          <%= link_to "Editar", edit_admin_expertise_pillar_path(expertise_pillar), data: { turbo_frame: "modal" }, class: "text-xs font-mono text-[#5B8EFF] hover:underline" %>
+          <%= button_to "Excluir", admin_expertise_pillar_path(expertise_pillar), method: :delete, data: { turbo_confirm: "Tem certeza que deseja remover este pilar?" }, class: "text-xs font-mono text-red-500 hover:text-red-400 cursor-pointer" %>
+        </div>
+      </div>
+      <p class="text-xs text-neutral-400 line-clamp-2"><%= expertise_pillar.description %></p>
+      <div class="flex flex-wrap items-center justify-between gap-2 mt-2 pt-2 border-t border-white/5">
+        <span class="text-[11px] font-mono text-neutral-500">Posição: <%= expertise_pillar.position %></span>
+        <%= render "admin/shared/translation_badges", record: expertise_pillar, translate_path: translate_admin_expertise_pillar_path(expertise_pillar) %>
+      </div>
+    </div>
+  </div>
+<% end %>

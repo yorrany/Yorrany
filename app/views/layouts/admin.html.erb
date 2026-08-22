@@ -12,15 +12,50 @@
 
   <body class="bg-[#0B0D10] text-neutral-400 font-sans antialiased min-h-screen flex flex-col">
     <!-- Navbar -->
-    <header class="bg-[#13171F] border-b border-white/10 p-4 flex justify-between items-center shrink-0">
-      <div class="text-white text-xl font-bold flex items-center gap-2">
-        <div class="w-8 h-8 rounded-full bg-[#003CA5] flex items-center justify-center text-white text-sm">Y</div>
-        Yorrany Admin
+    <header class="bg-[#13171F] border-b border-white/10 px-6 py-4 flex flex-wrap justify-between items-center gap-4 shrink-0">
+      <div class="flex items-center gap-6">
+        <%= link_to admin_path, class: "text-white text-xl font-bold flex items-center gap-2.5 hover:opacity-90 transition-opacity" do %>
+          <div class="w-8 h-8 rounded-xl bg-[#003CA5] flex items-center justify-center text-white text-sm font-bold shadow-lg shadow-[#003CA5]/20">Y</div>
+          <span>Yorrany Admin</span>
+        <% end %>
+
+        <nav class="hidden md:flex items-center gap-1 font-mono text-xs text-neutral-400">
+          <%= link_to "Estudos de Caso", admin_path(anchor: "case_studies_section"), class: "px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-colors" %>
+          <%= link_to "Experiência", admin_path(anchor: "experience_section"), class: "px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-colors" %>
+          <%= link_to "Certificações", admin_path(anchor: "certifications_section"), class: "px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-colors" %>
+          <%= link_to "Formação", admin_path(anchor: "academic_section"), class: "px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-colors" %>
+          <%= link_to "Pilares", admin_path(anchor: "pillars_section"), class: "px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-colors" %>
+          <%= link_to "Blog", admin_path(anchor: "posts_section"), class: "px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-colors" %>
+        </nav>
       </div>
-      <div>
-        <%= button_to "Sair", destroy_user_session_path, method: :delete, class: "text-sm text-neutral-400 hover:text-white transition-colors" %>
+
+      <div class="flex items-center gap-4">
+        <%= link_to root_path, target: "_blank", class: "text-xs font-mono text-[#5B8EFF] hover:underline flex items-center gap-1" do %>
+          <span>Ver Site</span> ↗
+        <% end %>
+        <%= button_to "Sair", destroy_user_session_path, method: :delete, class: "text-xs font-mono px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white transition-colors cursor-pointer" %>
       </div>
     </header>
+
+    <!-- Flash Alerts -->
+    <div class="max-w-4xl mx-auto w-full px-4 pt-4">
+      <% if notice.present? %>
+        <div class="p-3.5 mb-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span>✓</span>
+            <span><%= notice %></span>
+          </div>
+        </div>
+      <% end %>
+      <% if alert.present? %>
+        <div class="p-3.5 mb-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span>⚠</span>
+            <span><%= alert %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
     <div class="flex flex-1 overflow-hidden">
       <!-- Main Content -->

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Admin
   class CertificationsController < ApplicationController
-    before_action :set_certification, only: %i[edit update destroy]
+    before_action :set_certification, only: %i[edit update destroy translate]
 
     def new
       @certification = Certification.new
@@ -11,7 +13,7 @@ module Admin
       if @certification.save
         respond_to do |format|
           format.turbo_stream
-          format.html { redirect_to admin_path, notice: "Certificação criada." }
+          format.html { redirect_to admin_path, notice: "Certificação criada e enfileirada para tradução." }
         end
       else
         render :new, status: :unprocessable_entity
@@ -25,7 +27,7 @@ module Admin
       if @certification.update(certification_params)
         respond_to do |format|
           format.turbo_stream
-          format.html { redirect_to admin_path, notice: "Certificação atualizada." }
+          format.html { redirect_to admin_path, notice: "Certificação atualizada e sincronizada." }
         end
       else
         render :edit, status: :unprocessable_entity
@@ -51,6 +53,20 @@ module Admin
       head :ok
     end
 
+    def translate
+      AutoTranslateJob.perform_now(@certification.class.name, @certification.id, :'pt-PT')
+      @certification.reload
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("certification_#{@certification.id}", partial: "admin/certifications/certification", locals: { certification: @certification }) }
+        format.html { redirect_to admin_path, notice: "Certificação traduzida com sucesso." }
+      end
+    rescue StandardError => e
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("certification_#{@certification.id}", partial: "admin/certifications/certification", locals: { certification: @certification }) }
+        format.html { redirect_to admin_path, alert: "Erro ao traduzir: #{e.message}" }
+      end
+    end
+
     private
 
     def set_certification
@@ -60,7 +76,8 @@ module Admin
     def certification_params
       params.require(:certification).permit(
         :title, :issuer, :category, :description, :image,
-        :skills, :credential_code, :credential_url, :document_title, :document_caption
+        :skills, :badge_code, :year, :credential_code, :credential_url,
+        :document_title, :document_caption
       )
     end
   end

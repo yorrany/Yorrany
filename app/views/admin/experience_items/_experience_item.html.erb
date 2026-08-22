@@ -1,21 +1,25 @@
 <%= turbo_frame_tag experience_item do %>
-  <div class="flex gap-4">
-    <div class="w-16 h-16 bg-[#1A1F2B] rounded-lg border border-white/5 flex-shrink-0 flex justify-center items-center overflow-hidden">
+  <div class="flex gap-4 items-start py-2">
+    <div class="w-16 h-16 bg-[#1A1F2B] rounded-xl border border-white/10 flex-shrink-0 flex justify-center items-center overflow-hidden">
       <% if experience_item.image.attached? %>
         <%= image_tag experience_item.image, class: "w-full h-full object-cover" %>
       <% else %>
-        <span class="text-neutral-500 text-xs">Sem Logo</span>
+        <span class="text-neutral-500 text-[10px] font-mono"><%= experience_item.company.to_s.first(2).upcase.presence || "LOGO" %></span>
       <% end %>
     </div>
-    <div class="flex-1">
-      <div class="flex justify-between">
-        <h3 class="text-white font-semibold"><%= experience_item.role %></h3>
-        <div class="flex gap-2">
-          <%= link_to "Editar", edit_admin_experience_item_path(experience_item), data: { turbo_frame: "modal" }, class: "text-xs text-neutral-400 hover:text-white" %>
-          <%= button_to "Excluir", admin_experience_item_path(experience_item), method: :delete, data: { turbo_confirm: "Tem certeza?" }, class: "text-xs text-red-500 hover:text-red-400" %>
+    <div class="flex-1 min-w-0">
+      <div class="flex flex-wrap justify-between items-start gap-2 mb-1">
+        <h3 class="text-white font-semibold truncate"><%= experience_item.role %></h3>
+        <div class="flex items-center gap-3">
+          <%= link_to "Editar", edit_admin_experience_item_path(experience_item), data: { turbo_frame: "modal" }, class: "text-xs font-mono text-[#5B8EFF] hover:underline" %>
+          <%= button_to "Excluir", admin_experience_item_path(experience_item), method: :delete, data: { turbo_confirm: "Tem certeza que deseja remover esta experiência?" }, class: "text-xs font-mono text-red-500 hover:text-red-400 cursor-pointer" %>
         </div>
       </div>
-      <p class="text-sm text-neutral-400"><%= experience_item.company %> • <%= experience_item.type_name %></p>
+      <p class="text-xs text-neutral-400"><%= experience_item.company %> • <%= experience_item.type_name %> (<%= experience_item.period %>)</p>
+      <div class="flex flex-wrap items-center justify-between gap-2 mt-2 pt-2 border-t border-white/5">
+        <span class="text-[11px] font-mono text-neutral-500"><%= experience_item.location %></span>
+        <%= render "admin/shared/translation_badges", record: experience_item, translate_path: translate_admin_experience_item_path(experience_item) %>
+      </div>
     </div>
   </div>
 <% end %>

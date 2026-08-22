@@ -10,27 +10,40 @@
   <% end %>
 
   <div>
-    <%= f.label :title, "Título", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+    <%= f.label :title, "Título da Certificação", class: "block text-sm font-medium text-neutral-300 mb-1" %>
     <%= f.text_field :title, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
   </div>
 
-  <div class="grid grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
     <div>
-      <%= f.label :issuer, "Emissor", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.label :issuer, "Emissor (ex: Linux Foundation, IST)", class: "block text-sm font-medium text-neutral-300 mb-1" %>
       <%= f.text_field :issuer, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
     </div>
     <div>
-      <%= f.label :category, "Categoria", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.label :category, "Categoria (ex: Front-End, Segurança)", class: "block text-sm font-medium text-neutral-300 mb-1" %>
       <%= f.text_field :category, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+    </div>
+    <div>
+      <%= f.label :year, "Ano de Conclusão (ex: 2024)", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.text_field :year, placeholder: "2024", class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
     </div>
   </div>
 
   <div>
-    <%= f.label :skills, "Soft/Hard Skills (separadas por vírgula)", class: "block text-sm font-medium text-neutral-300 mb-1" %>
-    <%= f.text_field :skills, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]", placeholder: "Ex: Ruby, Rails, Liderança" %>
+    <%= f.label :description, "Descrição / Escopo", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+    <%= f.text_area :description, rows: 2, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
   </div>
 
-  <div class="grid grid-cols-2 gap-4">
+  <div>
+    <%= f.label :skills, "Soft/Hard Skills (separadas por vírgula)", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+    <%= f.text_field :skills, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]", placeholder: "Ex: JavaScript, Segurança, WCAG" %>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div>
+      <%= f.label :badge_code, "Código do Badge / Selo", class: "block text-sm font-medium text-neutral-300 mb-1" %>
+      <%= f.text_field :badge_code, placeholder: "LFD123", class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
+    </div>
     <div>
       <%= f.label :credential_code, "Código da Credencial", class: "block text-sm font-medium text-neutral-300 mb-1" %>
       <%= f.text_field :credential_code, class: "w-full bg-[#0B0D10] border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-[#003CA5]" %>
@@ -42,7 +55,7 @@
   </div>
 
   <div class="border-t border-white/10 pt-4 mt-4">
-    <h4 class="text-sm font-medium text-neutral-300 mb-2">Documento (Upload)</h4>
+    <h4 class="text-sm font-medium text-neutral-300 mb-2">Documento / Certificado (Upload)</h4>
     <div class="space-y-4">
       <div>
         <%= f.label :image, "Arquivo/Imagem do Certificado", class: "block text-xs font-medium text-neutral-400 mb-1" %>
@@ -63,6 +76,6 @@
 
   <div class="pt-4 border-t border-white/10 flex justify-end gap-2">
     <%= link_to "Cancelar", admin_path, data: { turbo_frame: "_top" }, class: "px-4 py-2 rounded-lg text-sm font-medium text-neutral-400 hover:text-white hover:bg-white/5" %>
-    <%= f.submit "Salvar", class: "px-4 py-2 rounded-lg text-sm font-medium bg-[#003CA5] text-white hover:bg-[#3d6cff] cursor-pointer" %>
+    <%= f.submit "Salvar e Traduzir com IA", class: "px-4 py-2 rounded-lg text-sm font-medium bg-[#003CA5] text-white hover:bg-[#3d6cff] cursor-pointer" %>
   </div>
 <% end %>

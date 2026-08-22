@@ -17,13 +17,37 @@ Rails.application.routes.draw do
     resources :case_studies, except: [ :show ] do
       member do
         delete "attachments/:attachment_id", action: :purge_attachment, as: :purge_attachment
+        post :translate
       end
     end
-    resources :experience_items, except: [ :show ]
+    resources :experience_items, except: [ :show ] do
+      member do
+        post :translate
+      end
+    end
     resources :certifications, except: [ :show ] do
       patch :reorder, on: :collection
+      member do
+        post :translate
+      end
     end
-    resources :academic_backgrounds, except: [ :show ]
+    resources :academic_backgrounds, except: [ :show ] do
+      member do
+        post :translate
+      end
+    end
+    resources :expertise_pillars, except: [ :show ] do
+      patch :reorder, on: :collection
+      member do
+        post :translate
+      end
+    end
+    resources :posts, except: [ :show ] do
+      member do
+        post :translate
+      end
+    end
+    resources :translations, only: [ :create ]
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

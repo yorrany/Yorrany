@@ -1,59 +1,139 @@
-<div class="max-w-4xl mx-auto space-y-8">
-  <div class="flex justify-between items-end border-b border-white/10 pb-4">
-    <h1 class="text-3xl font-bold text-white">Perfil</h1>
+<div class="max-w-4xl mx-auto space-y-8 pb-16">
+  
+  <!-- Header & AI Translation Hub -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-6">
+    <div>
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">Painel de Conteúdo</h1>
+      <p class="text-xs text-neutral-400 font-mono mt-1">Gerencie seu portfólio, credenciais e artigos com tradução automática via Gemini AI.</p>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <%= button_to admin_translations_path(scope: "missing"), method: :post, class: "inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-[#003CA5] hover:bg-[#002361] text-white shadow-lg shadow-[#003CA5]/20 transition-all hover:scale-105 active:scale-95 cursor-pointer", title: "Traduz itens que possuem idiomas pendentes" do %>
+        <span>⚡</span>
+        <span>Traduzir Faltantes</span>
+      <% end %>
+
+      <%= button_to admin_translations_path(scope: "all"), method: :post, data: { turbo_confirm: "Deseja re-traduzir todo o conteúdo do site? Isso enviará todos os itens para a IA." }, class: "inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-mono font-medium bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white border border-white/10 transition-colors cursor-pointer", title: "Re-traduzir todo o acervo" do %>
+        <span>↺</span>
+        <span>Re-traduzir Tudo</span>
+      <% end %>
+    </div>
   </div>
 
-  <!-- Case Studies -->
-  <section class="bg-[#13171F] rounded-xl border border-white/10 overflow-hidden">
-    <div class="p-6 border-b border-white/10 flex justify-between items-center">
-      <h2 class="text-xl font-semibold text-white">Estudos de Caso</h2>
-      <%= link_to "+ Adicionar", new_admin_case_study_path, data: { turbo_frame: "modal" }, class: "text-sm text-[#003CA5] hover:text-[#3d6cff] font-medium" %>
+  <!-- 1. Case Studies -->
+  <section id="case_studies_section" class="bg-[#13171F] rounded-2xl border border-white/10 overflow-hidden shadow-xl">
+    <div class="p-5 sm:p-6 border-b border-white/10 flex justify-between items-center bg-[#171C26]">
+      <div class="flex items-center gap-2">
+        <h2 class="text-lg font-bold text-white">Estudos de Caso (Portfólio)</h2>
+        <span class="px-2 py-0.5 rounded-full text-xs font-mono bg-white/5 text-neutral-400"><%= @case_studies.size %></span>
+      </div>
+      <%= link_to "+ Adicionar Projeto", new_admin_case_study_path, data: { turbo_frame: "modal" }, class: "text-xs font-mono font-bold px-3 py-1.5 rounded-lg bg-[#003CA5] hover:bg-[#002361] text-white transition-all shadow-md" %>
     </div>
-    <div id="case_studies" class="divide-y divide-white/10 p-6 flex flex-col gap-4">
+    <div id="case_studies" class="divide-y divide-white/10 p-4 sm:p-6 flex flex-col gap-2">
       <% @case_studies.each do |case_study| %>
         <%= render "admin/case_studies/case_study", case_study: case_study %>
       <% end %>
+      <% if @case_studies.empty? %>
+        <p class="text-xs text-neutral-500 font-mono text-center py-6">Nenhum estudo de caso cadastrado.</p>
+      <% end %>
     </div>
   </section>
 
-  <!-- Experience -->
-  <section class="bg-[#13171F] rounded-xl border border-white/10 overflow-hidden">
-    <div class="p-6 border-b border-white/10 flex justify-between items-center">
-      <h2 class="text-xl font-semibold text-white">Experiência</h2>
-      <%= link_to "+ Adicionar", new_admin_experience_item_path, data: { turbo_frame: "modal" }, class: "text-sm text-[#003CA5] hover:text-[#3d6cff] font-medium" %>
+  <!-- 2. Experience -->
+  <section id="experience_section" class="bg-[#13171F] rounded-2xl border border-white/10 overflow-hidden shadow-xl">
+    <div class="p-5 sm:p-6 border-b border-white/10 flex justify-between items-center bg-[#171C26]">
+      <div class="flex items-center gap-2">
+        <h2 class="text-lg font-bold text-white">Experiência Profissional</h2>
+        <span class="px-2 py-0.5 rounded-full text-xs font-mono bg-white/5 text-neutral-400"><%= @experience_items.size %></span>
+      </div>
+      <%= link_to "+ Adicionar Experiência", new_admin_experience_item_path, data: { turbo_frame: "modal" }, class: "text-xs font-mono font-bold px-3 py-1.5 rounded-lg bg-[#003CA5] hover:bg-[#002361] text-white transition-all shadow-md" %>
     </div>
-    <div id="experience_items" class="divide-y divide-white/10 p-6 flex flex-col gap-4">
+    <div id="experience_items" class="divide-y divide-white/10 p-4 sm:p-6 flex flex-col gap-2">
       <% @experience_items.each do |experience_item| %>
         <%= render "admin/experience_items/experience_item", experience_item: experience_item %>
       <% end %>
+      <% if @experience_items.empty? %>
+        <p class="text-xs text-neutral-500 font-mono text-center py-6">Nenhuma experiência cadastrada.</p>
+      <% end %>
     </div>
   </section>
 
-  <!-- Certifications -->
-  <section class="bg-[#13171F] rounded-xl border border-white/10 overflow-hidden">
-    <div class="p-6 border-b border-white/10 flex justify-between items-center">
-      <h2 class="text-xl font-semibold text-white">Certificações</h2>
-      <%= link_to "+ Adicionar", new_admin_certification_path, data: { turbo_frame: "modal" }, class: "text-sm text-[#003CA5] hover:text-[#3d6cff] font-medium" %>
+  <!-- 3. Certifications -->
+  <section id="certifications_section" class="bg-[#13171F] rounded-2xl border border-white/10 overflow-hidden shadow-xl">
+    <div class="p-5 sm:p-6 border-b border-white/10 flex justify-between items-center bg-[#171C26]">
+      <div class="flex items-center gap-2">
+        <h2 class="text-lg font-bold text-white">Certificações & Credenciais</h2>
+        <span class="px-2 py-0.5 rounded-full text-xs font-mono bg-white/5 text-neutral-400"><%= @certifications.size %></span>
+      </div>
+      <%= link_to "+ Adicionar Certificação", new_admin_certification_path, data: { turbo_frame: "modal" }, class: "text-xs font-mono font-bold px-3 py-1.5 rounded-lg bg-[#003CA5] hover:bg-[#002361] text-white transition-all shadow-md" %>
     </div>
-    <div id="certifications" class="divide-y divide-white/10 p-6 flex flex-col gap-4" data-controller="sortable" data-sortable-url-value="<%= reorder_admin_certifications_path %>">
+    <div id="certifications" class="divide-y divide-white/10 p-4 sm:p-6 flex flex-col gap-2" data-controller="sortable" data-sortable-url-value="<%= reorder_admin_certifications_path %>">
       <% @certifications.each do |certification| %>
         <%= render "admin/certifications/certification", certification: certification %>
       <% end %>
-    </div>
-  </section>
-
-  <!-- Academic Backgrounds -->
-  <section class="bg-[#13171F] rounded-xl border border-white/10 overflow-hidden">
-    <div class="p-6 border-b border-white/10 flex justify-between items-center">
-      <h2 class="text-xl font-semibold text-white">Formação Acadêmica</h2>
-      <%= link_to "+ Adicionar", new_admin_academic_background_path, data: { turbo_frame: "modal" }, class: "text-sm text-[#003CA5] hover:text-[#3d6cff] font-medium" %>
-    </div>
-    <div id="academic_backgrounds" class="divide-y divide-white/10 p-6 flex flex-col gap-4">
-      <% @academic_backgrounds.each do |academic_background| %>
-        <%= render "admin/academic_backgrounds/academic_background", academic_background: academic_background %>
+      <% if @certifications.empty? %>
+        <p class="text-xs text-neutral-500 font-mono text-center py-6">Nenhuma certificação cadastrada.</p>
       <% end %>
     </div>
   </section>
+
+  <!-- 4. Academic Backgrounds -->
+  <section id="academic_section" class="bg-[#13171F] rounded-2xl border border-white/10 overflow-hidden shadow-xl">
+    <div class="p-5 sm:p-6 border-b border-white/10 flex justify-between items-center bg-[#171C26]">
+      <div class="flex items-center gap-2">
+        <h2 class="text-lg font-bold text-white">Formação Acadêmica</h2>
+        <span class="px-2 py-0.5 rounded-full text-xs font-mono bg-white/5 text-neutral-400"><%= @academic_backgrounds.size %></span>
+      </div>
+      <%= link_to "+ Adicionar Formação", new_admin_academic_background_path, data: { turbo_frame: "modal" }, class: "text-xs font-mono font-bold px-3 py-1.5 rounded-lg bg-[#003CA5] hover:bg-[#002361] text-white transition-all shadow-md" %>
+    </div>
+    <div id="academic_backgrounds" class="divide-y divide-white/10 p-4 sm:p-6 flex flex-col gap-2">
+      <% @academic_backgrounds.each do |academic_background| %>
+        <%= render "admin/academic_backgrounds/academic_background", academic_background: academic_background %>
+      <% end %>
+      <% if @academic_backgrounds.empty? %>
+        <p class="text-xs text-neutral-500 font-mono text-center py-6">Nenhuma formação acadêmica cadastrada.</p>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- 5. Expertise Pillars (Bento Grid) -->
+  <section id="pillars_section" class="bg-[#13171F] rounded-2xl border border-white/10 overflow-hidden shadow-xl">
+    <div class="p-5 sm:p-6 border-b border-white/10 flex justify-between items-center bg-[#171C26]">
+      <div class="flex items-center gap-2">
+        <h2 class="text-lg font-bold text-white">Pilares de Atuação (Bento Grid)</h2>
+        <span class="px-2 py-0.5 rounded-full text-xs font-mono bg-white/5 text-neutral-400"><%= @expertise_pillars.size %></span>
+      </div>
+      <%= link_to "+ Adicionar Pilar", new_admin_expertise_pillar_path, data: { turbo_frame: "modal" }, class: "text-xs font-mono font-bold px-3 py-1.5 rounded-lg bg-[#003CA5] hover:bg-[#002361] text-white transition-all shadow-md" %>
+    </div>
+    <div id="expertise_pillars" class="divide-y divide-white/10 p-4 sm:p-6 flex flex-col gap-2" data-controller="sortable" data-sortable-url-value="<%= reorder_admin_expertise_pillars_path %>">
+      <% @expertise_pillars.each do |expertise_pillar| %>
+        <%= render "admin/expertise_pillars/expertise_pillar", expertise_pillar: expertise_pillar %>
+      <% end %>
+      <% if @expertise_pillars.empty? %>
+        <p class="text-xs text-neutral-500 font-mono text-center py-6">Nenhum pilar cadastrado.</p>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- 6. Blog Posts -->
+  <section id="posts_section" class="bg-[#13171F] rounded-2xl border border-white/10 overflow-hidden shadow-xl">
+    <div class="p-5 sm:p-6 border-b border-white/10 flex justify-between items-center bg-[#171C26]">
+      <div class="flex items-center gap-2">
+        <h2 class="text-lg font-bold text-white">Artigos do Blog</h2>
+        <span class="px-2 py-0.5 rounded-full text-xs font-mono bg-white/5 text-neutral-400"><%= @posts.size %></span>
+      </div>
+      <%= link_to "+ Adicionar Artigo", new_admin_post_path, data: { turbo_frame: "modal" }, class: "text-xs font-mono font-bold px-3 py-1.5 rounded-lg bg-[#003CA5] hover:bg-[#002361] text-white transition-all shadow-md" %>
+    </div>
+    <div id="posts" class="divide-y divide-white/10 p-4 sm:p-6 flex flex-col gap-2">
+      <% @posts.each do |post| %>
+        <%= render "admin/posts/post", post: post %>
+      <% end %>
+      <% if @posts.empty? %>
+        <p class="text-xs text-neutral-500 font-mono text-center py-6">Nenhum artigo publicado no blog.</p>
+      <% end %>
+    </div>
+  </section>
+
 </div>
 
 <!-- Base Modal Frame -->

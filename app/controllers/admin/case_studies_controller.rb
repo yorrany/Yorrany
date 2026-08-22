@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Admin
   class CaseStudiesController < ApplicationController
-    before_action :set_case_study, only: %i[edit update destroy purge_attachment]
+    before_action :set_case_study, only: %i[edit update destroy purge_attachment translate]
 
     def new
       @case_study = CaseStudy.new
@@ -11,7 +13,7 @@ module Admin
       if @case_study.save
         respond_to do |format|
           format.turbo_stream
-          format.html { redirect_to admin_path, notice: "Estudo de caso criado." }
+          format.html { redirect_to admin_path, notice: "Estudo de caso criado e enfileirado para tradução." }
         end
       else
         render :new, status: :unprocessable_entity
@@ -29,7 +31,7 @@ module Admin
       if @case_study.update(params_to_update)
         respond_to do |format|
           format.turbo_stream
-          format.html { redirect_to admin_path, notice: "Estudo de caso atualizado." }
+          format.html { redirect_to admin_path, notice: "Estudo de caso atualizado e sincronizado." }
         end
       else
         render :edit, status: :unprocessable_entity
@@ -57,6 +59,20 @@ module Admin
       end
     end
 
+    def translate
+      AutoTranslateJob.perform_now(@case_study.class.name, @case_study.id, :'pt-PT')
+      @case_study.reload
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("case_study_#{@case_study.id}", partial: "admin/case_studies/case_study", locals: { case_study: @case_study }) }
+        format.html { redirect_to admin_path, notice: "Estudo de caso traduzido com sucesso." }
+      end
+    rescue StandardError => e
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("case_study_#{@case_study.id}", partial: "admin/case_studies/case_study", locals: { case_study: @case_study }) }
+        format.html { redirect_to admin_path, alert: "Erro ao traduzir: #{e.message}" }
+      end
+    end
+
     private
 
     def set_case_study
@@ -64,7 +80,11 @@ module Admin
     end
 
     def case_study_params
-      params.require(:case_study).permit(:title, :tagline, :client, :role, :period, :summary, :full_description, :challenge, :solution, :behavioral_insight, :tags, :is_spotlight, :accent_color, :image, gallery_images: [])
+      params.require(:case_study).permit(
+        :title, :tagline, :client, :role, :period, :summary,
+        :full_description, :challenge, :solution, :behavioral_insight,
+        :tags, :is_spotlight, :accent_color, :image, gallery_images: []
+      )
     end
   end
 end
